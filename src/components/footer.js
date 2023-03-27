@@ -42,50 +42,54 @@
         className="grid grid-cols-1 xxs:grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3">
         <div>
           <h2
-            className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Informacion</h2>
+            className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">
+            Informacion</h2>
           <div className="mb-4">
             <a href="https://flowbite.com/"
-               className="hover:underline">politica devolucion</a>
+               className="no-underline text-gray-500">politica devolucion</a>
           </div>
           <div className="mb-4">
             <a href="https://flowbite.com/"
-               className="hover:underline">politica privacidad</a>
+               className="no-underline text-gray-500">politica privacidad</a>
           </div>
           <div className="mb-4">
             <a href="https://flowbite.com/"
-               className="hover:underline">horarios de atencion</a>
+               className="no-underline text-gray-500">horarios de atencion</a>
           </div>
           <div>
             <a href="https://tailwindcss.com/"
-               className="hover:underline">terminos y condiciones</a>
+               className="no-underline text-gray-500">terminos y condiciones</a>
           </div>
         </div>
         <div>
           <h2
-            className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Servicio
+            className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">
+            Servicio
             al cliente</h2>
           <div className="mb-4">
             <a href="https://github.com/themesberg/flowbite"
-               className="hover:underline ">formulario de contacto</a>
+               className="no-underline text-gray-500 ">formulario de
+              contacto</a>
           </div>
           <div>
             <a href="https://discord.gg/4eeurUVvTy"
-               className="hover:underline">reclamos / sugerencias</a>
+               className="no-underline text-gray-500">reclamos / sugerencias</a>
           </div>
         </div>
         <div>
           <h2
-            className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Contactanos</h2>
+            className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">
+            Contactanos</h2>
           <div className="mb-4">
-            <a href="#" className="hover:underline">+569 12345678</a>
+            <a href="#" className="no-underline text-gray-500">+569 12345678</a>
           </div>
           <div className="mb-4">
             <a href="#"
-               className="hover:underline">correo@correo.com</a>
+               className="no-underline text-gray-500">correo@correo.com</a>
           </div>
           <div>
             <a href="#"
-               className="hover:underline">direccion 12. region.
+               className="no-underline text-gray-500">direccion 12. region.
               chile</a>
           </div>
         </div>

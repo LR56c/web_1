@@ -23,7 +23,8 @@
     <div className="mx-auto basis-1/3">
       <div
         className="my-2 w-full font-medium">
-        <a href="#">Nombre del producto</a>
+        <a href="#" className="text-gray-500 no-underline">Nombre del
+          producto</a>
       </div>
       <div className="flex w-full items-center gap-2">
         <div className="text-gray-400 line-through">$100</div>

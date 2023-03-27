@@ -8,7 +8,9 @@
   <div
     className="basis-2/5 w-full h-full">
     <div className="w-full flex justify-center items-center">
-      <a href="#">Nombre Producto</a>
+      <a href="#" className="text-gray-500 no-underline">
+        Nombre Producto
+      </a>
     </div>
     <div
       className="w-full flex p-2 flex-col">
@@ -20,7 +22,7 @@
     </div>
     <div className="w-full p-2">
       <button type="button"
-              className="h-12 w-full px-5 py-2.5 text-white bg-yellow-400 hover:bg-yellow-500 focus:outline-none focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:focus:ring-yellow-900">
+              className="h-12 w-full p-2 text-white bg-yellow-400 hover:bg-yellow-500 focus:outline-none focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm text-center dark:focus:ring-yellow-900">
         Agregar al carrito
       </button>
     </div>
