@@ -1,5 +1,5 @@
 <nav
-  class="bg-gray-200 shadow border-gray-200 bg-white sticky w-full px-2 py-2.5 sm:px-4 z-20 top-0 left-0 border-b">
+  class="shadow border-gray-200 bg-white sticky w-full px-2 py-2.5 sm:px-4 z-20 top-0 left-0 border-b">
   <div
     class="flex flex-wrap items-center justify-center xs:justify-start gap-3 md:gap-0 md:justify-between md:flex-nowrap">
     <a href="https://flowbite.com/"
@@ -11,7 +11,7 @@
     </a>
     <div class="relative flex w-full basis-auto md:basis-3/12">
       <div
-        class=" pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
+        class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
         <svg class="h-5 w-5 text-gray-500" aria-hidden="true"
              fill="currentColor" viewBox="0 0 20 20"
              xmlns="http://www.w3.org/2000/svg">
@@ -26,7 +26,7 @@
              placeholder="Search..."/>
     </div>
     <div
-      class="flex w-full basis-auto justify-around xs:basis-2/4 md:basis-3/12">
+      class="flex w-full basis-auto justify-around md:basis-3/12">
       <button type="button"
               class="p-2 text-white bg-blue-600 hover:bg-blue-600/90 focus:ring-4 focus:outline-none focus:ring-blue-600/50 font-medium rounded-full text-sm text-center inline-flex items-center dark:focus:ring-blue-600/55">
         <svg class="h-5 w-5" fill="none" stroke="currentColor"
