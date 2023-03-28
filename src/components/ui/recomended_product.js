@@ -1,6 +1,6 @@
 <div
   className="flex flex-col gap-2 w-44 h-80 bg-white border border-gray-200 rounded-lg shadow">
-  <a href="#" className="basis-3/5 w-full h-full">
+  <a href="src/components#" className="basis-3/5 w-full h-full">
     <img className="object-contain rounded-t-lg w-full h-full"
          src="https://images.unsplash.com/photo-1679214523009-6f63a063f36f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171&q=80"
          alt=""/>
@@ -8,7 +8,7 @@
   <div
     className="basis-2/5 w-full h-full">
     <div className="w-full flex justify-center items-center">
-      <a href="#" className="text-gray-500 no-underline">
+      <a href="src/components#" className="text-gray-500 no-underline">
         Nombre Producto
       </a>
     </div>

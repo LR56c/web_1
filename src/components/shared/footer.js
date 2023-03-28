@@ -7,7 +7,7 @@
                class="h-24 w-8 mr-3" alt="FlowBite Logo"/>
         </a>
         <div class="flex mt-4 space-x-6 sm:justify-center sm:mt-0">
-          <a href="#"
+          <a href="src/components#"
              class="text-gray-500 hover:text-gray-900 dark:hover:text-white">
             <svg class="w-5 h-5" fill="currentColor"
                  viewBox="0 0 24 24" aria-hidden="true">
@@ -17,7 +17,7 @@
             </svg>
             <span class="sr-only">Facebook page</span>
           </a>
-          <a href="#"
+          <a href="src/components#"
              class="text-gray-500 hover:text-gray-900 dark:hover:text-white">
             <svg class="w-5 h-5" fill="currentColor"
                  viewBox="0 0 24 24" aria-hidden="true">
@@ -27,7 +27,7 @@
             </svg>
             <span class="sr-only">Instagram page</span>
           </a>
-          <a href="#"
+          <a href="src/components#"
              class="text-gray-500 hover:text-gray-900 dark:hover:text-white">
             <svg class="w-5 h-5" fill="currentColor"
                  viewBox="0 0 24 24" aria-hidden="true">
@@ -81,14 +81,14 @@
             class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">
             Contactanos</h2>
           <div class="mb-4">
-            <a href="#" class="no-underline text-gray-500">+569 12345678</a>
+            <a href="src/components#" class="no-underline text-gray-500">+569 12345678</a>
           </div>
           <div class="mb-4">
-            <a href="#"
+            <a href="src/components#"
                class="no-underline text-gray-500">correo@correo.com</a>
           </div>
           <div>
-            <a href="#"
+            <a href="src/components#"
                class="no-underline text-gray-500">direccion 12. region.
               chile</a>
           </div>

@@ -1,6 +1,6 @@
   <div
     class="bg-yellow-400 h-16 w-full flex justify-center items-center text-white text-base xxs:text-2xl xs:text-3xl ">
-    Estado de orden&nbsp;<a href="#"
+    Estado de orden&nbsp;<a href="src/components#"
                             class="font-medium underline">#123456</a>
   </div>
   <ol class="flex mt-12  items-center mx-auto w-full sm:w-2/3 lg:w-1/2">
@@ -81,7 +81,7 @@
       </p>
       <p class="font-normal text-gray-500 dark:text-gray-400">
         Numero de seguimiento:
-        <a href="#"
+        <a href="src/components#"
            class="inline-flex items-center text-blue-600 hover:underline">
           87897569876
           <svg class="w-5 h-5 ml-2" fill="currentColor"
