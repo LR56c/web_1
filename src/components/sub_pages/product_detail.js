@@ -150,7 +150,7 @@
       <div class="mx-auto basis-1/3">
         <div
           class="my-2 w-full font-medium">
-          <a href="#" class="text-gray-500 no-underline">Nombre del
+          <a href="src/components#" class="text-gray-500 no-underline">Nombre del
             producto</a>
         </div>
         <div class="flex w-full items-center gap-2">
@@ -187,7 +187,7 @@
       <div class="mx-auto basis-1/3">
         <div
           class="my-2 w-full font-medium">
-          <a href="#" class="text-gray-500 no-underline">Nombre del
+          <a href="src/components#" class="text-gray-500 no-underline">Nombre del
             producto</a>
         </div>
         <div class="flex w-full items-center gap-2">
@@ -224,7 +224,7 @@
       <div class="mx-auto basis-1/3">
         <div
           class="my-2 w-full font-medium">
-          <a href="#" class="text-gray-500 no-underline">Nombre del
+          <a href="src/components#" class="text-gray-500 no-underline">Nombre del
             producto</a>
         </div>
         <div class="flex w-full items-center gap-2">
@@ -261,7 +261,7 @@
       <div class="mx-auto basis-1/3">
         <div
           class="my-2 w-full font-medium">
-          <a href="#" class="text-gray-500 no-underline">Nombre del
+          <a href="src/components#" class="text-gray-500 no-underline">Nombre del
             producto</a>
         </div>
         <div class="flex w-full items-center gap-2">
@@ -298,7 +298,7 @@
       <div class="mx-auto basis-1/3">
         <div
           class="my-2 w-full font-medium">
-          <a href="#" class="text-gray-500 no-underline">Nombre del
+          <a href="src/components#" class="text-gray-500 no-underline">Nombre del
             producto</a>
         </div>
         <div class="flex w-full items-center gap-2">
@@ -335,7 +335,7 @@
       <div class="mx-auto basis-1/3">
         <div
           class="my-2 w-full font-medium">
-          <a href="#" class="text-gray-500 no-underline">Nombre del
+          <a href="src/components#" class="text-gray-500 no-underline">Nombre del
             producto</a>
         </div>
         <div class="flex w-full items-center gap-2">
@@ -372,7 +372,7 @@
       <div class="mx-auto basis-1/3">
         <div
           class="my-2 w-full font-medium">
-          <a href="#" class="text-gray-500 no-underline">Nombre del
+          <a href="src/components#" class="text-gray-500 no-underline">Nombre del
             producto</a>
         </div>
         <div class="flex w-full items-center gap-2">

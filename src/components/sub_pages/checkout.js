@@ -1,7 +1,7 @@
 <div
   class="bg-yellow-400 h-16 w-full flex justify-center items-center text-white text-xl xxs:text-3xl">
   <p>Pago orden&nbsp;</p>
-  <a href="#" class="font-medium underline">#123456</a>
+  <a href="src/components#" class="font-medium underline">#123456</a>
 </div>
 <div
   class="flex flex-col-reverse lg:flex-row w-full h-full lg:items-start items-center">
