@@ -2,7 +2,7 @@
     <ul
       class="flex flex-wrap -mb-px text-sm font-medium text-center text-gray-500 justify-center items-center">
       <li class="mr-2">
-        <a href="#"
+        <a href="src/components/v1/admin#"
            class="inline-flex p-4 text-blue-600 border-b-2 border-blue-600 rounded-t-lg active group">
           <svg class="w-5 h-5 mr-2 text-blue-600" fill="none" stroke="currentColor" stroke-width="1.5"
                viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
@@ -14,7 +14,7 @@
         </a>
       </li>
       <li class="mr-2">
-        <a href="#"
+        <a href="src/components/v1/admin#"
            class="inline-flex p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 group"
            aria-current="page">
           <svg class="w-5 h-5 mr-2 text-gray-400 group-hover:text-gray-500"
@@ -30,7 +30,7 @@
         </a>
       </li>
       <li class="mr-2">
-        <a href="#"
+        <a href="src/components/v1/admin#"
            class="inline-flex p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 group">
           <svg class="w-5 h-5 mr-2 text-gray-400 group-hover:text-gray-500"
                fill="none" stroke="currentColor" stroke-width="1.5"
