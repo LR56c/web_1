@@ -45,19 +45,19 @@
             class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Informacion</h2>
           <ul class="text-gray-600 dark:text-gray-400">
             <li class="mb-4">
-              <a href="/info"
+              <a href="/src/pages/404.html"
                  class="hover:underline">politica devolucion</a>
             </li>
             <li class="mb-4">
-              <a href="/info"
+              <a href="/src/pages/404.html"
                  class="hover:underline">politica privacidad</a>
             </li>
             <li class="mb-4">
-              <a href="/info"
+              <a href="/src/pages/404.html"
                  class="hover:underline">preguntas frecuentes</a>
             </li>
             <li>
-              <a href="/info"
+              <a href="/src/pages/404.html"
                  class="hover:underline">terminos y condiciones</a>
             </li>
           </ul>
@@ -68,11 +68,11 @@
             al cliente</h2>
           <ul class="text-gray-600 dark:text-gray-400">
             <li class="mb-4">
-              <a href="/sc"
+              <a href="/src/pages/404.html"
                  class="hover:underline ">formulario de contacto</a>
             </li>
             <li>
-              <a href="/sc"
+              <a href="/src/pages/404.html"
                  class="hover:underline">reclamos / sugerencias</a>
             </li>
           </ul>
@@ -82,19 +82,19 @@
             class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Contactanos</h2>
           <ul class="text-gray-600 dark:text-gray-400">
             <li class="mb-4">
-              <a href="/contacto" class="hover:underline">+569 12345678</a>
+              <a href="/src/pages/404.html" class="hover:underline">+569 12345678</a>
             </li>
             <li class="mb-4">
-              <a href="/contacto"
+              <a href="/src/pages/404.html"
                  class="hover:underline">correo@correo.com</a>
             </li>
             <li>
-              <a href="/contacto"
+              <a href="/src/pages/404.html"
                  class="hover:underline">direccion 12. region.
                 chile</a>
             </li>
             <li>
-              <a href="/contacto"
+              <a href="/src/pages/404.html"
                  class="hover:underline">horario de atencion</a>
             </li>
           </ul>

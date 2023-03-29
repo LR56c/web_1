@@ -2,7 +2,7 @@
   class="bg-gray-200 shadow border-gray-200 bg-white sticky w-full px-2 py-2.5 sm:px-4 z-20 top-0 left-0 border-b">
   <div
     class="flex flex-wrap items-center justify-center xs:justify-start gap-3 md:gap-0 md:justify-between md:flex-nowrap">
-    <a href="/"
+    <a href="/src/index.html"
        class="flex w-full basis-auto items-center justify-center xs:basis-2/4 md:basis-2/6 xs:justify-start lg:basis-5/12">
       <img src="https://flowbite.com/docs/images/logo.svg"
            class="mr-3 h-6 sm:h-9" alt="Flowbite Logo"/>
@@ -27,7 +27,7 @@
     </div>
     <div
       class="flex w-full basis-auto justify-around md:basis-3/12">
-      <a href="/admin/usuarios">
+      <a href="/src/pages/admin_usuarios.html">
         <button type="button"
                 class="p-2 text-white bg-blue-600 hover:bg-blue-600/90 focus:ring-4 focus:outline-none focus:ring-blue-600/50 font-medium rounded-full text-sm text-center inline-flex items-center dark:focus:ring-blue-600/55">
           <svg class="h-5 w-5" fill="none" stroke="currentColor"
@@ -51,7 +51,7 @@
                 d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z"></path>
         </svg>
       </button>
-      <a href="/user/details">
+      <a href="src/pages/user_detail.html">
         <button type="button"
                 class="p-2 text-white bg-blue-600 hover:bg-blue-600/90 focus:ring-4 focus:outline-none focus:ring-blue-600/50 font-medium rounded-full text-sm text-center inline-flex items-center dark:focus:ring-blue-600/55">
           <svg class="h-5 w-5" fill="none" stroke="currentColor"
@@ -78,7 +78,7 @@
         <ul class="py-2 text-sm text-gray-700 dark:text-gray-200"
             aria-labelledby="dropdownMenuIconButton">
           <li>
-            <a href="/user/suscription"
+            <a href="src/pages/user_suscription.html"
                class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Suscription</a>
           </li>
         </ul>
@@ -107,7 +107,7 @@
       </p>
     </div>
     <a
-      href="/checkout"
+      href="/src/pages/checkout.html"
       class="h-12 px-12 py-2.5 text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-center">
       Ir a Pagar
     </a>

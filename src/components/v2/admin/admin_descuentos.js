@@ -1,35 +1,33 @@
 <nav
   class="bg-gray-200 shadow border-gray-200 bg-white sticky w-full px-2 py-2.5 sm:px-4 z-20 top-0 left-0 border-b">
   <div
-    class="order-first flex flex-wrap items-center justify-center xs:justify-start md:flex-nowrap">
-    <a href="/"
-       class="hover:no-underline text-gray-500 hover:text-gray-500 flex w-full basis-auto items-center justify-center xs:basis-2/4 xs:justify-start lg:basis-8/12">
+    class="flex flex-wrap items-center justify-center xs:justify-start gap-3 md:gap-0 md:justify-between md:flex-nowrap">
+    <a href="/src/index.html"
+       class="flex w-full basis-auto items-center justify-center xs:basis-2/4 md:basis-2/6 xs:justify-start lg:basis-5/12">
       <img src="https://flowbite.com/docs/images/logo.svg"
            class="mr-3 h-6 sm:h-9" alt="Flowbite Logo"/>
       <span
         class="self-center whitespace-nowrap text-xl font-semibold dark:text-white">Logo</span>
     </a>
-    <div class="order-3 flex w-full basis-auto md:order-2 md:basis-4/12">
-      <div class="relative w-full">
-        <div
-          class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
-          <svg class="h-5 w-5 text-gray-500" aria-hidden="true"
-               fill="currentColor" viewBox="0 0 20 20"
-               xmlns="http://www.w3.org/2000/svg">
-            <path fill-rule="evenodd"
-                  d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
-                  clip-rule="evenodd"></path>
-          </svg>
-          <span class="sr-only">Search icon</span>
-        </div>
-        <input type="text" id="search-navbar"
-               class="w-full rounded-lg border border-gray-300 bg-gray-50 p-2 pl-10 text-sm text-gray-900 focus:border-blue-600 focus:ring-blue-600 dark:placeholder-gray-400 dark:border-gray-600 dark:bg-gray-700 dark:text-white md:w-52 lg:w-60 dark:focus:border-blue-600 dark:focus:ring-blue-600"
-               placeholder="Search..."/>
+    <div class="relative flex w-full basis-auto md:basis-3/12">
+      <div
+        class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
+        <svg class="h-5 w-5 text-gray-500" aria-hidden="true"
+             fill="currentColor" viewBox="0 0 20 20"
+             xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd"
+                d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
+                clip-rule="evenodd"></path>
+        </svg>
+        <span class="sr-only">Search icon</span>
       </div>
+      <input type="text" id="search-navbar"
+             class="w-full rounded-lg border border-gray-300 bg-gray-50 pl-10 pr-2 py-2 text-sm text-gray-900 focus:border-blue-600 focus:ring-blue-600 dark:placeholder-gray-400 dark:border-gray-600 dark:bg-gray-700 dark:text-white md:w-52 lg:w-60 dark:focus:border-blue-600 dark:focus:ring-blue-600"
+             placeholder="Search..."/>
     </div>
     <div
-      class="md:my-0 my-3 order-2 flex w-full basis-auto justify-around xs:basis-2/4 md:order-3 md:basis-3/12">
-      <a href="/admin/usuarios">
+      class="flex w-full basis-auto justify-around md:basis-3/12">
+      <a href="/src/pages/admin_usuarios.html">
         <button type="button"
                 class="p-2 text-white bg-blue-600 hover:bg-blue-600/90 focus:ring-4 focus:outline-none focus:ring-blue-600/50 font-medium rounded-full text-sm text-center inline-flex items-center dark:focus:ring-blue-600/55">
           <svg class="h-5 w-5" fill="none" stroke="currentColor"
@@ -53,7 +51,7 @@
                 d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z"></path>
         </svg>
       </button>
-      <a href="/user/details">
+      <a href="src/pages/user_detail.html">
         <button type="button"
                 class="p-2 text-white bg-blue-600 hover:bg-blue-600/90 focus:ring-4 focus:outline-none focus:ring-blue-600/50 font-medium rounded-full text-sm text-center inline-flex items-center dark:focus:ring-blue-600/55">
           <svg class="h-5 w-5" fill="none" stroke="currentColor"
@@ -80,7 +78,7 @@
         <ul class="py-2 text-sm text-gray-700 dark:text-gray-200"
             aria-labelledby="dropdownMenuIconButton">
           <li>
-            <a href="/user/suscription"
+            <a href="src/pages/user_suscription.html"
                class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Suscription</a>
           </li>
         </ul>
@@ -109,7 +107,7 @@
       </p>
     </div>
     <a
-      href="/checkout"
+      href="/src/pages/checkout.html"
       class="h-12 px-12 py-2.5 text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-center">
       Ir a Pagar
     </a>
@@ -598,13 +596,13 @@
   </div>
 </div>
 
-<div className="bg-gray-200 border-b border-gray-200">
+<div class="bg-gray-200 border-b border-gray-200">
   <ul
-    className="flex flex-wrap -mb-px text-sm font-medium text-center text-gray-500 justify-center items-center">
-    <li className="mr-2">
+    class="flex flex-wrap -mb-px text-sm font-medium text-center text-gray-500 justify-center items-center">
+    <li class="mr-2">
       <a href="/admin/usuarios"
-         className="inline-flex p-4 text-blue-600 border-b-2 border-blue-600 rounded-t-lg active group">
-        <svg className="w-5 h-5 mr-2 text-blue-600" fill="none"
+         class="inline-flex p-4 text-blue-600 border-b-2 border-blue-600 rounded-t-lg active group">
+        <svg class="w-5 h-5 mr-2 text-blue-600" fill="none"
              stroke="currentColor" stroke-width="1.5"
              viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
              aria-hidden="true">
@@ -614,11 +612,11 @@
         Usuarios
       </a>
     </li>
-    <li className="mr-2">
+    <li class="mr-2">
       <a href="/admin/descuentos"
-         className="inline-flex p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 group"
+         class="inline-flex p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 group"
          aria-current="page">
-        <svg className="w-5 h-5 mr-2 text-gray-400 group-hover:text-gray-500"
+        <svg class="w-5 h-5 mr-2 text-gray-400 group-hover:text-gray-500"
              fill="none" stroke="currentColor" stroke-width="1.5"
              viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
              aria-hidden="true">
@@ -630,10 +628,10 @@
         Descuentos
       </a>
     </li>
-    <li className="mr-2">
+    <li class="mr-2">
       <a href="/admin/productos"
-         className="inline-flex p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 group">
-        <svg className="w-5 h-5 mr-2 text-gray-400 group-hover:text-gray-500"
+         class="inline-flex p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 group">
+        <svg class="w-5 h-5 mr-2 text-gray-400 group-hover:text-gray-500"
              fill="none" stroke="currentColor" stroke-width="1.5"
              viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
              aria-hidden="true">
@@ -645,45 +643,45 @@
     </li>
   </ul>
 </div>
-<div className="flex justify-center items-center m-4">
+<div class="flex justify-center items-center p-4">
   <button type="button"
           data-modal-target="add-modal"
           data-modal-toggle="add-modal"
-          className="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
+          class="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
     Agregar
   </button>
 </div>
 <div tabIndex="-1" aria-hidden="true" id="add-modal"
-     className="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] md:h-full">
-  <div className="relative w-full h-full max-w-md md:h-auto">
-    <div className="relative bg-white rounded-lg shadow dark:bg-gray-700">
+     class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] md:h-full">
+  <div class="relative w-full h-full max-w-md md:h-auto">
+    <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
       <button type="button"
-              className="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white"
+              class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white"
               data-modal-hide="add-modal">
-        <svg aria-hidden="true" className="w-5 h-5" fill="currentColor"
+        <svg aria-hidden="true" class="w-5 h-5" fill="currentColor"
              viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
           <path fill-rule="evenodd"
                 d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
                 clip-rule="evenodd"></path>
         </svg>
-        <span className="sr-only">Close modal</span>
+        <span class="sr-only">Close modal</span>
       </button>
-      <div className="px-6 py-6 lg:px-8">
+      <div class="px-6 py-6 lg:px-8">
         <h3
-          className="mb-4 text-xl font-medium text-gray-900 dark:text-white">Crear
+          class="mb-4 text-xl font-medium text-gray-900 dark:text-white">Crear
           nuevo x</h3>
-        <form className="space-y-6" action="#">
+        <form class="space-y-6" action="#">
           <div>
             <label htmlFor="email"
-                   className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                   class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
               campo1
             </label>
             <input type="email" name="email" id="email"
-                   className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+                   class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
                    placeholder="name@company.com" required/>
           </div>
           <button type="submit"
-                  className="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                  class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
             boton
           </button>
         </form>
@@ -1473,19 +1471,19 @@
             class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Informacion</h2>
           <ul class="text-gray-600 dark:text-gray-400">
             <li class="mb-4">
-              <a href="/info"
+              <a href="/src/pages/404.html"
                  class="hover:underline">politica devolucion</a>
             </li>
             <li class="mb-4">
-              <a href="/info"
+              <a href="/src/pages/404.html"
                  class="hover:underline">politica privacidad</a>
             </li>
             <li class="mb-4">
-              <a href="/info"
+              <a href="/src/pages/404.html"
                  class="hover:underline">preguntas frecuentes</a>
             </li>
             <li>
-              <a href="/info"
+              <a href="/src/pages/404.html"
                  class="hover:underline">terminos y condiciones</a>
             </li>
           </ul>
@@ -1496,11 +1494,11 @@
             al cliente</h2>
           <ul class="text-gray-600 dark:text-gray-400">
             <li class="mb-4">
-              <a href="/sc"
+              <a href="/src/pages/404.html"
                  class="hover:underline ">formulario de contacto</a>
             </li>
             <li>
-              <a href="/sc"
+              <a href="/src/pages/404.html"
                  class="hover:underline">reclamos / sugerencias</a>
             </li>
           </ul>
@@ -1510,20 +1508,20 @@
             class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Contactanos</h2>
           <ul class="text-gray-600 dark:text-gray-400">
             <li class="mb-4">
-              <a href="/contacto" class="hover:underline">+569
+              <a href="/src/pages/404.html" class="hover:underline">+569
                 12345678</a>
             </li>
             <li class="mb-4">
-              <a href="/contacto"
+              <a href="/src/pages/404.html"
                  class="hover:underline">correo@correo.com</a>
             </li>
             <li>
-              <a href="/contacto"
+              <a href="/src/pages/404.html"
                  class="hover:underline">direccion 12. region.
                 chile</a>
             </li>
             <li>
-              <a href="/contacto"
+              <a href="/src/pages/404.html"
                  class="hover:underline">horario de atencion</a>
             </li>
           </ul>
@@ -1539,3 +1537,4 @@
     </div>
   </div>
 </footer>
+
