@@ -1,40 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <link rel="stylesheet"
-        href="https://cdn.jsdelivr.net/npm/uikit@3.16.10/dist/css/uikit.min.css"/>
-  <link href="/dist/output.css" rel="stylesheet">
-  <link
-    href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
-    rel="stylesheet"
-    integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
-    crossOrigin="anonymous">
-  <link
-    href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.4/flowbite.min.css"
-    rel="stylesheet"/>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        screens: {
-          xxs: "320px",
-          xs : "480px",
-          sm : "640px",
-          md : "768px",
-          lg : "1024px",
-          xl : "1280px",
-          xxl: "1536px"
-        },
-        extend : {}
-      }
-    }
-  </script>
-
-  <title>Admin descuentos</title>
-</head>
-<body>
 <nav
   class="bg-gray-200 shadow border-gray-200 bg-white sticky w-full px-2 py-2.5 sm:px-4 z-20 top-0 left-0 border-b">
   <div
@@ -637,9 +600,10 @@
   <ul
     class="flex flex-wrap -mb-px text-sm font-medium text-center text-gray-500 justify-center items-center">
     <li class="mr-2">
-      <a href="/src/pages/admin_usuarios.html"
+      <a href="/admin/usuarios"
          class="inline-flex p-4 text-blue-600 border-b-2 border-blue-600 rounded-t-lg active group">
-        <svg class="w-5 h-5 mr-2 text-blue-600" fill="none" stroke="currentColor" stroke-width="1.5"
+        <svg class="w-5 h-5 mr-2 text-blue-600" fill="none"
+             stroke="currentColor" stroke-width="1.5"
              viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
              aria-hidden="true">
           <path stroke-linecap="round" stroke-linejoin="round"
@@ -649,7 +613,7 @@
       </a>
     </li>
     <li class="mr-2">
-      <a href="/src/pages/admin_descuentos.html"
+      <a href="/admin/descuentos"
          class="inline-flex p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 group"
          aria-current="page">
         <svg class="w-5 h-5 mr-2 text-gray-400 group-hover:text-gray-500"
@@ -665,7 +629,7 @@
       </a>
     </li>
     <li class="mr-2">
-      <a href="/src/pages/admin_productos.html"
+      <a href="/admin/productos"
          class="inline-flex p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 group">
         <svg class="w-5 h-5 mr-2 text-gray-400 group-hover:text-gray-500"
              fill="none" stroke="currentColor" stroke-width="1.5"
@@ -679,7 +643,6 @@
     </li>
   </ul>
 </div>
-
 <div class="flex justify-center items-center p-4">
   <button type="button"
           data-modal-target="add-modal"
@@ -709,11 +672,11 @@
           nuevo x</h3>
         <form class="space-y-6" action="#">
           <div>
-            <label for="email2"
+            <label htmlFor="email"
                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
               campo1
             </label>
-            <input type="email" name="email2" id="email2"
+            <input type="email" name="email" id="email"
                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
                    placeholder="name@company.com" required/>
           </div>
@@ -1575,18 +1538,3 @@
   </div>
 </footer>
 
-
-
-
-<script
-  src="https://cdn.jsdelivr.net/npm/uikit@3.16.10/dist/js/uikit.min.js"></script>
-<script
-  src="https://cdn.jsdelivr.net/npm/uikit@3.16.10/dist/js/uikit-icons.min.js"></script>
-<script
-  src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.4/flowbite.min.js"></script>
-<script
-  src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
-  integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
-  crossOrigin="anonymous"></script>
-</body>
-</html>

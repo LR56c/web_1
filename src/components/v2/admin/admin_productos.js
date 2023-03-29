@@ -1,40 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <link rel="stylesheet"
-        href="https://cdn.jsdelivr.net/npm/uikit@3.16.10/dist/css/uikit.min.css"/>
-  <link href="/dist/output.css" rel="stylesheet">
-  <link
-    href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
-    rel="stylesheet"
-    integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
-    crossOrigin="anonymous">
-  <link
-    href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.4/flowbite.min.css"
-    rel="stylesheet"/>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        screens: {
-          xxs: "320px",
-          xs : "480px",
-          sm : "640px",
-          md : "768px",
-          lg : "1024px",
-          xl : "1280px",
-          xxl: "1536px"
-        },
-        extend : {}
-      }
-    }
-  </script>
-
-  <title>Admin descuentos</title>
-</head>
-<body>
 <nav
   class="bg-gray-200 shadow border-gray-200 bg-white sticky w-full px-2 py-2.5 sm:px-4 z-20 top-0 left-0 border-b">
   <div
@@ -639,7 +602,8 @@
     <li class="mr-2">
       <a href="/src/pages/admin_usuarios.html"
          class="inline-flex p-4 text-blue-600 border-b-2 border-blue-600 rounded-t-lg active group">
-        <svg class="w-5 h-5 mr-2 text-blue-600" fill="none" stroke="currentColor" stroke-width="1.5"
+        <svg class="w-5 h-5 mr-2 text-blue-600" fill="none"
+             stroke="currentColor" stroke-width="1.5"
              viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
              aria-hidden="true">
           <path stroke-linecap="round" stroke-linejoin="round"
@@ -709,11 +673,11 @@
           nuevo x</h3>
         <form class="space-y-6" action="#">
           <div>
-            <label for="email2"
+            <label htmlFor="email"
                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
               campo1
             </label>
-            <input type="email" name="email2" id="email2"
+            <input type="email" name="email" id="email"
                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
                    placeholder="name@company.com" required/>
           </div>
@@ -733,25 +697,16 @@
       class="text-xs text-gray-700 uppercase bg-gray-50">
     <tr>
       <th scope="col" class="px-6 py-3">
-        ID OFERTA
-      </th>
-      <th scope="col" class="px-6 py-3">
         ID PRODUCTO
       </th>
       <th scope="col" class="px-6 py-3">
-        NOMBRE PRODUCTO
+        PRECIO
       </th>
       <th scope="col" class="px-6 py-3">
-        PRECIO SIN DESCUENTO
+        NOMBRE
       </th>
       <th scope="col" class="px-6 py-3">
-        PRECIO CON DESCUENTO
-      </th>
-      <th scope="col" class="px-6 py-3">
-        PORCENTAJE DESCUENTO
-      </th>
-      <th scope="col" class="px-6 py-3">
-        CAUSA DESCUENTO
+        IMAGEN
       </th>
       <th scope="col" class="px-6 py-3">
         ACCION
@@ -762,25 +717,20 @@
     <tr class="bg-white border-b">
       <th scope="row"
           class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-        101
+        1001
       </th>
       <td class="px-6 py-4">
-        1001
+        $25.00
       </td>
       <td class="px-6 py-4">
         Camisa de algodón
       </td>
       <td class="px-6 py-4">
-        $25.00
-      </td>
-      <td class="px-6 py-4">
-        $18.75
-      </td>
-      <td class="px-6 py-4">
-        25%
-      </td>
-      <td class="px-6 py-4">
-        Liquidación de temporada
+        <img
+          src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg"
+          class="h-12 w-12 object-contain"
+          alt="..."/>
+
       </td>
       <td class="px-3 py-4">
         <button type="button"
@@ -790,29 +740,26 @@
           Editar
         </button>
       </td>
+
+
     </tr>
     <tr class="border-b bg-gray-50">
       <th scope="row"
           class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-        102
+        1002
       </th>
       <td class="px-6 py-4">
-        1002
+        $80.00
       </td>
       <td class="px-6 py-4">
         Zapatos de cuero
       </td>
       <td class="px-6 py-4">
-        $80.00
-      </td>
-      <td class="px-6 py-4">
-        $68.00
-      </td>
-      <td class="px-6 py-4">
-        15%
-      </td>
-      <td class="px-6 py-4">
-        Venta de primavera
+        <img
+          src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg"
+          class="h-12 w-12 object-contain"
+          alt="..."/>
+
       </td>
       <td class="px-3 py-4">
         <button type="button"
@@ -827,25 +774,20 @@
     <tr class="bg-white border-b">
       <th scope="row"
           class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-        103
+        1003
       </th>
       <td class="px-6 py-4">
-        1003
+        $45.00
       </td>
       <td class="px-6 py-4">
         Pantalones de mezclilla
       </td>
       <td class="px-6 py-4">
-        $45.00
-      </td>
-      <td class="px-6 py-4">
-        $33.75
-      </td>
-      <td class="px-6 py-4">
-        25%
-      </td>
-      <td class="px-6 py-4">
-        Oferta de liquidación
+        <img
+          src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg"
+          class="h-12 w-12 object-contain"
+          alt="..."/>
+
       </td>
       <td class="px-3 py-4">
         <button type="button"
@@ -860,25 +802,20 @@
     <tr class="border-b bg-gray-50">
       <th scope="row"
           class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-        104
+        1004
       </th>
       <td class="px-6 py-4">
-        1004
+        $200.0
       </td>
       <td class="px-6 py-4">
         Chaqueta de cuero
       </td>
       <td class="px-6 py-4">
-        $200.0
-      </td>
-      <td class="px-6 py-4">
-        $160.00
-      </td>
-      <td class="px-6 py-4">
-        20%
-      </td>
-      <td class="px-6 py-4">
-        Oferta de otoño
+        <img
+          src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg"
+          class="h-12 w-12 object-contain"
+          alt="..."/>
+
       </td>
       <td class="px-3 py-4">
         <button type="button"
@@ -893,25 +830,20 @@
     <tr class="bg-white border-b">
       <th scope="row"
           class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-        105
+        1005
       </th>
       <td class="px-6 py-4">
-        1005
+        $120.00
       </td>
       <td class="px-6 py-4">
         Vestido de seda
       </td>
       <td class="px-6 py-4">
-        $120.00
-      </td>
-      <td class="px-6 py-4">
-        $96.00
-      </td>
-      <td class="px-6 py-4">
-        20%
-      </td>
-      <td class="px-6 py-4">
-        Venta de verano
+        <img
+          src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg"
+          class="h-12 w-12 object-contain"
+          alt="..."/>
+
       </td>
       <td class="px-3 py-4">
         <button type="button"
@@ -926,25 +858,20 @@
     <tr class="border-b bg-gray-50">
       <th scope="row"
           class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-        106
+        1006
       </th>
       <td class="px-6 py-4">
-        1006
+        $20.00
       </td>
       <td class="px-6 py-4">
         Sombrero de paja
       </td>
       <td class="px-6 py-4">
-        $20.00
-      </td>
-      <td class="px-6 py-4">
-        $18.00
-      </td>
-      <td class="px-6 py-4">
-        10%
-      </td>
-      <td class="px-6 py-4">
-        Oferta de vacaciones
+        <img
+          src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg"
+          class="h-12 w-12 object-contain"
+          alt="..."/>
+
       </td>
       <td class="px-3 py-4">
         <button type="button"
@@ -959,25 +886,20 @@
     <tr class="bg-white border-b">
       <th scope="row"
           class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-        107
+        1007
       </th>
       <td class="px-6 py-4">
-        1007
+        $35.00
       </td>
       <td class="px-6 py-4">
         Blusa de encaje
       </td>
       <td class="px-6 py-4">
-        $35.00
-      </td>
-      <td class="px-6 py-4">
-        $24.50
-      </td>
-      <td class="px-6 py-4">
-        30%
-      </td>
-      <td class="px-6 py-4">
-        Liquidación de temporada
+        <img
+          src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg"
+          class="h-12 w-12 object-contain"
+          alt="..."/>
+
       </td>
       <td class="px-3 py-4">
         <button type="button"
@@ -992,25 +914,20 @@
     <tr class="border-b bg-gray-50">
       <th scope="row"
           class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-        108
+        1008
       </th>
       <td class="px-6 py-4">
-        1008
+        $50.00
       </td>
       <td class="px-6 py-4">
         Pantalones vaqueros
       </td>
       <td class="px-6 py-4">
-        $50.00
-      </td>
-      <td class="px-6 py-4">
-        $40.00
-      </td>
-      <td class="px-6 py-4">
-        20%
-      </td>
-      <td class="px-6 py-4">
-        Venta de otoño
+        <img
+          src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg"
+          class="h-12 w-12 object-contain"
+          alt="..."/>
+
       </td>
       <td class="px-3 py-4">
         <button type="button"
@@ -1025,25 +942,20 @@
     <tr class="bg-white border-b">
       <th scope="row"
           class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-        109
+        1009
       </th>
       <td class="px-6 py-4">
-        1009
+        $25.00
       </td>
       <td class="px-6 py-4">
         Camiseta de algodón
       </td>
       <td class="px-6 py-4">
-        $25.00
-      </td>
-      <td class="px-6 py-4">
-        $20.00
-      </td>
-      <td class="px-6 py-4">
-        20%
-      </td>
-      <td class="px-6 py-4">
-        Venta de verano
+        <img
+          src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg"
+          class="h-12 w-12 object-contain"
+          alt="..."/>
+
       </td>
       <td class="px-3 py-4">
         <button type="button"
@@ -1058,25 +970,20 @@
     <tr class="border-b bg-gray-50">
       <th scope="row"
           class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-        110
+        1010
       </th>
       <td class="px-6 py-4">
-        1010
+        $70.00
       </td>
       <td class="px-6 py-4">
         Sandalias de cuero
       </td>
       <td class="px-6 py-4">
-        $70.00
-      </td>
-      <td class="px-6 py-4">
-        $56.00
-      </td>
-      <td class="px-6 py-4">
-        20%
-      </td>
-      <td class="px-6 py-4">
-        Venta de verano
+        <img
+          src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg"
+          class="h-12 w-12 object-contain"
+          alt="..."/>
+
       </td>
       <td class="px-3 py-4">
         <button type="button"
@@ -1091,25 +998,20 @@
     <tr class="bg-white border-b">
       <th scope="row"
           class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-        111
+        1011
       </th>
       <td class="px-6 py-4">
-        1011
+        $30.00
       </td>
       <td class="px-6 py-4">
         Bufanda de lana
       </td>
       <td class="px-6 py-4">
-        $30.00
-      </td>
-      <td class="px-6 py-4">
-        $27.00
-      </td>
-      <td class="px-6 py-4">
-        10%
-      </td>
-      <td class="px-6 py-4">
-        Venta de invierno
+        <img
+          src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg"
+          class="h-12 w-12 object-contain"
+          alt="..."/>
+
       </td>
       <td class="px-3 py-4">
         <button type="button"
@@ -1124,25 +1026,20 @@
     <tr class="border-b bg-gray-50">
       <th scope="row"
           class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-        112
+        1012
       </th>
       <td class="px-6 py-4">
-        1012
+        $45.00
       </td>
       <td class="px-6 py-4">
         Sombrero de lana
       </td>
       <td class="px-6 py-4">
-        $45.00
-      </td>
-      <td class="px-6 py-4">
-        $36.00
-      </td>
-      <td class="px-6 py-4">
-        20%
-      </td>
-      <td class="px-6 py-4">
-        Venta de invierno
+        <img
+          src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg"
+          class="h-12 w-12 object-contain"
+          alt="..."/>
+
       </td>
       <td class="px-3 py-4">
         <button type="button"
@@ -1157,25 +1054,20 @@
     <tr class="bg-white border-b">
       <th scope="row"
           class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-        113
+        1013
       </th>
       <td class="px-6 py-4">
-        1013
+        $120.00
       </td>
       <td class="px-6 py-4">
         Bolso de cuero
       </td>
       <td class="px-6 py-4">
-        $120.00
-      </td>
-      <td class="px-6 py-4">
-        $84.00
-      </td>
-      <td class="px-6 py-4">
-        30%
-      </td>
-      <td class="px-6 py-4">
-        Venta de primavera
+        <img
+          src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg"
+          class="h-12 w-12 object-contain"
+          alt="..."/>
+
       </td>
       <td class="px-3 py-4">
         <button type="button"
@@ -1190,25 +1082,20 @@
     <tr class="border-b bg-gray-50">
       <th scope="row"
           class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-        114
+        1014
       </th>
       <td class="px-6 py-4">
-        1014
+        $60.00
       </td>
       <td class="px-6 py-4">
         Vestido de verano
       </td>
       <td class="px-6 py-4">
-        $60.00
-      </td>
-      <td class="px-6 py-4">
-        $45.00
-      </td>
-      <td class="px-6 py-4">
-        25%
-      </td>
-      <td class="px-6 py-4">
-        Venta de verano
+        <img
+          src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg"
+          class="h-12 w-12 object-contain"
+          alt="..."/>
+
       </td>
       <td class="px-3 py-4">
         <button type="button"
@@ -1223,25 +1110,20 @@
     <tr class="bg-white border-b">
       <th scope="row"
           class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-        115
+        1015
       </th>
       <td class="px-6 py-4">
-        1015
+        $280.00
       </td>
       <td class="px-6 py-4">
         Abrigo de cuero
       </td>
       <td class="px-6 py-4">
-        $280.00
-      </td>
-      <td class="px-6 py-4">
-        $196.00
-      </td>
-      <td class="px-6 py-4">
-        30%
-      </td>
-      <td class="px-6 py-4">
-        Venta de invierno
+        <img
+          src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg"
+          class="h-12 w-12 object-contain"
+          alt="..."/>
+
       </td>
       <td class="px-3 py-4">
         <button type="button"
@@ -1256,25 +1138,20 @@
     <tr class="border-b bg-gray-50">
       <th scope="row"
           class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-        116
+        1016
       </th>
       <td class="px-6 py-4">
-        1016
+        $75.00
       </td>
       <td class="px-6 py-4">
         Zapatillas de deporte
       </td>
       <td class="px-6 py-4">
-        $75.00
-      </td>
-      <td class="px-6 py-4">
-        $56.25
-      </td>
-      <td class="px-6 py-4">
-        25%
-      </td>
-      <td class="px-6 py-4">
-        Venta de primavera
+        <img
+          src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg"
+          class="h-12 w-12 object-contain"
+          alt="..."/>
+
       </td>
       <td class="px-3 py-4">
         <button type="button"
@@ -1289,25 +1166,20 @@
     <tr class="bg-white border-b">
       <th scope="row"
           class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-        117
+        1017
       </th>
       <td class="px-6 py-4">
-        1017
+        $50.00
       </td>
       <td class="px-6 py-4">
         Cámara digital compacta
       </td>
       <td class="px-6 py-4">
-        $50.00
-      </td>
-      <td class="px-6 py-4">
-        $30.00
-      </td>
-      <td class="px-6 py-4">
-        40%
-      </td>
-      <td class="px-6 py-4">
-        Venta de verano
+        <img
+          src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg"
+          class="h-12 w-12 object-contain"
+          alt="..."/>
+
       </td>
       <td class="px-3 py-4">
         <button type="button"
@@ -1322,25 +1194,19 @@
     <tr class="border-b bg-gray-50">
       <th scope="row"
           class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-        118
+        1018
       </th>
       <td class="px-6 py-4">
-        1018
+        $40.00
       </td>
       <td class="px-6 py-4">
         Auriculares inalámbricos
       </td>
       <td class="px-6 py-4">
-        $40.00
-      </td>
-      <td class="px-6 py-4">
-        $24.00
-      </td>
-      <td class="px-6 py-4">
-        40%
-      </td>
-      <td class="px-6 py-4">
-        Venta de verano
+        <img
+          src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg"
+          class="h-12 w-12 object-contain"
+          alt="..."/>
 
       </td>
       <td class="px-3 py-4">
@@ -1356,25 +1222,20 @@
     <tr class="bg-white border-b">
       <th scope="row"
           class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-        119
+        1019
       </th>
       <td class="px-6 py-4">
-        1019
+        $150.00
       </td>
       <td class="px-6 py-4">
         Reloj inteligente
       </td>
       <td class="px-6 py-4">
-        $150.00
-      </td>
-      <td class="px-6 py-4">
-        $112.50
-      </td>
-      <td class="px-6 py-4">
-        25%
-      </td>
-      <td class="px-6 py-4">
-        Venta de navidad
+        <img
+          src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg"
+          class="h-12 w-12 object-contain"
+          alt="..."/>
+
       </td>
       <td class="px-3 py-4">
         <button type="button"
@@ -1389,25 +1250,20 @@
     <tr class="border-b bg-gray-50">
       <th scope="row"
           class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-        120
+        1020
       </th>
       <td class="px-6 py-4">
-        1020
+        $25.00
       </td>
       <td class="px-6 py-4">
         Reloj de pulsera
       </td>
       <td class="px-6 py-4">
-        $25.00
-      </td>
-      <td class="px-6 py-4">
-        $18.75
-      </td>
-      <td class="px-6 py-4">
-        25%
-      </td>
-      <td class="px-6 py-4">
-        Venta de invierno
+        <img
+          src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg"
+          class="h-12 w-12 object-contain"
+          alt="..."/>
+
       </td>
       <td class="px-3 py-4">
         <button type="button"
@@ -1444,7 +1300,7 @@
           x</h3>
         <form class="space-y-6" action="#">
           <div>
-            <label for="email"
+            <label htmlFor="email"
                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
               campo1
             </label>
@@ -1575,18 +1431,3 @@
   </div>
 </footer>
 
-
-
-
-<script
-  src="https://cdn.jsdelivr.net/npm/uikit@3.16.10/dist/js/uikit.min.js"></script>
-<script
-  src="https://cdn.jsdelivr.net/npm/uikit@3.16.10/dist/js/uikit-icons.min.js"></script>
-<script
-  src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.4/flowbite.min.js"></script>
-<script
-  src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
-  integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
-  crossOrigin="anonymous"></script>
-</body>
-</html>
