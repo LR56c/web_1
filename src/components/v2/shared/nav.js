@@ -1,34 +1,32 @@
 <nav
   class="bg-gray-200 shadow border-gray-200 bg-white sticky w-full px-2 py-2.5 sm:px-4 z-20 top-0 left-0 border-b">
   <div
-    class="order-first flex flex-wrap items-center justify-center xs:justify-start md:flex-nowrap">
+    class="flex flex-wrap items-center justify-center xs:justify-start gap-3 md:gap-0 md:justify-between md:flex-nowrap">
     <a href="/"
-       class="hover:no-underline text-gray-500 hover:text-gray-500 flex w-full basis-auto items-center justify-center xs:basis-2/4 xs:justify-start lg:basis-8/12">
+       class="flex w-full basis-auto items-center justify-center xs:basis-2/4 md:basis-2/6 xs:justify-start lg:basis-5/12">
       <img src="https://flowbite.com/docs/images/logo.svg"
            class="mr-3 h-6 sm:h-9" alt="Flowbite Logo"/>
       <span
         class="self-center whitespace-nowrap text-xl font-semibold dark:text-white">Logo</span>
     </a>
-    <div class="order-3 flex w-full basis-auto md:order-2 md:basis-4/12">
-      <div class="relative w-full">
-        <div
-          class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
-          <svg class="h-5 w-5 text-gray-500" aria-hidden="true"
-               fill="currentColor" viewBox="0 0 20 20"
-               xmlns="http://www.w3.org/2000/svg">
-            <path fill-rule="evenodd"
-                  d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
-                  clip-rule="evenodd"></path>
-          </svg>
-          <span class="sr-only">Search icon</span>
-        </div>
-        <input type="text" id="search-navbar"
-               class="w-full rounded-lg border border-gray-300 bg-gray-50 p-2 pl-10 text-sm text-gray-900 focus:border-blue-600 focus:ring-blue-600 dark:placeholder-gray-400 dark:border-gray-600 dark:bg-gray-700 dark:text-white md:w-52 lg:w-60 dark:focus:border-blue-600 dark:focus:ring-blue-600"
-               placeholder="Search..."/>
+    <div class="relative flex w-full basis-auto md:basis-3/12">
+      <div
+        class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
+        <svg class="h-5 w-5 text-gray-500" aria-hidden="true"
+             fill="currentColor" viewBox="0 0 20 20"
+             xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd"
+                d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
+                clip-rule="evenodd"></path>
+        </svg>
+        <span class="sr-only">Search icon</span>
       </div>
+      <input type="text" id="search-navbar"
+             class="w-full rounded-lg border border-gray-300 bg-gray-50 pl-10 pr-2 py-2 text-sm text-gray-900 focus:border-blue-600 focus:ring-blue-600 dark:placeholder-gray-400 dark:border-gray-600 dark:bg-gray-700 dark:text-white md:w-52 lg:w-60 dark:focus:border-blue-600 dark:focus:ring-blue-600"
+             placeholder="Search..."/>
     </div>
     <div
-      class="md:my-0 my-3 order-2 flex w-full basis-auto justify-around xs:basis-2/4 md:order-3 md:basis-3/12">
+      class="flex w-full basis-auto justify-around md:basis-3/12">
       <a href="/admin/usuarios">
         <button type="button"
                 class="p-2 text-white bg-blue-600 hover:bg-blue-600/90 focus:ring-4 focus:outline-none focus:ring-blue-600/50 font-medium rounded-full text-sm text-center inline-flex items-center dark:focus:ring-blue-600/55">

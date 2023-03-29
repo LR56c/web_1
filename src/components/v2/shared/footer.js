@@ -7,7 +7,7 @@
                class="h-24 w-8 mr-3" alt="FlowBite Logo"/>
         </a>
         <div class="flex mt-4 space-x-6 sm:justify-center sm:mt-0">
-          <a href="src/components#"
+          <a href="https://www.facebook.com/"
              class="text-gray-500 hover:text-gray-900 dark:hover:text-white">
             <svg class="w-5 h-5" fill="currentColor"
                  viewBox="0 0 24 24" aria-hidden="true">
@@ -17,7 +17,7 @@
             </svg>
             <span class="sr-only">Facebook page</span>
           </a>
-          <a href="src/components#"
+          <a href="https://www.instagram.com/"
              class="text-gray-500 hover:text-gray-900 dark:hover:text-white">
             <svg class="w-5 h-5" fill="currentColor"
                  viewBox="0 0 24 24" aria-hidden="true">
@@ -27,7 +27,7 @@
             </svg>
             <span class="sr-only">Instagram page</span>
           </a>
-          <a href="src/components#"
+          <a href="https://twitter.com/"
              class="text-gray-500 hover:text-gray-900 dark:hover:text-white">
             <svg class="w-5 h-5" fill="currentColor"
                  viewBox="0 0 24 24" aria-hidden="true">
@@ -42,64 +42,70 @@
         class="grid grid-cols-1 xxs:grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3">
         <div>
           <h2
-            class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">
-            Informacion</h2>
-          <div class="mb-4">
-            <a href="https://flowbite.com/"
-               class="no-underline text-gray-500">politica devolucion</a>
-          </div>
-          <div class="mb-4">
-            <a href="https://flowbite.com/"
-               class="no-underline text-gray-500">politica privacidad</a>
-          </div>
-          <div class="mb-4">
-            <a href="https://flowbite.com/"
-               class="no-underline text-gray-500">horarios de atencion</a>
-          </div>
-          <div>
-            <a href="https://tailwindcss.com/"
-               class="no-underline text-gray-500">terminos y condiciones</a>
-          </div>
+            class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Informacion</h2>
+          <ul class="text-gray-600 dark:text-gray-400">
+            <li class="mb-4">
+              <a href="/info"
+                 class="hover:underline">politica devolucion</a>
+            </li>
+            <li class="mb-4">
+              <a href="/info"
+                 class="hover:underline">politica privacidad</a>
+            </li>
+            <li class="mb-4">
+              <a href="/info"
+                 class="hover:underline">preguntas frecuentes</a>
+            </li>
+            <li>
+              <a href="/info"
+                 class="hover:underline">terminos y condiciones</a>
+            </li>
+          </ul>
         </div>
         <div>
           <h2
-            class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">
-            Servicio
+            class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Servicio
             al cliente</h2>
-          <div class="mb-4">
-            <a href="https://github.com/themesberg/flowbite"
-               class="no-underline text-gray-500 ">formulario de
-              contacto</a>
-          </div>
-          <div>
-            <a href="https://discord.gg/4eeurUVvTy"
-               class="no-underline text-gray-500">reclamos / sugerencias</a>
-          </div>
+          <ul class="text-gray-600 dark:text-gray-400">
+            <li class="mb-4">
+              <a href="/sc"
+                 class="hover:underline ">formulario de contacto</a>
+            </li>
+            <li>
+              <a href="/sc"
+                 class="hover:underline">reclamos / sugerencias</a>
+            </li>
+          </ul>
         </div>
         <div>
           <h2
-            class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">
-            Contactanos</h2>
-          <div class="mb-4">
-            <a href="src/components#" class="no-underline text-gray-500">+569 12345678</a>
-          </div>
-          <div class="mb-4">
-            <a href="src/components#"
-               class="no-underline text-gray-500">correo@correo.com</a>
-          </div>
-          <div>
-            <a href="src/components#"
-               class="no-underline text-gray-500">direccion 12. region.
-              chile</a>
-          </div>
+            class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Contactanos</h2>
+          <ul class="text-gray-600 dark:text-gray-400">
+            <li class="mb-4">
+              <a href="/contacto" class="hover:underline">+569 12345678</a>
+            </li>
+            <li class="mb-4">
+              <a href="/contacto"
+                 class="hover:underline">correo@correo.com</a>
+            </li>
+            <li>
+              <a href="/contacto"
+                 class="hover:underline">direccion 12. region.
+                chile</a>
+            </li>
+            <li>
+              <a href="/contacto"
+                 class="hover:underline">horario de atencion</a>
+            </li>
+          </ul>
         </div>
       </div>
     </div>
     <hr
       class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8"/>
     <div class="flex items-center justify-center">
-      <span
-        class="text-sm text-gray-500 text-center dark:text-gray-400">© 2023. All Rights Reserved.
+        <span
+          class="text-sm text-gray-500 text-center dark:text-gray-400">© 2023. All Rights Reserved.
           </span>
     </div>
   </div>
