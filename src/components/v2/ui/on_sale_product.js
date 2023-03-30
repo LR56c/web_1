@@ -13,18 +13,20 @@
           src="https://images.unsplash.com/photo-1679215805559-3f8000e4b6ce?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw3MHx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=60"
           alt=""/>
         <div class="uk-position-center">
-          <button
-            class="rounded-lg bg-yellow-400 px-5 text-center text-sm font-medium text-white uk-transition-fade py-2.5">
-            Agregar al carrito
-          </button>
+          <a href="#">
+            <button
+              class="rounded-lg bg-yellow-400 px-5 text-center text-sm font-medium text-white uk-transition-fade py-1">
+
+              Agregar al carrito
+            </button>
+          </a>
         </div>
       </div>
     </div>
     <div class="mx-auto basis-1/3">
       <div
         class="my-2 w-full font-medium">
-        <a href="src/components#" class="text-gray-500 no-underline">Nombre del
-          producto</a>
+        <a href="#">Nombre del producto</a>
       </div>
       <div class="flex w-full items-center gap-2">
         <div class="text-gray-400 line-through">$100</div>
