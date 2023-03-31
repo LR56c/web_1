@@ -11,7 +11,7 @@
 ::before,
 ::after {
   box-sizing: border-box;
-  /* 1 */
+  /* 1 */   
   border-width: 0;
   /* 2 */
   border-style: solid;

@@ -1,17 +1,15 @@
 <nav
-  class="bg-gray-200 shadow border-gray-200 bg-white sticky w-full px-2 py-2.5 sm:px-4 z-20 top-0 left-0 border-b">
+    class="bg-gray-200 shadow border-gray-200 bg-white sticky w-full px-2 py-2.5 sm:px-4 z-20 top-0 left-0 border-b">
   <div
-    class="flex flex-wrap items-center justify-center xs:justify-start gap-3 md:gap-0 md:justify-between md:flex-nowrap">
+      class="flex flex-wrap items-center justify-center xs:justify-start gap-3 md:gap-0 md:justify-between md:flex-nowrap">
     <a href="/src/index.html"
-       class="flex w-full basis-auto items-center justify-center xs:basis-2/4 md:basis-2/6 xs:justify-start lg:basis-5/12">
-      <img src="https://flowbite.com/docs/images/logo.svg"
-           class="mr-3 h-6 sm:h-9" alt="Flowbite Logo"/>
-      <span
-        class="self-center whitespace-nowrap text-xl font-semibold dark:text-white">Logo</span>
+       class="hover:text-black flex w-full basis-auto items-center justify-center xs:basis-2/4 md:basis-2/6 xs:justify-start lg:basis-5/12">
+      <img src="/imagens/R.png" class="h-6 mr-3 sm:h-9" alt="Flowbite Logo"/>
+        <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white">PokemonShop</span>
     </a>
     <div class="relative flex w-full basis-auto md:basis-3/12">
       <div
-        class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
+          class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
         <svg class="h-5 w-5 text-gray-500" aria-hidden="true"
              fill="currentColor" viewBox="0 0 20 20"
              xmlns="http://www.w3.org/2000/svg">
@@ -26,7 +24,7 @@
              placeholder="Search..."/>
     </div>
     <div
-      class="flex w-full basis-auto justify-around md:basis-3/12">
+        class="flex w-full basis-auto justify-around md:basis-3/12">
       <a href="/src/pages/admin_usuarios.html">
         <button type="button"
                 class="p-2 text-white bg-blue-600 hover:bg-blue-600/90 focus:ring-4 focus:outline-none focus:ring-blue-600/50 font-medium rounded-full text-sm text-center inline-flex items-center dark:focus:ring-blue-600/55">
@@ -51,7 +49,7 @@
                 d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z"></path>
         </svg>
       </button>
-      <a href="src/pages/user_detail.html">
+      <a href="/src/pages/user_detail.html">
         <button type="button"
                 class="p-2 text-white bg-blue-600 hover:bg-blue-600/90 focus:ring-4 focus:outline-none focus:ring-blue-600/50 font-medium rounded-full text-sm text-center inline-flex items-center dark:focus:ring-blue-600/55">
           <svg class="h-5 w-5" fill="none" stroke="currentColor"

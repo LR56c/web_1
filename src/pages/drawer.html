@@ -37,15 +37,13 @@
 <body>
 
 <nav
-  class="shadow border-gray-200 bg-white sticky w-full px-2 py-2.5 sm:px-4 z-20 top-0 left-0 border-b">
+  class="bg-gray-200 shadow border-gray-200 bg-white sticky w-full px-2 py-2.5 sm:px-4 z-20 top-0 left-0 border-b">
   <div
     class="flex flex-wrap items-center justify-center xs:justify-start gap-3 md:gap-0 md:justify-between md:flex-nowrap">
-    <a href="https://flowbite.com/"
-       class="flex w-full basis-auto items-center justify-center xs:basis-2/4 md:basis-2/6 xs:justify-start lg:basis-5/12">
-      <img src="https://flowbite.com/docs/images/logo.svg"
-           class="mr-3 h-6 sm:h-9" alt="Flowbite Logo"/>
-      <span
-        class="self-center whitespace-nowrap text-xl font-semibold dark:text-white">Flowbite</span>
+    <a href="/src/index.html"
+       class="hover:text-black flex w-full basis-auto items-center justify-center xs:basis-2/4 md:basis-2/6 xs:justify-start lg:basis-5/12">
+      <img src="/imagens/R.png" class="h-6 mr-3 sm:h-9" alt="Flowbite Logo"/>
+      <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white">PokemonShop</span>
     </a>
     <div class="relative flex w-full basis-auto md:basis-3/12">
       <div
@@ -65,16 +63,22 @@
     </div>
     <div
       class="flex w-full basis-auto justify-around md:basis-3/12">
+      <a href="/src/pages/admin_usuarios.html">
+        <button type="button"
+                class="p-2 text-white bg-blue-600 hover:bg-blue-600/90 focus:ring-4 focus:outline-none focus:ring-blue-600/50 font-medium rounded-full text-sm text-center inline-flex items-center dark:focus:ring-blue-600/55">
+          <svg class="h-5 w-5" fill="none" stroke="currentColor"
+               stroke-width="1.5" viewBox="0 0 24 24"
+               xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round"
+                  d="M15 9h3.75M15 12h3.75M15 15h3.75M4.5 19.5h15a2.25 2.25 0 002.25-2.25V6.75A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25v10.5A2.25 2.25 0 004.5 19.5zm6-10.125a1.875 1.875 0 11-3.75 0 1.875 1.875 0 013.75 0zm1.294 6.336a6.721 6.721 0 01-3.17.789 6.721 6.721 0 01-3.168-.789 3.376 3.376 0 016.338 0z"></path>
+          </svg>
+        </button>
+      </a>
       <button type="button"
-              class="p-2 text-white bg-blue-600 hover:bg-blue-600/90 focus:ring-4 focus:outline-none focus:ring-blue-600/50 font-medium rounded-full text-sm text-center inline-flex items-center dark:focus:ring-blue-600/55">
-        <svg class="h-5 w-5" fill="none" stroke="currentColor"
-             stroke-width="1.5" viewBox="0 0 24 24"
-             xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <path stroke-linecap="round" stroke-linejoin="round"
-                d="M15 9h3.75M15 12h3.75M15 15h3.75M4.5 19.5h15a2.25 2.25 0 002.25-2.25V6.75A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25v10.5A2.25 2.25 0 004.5 19.5zm6-10.125a1.875 1.875 0 11-3.75 0 1.875 1.875 0 013.75 0zm1.294 6.336a6.721 6.721 0 01-3.17.789 6.721 6.721 0 01-3.168-.789 3.376 3.376 0 016.338 0z"></path>
-        </svg>
-      </button>
-      <button type="button"
+              data-drawer-target="drawer-cart"
+              data-drawer-show="drawer-cart"
+              data-drawer-placement="right"
+              aria-controls="drawer-cart"
               class="p-2 text-white bg-blue-600 hover:bg-blue-600/90 focus:ring-4 focus:outline-none focus:ring-blue-600/50 font-medium rounded-full text-sm text-center inline-flex items-center dark:focus:ring-blue-600/55">
         <svg class="h-5 w-5" fill="none" stroke="currentColor"
              stroke-width="1.5" viewBox="0 0 24 24"
@@ -83,16 +87,20 @@
                 d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z"></path>
         </svg>
       </button>
+      <a href="/src/pages/user_detail.html">
+        <button type="button"
+                class="p-2 text-white bg-blue-600 hover:bg-blue-600/90 focus:ring-4 focus:outline-none focus:ring-blue-600/50 font-medium rounded-full text-sm text-center inline-flex items-center dark:focus:ring-blue-600/55">
+          <svg class="h-5 w-5" fill="none" stroke="currentColor"
+               stroke-width="1.5" viewBox="0 0 24 24"
+               xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round"
+                  d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"></path>
+          </svg>
+        </button>
+      </a>
       <button type="button"
-              class="p-2 text-white bg-blue-600 hover:bg-blue-600/90 focus:ring-4 focus:outline-none focus:ring-blue-600/50 font-medium rounded-full text-sm text-center inline-flex items-center dark:focus:ring-blue-600/55">
-        <svg class="h-5 w-5" fill="none" stroke="currentColor"
-             stroke-width="1.5" viewBox="0 0 24 24"
-             xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <path stroke-linecap="round" stroke-linejoin="round"
-                d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"></path>
-        </svg>
-      </button>
-      <button type="button"
+              id="dropdownMenuIconButton"
+              data-dropdown-toggle="dropdownDots"
               class="p-2 text-white bg-blue-600 hover:bg-blue-600/90 focus:ring-4 focus:outline-none focus:ring-blue-600/50 font-medium rounded-full text-sm text-center inline-flex items-center dark:focus:ring-blue-600/55">
         <svg class="h-5 w-5" fill="none" stroke="currentColor"
              stroke-width="1.5" viewBox="0 0 24 24"
@@ -101,6 +109,16 @@
                 d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"></path>
         </svg>
       </button>
+      <div id="dropdownDots"
+           class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600">
+        <ul class="py-2 text-sm text-gray-700 dark:text-gray-200"
+            aria-labelledby="dropdownMenuIconButton">
+          <li>
+            <a href="src/pages/user_suscription.html"
+               class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Suscription</a>
+          </li>
+        </ul>
+      </div>
     </div>
   </div>
 </nav>
@@ -627,12 +645,13 @@
   <div class="mx-auto w-full container p-4 sm:p-6">
     <div class="md:flex md:justify-between">
       <div class="flex md:basis-1/2 flex-col items-center mb-6 md:mb-0">
-        <a href="https://flowbite.com/" class="flex items-center">
-          <img src="https://flowbite.com/docs/images/logo.svg"
-               class="h-24 w-8 mr-3" alt="FlowBite Logo"/>
+        <a href="/src/index.html" class="flex items-center hover:text-black">
+          <img src="/imagens/R.png" class="h-24 object-contain w-8 mr-3" alt="Flowbite Logo"/>
+          <span
+            class="self-center text-xl font-semibold whitespace-nowrap dark:text-white">PokemonShop</span>
         </a>
         <div class="flex mt-4 space-x-6 sm:justify-center sm:mt-0">
-          <a href="#"
+          <a href="https://www.facebook.com/"
              class="text-gray-500 hover:text-gray-900 dark:hover:text-white">
             <svg class="w-5 h-5" fill="currentColor"
                  viewBox="0 0 24 24" aria-hidden="true">
@@ -642,7 +661,7 @@
             </svg>
             <span class="sr-only">Facebook page</span>
           </a>
-          <a href="#"
+          <a href="https://www.instagram.com/"
              class="text-gray-500 hover:text-gray-900 dark:hover:text-white">
             <svg class="w-5 h-5" fill="currentColor"
                  viewBox="0 0 24 24" aria-hidden="true">
@@ -652,7 +671,7 @@
             </svg>
             <span class="sr-only">Instagram page</span>
           </a>
-          <a href="#"
+          <a href="https://twitter.com/"
              class="text-gray-500 hover:text-gray-900 dark:hover:text-white">
             <svg class="w-5 h-5" fill="currentColor"
                  viewBox="0 0 24 24" aria-hidden="true">
@@ -667,68 +686,76 @@
         class="grid grid-cols-1 xxs:grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3">
         <div>
           <h2
-            class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">
-            Informacion</h2>
-          <div class="mb-4">
-            <a href="https://flowbite.com/"
-               class="no-underline text-gray-500">politica devolucion</a>
-          </div>
-          <div class="mb-4">
-            <a href="https://flowbite.com/"
-               class="no-underline text-gray-500">politica privacidad</a>
-          </div>
-          <div class="mb-4">
-            <a href="https://flowbite.com/"
-               class="no-underline text-gray-500">horarios de atencion</a>
-          </div>
-          <div>
-            <a href="https://tailwindcss.com/"
-               class="no-underline text-gray-500">terminos y condiciones</a>
-          </div>
+            class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Informacion</h2>
+          <ul class="text-gray-600 dark:text-gray-400">
+            <li class="mb-4">
+              <a href="/src/pages/404.html"
+                 class="hover:underline hover:text-black">politica devolucion</a>
+            </li>
+            <li class="mb-4">
+              <a href="/src/pages/404.html"
+                 class="hover:underline hover:text-black">politica privacidad</a>
+            </li>
+            <li class="mb-4">
+              <a href="/src/pages/404.html"
+                 class="hover:underline hover:text-black">preguntas frecuentes</a>
+            </li>
+            <li>
+              <a href="/src/pages/404.html"
+                 class="hover:underline hover:text-black">terminos y condiciones</a>
+            </li>
+          </ul>
         </div>
         <div>
           <h2
-            class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">
-            Servicio
+            class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Servicio
             al cliente</h2>
-          <div class="mb-4">
-            <a href="https://github.com/themesberg/flowbite"
-               class="no-underline text-gray-500 ">formulario de
-              contacto</a>
-          </div>
-          <div>
-            <a href="https://discord.gg/4eeurUVvTy"
-               class="no-underline text-gray-500">reclamos / sugerencias</a>
-          </div>
+          <ul class="text-gray-600 dark:text-gray-400">
+            <li class="mb-4">
+              <a href="/src/pages/404.html"
+                 class="hover:text-black hover:underline">formulario de contacto</a>
+            </li>
+            <li>
+              <a href="/src/pages/404.html"
+                 class="hover:text-black hover:underline">reclamos / sugerencias</a>
+            </li>
+          </ul>
         </div>
         <div>
           <h2
-            class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">
-            Contactanos</h2>
-          <div class="mb-4">
-            <a href="#" class="no-underline text-gray-500">+569 12345678</a>
-          </div>
-          <div class="mb-4">
-            <a href="#"
-               class="no-underline text-gray-500">correo@correo.com</a>
-          </div>
-          <div>
-            <a href="#"
-               class="no-underline text-gray-500">direccion 12. region.
-              chile</a>
-          </div>
+            class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Contactanos</h2>
+          <ul class="text-gray-600 dark:text-gray-400">
+            <li class="mb-4">
+              <a href="/src/pages/404.html" class="hover:text-black hover:underline">+569
+                12345678</a>
+            </li>
+            <li class="mb-4">
+              <a href="/src/pages/404.html"
+                 class="hover:text-black hover:underline">correo@correo.com</a>
+            </li>
+            <li>
+              <a href="/src/pages/404.html"
+                 class="hover:text-black hover:underline">direccion 12. region.
+                chile</a>
+            </li>
+            <li>
+              <a href="/src/pages/404.html"
+                 class="hover:text-black hover:underline">horario de atencion</a>
+            </li>
+          </ul>
         </div>
       </div>
     </div>
     <hr
       class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8"/>
     <div class="flex items-center justify-center">
-      <span
-        class="text-sm text-gray-500 text-center dark:text-gray-400">© 2023. All Rights Reserved.
+        <span
+          class="text-sm text-gray-500 text-center dark:text-gray-400">© 2023. All Rights Reserved.
           </span>
     </div>
   </div>
 </footer>
+
 
 <script
   src="https://cdn.jsdelivr.net/npm/uikit@3.16.10/dist/js/uikit.min.js"></script>
