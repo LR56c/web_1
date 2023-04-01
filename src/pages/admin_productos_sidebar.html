@@ -16,20 +16,20 @@
     rel="stylesheet"/>
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
-      tailwind.config = {
-          theme: {
-              screens: {
-                  xxs: "320px",
-                  xs: "480px",
-                  sm: "640px",
-                  md: "768px",
-                  lg: "1024px",
-                  xl: "1280px",
-                  xxl: "1536px"
-              },
-              extend: {}
-          }
+    tailwind.config = {
+      theme: {
+        screens: {
+          xxs: "320px",
+          xs : "480px",
+          sm : "640px",
+          md : "768px",
+          lg : "1024px",
+          xl : "1280px",
+          xxl: "1536px"
+        },
+        extend : {}
       }
+    }
   </script>
   <title>Admin Productos</title>
 </head>
@@ -41,7 +41,8 @@
     <a href="/src/index.html"
        class="hover:text-black flex w-full basis-auto items-center justify-center xs:basis-2/4 md:basis-2/6 xs:justify-start lg:basis-5/12">
       <img src="/imagens/R.png" class="h-6 mr-3 sm:h-9" alt="Flowbite Logo"/>
-      <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white">PokemonShop</span>
+      <span
+        class="self-center text-xl font-semibold whitespace-nowrap dark:text-white">PokemonShop</span>
     </a>
     <div class="relative flex w-full basis-auto md:basis-3/12">
       <div
@@ -120,1250 +121,99 @@
     </div>
   </div>
 </nav>
-<div id="drawer-cart"
-     class="fixed w-full xs:w-96 top-0 right-0 z-50 h-screen p-4 overflow-y-auto transition-transform translate-x-full bg-white dark:bg-gray-800"
-     aria-labelledby="drawer-cart-right-label">
-  <h5 id="drawer-right-label"
-      class="inline-flex items-center mb-4 text-base font-semibold text-gray-500 dark:text-gray-400">Listado
-    carrito</h5>
-  <button type="button" data-drawer-hide="drawer-right-example"
-          aria-controls="drawer-right-example"
-          class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 absolute top-2.5 right-2.5 inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white">
-    close
-    <span class="sr-only">Close menu</span>
-  </button>
-  <div
-    class="flex flex-col xxs:flex-row justify-evenly items-center gap-2">
-    <div
-      class="p-3 bg-white border border-gray-200 rounded-lg shadow">
-      <p class="font-normal text-gray-700">
-        Total: $1234
-      </p>
-    </div>
-    <a
-      href="/src/pages/checkout.html"
-      class="h-12 px-12 py-2.5 text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-center">
-      Ir a Pagar
-    </a>
+
+<!--responsive button activate-->
+<button data-drawer-target="sidebar-multi-level-sidebar" data-drawer-toggle="sidebar-multi-level-sidebar" aria-controls="sidebar-multi-level-sidebar" type="button" class="inline-flex items-center p-2 mt-2 ml-3 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600">
+  <span class="sr-only">Open sidebar</span>
+  <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+    <path clip-rule="evenodd" fill-rule="evenodd" d="M2 4.75A.75.75 0 012.75 4h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 4.75zm0 10.5a.75.75 0 01.75-.75h7.5a.75.75 0 010 1.5h-7.5a.75.75 0 01-.75-.75zM2 10a.75.75 0 01.75-.75h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 10z"></path>
+  </svg>
+</button>
+
+<!--aside-->
+<div class="w-full h-full flex">
+
+<aside id="sidebar-multi-level-sidebar" class="z-40 w-64 h-screen top-0 left-0 transition-transform -translate-x-full sm:translate-x-0" aria-label="Sidebar">
+  <div class="h-full px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-gray-800">
+    <ul class="space-y-2 font-medium">
+      <li>
+        <a href="#" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
+          <svg aria-hidden="true" class="w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M2 10a8 8 0 018-8v8h8a8 8 0 11-16 0z"></path><path d="M12 2.252A8.014 8.014 0 0117.748 8H12V2.252z"></path></svg>
+          <span class="ml-3">Dashboard</span>
+        </a>
+      </li>
+      <li>
+        <button type="button" class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700" aria-controls="dropdown-example" data-collapse-toggle="dropdown-example">
+          <svg aria-hidden="true" class="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 2a4 4 0 00-4 4v1H5a1 1 0 00-.994.89l-1 9A1 1 0 004 18h12a1 1 0 00.994-1.11l-1-9A1 1 0 0015 7h-1V6a4 4 0 00-4-4zm2 5V6a2 2 0 10-4 0v1h4zm-6 3a1 1 0 112 0 1 1 0 01-2 0zm7-1a1 1 0 100 2 1 1 0 000-2z" clip-rule="evenodd"></path></svg>
+          <span class="flex-1 ml-3 text-left whitespace-nowrap" sidebar-toggle-item>E-commerce</span>
+          <svg sidebar-toggle-item class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+        </button>
+        <ul id="dropdown-example" class="hidden py-2 space-y-2">
+          <li>
+            <a href="#" class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Products</a>
+          </li>
+          <li>
+            <a href="#" class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Billing</a>
+          </li>
+          <li>
+            <a href="#" class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Invoice</a>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <a href="#" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
+          <svg aria-hidden="true" class="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M5 3a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2V5a2 2 0 00-2-2H5zM5 11a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2v-2a2 2 0 00-2-2H5zM11 5a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V5zM11 13a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"></path></svg>
+          <span class="flex-1 ml-3 whitespace-nowrap">Kanban</span>
+          <span class="inline-flex items-center justify-center px-2 ml-3 text-sm font-medium text-gray-800 bg-gray-200 rounded-full dark:bg-gray-700 dark:text-gray-300">Pro</span>
+        </a>
+      </li>
+      <li>
+        <a href="#" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
+          <svg aria-hidden="true" class="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M8.707 7.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l2-2a1 1 0 00-1.414-1.414L11 7.586V3a1 1 0 10-2 0v4.586l-.293-.293z"></path><path d="M3 5a2 2 0 012-2h1a1 1 0 010 2H5v7h2l1 2h4l1-2h2V5h-1a1 1 0 110-2h1a2 2 0 012 2v10a2 2 0 01-2 2H5a2 2 0 01-2-2V5z"></path></svg>
+          <span class="flex-1 ml-3 whitespace-nowrap">Inbox</span>
+          <span class="inline-flex items-center justify-center w-3 h-3 p-3 ml-3 text-sm font-medium text-blue-800 bg-blue-100 rounded-full dark:bg-blue-900 dark:text-blue-300">3</span>
+        </a>
+      </li>
+      <li>
+        <a href="#" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
+          <svg aria-hidden="true" class="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"></path></svg>
+          <span class="flex-1 ml-3 whitespace-nowrap">Users</span>
+        </a>
+      </li>
+      <li>
+        <a href="#" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
+          <svg aria-hidden="true" class="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 2a4 4 0 00-4 4v1H5a1 1 0 00-.994.89l-1 9A1 1 0 004 18h12a1 1 0 00.994-1.11l-1-9A1 1 0 0015 7h-1V6a4 4 0 00-4-4zm2 5V6a2 2 0 10-4 0v1h4zm-6 3a1 1 0 112 0 1 1 0 01-2 0zm7-1a1 1 0 100 2 1 1 0 000-2z" clip-rule="evenodd"></path></svg>
+          <span class="flex-1 ml-3 whitespace-nowrap">Products</span>
+        </a>
+      </li>
+      <li>
+        <a href="#" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
+          <svg aria-hidden="true" class="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M3 3a1 1 0 00-1 1v12a1 1 0 102 0V4a1 1 0 00-1-1zm10.293 9.293a1 1 0 001.414 1.414l3-3a1 1 0 000-1.414l-3-3a1 1 0 10-1.414 1.414L14.586 9H7a1 1 0 100 2h7.586l-1.293 1.293z" clip-rule="evenodd"></path></svg>
+          <span class="flex-1 ml-3 whitespace-nowrap">Sign In</span>
+        </a>
+      </li>
+      <li>
+        <a href="#" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
+          <svg aria-hidden="true" class="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M5 4a3 3 0 00-3 3v6a3 3 0 003 3h10a3 3 0 003-3V7a3 3 0 00-3-3H5zm-1 9v-1h5v2H5a1 1 0 01-1-1zm7 1h4a1 1 0 001-1v-1h-5v2zm0-4h5V8h-5v2zM9 8H4v2h5V8z" clip-rule="evenodd"></path></svg>
+          <span class="flex-1 ml-3 whitespace-nowrap">Sign Up</span>
+        </a>
+      </li>
+    </ul>
   </div>
-  <div class="w-full flex flex-col gap-4 my-4 items-center">
-    <div
-      class="relative flex flex-col justify-center items-center gap-2 w-4/5 xs:max-w-sm p-4 bg-white border border-gray-200 rounded-lg shadow">
-      <div
-        class="flex w-full flex-col xxs:flex-row justify-center items-center">
-        <img
-          src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg"
-          class="h-20 w-20 bg-gray-700 basis-1/2 object-contain rounded-lg"
-          alt="..."/>
-        <div
-          class="flex w-full basis-1/2 justify-center items-center">nombre
-        </div>
-      </div>
-      <div
-        class="flex w-full xxs:flex-row flex-col justify-center items-center">
-        <div
-          class="w-full h-full flex flex-col items-center">
-          <div class="text-gray-400 line-through">$100</div>
-          <div class="flex items-center flex-col gap-2">
-            <div class="text-red-600 text-2xl font-bold">$60</div>
-            <div
-              class="text-red-600 text-xs xs:text-sm rounded-full bg-red-100">-40%
-              descuento
-            </div>
-          </div>
-        </div>
-        <div
-          class="w-full h-full flex flex-col justify-center items-center">
-          <p class="font-bold my-2">Cantidad</p>
-          <div
-            class="w-full flex xxs:flex-row flex-col justify-center items-center gap-4">
-            <div
-              class="h-10 border-2 rounded-full flex justify-center items-center">
-              <div class="flex gap-2 px-2">
-                <button>
-                  <svg class="h-6 w-6" fill="none" stroke="currentColor"
-                       stroke-width="1.5" viewBox="0 0 24 24"
-                       xmlns="http://www.w3.org/2000/svg"
-                       aria-hidden="true">
-                    <path stroke-linecap="round" stroke-linejoin="round"
-                          d="M18 12H6"></path>
+</aside>
 
-                  </svg>
-                </button>
-                <p class="mx-2">0</p>
-                <button>
-                  <svg class="h-6 w-6" fill="none" stroke="currentColor"
-                       stroke-width="1.5" viewBox="0 0 24 24"
-                       xmlns="http://www.w3.org/2000/svg"
-                       aria-hidden="true">
-                    <path stroke-linecap="round" stroke-linejoin="round"
-                          d="M12 6v12m6-6H6"></path>
-                  </svg>
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <button class="absolute right-2 top-2">delete</button>
-    </div>
-    <div
-      class="relative flex flex-col justify-center items-center gap-2 w-4/5 xs:max-w-sm p-4 bg-white border border-gray-200 rounded-lg shadow">
-      <div
-        class="flex w-full flex-col xxs:flex-row justify-center items-center">
-        <img
-          src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg"
-          class="h-20 w-20 bg-gray-700 basis-1/2 object-contain rounded-lg"
-          alt="..."/>
-        <div
-          class="flex w-full basis-1/2 justify-center items-center">nombre
-        </div>
-      </div>
-      <div
-        class="flex w-full xxs:flex-row flex-col justify-center items-center">
-        <div
-          class="w-full h-full flex flex-col items-center">
-          <div class="text-gray-400 line-through">$100</div>
-          <div class="flex items-center flex-col gap-2">
-            <div class="text-red-600 text-2xl font-bold">$60</div>
-            <div
-              class="text-red-600 text-xs xs:text-sm rounded-full bg-red-100">-40%
-              descuento
-            </div>
-          </div>
-        </div>
-        <div
-          class="w-full h-full flex flex-col justify-center items-center">
-          <p class="font-bold my-2">Cantidad</p>
-          <div
-            class="w-full flex xxs:flex-row flex-col justify-center items-center gap-4">
-            <div
-              class="h-10 border-2 rounded-full flex justify-center items-center">
-              <div class="flex gap-2 px-2">
-                <button>
-                  <svg class="h-6 w-6" fill="none" stroke="currentColor"
-                       stroke-width="1.5" viewBox="0 0 24 24"
-                       xmlns="http://www.w3.org/2000/svg"
-                       aria-hidden="true">
-                    <path stroke-linecap="round" stroke-linejoin="round"
-                          d="M18 12H6"></path>
-
-                  </svg>
-                </button>
-                <p class="mx-2">0</p>
-                <button>
-                  <svg class="h-6 w-6" fill="none" stroke="currentColor"
-                       stroke-width="1.5" viewBox="0 0 24 24"
-                       xmlns="http://www.w3.org/2000/svg"
-                       aria-hidden="true">
-                    <path stroke-linecap="round" stroke-linejoin="round"
-                          d="M12 6v12m6-6H6"></path>
-                  </svg>
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <button class="absolute right-2 top-2">delete</button>
-    </div>
-    <div
-      class="relative flex flex-col justify-center items-center gap-2 w-4/5 xs:max-w-sm p-4 bg-white border border-gray-200 rounded-lg shadow">
-      <div
-        class="flex w-full flex-col xxs:flex-row justify-center items-center">
-        <img
-          src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg"
-          class="h-20 w-20 bg-gray-700 basis-1/2 object-contain rounded-lg"
-          alt="..."/>
-        <div
-          class="flex w-full basis-1/2 justify-center items-center">nombre
-        </div>
-      </div>
-      <div
-        class="flex w-full xxs:flex-row flex-col justify-center items-center">
-        <div
-          class="w-full h-full flex flex-col items-center">
-          <div class="text-gray-400 line-through">$100</div>
-          <div class="flex items-center flex-col gap-2">
-            <div class="text-red-600 text-2xl font-bold">$60</div>
-            <div
-              class="text-red-600 text-xs xs:text-sm rounded-full bg-red-100">-40%
-              descuento
-            </div>
-          </div>
-        </div>
-        <div
-          class="w-full h-full flex flex-col justify-center items-center">
-          <p class="font-bold my-2">Cantidad</p>
-          <div
-            class="w-full flex xxs:flex-row flex-col justify-center items-center gap-4">
-            <div
-              class="h-10 border-2 rounded-full flex justify-center items-center">
-              <div class="flex gap-2 px-2">
-                <button>
-                  <svg class="h-6 w-6" fill="none" stroke="currentColor"
-                       stroke-width="1.5" viewBox="0 0 24 24"
-                       xmlns="http://www.w3.org/2000/svg"
-                       aria-hidden="true">
-                    <path stroke-linecap="round" stroke-linejoin="round"
-                          d="M18 12H6"></path>
-
-                  </svg>
-                </button>
-                <p class="mx-2">0</p>
-                <button>
-                  <svg class="h-6 w-6" fill="none" stroke="currentColor"
-                       stroke-width="1.5" viewBox="0 0 24 24"
-                       xmlns="http://www.w3.org/2000/svg"
-                       aria-hidden="true">
-                    <path stroke-linecap="round" stroke-linejoin="round"
-                          d="M12 6v12m6-6H6"></path>
-                  </svg>
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <button class="absolute right-2 top-2">delete</button>
-    </div>
-    <div
-      class="relative flex flex-col justify-center items-center gap-2 w-4/5 xs:max-w-sm p-4 bg-white border border-gray-200 rounded-lg shadow">
-      <div
-        class="flex w-full flex-col xxs:flex-row justify-center items-center">
-        <img
-          src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg"
-          class="h-20 w-20 bg-gray-700 basis-1/2 object-contain rounded-lg"
-          alt="..."/>
-        <div
-          class="flex w-full basis-1/2 justify-center items-center">nombre
-        </div>
-      </div>
-      <div
-        class="flex w-full xxs:flex-row flex-col justify-center items-center">
-        <div
-          class="w-full h-full flex flex-col items-center">
-          <div class="text-gray-400 line-through">$100</div>
-          <div class="flex items-center flex-col gap-2">
-            <div class="text-red-600 text-2xl font-bold">$60</div>
-            <div
-              class="text-red-600 text-xs xs:text-sm rounded-full bg-red-100">-40%
-              descuento
-            </div>
-          </div>
-        </div>
-        <div
-          class="w-full h-full flex flex-col justify-center items-center">
-          <p class="font-bold my-2">Cantidad</p>
-          <div
-            class="w-full flex xxs:flex-row flex-col justify-center items-center gap-4">
-            <div
-              class="h-10 border-2 rounded-full flex justify-center items-center">
-              <div class="flex gap-2 px-2">
-                <button>
-                  <svg class="h-6 w-6" fill="none" stroke="currentColor"
-                       stroke-width="1.5" viewBox="0 0 24 24"
-                       xmlns="http://www.w3.org/2000/svg"
-                       aria-hidden="true">
-                    <path stroke-linecap="round" stroke-linejoin="round"
-                          d="M18 12H6"></path>
-
-                  </svg>
-                </button>
-                <p class="mx-2">0</p>
-                <button>
-                  <svg class="h-6 w-6" fill="none" stroke="currentColor"
-                       stroke-width="1.5" viewBox="0 0 24 24"
-                       xmlns="http://www.w3.org/2000/svg"
-                       aria-hidden="true">
-                    <path stroke-linecap="round" stroke-linejoin="round"
-                          d="M12 6v12m6-6H6"></path>
-                  </svg>
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <button class="absolute right-2 top-2">delete</button>
-    </div>
-    <div
-      class="relative flex flex-col justify-center items-center gap-2 w-4/5 xs:max-w-sm p-4 bg-white border border-gray-200 rounded-lg shadow">
-      <div
-        class="flex w-full flex-col xxs:flex-row justify-center items-center">
-        <img
-          src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg"
-          class="h-20 w-20 bg-gray-700 basis-1/2 object-contain rounded-lg"
-          alt="..."/>
-        <div
-          class="flex w-full basis-1/2 justify-center items-center">nombre
-        </div>
-      </div>
-      <div
-        class="flex w-full xxs:flex-row flex-col justify-center items-center">
-        <div
-          class="w-full h-full flex flex-col items-center">
-          <div class="text-gray-400 line-through">$100</div>
-          <div class="flex items-center flex-col gap-2">
-            <div class="text-red-600 text-2xl font-bold">$60</div>
-            <div
-              class="text-red-600 text-xs xs:text-sm rounded-full bg-red-100">-40%
-              descuento
-            </div>
-          </div>
-        </div>
-        <div
-          class="w-full h-full flex flex-col justify-center items-center">
-          <p class="font-bold my-2">Cantidad</p>
-          <div
-            class="w-full flex xxs:flex-row flex-col justify-center items-center gap-4">
-            <div
-              class="h-10 border-2 rounded-full flex justify-center items-center">
-              <div class="flex gap-2 px-2">
-                <button>
-                  <svg class="h-6 w-6" fill="none" stroke="currentColor"
-                       stroke-width="1.5" viewBox="0 0 24 24"
-                       xmlns="http://www.w3.org/2000/svg"
-                       aria-hidden="true">
-                    <path stroke-linecap="round" stroke-linejoin="round"
-                          d="M18 12H6"></path>
-
-                  </svg>
-                </button>
-                <p class="mx-2">0</p>
-                <button>
-                  <svg class="h-6 w-6" fill="none" stroke="currentColor"
-                       stroke-width="1.5" viewBox="0 0 24 24"
-                       xmlns="http://www.w3.org/2000/svg"
-                       aria-hidden="true">
-                    <path stroke-linecap="round" stroke-linejoin="round"
-                          d="M12 6v12m6-6H6"></path>
-                  </svg>
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <button class="absolute right-2 top-2">delete</button>
-    </div>
-    <div
-      class="relative flex flex-col justify-center items-center gap-2 w-4/5 xs:max-w-sm p-4 bg-white border border-gray-200 rounded-lg shadow">
-      <div
-        class="flex w-full flex-col xxs:flex-row justify-center items-center">
-        <img
-          src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg"
-          class="h-20 w-20 bg-gray-700 basis-1/2 object-contain rounded-lg"
-          alt="..."/>
-        <div
-          class="flex w-full basis-1/2 justify-center items-center">nombre
-        </div>
-      </div>
-      <div
-        class="flex w-full xxs:flex-row flex-col justify-center items-center">
-        <div
-          class="w-full h-full flex flex-col items-center">
-          <div class="text-gray-400 line-through">$100</div>
-          <div class="flex items-center flex-col gap-2">
-            <div class="text-red-600 text-2xl font-bold">$60</div>
-            <div
-              class="text-red-600 text-xs xs:text-sm rounded-full bg-red-100">-40%
-              descuento
-            </div>
-          </div>
-        </div>
-        <div
-          class="w-full h-full flex flex-col justify-center items-center">
-          <p class="font-bold my-2">Cantidad</p>
-          <div
-            class="w-full flex xxs:flex-row flex-col justify-center items-center gap-4">
-            <div
-              class="h-10 border-2 rounded-full flex justify-center items-center">
-              <div class="flex gap-2 px-2">
-                <button>
-                  <svg class="h-6 w-6" fill="none" stroke="currentColor"
-                       stroke-width="1.5" viewBox="0 0 24 24"
-                       xmlns="http://www.w3.org/2000/svg"
-                       aria-hidden="true">
-                    <path stroke-linecap="round" stroke-linejoin="round"
-                          d="M18 12H6"></path>
-
-                  </svg>
-                </button>
-                <p class="mx-2">0</p>
-                <button>
-                  <svg class="h-6 w-6" fill="none" stroke="currentColor"
-                       stroke-width="1.5" viewBox="0 0 24 24"
-                       xmlns="http://www.w3.org/2000/svg"
-                       aria-hidden="true">
-                    <path stroke-linecap="round" stroke-linejoin="round"
-                          d="M12 6v12m6-6H6"></path>
-                  </svg>
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <button class="absolute right-2 top-2">delete</button>
-    </div>
-    <div
-      class="relative flex flex-col justify-center items-center gap-2 w-4/5 xs:max-w-sm p-4 bg-white border border-gray-200 rounded-lg shadow">
-      <div
-        class="flex w-full flex-col xxs:flex-row justify-center items-center">
-        <img
-          src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg"
-          class="h-20 w-20 bg-gray-700 basis-1/2 object-contain rounded-lg"
-          alt="..."/>
-        <div
-          class="flex w-full basis-1/2 justify-center items-center">nombre
-        </div>
-      </div>
-      <div
-        class="flex w-full xxs:flex-row flex-col justify-center items-center">
-        <div
-          class="w-full h-full flex flex-col items-center">
-          <div class="text-gray-400 line-through">$100</div>
-          <div class="flex items-center flex-col gap-2">
-            <div class="text-red-600 text-2xl font-bold">$60</div>
-            <div
-              class="text-red-600 text-xs xs:text-sm rounded-full bg-red-100">-40%
-              descuento
-            </div>
-          </div>
-        </div>
-        <div
-          class="w-full h-full flex flex-col justify-center items-center">
-          <p class="font-bold my-2">Cantidad</p>
-          <div
-            class="w-full flex xxs:flex-row flex-col justify-center items-center gap-4">
-            <div
-              class="h-10 border-2 rounded-full flex justify-center items-center">
-              <div class="flex gap-2 px-2">
-                <button>
-                  <svg class="h-6 w-6" fill="none" stroke="currentColor"
-                       stroke-width="1.5" viewBox="0 0 24 24"
-                       xmlns="http://www.w3.org/2000/svg"
-                       aria-hidden="true">
-                    <path stroke-linecap="round" stroke-linejoin="round"
-                          d="M18 12H6"></path>
-
-                  </svg>
-                </button>
-                <p class="mx-2">0</p>
-                <button>
-                  <svg class="h-6 w-6" fill="none" stroke="currentColor"
-                       stroke-width="1.5" viewBox="0 0 24 24"
-                       xmlns="http://www.w3.org/2000/svg"
-                       aria-hidden="true">
-                    <path stroke-linecap="round" stroke-linejoin="round"
-                          d="M12 6v12m6-6H6"></path>
-                  </svg>
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <button class="absolute right-2 top-2">delete</button>
-    </div>
-    <div
-      class="relative flex flex-col justify-center items-center gap-2 w-4/5 xs:max-w-sm p-4 bg-white border border-gray-200 rounded-lg shadow">
-      <div
-        class="flex w-full flex-col xxs:flex-row justify-center items-center">
-        <img
-          src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg"
-          class="h-20 w-20 bg-gray-700 basis-1/2 object-contain rounded-lg"
-          alt="..."/>
-        <div
-          class="flex w-full basis-1/2 justify-center items-center">nombre
-        </div>
-      </div>
-      <div
-        class="flex w-full xxs:flex-row flex-col justify-center items-center">
-        <div
-          class="w-full h-full flex flex-col items-center">
-          <div class="text-gray-400 line-through">$100</div>
-          <div class="flex items-center flex-col gap-2">
-            <div class="text-red-600 text-2xl font-bold">$60</div>
-            <div
-              class="text-red-600 text-xs xs:text-sm rounded-full bg-red-100">-40%
-              descuento
-            </div>
-          </div>
-        </div>
-        <div
-          class="w-full h-full flex flex-col justify-center items-center">
-          <p class="font-bold my-2">Cantidad</p>
-          <div
-            class="w-full flex xxs:flex-row flex-col justify-center items-center gap-4">
-            <div
-              class="h-10 border-2 rounded-full flex justify-center items-center">
-              <div class="flex gap-2 px-2">
-                <button>
-                  <svg class="h-6 w-6" fill="none" stroke="currentColor"
-                       stroke-width="1.5" viewBox="0 0 24 24"
-                       xmlns="http://www.w3.org/2000/svg"
-                       aria-hidden="true">
-                    <path stroke-linecap="round" stroke-linejoin="round"
-                          d="M18 12H6"></path>
-
-                  </svg>
-                </button>
-                <p class="mx-2">0</p>
-                <button>
-                  <svg class="h-6 w-6" fill="none" stroke="currentColor"
-                       stroke-width="1.5" viewBox="0 0 24 24"
-                       xmlns="http://www.w3.org/2000/svg"
-                       aria-hidden="true">
-                    <path stroke-linecap="round" stroke-linejoin="round"
-                          d="M12 6v12m6-6H6"></path>
-                  </svg>
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <button class="absolute right-2 top-2">delete</button>
-    </div>
-  </div>
+<!--contenido-->
+<div class="p-4">
+  hola
 </div>
-
-<div class="bg-gray-200 border-b border-gray-200">
-  <ul
-    class="flex flex-wrap -mb-px text-sm font-medium text-center text-gray-500 justify-center items-center">
-    <li class="mr-2">
-      <a href="/src/pages/admin_usuarios.html"
-         class="inline-flex p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 group"
-      >
-        <svg
-
-          class="w-5 h-5 mr-2 text-gray-400 group-hover:text-gray-500"
-          fill="none"
-          stroke="currentColor" stroke-width="1.5"
-          viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
-          aria-hidden="true">
-          <path stroke-linecap="round" stroke-linejoin="round"
-                d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m.94 3.198l.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0112 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 016 18.719m12 0a5.971 5.971 0 00-.941-3.197m0 0A5.995 5.995 0 0012 12.75a5.995 5.995 0 00-5.058 2.772m0 0a3 3 0 00-4.681 2.72 8.986 8.986 0 003.74.477m.94-3.197a5.971 5.971 0 00-.94 3.197M15 6.75a3 3 0 11-6 0 3 3 0 016 0zm6 3a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0zm-13.5 0a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z"></path>
-        </svg>
-        Usuarios
-      </a>
-    </li>
-    <li class="mr-2">
-      <a href="/src/pages/admin_descuentos.html"
-         class="inline-flex p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 group"
-         aria-current="page">
-        <svg class="w-5 h-5 mr-2 text-gray-400 group-hover:text-gray-500"
-             fill="none" stroke="currentColor" stroke-width="1.5"
-             viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
-             aria-hidden="true">
-          <path stroke-linecap="round" stroke-linejoin="round"
-                d="M9.568 3H5.25A2.25 2.25 0 003 5.25v4.318c0 .597.237 1.17.659 1.591l9.581 9.581c.699.699 1.78.872 2.607.33a18.095 18.095 0 005.223-5.223c.542-.827.369-1.908-.33-2.607L11.16 3.66A2.25 2.25 0 009.568 3z"></path>
-          <path stroke-linecap="round" stroke-linejoin="round"
-                d="M6 6h.008v.008H6V6z"></path>
-        </svg>
-        Descuentos
-      </a>
-    </li>
-    <li class="mr-2">
-      <a href="/src/pages/admin_productos.html"
-         class="inline-flex p-4 text-red-600 border-b-2 border-red-600 rounded-t-lg active group"
-
-      >
-        <svg
-          class="w-5 h-5 mr-2 text-red-600"
-          fill="none" stroke="currentColor" stroke-width="1.5"
-          viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
-          aria-hidden="true">
-          <path stroke-linecap="round" stroke-linejoin="round"
-                d="M6 6.878V6a2.25 2.25 0 012.25-2.25h7.5A2.25 2.25 0 0118 6v.878m-12 0c.235-.083.487-.128.75-.128h10.5c.263 0 .515.045.75.128m-12 0A2.25 2.25 0 004.5 9v.878m13.5-3A2.25 2.25 0 0119.5 9v.878m0 0a2.246 2.246 0 00-.75-.128H5.25c-.263 0-.515.045-.75.128m15 0A2.25 2.25 0 0121 12v6a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 18v-6c0-.98.626-1.813 1.5-2.122"></path>
-        </svg>
-        Productos
-      </a>
-    </li>
-  </ul>
-</div>
-
-<div class="flex justify-center items-center p-4">
-  <button type="button"
-          data-modal-target="add-modal"
-          data-modal-toggle="add-modal"
-          class="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-brcus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
-    Agregar
-  </button>
-</div>
-<div tabIndex="-1" aria-hidden="true" id="add-modal"
-     class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] md:h-full">
-  <div class="relative w-full h-full max-w-md md:h-auto">
-    <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
-      <button type="button"
-              class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white"
-              data-modal-hide="add-modal">
-        <svg aria-hidden="true" class="w-5 h-5" fill="currentColor"
-             viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-          <path fill-rule="evenodd"
-                d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                clip-rule="evenodd"></path>
-        </svg>
-        <span class="sr-only">Close modal</span>
-      </button>
-      <div class="px-6 py-6 lg:px-8">
-        <h3
-          class="mb-4 text-xl font-medium text-gray-900 dark:text-white">Crear
-          nuevo x</h3>
-        <form class="space-y-6" action="#">
-          <div>
-            <label htmlFor="email2"
-                   class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-              campo1
-            </label>
-            <input type="email" name="email2" id="email2"
-                   class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
-                   placeholder="name@company.com" required/>
-          </div>
-          <button type="submit"
-                  class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-            boton
-          </button>
-        </form>
-      </div>
-    </div>
-  </div>
-</div>
-<div class="relative overflow-x-auto shadow-md sm:rounded-lg">
-  <table
-    class="w-full text-sm text-left text-gray-500">
-    <thead
-      class="text-xs text-gray-700 uppercase bg-gray-50">
-    <tr>
-      <th scope="col" class="px-6 py-3">
-        ID PRODUCTO
-      </th>
-      <th scope="col" class="px-6 py-3">
-        PRECIO
-      </th>
-      <th scope="col" class="px-6 py-3">
-        NOMBRE
-      </th>
-      <th scope="col" class="px-6 py-3">
-        IMAGEN
-      </th>
-      <th scope="col" class="px-6 py-3">
-        ACCION
-      </th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr class="bg-white border-b">
-      <th scope="row"
-          class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-        1001
-      </th>
-      <td class="px-6 py-4">
-        $25.00
-      </td>
-      <td class="px-6 py-4">
-        Camisa de algodón
-      </td>
-      <td class="px-6 py-4">
-        <img
-          src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg"
-          class="h-12 w-12 object-contain"
-          alt="..."/>
-
-      </td>
-      <td class="px-3 py-4">
-        <button type="button"
-                data-modal-target="edit-modal"
-                data-modal-toggle="edit-modal"
-                class="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-3 py-1.5 text-center">
-          Editar
-        </button>
-      </td>
-
-
-    </tr>
-    <tr class="border-b bg-gray-50">
-      <th scope="row"
-          class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-        1002
-      </th>
-      <td class="px-6 py-4">
-        $80.00
-      </td>
-      <td class="px-6 py-4">
-        Zapatos de cuero
-      </td>
-      <td class="px-6 py-4">
-        <img
-          src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg"
-          class="h-12 w-12 object-contain"
-          alt="..."/>
-
-      </td>
-      <td class="px-3 py-4">
-        <button type="button"
-                data-modal-target="edit-modal"
-                data-modal-toggle="edit-modal"
-                class="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-3 py-1.5 text-center">
-          Editar
-        </button>
-      </td>
-
-    </tr>
-    <tr class="bg-white border-b">
-      <th scope="row"
-          class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-        1003
-      </th>
-      <td class="px-6 py-4">
-        $45.00
-      </td>
-      <td class="px-6 py-4">
-        Pantalones de mezclilla
-      </td>
-      <td class="px-6 py-4">
-        <img
-          src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg"
-          class="h-12 w-12 object-contain"
-          alt="..."/>
-
-      </td>
-      <td class="px-3 py-4">
-        <button type="button"
-                data-modal-target="edit-modal"
-                data-modal-toggle="edit-modal"
-                class="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-3 py-1.5 text-center">
-          Editar
-        </button>
-      </td>
-
-    </tr>
-    <tr class="border-b bg-gray-50">
-      <th scope="row"
-          class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-        1004
-      </th>
-      <td class="px-6 py-4">
-        $200.0
-      </td>
-      <td class="px-6 py-4">
-        Chaqueta de cuero
-      </td>
-      <td class="px-6 py-4">
-        <img
-          src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg"
-          class="h-12 w-12 object-contain"
-          alt="..."/>
-
-      </td>
-      <td class="px-3 py-4">
-        <button type="button"
-                data-modal-target="edit-modal"
-                data-modal-toggle="edit-modal"
-                class="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-3 py-1.5 text-center">
-          Editar
-        </button>
-      </td>
-
-    </tr>
-    <tr class="bg-white border-b">
-      <th scope="row"
-          class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-        1005
-      </th>
-      <td class="px-6 py-4">
-        $120.00
-      </td>
-      <td class="px-6 py-4">
-        Vestido de seda
-      </td>
-      <td class="px-6 py-4">
-        <img
-          src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg"
-          class="h-12 w-12 object-contain"
-          alt="..."/>
-
-      </td>
-      <td class="px-3 py-4">
-        <button type="button"
-                data-modal-target="edit-modal"
-                data-modal-toggle="edit-modal"
-                class="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-3 py-1.5 text-center">
-          Editar
-        </button>
-      </td>
-
-    </tr>
-    <tr class="border-b bg-gray-50">
-      <th scope="row"
-          class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-        1006
-      </th>
-      <td class="px-6 py-4">
-        $20.00
-      </td>
-      <td class="px-6 py-4">
-        Sombrero de paja
-      </td>
-      <td class="px-6 py-4">
-        <img
-          src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg"
-          class="h-12 w-12 object-contain"
-          alt="..."/>
-
-      </td>
-      <td class="px-3 py-4">
-        <button type="button"
-                data-modal-target="edit-modal"
-                data-modal-toggle="edit-modal"
-                class="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-3 py-1.5 text-center">
-          Editar
-        </button>
-      </td>
-
-    </tr>
-    <tr class="bg-white border-b">
-      <th scope="row"
-          class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-        1007
-      </th>
-      <td class="px-6 py-4">
-        $35.00
-      </td>
-      <td class="px-6 py-4">
-        Blusa de encaje
-      </td>
-      <td class="px-6 py-4">
-        <img
-          src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg"
-          class="h-12 w-12 object-contain"
-          alt="..."/>
-
-      </td>
-      <td class="px-3 py-4">
-        <button type="button"
-                data-modal-target="edit-modal"
-                data-modal-toggle="edit-modal"
-                class="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-3 py-1.5 text-center">
-          Editar
-        </button>
-      </td>
-
-    </tr>
-    <tr class="border-b bg-gray-50">
-      <th scope="row"
-          class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-        1008
-      </th>
-      <td class="px-6 py-4">
-        $50.00
-      </td>
-      <td class="px-6 py-4">
-        Pantalones vaqueros
-      </td>
-      <td class="px-6 py-4">
-        <img
-          src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg"
-          class="h-12 w-12 object-contain"
-          alt="..."/>
-
-      </td>
-      <td class="px-3 py-4">
-        <button type="button"
-                data-modal-target="edit-modal"
-                data-modal-toggle="edit-modal"
-                class="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-3 py-1.5 text-center">
-          Editar
-        </button>
-      </td>
-
-    </tr>
-    <tr class="bg-white border-b">
-      <th scope="row"
-          class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-        1009
-      </th>
-      <td class="px-6 py-4">
-        $25.00
-      </td>
-      <td class="px-6 py-4">
-        Camiseta de algodón
-      </td>
-      <td class="px-6 py-4">
-        <img
-          src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg"
-          class="h-12 w-12 object-contain"
-          alt="..."/>
-
-      </td>
-      <td class="px-3 py-4">
-        <button type="button"
-                data-modal-target="edit-modal"
-                data-modal-toggle="edit-modal"
-                class="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-3 py-1.5 text-center">
-          Editar
-        </button>
-      </td>
-
-    </tr>
-    <tr class="border-b bg-gray-50">
-      <th scope="row"
-          class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-        1010
-      </th>
-      <td class="px-6 py-4">
-        $70.00
-      </td>
-      <td class="px-6 py-4">
-        Sandalias de cuero
-      </td>
-      <td class="px-6 py-4">
-        <img
-          src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg"
-          class="h-12 w-12 object-contain"
-          alt="..."/>
-
-      </td>
-      <td class="px-3 py-4">
-        <button type="button"
-                data-modal-target="edit-modal"
-                data-modal-toggle="edit-modal"
-                class="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-3 py-1.5 text-center">
-          Editar
-        </button>
-      </td>
-
-    </tr>
-    <tr class="bg-white border-b">
-      <th scope="row"
-          class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-        1011
-      </th>
-      <td class="px-6 py-4">
-        $30.00
-      </td>
-      <td class="px-6 py-4">
-        Bufanda de lana
-      </td>
-      <td class="px-6 py-4">
-        <img
-          src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg"
-          class="h-12 w-12 object-contain"
-          alt="..."/>
-
-      </td>
-      <td class="px-3 py-4">
-        <button type="button"
-                data-modal-target="edit-modal"
-                data-modal-toggle="edit-modal"
-                class="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-3 py-1.5 text-center">
-          Editar
-        </button>
-      </td>
-
-    </tr>
-    <tr class="border-b bg-gray-50">
-      <th scope="row"
-          class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-        1012
-      </th>
-      <td class="px-6 py-4">
-        $45.00
-      </td>
-      <td class="px-6 py-4">
-        Sombrero de lana
-      </td>
-      <td class="px-6 py-4">
-        <img
-          src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg"
-          class="h-12 w-12 object-contain"
-          alt="..."/>
-
-      </td>
-      <td class="px-3 py-4">
-        <button type="button"
-                data-modal-target="edit-modal"
-                data-modal-toggle="edit-modal"
-                class="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-3 py-1.5 text-center">
-          Editar
-        </button>
-      </td>
-
-    </tr>
-    <tr class="bg-white border-b">
-      <th scope="row"
-          class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-        1013
-      </th>
-      <td class="px-6 py-4">
-        $120.00
-      </td>
-      <td class="px-6 py-4">
-        Bolso de cuero
-      </td>
-      <td class="px-6 py-4">
-        <img
-          src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg"
-          class="h-12 w-12 object-contain"
-          alt="..."/>
-
-      </td>
-      <td class="px-3 py-4">
-        <button type="button"
-                data-modal-target="edit-modal"
-                data-modal-toggle="edit-modal"
-                class="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-3 py-1.5 text-center">
-          Editar
-        </button>
-      </td>
-
-    </tr>
-    <tr class="border-b bg-gray-50">
-      <th scope="row"
-          class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-        1014
-      </th>
-      <td class="px-6 py-4">
-        $60.00
-      </td>
-      <td class="px-6 py-4">
-        Vestido de verano
-      </td>
-      <td class="px-6 py-4">
-        <img
-          src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg"
-          class="h-12 w-12 object-contain"
-          alt="..."/>
-
-      </td>
-      <td class="px-3 py-4">
-        <button type="button"
-                data-modal-target="edit-modal"
-                data-modal-toggle="edit-modal"
-                class="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-3 py-1.5 text-center">
-          Editar
-        </button>
-      </td>
-
-    </tr>
-    <tr class="bg-white border-b">
-      <th scope="row"
-          class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-        1015
-      </th>
-      <td class="px-6 py-4">
-        $280.00
-      </td>
-      <td class="px-6 py-4">
-        Abrigo de cuero
-      </td>
-      <td class="px-6 py-4">
-        <img
-          src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg"
-          class="h-12 w-12 object-contain"
-          alt="..."/>
-
-      </td>
-      <td class="px-3 py-4">
-        <button type="button"
-                data-modal-target="edit-modal"
-                data-modal-toggle="edit-modal"
-                class="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-3 py-1.5 text-center">
-          Editar
-        </button>
-      </td>
-
-    </tr>
-    <tr class="border-b bg-gray-50">
-      <th scope="row"
-          class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-        1016
-      </th>
-      <td class="px-6 py-4">
-        $75.00
-      </td>
-      <td class="px-6 py-4">
-        Zapatillas de deporte
-      </td>
-      <td class="px-6 py-4">
-        <img
-          src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg"
-          class="h-12 w-12 object-contain"
-          alt="..."/>
-
-      </td>
-      <td class="px-3 py-4">
-        <button type="button"
-                data-modal-target="edit-modal"
-                data-modal-toggle="edit-modal"
-                class="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-3 py-1.5 text-center">
-          Editar
-        </button>
-      </td>
-
-    </tr>
-    <tr class="bg-white border-b">
-      <th scope="row"
-          class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-        1017
-      </th>
-      <td class="px-6 py-4">
-        $50.00
-      </td>
-      <td class="px-6 py-4">
-        Cámara digital compacta
-      </td>
-      <td class="px-6 py-4">
-        <img
-          src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg"
-          class="h-12 w-12 object-contain"
-          alt="..."/>
-
-      </td>
-      <td class="px-3 py-4">
-        <button type="button"
-                data-modal-target="edit-modal"
-                data-modal-toggle="edit-modal"
-                class="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-3 py-1.5 text-center">
-          Editar
-        </button>
-      </td>
-
-    </tr>
-    <tr class="border-b bg-gray-50">
-      <th scope="row"
-          class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-        1018
-      </th>
-      <td class="px-6 py-4">
-        $40.00
-      </td>
-      <td class="px-6 py-4">
-        Auriculares inalámbricos
-      </td>
-      <td class="px-6 py-4">
-        <img
-          src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg"
-          class="h-12 w-12 object-contain"
-          alt="..."/>
-
-      </td>
-      <td class="px-3 py-4">
-        <button type="button"
-                data-modal-target="edit-modal"
-                data-modal-toggle="edit-modal"
-                class="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-3 py-1.5 text-center">
-          Editar
-        </button>
-      </td>
-
-    </tr>
-    <tr class="bg-white border-b">
-      <th scope="row"
-          class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-        1019
-      </th>
-      <td class="px-6 py-4">
-        $150.00
-      </td>
-      <td class="px-6 py-4">
-        Reloj inteligente
-      </td>
-      <td class="px-6 py-4">
-        <img
-          src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg"
-          class="h-12 w-12 object-contain"
-          alt="..."/>
-
-      </td>
-      <td class="px-3 py-4">
-        <button type="button"
-                data-modal-target="edit-modal"
-                data-modal-toggle="edit-modal"
-                class="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-3 py-1.5 text-center">
-          Editar
-        </button>
-      </td>
-
-    </tr>
-    <tr class="border-b bg-gray-50">
-      <th scope="row"
-          class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-        1020
-      </th>
-      <td class="px-6 py-4">
-        $25.00
-      </td>
-      <td class="px-6 py-4">
-        Reloj de pulsera
-      </td>
-      <td class="px-6 py-4">
-        <img
-          src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg"
-          class="h-12 w-12 object-contain"
-          alt="..."/>
-
-      </td>
-      <td class="px-3 py-4">
-        <button type="button"
-                data-modal-target="edit-modal"
-                data-modal-toggle="edit-modal"
-                class="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-3 py-1.5 text-center">
-          Editar
-        </button>
-      </td>
-
-    </tr>
-    </tbody>
-  </table>
-</div>
-
-<div aria-hidden="true" id="edit-modal"
-     class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] md:h-full">
-  <div class="relative w-full h-full max-w-md md:h-auto">
-    <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
-      <button type="button"
-              class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white"
-              data-modal-hide="edit-modal">
-        <svg aria-hidden="true" class="w-5 h-5" fill="currentColor"
-             viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-          <path fill-rule="evenodd"
-                d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                clip-rule="evenodd"></path>
-        </svg>
-        <span class="sr-only">Close modal</span>
-      </button>
-      <div class="px-6 py-6 lg:px-8">
-        <h3
-          class="mb-4 text-xl font-medium text-gray-900 dark:text-white">Editar
-          x</h3>
-        <form class="space-y-6" action="#">
-          <div>
-            <label htmlFor="email"
-                   class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-              campo1
-            </label>
-            <input type="email" name="email" id="email"
-                   class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
-                   placeholder="name@company.com" required/>
-          </div>
-          <button type="submit"
-                  class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-            boton
-          </button>
-        </form>
-      </div>
-    </div>
-  </div>
 </div>
 <footer class="bg-gray-200 dark:bg-gray-900">
   <div class="mx-auto w-full container p-4 sm:p-6">
     <div class="md:flex md:justify-between">
       <div class="flex md:basis-1/2 flex-col items-center mb-6 md:mb-0">
         <a href="/src/index.html" class="flex items-center hover:text-black">
-          <img src="/imagens/R.png" class="h-24 object-contain w-8 mr-3" alt="Flowbite Logo"/>
+          <img src="/imagens/R.png" class="h-24 object-contain w-8 mr-3"
+               alt="Flowbite Logo"/>
           <span
             class="self-center text-xl font-semibold whitespace-nowrap dark:text-white">PokemonShop</span>
         </a>
@@ -1403,47 +253,57 @@
         class="grid grid-cols-1 xxs:grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3">
         <div>
           <h2
-            class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Informacion</h2>
+            class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">
+            Informacion</h2>
           <ul class="text-gray-600 dark:text-gray-400">
             <li class="mb-4">
               <a href="/src/pages/404.html"
-                 class="hover:underline hover:text-black">politica devolucion</a>
+                 class="hover:underline hover:text-black">politica
+                devolucion</a>
             </li>
             <li class="mb-4">
               <a href="/src/pages/404.html"
-                 class="hover:underline hover:text-black">politica privacidad</a>
+                 class="hover:underline hover:text-black">politica
+                privacidad</a>
             </li>
             <li class="mb-4">
               <a href="/src/pages/404.html"
-                 class="hover:underline hover:text-black">preguntas frecuentes</a>
+                 class="hover:underline hover:text-black">preguntas
+                frecuentes</a>
             </li>
             <li>
               <a href="/src/pages/404.html"
-                 class="hover:underline hover:text-black">terminos y condiciones</a>
+                 class="hover:underline hover:text-black">terminos y
+                condiciones</a>
             </li>
           </ul>
         </div>
         <div>
           <h2
-            class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Servicio
+            class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">
+            Servicio
             al cliente</h2>
           <ul class="text-gray-600 dark:text-gray-400">
             <li class="mb-4">
               <a href="/src/pages/404.html"
-                 class="hover:text-black hover:underline">formulario de contacto</a>
+                 class="hover:text-black hover:underline">formulario de
+                contacto</a>
             </li>
             <li>
               <a href="/src/pages/404.html"
-                 class="hover:text-black hover:underline">reclamos / sugerencias</a>
+                 class="hover:text-black hover:underline">reclamos /
+                sugerencias</a>
             </li>
           </ul>
         </div>
         <div>
           <h2
-            class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Contactanos</h2>
+            class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">
+            Contactanos</h2>
           <ul class="text-gray-600 dark:text-gray-400">
             <li class="mb-4">
-              <a href="/src/pages/404.html" class="hover:text-black hover:underline">+569
+              <a href="/src/pages/404.html"
+                 class="hover:text-black hover:underline">+569
                 12345678</a>
             </li>
             <li class="mb-4">
@@ -1457,7 +317,8 @@
             </li>
             <li>
               <a href="/src/pages/404.html"
-                 class="hover:text-black hover:underline">horario de atencion</a>
+                 class="hover:text-black hover:underline">horario de
+                atencion</a>
             </li>
           </ul>
         </div>
@@ -1472,7 +333,6 @@
     </div>
   </div>
 </footer>
-
 
 <script
   src="https://cdn.jsdelivr.net/npm/uikit@3.16.10/dist/js/uikit.min.js"></script>
