@@ -2,7 +2,7 @@
     <div class="mx-auto w-full container p-4 sm:p-6">
         <div class="md:flex md:justify-between">
             <div class="flex md:basis-1/2 flex-col items-center mb-6 md:mb-0">
-                <a href="/src/index.html" class="flex items-center hover:text-black">
+                <a href="/src/pages/index.html" class="flex items-center hover:text-black">
                     <img src="/imagens/R.png" class="h-24 object-contain w-8 mr-3" alt="Flowbite Logo"/>
                         <span
                             class="self-center text-xl font-semibold whitespace-nowrap dark:text-white">PokemonShop</span>

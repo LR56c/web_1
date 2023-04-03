@@ -16,7 +16,7 @@
     rel="stylesheet"/>
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
-    tailwind.config    = {
+    tailwind.config = {
       theme: {
         screens: {
           xxs: "320px",
@@ -32,14 +32,14 @@
     }
   </script>
 
-  <title>Admin Usuarios</title>
+  <title>Admin descuentos</title>
 </head>
 <body>
 <nav
   class="bg-gray-200 shadow border-gray-200 bg-white sticky w-full px-2 py-2.5 sm:px-4 z-20 top-0 left-0 border-b">
   <div
     class="flex flex-wrap items-center justify-center xs:justify-start gap-3 md:gap-0 md:justify-between md:flex-nowrap">
-    <a href="/src/index.html"
+    <a href="/src/pages/index.html"
        class="hover:text-black flex w-full basis-auto items-center justify-center xs:basis-2/4 md:basis-2/6 xs:justify-start lg:basis-5/12">
       <img src="/imagens/R.png" class="h-6 mr-3 sm:h-9" alt="Flowbite Logo"/>
       <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white">PokemonShop</span>
@@ -62,7 +62,7 @@
     </div>
     <div
       class="flex w-full basis-auto justify-around md:basis-3/12">
-      <a href="/src/pages/admin_usuarios.html">
+      <a href="/src/components/admin_v2/admin_usuarios.html_usuarios.html">
         <button type="button"
                 class="p-2 text-white bg-blue-600 hover:bg-blue-600/90 focus:ring-4 focus:outline-none focus:ring-blue-600/50 font-medium rounded-full text-sm text-center inline-flex items-center dark:focus:ring-blue-600/55">
           <svg class="h-5 w-5" fill="none" stroke="currentColor"
@@ -635,12 +635,15 @@
   <ul
     class="flex flex-wrap -mb-px text-sm font-medium text-center text-gray-500 justify-center items-center">
     <li class="mr-2">
-      <a href="/src/pages/admin_usuarios.html"
-         class="inline-flex p-4 text-red-600 border-b-2 border-red-600 rounded-t-lg active group">
-        <svg class="w-5 h-5 mr-2 text-red-600" fill="none"
-             stroke="currentColor" stroke-width="1.5"
-             viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
-             aria-hidden="true">
+      <a href="/src/components/admin_v2/admin_usuarios.html_usuarios.html"
+         class="inline-flex p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 group"
+      >
+        <svg
+          fill="none"
+          class="w-5 h-5 mr-2 text-gray-400 group-hover:text-gray-500"
+          stroke="currentColor" stroke-width="1.5"
+          viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
+          aria-hidden="true">
           <path stroke-linecap="round" stroke-linejoin="round"
                 d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m.94 3.198l.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0112 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 016 18.719m12 0a5.971 5.971 0 00-.941-3.197m0 0A5.995 5.995 0 0012 12.75a5.995 5.995 0 00-5.058 2.772m0 0a3 3 0 00-4.681 2.72 8.986 8.986 0 003.74.477m.94-3.197a5.971 5.971 0 00-.94 3.197M15 6.75a3 3 0 11-6 0 3 3 0 016 0zm6 3a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0zm-13.5 0a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z"></path>
         </svg>
@@ -648,13 +651,14 @@
       </a>
     </li>
     <li class="mr-2">
-      <a href="/src/pages/admin_descuentos.html"
-         class="inline-flex p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 group"
+      <a href="/src/components/admin_v2/admin_descuentos.html"
+         class="inline-flex p-4 text-red-600 border-b-2 border-red-600 rounded-t-lg active group"
          aria-current="page">
-        <svg class="w-5 h-5 mr-2 text-gray-400 group-hover:text-gray-500"
-             fill="none" stroke="currentColor" stroke-width="1.5"
-             viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
-             aria-hidden="true">
+        <svg
+          class="w-5 h-5 mr-2 text-red-600"
+          fill="none" stroke="currentColor" stroke-width="1.5"
+          viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
+          aria-hidden="true">
           <path stroke-linecap="round" stroke-linejoin="round"
                 d="M9.568 3H5.25A2.25 2.25 0 003 5.25v4.318c0 .597.237 1.17.659 1.591l9.581 9.581c.699.699 1.78.872 2.607.33a18.095 18.095 0 005.223-5.223c.542-.827.369-1.908-.33-2.607L11.16 3.66A2.25 2.25 0 009.568 3z"></path>
           <path stroke-linecap="round" stroke-linejoin="round"
@@ -664,7 +668,7 @@
       </a>
     </li>
     <li class="mr-2">
-      <a href="/src/pages/admin_productos.html"
+      <a href="/src/components/admin_v2/admin_productos.htmlproductos.html"
          class="inline-flex p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 group">
         <svg class="w-5 h-5 mr-2 text-gray-400 group-hover:text-gray-500"
              fill="none" stroke="currentColor" stroke-width="1.5"
@@ -712,8 +716,7 @@
                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
               campo1
             </label>
-            <input type="email" name="email2" id="
-            email2"
+            <input type="email" name="email2" id="email2"
                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
                    placeholder="name@company.com" required/>
           </div>
@@ -733,19 +736,25 @@
       class="text-xs text-gray-700 uppercase bg-gray-50">
     <tr>
       <th scope="col" class="px-6 py-3">
-        ID
+        ID OFERTA
       </th>
       <th scope="col" class="px-6 py-3">
-        NOMBRE
+        ID PRODUCTO
       </th>
       <th scope="col" class="px-6 py-3">
-        CORREO
+        NOMBRE PRODUCTO
       </th>
       <th scope="col" class="px-6 py-3">
-        CELULAR
+        PRECIO SIN DESCUENTO
       </th>
       <th scope="col" class="px-6 py-3">
-        DIRECCION
+        PRECIO CON DESCUENTO
+      </th>
+      <th scope="col" class="px-6 py-3">
+        PORCENTAJE DESCUENTO
+      </th>
+      <th scope="col" class="px-6 py-3">
+        CAUSA DESCUENTO
       </th>
       <th scope="col" class="px-6 py-3">
         ACCION
@@ -753,293 +762,28 @@
     </tr>
     </thead>
     <tbody>
-    <tr
-      class="bg-white border-b">
+    <tr class="bg-white border-b">
       <th scope="row"
           class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-        1
+        101
       </th>
       <td class="px-6 py-4">
-        Maria Perez
+        1001
       </td>
       <td class="px-6 py-4">
-        maria.perez@gmail.com
+        Camisa de algodón
       </td>
       <td class="px-6 py-4">
-        +1 234 567 8901
+        $25.00
       </td>
       <td class="px-6 py-4">
-        123 Main St, Anytown, USA
-      </td>
-      <td class="px-3 py-4">
-        <button type="button"
-                data-modal-target="edit-modal"
-                data-modal-toggle="edit-modal"
-                class="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-3 py-1.5 text-center">
-          Editar
-        </button>
-      </td>
-    </tr>
-    <tr
-      class="border-b bg-gray-50">
-      <th scope="row"
-          class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-        2
-      </th>
-      <td class="px-6 py-4">
-        John Smith
+        $18.75
       </td>
       <td class="px-6 py-4">
-        john.smith@gmail.com
+        25%
       </td>
       <td class="px-6 py-4">
-        +1 987 654 3210
-      </td>
-      <td class="px-6 py-4">
-        456 Elm St, Anytown, USA
-      </td>
-      <td class="px-3 py-4">
-        <button type="button"
-                data-modal-target="edit-modal"
-                data-modal-toggle="edit-modal"
-                class="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-3 py-1.5 text-center">
-          Editar
-        </button>
-      </td>
-    </tr>
-    <tr
-      class="bg-white border-b">
-      <th scope="row"
-          class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-        3
-      </th>
-      <td class="px-6 py-4">
-        Ana Rodriguez
-      </td>
-      <td class="px-6 py-4">
-        ana.rodriguez@yahoo.com
-      </td>
-      <td class="px-6 py-4">
-        +1 555 123 4567
-      </td>
-      <td class="px-6 py-4">
-        789 Oak St, Anytown, USA
-      </td>
-      <td class="px-3 py-4">
-        <button type="button"
-                data-modal-target="edit-modal"
-                data-modal-toggle="edit-modal"
-                class="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-3 py-1.5 text-center">
-          Editar
-        </button>
-      </td>
-    </tr>
-    <tr
-      class="border-b bg-gray-50">
-      <th scope="row"
-          class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-        4
-      </th>
-      <td class="px-6 py-4">
-        Carlos Gonzalez
-      </td>
-      <td class="px-6 py-4">
-        carlos.gonzalez@gmail.com
-      </td>
-      <td class="px-6 py-4">
-        +1 555 444 3333
-      </td>
-      <td class="px-6 py-4">
-        567 Pine St, Anytown, USA
-      </td>
-      <td class="px-3 py-4">
-        <button type="button"
-                data-modal-target="edit-modal"
-                data-modal-toggle="edit-modal"
-                class="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-3 py-1.5 text-center">
-          Editar
-        </button>
-      </td>
-    </tr>
-    <tr
-      class="bg-white border-b">
-      <th scope="row"
-          class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-        5
-      </th>
-      <td class="px-6 py-4">
-        Sarah Johnson
-      </td>
-      <td class="px-6 py-4">
-        sarah.johnson@yahoo.com
-      </td>
-      <td class="px-6 py-4">
-        +1 555 222 3333
-      </td>
-      <td class="px-6 py-4">
-        789 Maple St, Anytown, USA
-      </td>
-      <td class="px-3 py-4">
-        <button type="button"
-                data-modal-target="edit-modal"
-                data-modal-toggle="edit-modal"
-                class="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-3 py-1.5 text-center">
-          Editar
-        </button>
-      </td>
-    </tr>
-    <tr
-      class="border-b bg-gray-50">
-      <th scope="row"
-          class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-        6
-      </th>
-      <td class="px-6 py-4">
-        Juan Ramirez
-      </td>
-      <td class="px-6 py-4">
-        juan.ramirez@hotmail.com
-      </td>
-      <td class="px-6 py-4">
-        +1 555 111 3333
-      </td>
-      <td class="px-6 py-4">
-        123 Oak St, Anytown, USA
-      </td>
-      <td class="px-3 py-4">
-        <button type="button"
-                data-modal-target="edit-modal"
-                data-modal-toggle="edit-modal"
-                class="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-3 py-1.5 text-center">
-          Editar
-        </button>
-      </td>
-    </tr>
-    <tr
-      class="bg-white border-b">
-      <th scope="row"
-          class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-        7
-      </th>
-      <td class="px-6 py-4">
-        Emily Davis
-      </td>
-      <td class="px-6 py-4">
-        emily.davis@gmail.com
-      </td>
-      <td class="px-6 py-4">
-        +1 555 222 4444
-      </td>
-      <td class="px-6 py-4">
-        456 Oak St, Anytown, USA
-      </td>
-      <td class="px-3 py-4">
-        <button type="button"
-                data-modal-target="edit-modal"
-                data-modal-toggle="edit-modal"
-                class="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-3 py-1.5 text-center">
-          Editar
-        </button>
-      </td>
-    </tr>
-    <tr
-      class="border-b bg-gray-50">
-      <th scope="row"
-          class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-        8
-      </th>
-      <td class="px-6 py-4">
-        Alicia Medina
-      </td>
-      <td class="px-6 py-4">
-        medina.alicia@email.com
-      </td>
-      <td class="px-6 py-4">
-        +1 555 987 6543
-      </td>
-      <td class="px-6 py-4">
-        1234 Maple Ln, Bigtown, USA
-      </td>
-      <td class="px-3 py-4">
-        <button type="button"
-                data-modal-target="edit-modal"
-                data-modal-toggle="edit-modal"
-                class="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-3 py-1.5 text-center">
-          Editar
-        </button>
-      </td>
-    </tr>
-    <tr
-      class="bg-white border-b">
-      <th scope="row"
-          class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-        9
-      </th>
-      <td class="px-6 py-4">
-        Michael Thompson
-      </td>
-      <td class="px-6 py-4">
-        michael.thompson@gmail.com
-      </td>
-      <td class="px-6 py-4">
-        +1 555 777 9999
-      </td>
-      <td class="px-6 py-4">
-        789 Cherry St, Anytown, USA
-      </td>
-      <td class="px-3 py-4">
-        <button type="button"
-                data-modal-target="edit-modal"
-                data-modal-toggle="edit-modal"
-                class="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-3 py-1.5 text-center">
-          Editar
-        </button>
-      </td>
-    </tr>
-    <tr
-      class="border-b bg-gray-50">
-      <th scope="row"
-          class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-        10
-      </th>
-      <td class="px-6 py-4">
-        Rachel Anderson
-      </td>
-      <td class="px-6 py-4">
-        rachel.anderson@hotmail.com
-      </td>
-      <td class="px-6 py-4">
-        +1 555 888 7777
-      </td>
-      <td class="px-6 py-4">
-        234 Elm St, Anytown, USA
-      </td>
-      <td class="px-3 py-4">
-        <button type="button"
-                data-modal-target="edit-modal"
-                data-modal-toggle="edit-modal"
-                class="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-3 py-1.5 text-center">
-          Editar
-        </button>
-      </td>
-    </tr>
-    <tr
-      class="bg-white border-b">
-      <th scope="row"
-          class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-        11
-      </th>
-      <td class="px-6 py-4">
-        Thomas Jackson
-      </td>
-      <td class="px-6 py-4">
-        thomas.jackson@yahoo.com
-      </td>
-      <td class="px-6 py-4">
-        +1 555 999 6666
-      </td>
-      <td class="px-6 py-4">
-        345 Maple St, Anytown, USA
+        Liquidación de temporada
       </td>
       <td class="px-3 py-4">
         <button type="button"
@@ -1053,19 +797,25 @@
     <tr class="border-b bg-gray-50">
       <th scope="row"
           class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-        12
+        102
       </th>
       <td class="px-6 py-4">
-        Sophia Lee
+        1002
       </td>
       <td class="px-6 py-4">
-        sophia.lee@gmail.com
+        Zapatos de cuero
       </td>
       <td class="px-6 py-4">
-        +1 555 777 5555
+        $80.00
       </td>
       <td class="px-6 py-4">
-        456 Maple St, Anytown, USA
+        $68.00
+      </td>
+      <td class="px-6 py-4">
+        15%
+      </td>
+      <td class="px-6 py-4">
+        Venta de primavera
       </td>
       <td class="px-3 py-4">
         <button type="button"
@@ -1075,23 +825,30 @@
           Editar
         </button>
       </td>
+
     </tr>
     <tr class="bg-white border-b">
       <th scope="row"
           class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-        13
+        103
       </th>
       <td class="px-6 py-4">
-        William Davis
+        1003
       </td>
       <td class="px-6 py-4">
-        william.davis@hotmail.com
+        Pantalones de mezclilla
       </td>
       <td class="px-6 py-4">
-        +1 555 888 9999
+        $45.00
       </td>
       <td class="px-6 py-4">
-        567 Oak St, Anytown, USA
+        $33.75
+      </td>
+      <td class="px-6 py-4">
+        25%
+      </td>
+      <td class="px-6 py-4">
+        Oferta de liquidación
       </td>
       <td class="px-3 py-4">
         <button type="button"
@@ -1101,23 +858,30 @@
           Editar
         </button>
       </td>
+
     </tr>
     <tr class="border-b bg-gray-50">
       <th scope="row"
           class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-        14
+        104
       </th>
       <td class="px-6 py-4">
-        Madison Clark
+        1004
       </td>
       <td class="px-6 py-4">
-        madison.clark@gmail.com
+        Chaqueta de cuero
       </td>
       <td class="px-6 py-4">
-        +1 555 777 4444
+        $200.0
       </td>
       <td class="px-6 py-4">
-        678 Oak St, Anytown, USA
+        $160.00
+      </td>
+      <td class="px-6 py-4">
+        20%
+      </td>
+      <td class="px-6 py-4">
+        Oferta de otoño
       </td>
       <td class="px-3 py-4">
         <button type="button"
@@ -1127,23 +891,30 @@
           Editar
         </button>
       </td>
+
     </tr>
     <tr class="bg-white border-b">
       <th scope="row"
           class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-        15
+        105
       </th>
       <td class="px-6 py-4">
-        Ethan Rodriguez
+        1005
       </td>
       <td class="px-6 py-4">
-        ethan.rodriguez@yahoo.com
+        Vestido de seda
       </td>
       <td class="px-6 py-4">
-        +1 555 888 5555
+        $120.00
       </td>
       <td class="px-6 py-4">
-        890 Cedar Rd, Midtown, USA
+        $96.00
+      </td>
+      <td class="px-6 py-4">
+        20%
+      </td>
+      <td class="px-6 py-4">
+        Venta de verano
       </td>
       <td class="px-3 py-4">
         <button type="button"
@@ -1153,23 +924,30 @@
           Editar
         </button>
       </td>
+
     </tr>
     <tr class="border-b bg-gray-50">
       <th scope="row"
           class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-        16
+        106
       </th>
       <td class="px-6 py-4">
-        Isabella Rivera
+        1006
       </td>
       <td class="px-6 py-4">
-        isabella.rivera@hotmail.com
+        Sombrero de paja
       </td>
       <td class="px-6 py-4">
-        +1 555 777 3333
+        $20.00
       </td>
       <td class="px-6 py-4">
-        890 Oak St, Anytown, USA
+        $18.00
+      </td>
+      <td class="px-6 py-4">
+        10%
+      </td>
+      <td class="px-6 py-4">
+        Oferta de vacaciones
       </td>
       <td class="px-3 py-4">
         <button type="button"
@@ -1179,24 +957,30 @@
           Editar
         </button>
       </td>
+
     </tr>
-    <tr
-      class="bg-white border-b">
+    <tr class="bg-white border-b">
       <th scope="row"
           class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-        17
+        107
       </th>
       <td class="px-6 py-4">
-        Gabriel Perez
+        1007
       </td>
       <td class="px-6 py-4">
-        gabriel.perez@gmail.com
+        Blusa de encaje
       </td>
       <td class="px-6 py-4">
-        +1 555 888 2222
+        $35.00
       </td>
       <td class="px-6 py-4">
-        369 Spruce Ave, Anywhere, USA
+        $24.50
+      </td>
+      <td class="px-6 py-4">
+        30%
+      </td>
+      <td class="px-6 py-4">
+        Liquidación de temporada
       </td>
       <td class="px-3 py-4">
         <button type="button"
@@ -1206,24 +990,30 @@
           Editar
         </button>
       </td>
+
     </tr>
-    <tr
-      class="border-b bg-gray-50">
+    <tr class="border-b bg-gray-50">
       <th scope="row"
           class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-        18
+        108
       </th>
       <td class="px-6 py-4">
-        Mia Thompson
+        1008
       </td>
       <td class="px-6 py-4">
-        mia.thompson@yahoo.com
+        Pantalones vaqueros
       </td>
       <td class="px-6 py-4">
-        +1 555 777 2222
+        $50.00
       </td>
       <td class="px-6 py-4">
-        1010 Cedar St, Newtown, USA
+        $40.00
+      </td>
+      <td class="px-6 py-4">
+        20%
+      </td>
+      <td class="px-6 py-4">
+        Venta de otoño
       </td>
       <td class="px-3 py-4">
         <button type="button"
@@ -1233,24 +1023,30 @@
           Editar
         </button>
       </td>
+
     </tr>
-    <tr
-      class="bg-white border-b">
+    <tr class="bg-white border-b">
       <th scope="row"
           class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-        19
+        109
       </th>
       <td class="px-6 py-4">
-        Oliver Harris
+        1009
       </td>
       <td class="px-6 py-4">
-        oliver.harris@hotmail.com
+        Camiseta de algodón
       </td>
       <td class="px-6 py-4">
-        +1 555 888 1111
+        $25.00
       </td>
       <td class="px-6 py-4">
-        345 Elm St, Anytown, USA
+        $20.00
+      </td>
+      <td class="px-6 py-4">
+        20%
+      </td>
+      <td class="px-6 py-4">
+        Venta de verano
       </td>
       <td class="px-3 py-4">
         <button type="button"
@@ -1260,24 +1056,30 @@
           Editar
         </button>
       </td>
+
     </tr>
-    <tr
-      class="border-b bg-gray-50">
+    <tr class="border-b bg-gray-50">
       <th scope="row"
           class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-        20
+        110
       </th>
       <td class="px-6 py-4">
-        Sophia Lee
+        1010
       </td>
       <td class="px-6 py-4">
-        sophia.lee@gmail.com
+        Sandalias de cuero
       </td>
       <td class="px-6 py-4">
-        +1 555 777 1111
+        $70.00
       </td>
       <td class="px-6 py-4">
-        2468 Birch Dr, Hometown, USA
+        $56.00
+      </td>
+      <td class="px-6 py-4">
+        20%
+      </td>
+      <td class="px-6 py-4">
+        Venta de verano
       </td>
       <td class="px-3 py-4">
         <button type="button"
@@ -1287,6 +1089,338 @@
           Editar
         </button>
       </td>
+
+    </tr>
+    <tr class="bg-white border-b">
+      <th scope="row"
+          class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
+        111
+      </th>
+      <td class="px-6 py-4">
+        1011
+      </td>
+      <td class="px-6 py-4">
+        Bufanda de lana
+      </td>
+      <td class="px-6 py-4">
+        $30.00
+      </td>
+      <td class="px-6 py-4">
+        $27.00
+      </td>
+      <td class="px-6 py-4">
+        10%
+      </td>
+      <td class="px-6 py-4">
+        Venta de invierno
+      </td>
+      <td class="px-3 py-4">
+        <button type="button"
+                data-modal-target="edit-modal"
+                data-modal-toggle="edit-modal"
+                class="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-3 py-1.5 text-center">
+          Editar
+        </button>
+      </td>
+
+    </tr>
+    <tr class="border-b bg-gray-50">
+      <th scope="row"
+          class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
+        112
+      </th>
+      <td class="px-6 py-4">
+        1012
+      </td>
+      <td class="px-6 py-4">
+        Sombrero de lana
+      </td>
+      <td class="px-6 py-4">
+        $45.00
+      </td>
+      <td class="px-6 py-4">
+        $36.00
+      </td>
+      <td class="px-6 py-4">
+        20%
+      </td>
+      <td class="px-6 py-4">
+        Venta de invierno
+      </td>
+      <td class="px-3 py-4">
+        <button type="button"
+                data-modal-target="edit-modal"
+                data-modal-toggle="edit-modal"
+                class="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-3 py-1.5 text-center">
+          Editar
+        </button>
+      </td>
+
+    </tr>
+    <tr class="bg-white border-b">
+      <th scope="row"
+          class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
+        113
+      </th>
+      <td class="px-6 py-4">
+        1013
+      </td>
+      <td class="px-6 py-4">
+        Bolso de cuero
+      </td>
+      <td class="px-6 py-4">
+        $120.00
+      </td>
+      <td class="px-6 py-4">
+        $84.00
+      </td>
+      <td class="px-6 py-4">
+        30%
+      </td>
+      <td class="px-6 py-4">
+        Venta de primavera
+      </td>
+      <td class="px-3 py-4">
+        <button type="button"
+                data-modal-target="edit-modal"
+                data-modal-toggle="edit-modal"
+                class="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-3 py-1.5 text-center">
+          Editar
+        </button>
+      </td>
+
+    </tr>
+    <tr class="border-b bg-gray-50">
+      <th scope="row"
+          class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
+        114
+      </th>
+      <td class="px-6 py-4">
+        1014
+      </td>
+      <td class="px-6 py-4">
+        Vestido de verano
+      </td>
+      <td class="px-6 py-4">
+        $60.00
+      </td>
+      <td class="px-6 py-4">
+        $45.00
+      </td>
+      <td class="px-6 py-4">
+        25%
+      </td>
+      <td class="px-6 py-4">
+        Venta de verano
+      </td>
+      <td class="px-3 py-4">
+        <button type="button"
+                data-modal-target="edit-modal"
+                data-modal-toggle="edit-modal"
+                class="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-3 py-1.5 text-center">
+          Editar
+        </button>
+      </td>
+
+    </tr>
+    <tr class="bg-white border-b">
+      <th scope="row"
+          class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
+        115
+      </th>
+      <td class="px-6 py-4">
+        1015
+      </td>
+      <td class="px-6 py-4">
+        Abrigo de cuero
+      </td>
+      <td class="px-6 py-4">
+        $280.00
+      </td>
+      <td class="px-6 py-4">
+        $196.00
+      </td>
+      <td class="px-6 py-4">
+        30%
+      </td>
+      <td class="px-6 py-4">
+        Venta de invierno
+      </td>
+      <td class="px-3 py-4">
+        <button type="button"
+                data-modal-target="edit-modal"
+                data-modal-toggle="edit-modal"
+                class="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-3 py-1.5 text-center">
+          Editar
+        </button>
+      </td>
+
+    </tr>
+    <tr class="border-b bg-gray-50">
+      <th scope="row"
+          class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
+        116
+      </th>
+      <td class="px-6 py-4">
+        1016
+      </td>
+      <td class="px-6 py-4">
+        Zapatillas de deporte
+      </td>
+      <td class="px-6 py-4">
+        $75.00
+      </td>
+      <td class="px-6 py-4">
+        $56.25
+      </td>
+      <td class="px-6 py-4">
+        25%
+      </td>
+      <td class="px-6 py-4">
+        Venta de primavera
+      </td>
+      <td class="px-3 py-4">
+        <button type="button"
+                data-modal-target="edit-modal"
+                data-modal-toggle="edit-modal"
+                class="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-3 py-1.5 text-center">
+          Editar
+        </button>
+      </td>
+
+    </tr>
+    <tr class="bg-white border-b">
+      <th scope="row"
+          class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
+        117
+      </th>
+      <td class="px-6 py-4">
+        1017
+      </td>
+      <td class="px-6 py-4">
+        Cámara digital compacta
+      </td>
+      <td class="px-6 py-4">
+        $50.00
+      </td>
+      <td class="px-6 py-4">
+        $30.00
+      </td>
+      <td class="px-6 py-4">
+        40%
+      </td>
+      <td class="px-6 py-4">
+        Venta de verano
+      </td>
+      <td class="px-3 py-4">
+        <button type="button"
+                data-modal-target="edit-modal"
+                data-modal-toggle="edit-modal"
+                class="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-3 py-1.5 text-center">
+          Editar
+        </button>
+      </td>
+
+    </tr>
+    <tr class="border-b bg-gray-50">
+      <th scope="row"
+          class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
+        118
+      </th>
+      <td class="px-6 py-4">
+        1018
+      </td>
+      <td class="px-6 py-4">
+        Auriculares inalámbricos
+      </td>
+      <td class="px-6 py-4">
+        $40.00
+      </td>
+      <td class="px-6 py-4">
+        $24.00
+      </td>
+      <td class="px-6 py-4">
+        40%
+      </td>
+      <td class="px-6 py-4">
+        Venta de verano
+
+      </td>
+      <td class="px-3 py-4">
+        <button type="button"
+                data-modal-target="edit-modal"
+                data-modal-toggle="edit-modal"
+                class="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-3 py-1.5 text-center">
+          Editar
+        </button>
+      </td>
+
+    </tr>
+    <tr class="bg-white border-b">
+      <th scope="row"
+          class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
+        119
+      </th>
+      <td class="px-6 py-4">
+        1019
+      </td>
+      <td class="px-6 py-4">
+        Reloj inteligente
+      </td>
+      <td class="px-6 py-4">
+        $150.00
+      </td>
+      <td class="px-6 py-4">
+        $112.50
+      </td>
+      <td class="px-6 py-4">
+        25%
+      </td>
+      <td class="px-6 py-4">
+        Venta de navidad
+      </td>
+      <td class="px-3 py-4">
+        <button type="button"
+                data-modal-target="edit-modal"
+                data-modal-toggle="edit-modal"
+                class="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-3 py-1.5 text-center">
+          Editar
+        </button>
+      </td>
+
+    </tr>
+    <tr class="border-b bg-gray-50">
+      <th scope="row"
+          class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
+        120
+      </th>
+      <td class="px-6 py-4">
+        1020
+      </td>
+      <td class="px-6 py-4">
+        Reloj de pulsera
+      </td>
+      <td class="px-6 py-4">
+        $25.00
+      </td>
+      <td class="px-6 py-4">
+        $18.75
+      </td>
+      <td class="px-6 py-4">
+        25%
+      </td>
+      <td class="px-6 py-4">
+        Venta de invierno
+      </td>
+      <td class="px-3 py-4">
+        <button type="button"
+                data-modal-target="edit-modal"
+                data-modal-toggle="edit-modal"
+                class="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-3 py-1.5 text-center">
+          Editar
+        </button>
+      </td>
+
     </tr>
     </tbody>
   </table>
@@ -1313,7 +1447,7 @@
           x</h3>
         <form class="space-y-6" action="#">
           <div>
-            <label htmlFor="email"
+            <label for="email"
                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
               campo1
             </label>
@@ -1334,7 +1468,7 @@
   <div class="mx-auto w-full container p-4 sm:p-6">
     <div class="md:flex md:justify-between">
       <div class="flex md:basis-1/2 flex-col items-center mb-6 md:mb-0">
-        <a href="/src/index.html" class="flex items-center hover:text-black">
+        <a href="/src/pages/index.html" class="flex items-center hover:text-black">
           <img src="/imagens/R.png" class="h-24 object-contain w-8 mr-3" alt="Flowbite Logo"/>
           <span
             class="self-center text-xl font-semibold whitespace-nowrap dark:text-white">PokemonShop</span>
@@ -1444,6 +1578,10 @@
     </div>
   </div>
 </footer>
+
+
+
+
 
 
 
