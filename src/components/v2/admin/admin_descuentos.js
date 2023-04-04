@@ -2,7 +2,7 @@
   class="bg-gray-200 shadow border-gray-200 bg-white sticky w-full px-2 py-2.5 sm:px-4 z-20 top-0 left-0 border-b">
   <div
     class="flex flex-wrap items-center justify-center xs:justify-start gap-3 md:gap-0 md:justify-between md:flex-nowrap">
-    <a href="/src/index.html"
+    <a href="/src/pages/index.html"
        class="flex w-full basis-auto items-center justify-center xs:basis-2/4 md:basis-2/6 xs:justify-start lg:basis-5/12">
       <img src="https://flowbite.com/docs/images/logo.svg"
            class="mr-3 h-6 sm:h-9" alt="Flowbite Logo"/>
@@ -27,7 +27,7 @@
     </div>
     <div
       class="flex w-full basis-auto justify-around md:basis-3/12">
-      <a href="/src/pages/admin_usuarios.html">
+      <a href="/src/components/admin_v2/admin_usuarios.html">
         <button type="button"
                 class="p-2 text-white bg-blue-600 hover:bg-blue-600/90 focus:ring-4 focus:outline-none focus:ring-blue-600/50 font-medium rounded-full text-sm text-center inline-flex items-center dark:focus:ring-blue-600/55">
           <svg class="h-5 w-5" fill="none" stroke="currentColor"
@@ -600,7 +600,7 @@
   <ul
     class="flex flex-wrap -mb-px text-sm font-medium text-center text-gray-500 justify-center items-center">
     <li class="mr-2">
-      <a href="/src/pages/admin_usuarios.html"
+      <a href="/src/components/admin_v2/admin_usuarios.html"
          class="inline-flex p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 group"
       >
         <svg
@@ -616,7 +616,7 @@
       </a>
     </li>
     <li class="mr-2">
-      <a href="/src/pages/admin_descuentos.html"
+      <a href="/src/components/admin_v2/admin_descuentos.html"
          class="inline-flex p-4 text-blue-600 border-b-2 border-blue-600 rounded-t-lg active group"
          aria-current="page">
         <svg
@@ -633,7 +633,7 @@
       </a>
     </li>
     <li class="mr-2">
-      <a href="/src/pages/admin_productos.html"
+      <a href="/src/components/admin_v2/admin_productos.html"
          class="inline-flex p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 group">
         <svg class="w-5 h-5 mr-2 text-gray-400 group-hover:text-gray-500"
              fill="none" stroke="currentColor" stroke-width="1.5"

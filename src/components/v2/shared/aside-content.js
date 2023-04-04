@@ -45,7 +45,7 @@
         <div className="mx-auto w-full container p-4 sm:p-6">
             <div className="md:flex md:justify-between">
                 <div className="flex md:basis-1/2 flex-col items-center mb-6 md:mb-0">
-                    <a href="/src/index.html" className="flex items-center hover:text-black">
+                    <a href="/src/pages/index.html" className="flex items-center hover:text-black">
                         <img src="/imagens/R.png" className="h-24 object-contain w-8 mr-3"
                              alt="Flowbite Logo"/>
                         <span

@@ -13,7 +13,7 @@
                           d="M2 4.75A.75.75 0 012.75 4h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 4.75zm0 10.5a.75.75 0 01.75-.75h7.5a.75.75 0 010 1.5h-7.5a.75.75 0 01-.75-.75zM2 10a.75.75 0 01.75-.75h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 10z"></path>
                 </svg>
             </button>
-            <a href="/src/index.html"
+            <a href="/src/pages/index.html"
                class="hover:text-black flex w-full basis-auto items-center justify-center xs:basis-2/4 md:basis-2/6 xs:justify-start lg:basis-5/12">
                 <img src="/imagens/R.png" class="h-6 mr-3 sm:h-9" alt="Flowbite Logo"/>
                 <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white">PokemonShop</span>
@@ -37,7 +37,7 @@
         </div>
         <div
             class="flex w-full basis-auto justify-around md:basis-3/12">
-            <a href="/src/pages/admin_usuarios.html">
+            <a href="/src/components/admin_v2/admin_usuarios.html">
                 <button type="button"
                         class="p-2 text-white bg-blue-600 hover:bg-blue-600/90 focus:ring-4 focus:outline-none focus:ring-blue-600/50 font-medium rounded-full text-sm text-center inline-flex items-center dark:focus:ring-blue-600/55">
                     <svg class="h-5 w-5" fill="none" stroke="currentColor"
