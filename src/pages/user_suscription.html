@@ -35,7 +35,7 @@
   <title>User Suscription</title>
 </head>
 <body>
-<div class="h-screen w-screen flex flex-col bg-gray-100">
+<div class="h-full w-screen flex flex-col bg-gray-100">
   <nav
     class="bg-gray-200 shadow border-gray-200 bg-white sticky w-full px-2 py-2.5 sm:px-4 z-20 top-0 left-0 border-b">
     <div
@@ -688,7 +688,7 @@
   </div>
   <div
     class="w-full h-full p-4 flex justify-center items-center place-items-center ">
-    <div class=" lg:w-2/3 md:w-1/2 w-full bg-white rounded-lg shadow xs:w-5/5">
+    <div class=" lg:w-2/3 md:w-1/2 w-full h-full bg-white rounded-lg shadow xs:w-5/5">
       <div
         class="p-4 space-y-2 border-b rounded-t">
         <h3
@@ -700,87 +700,43 @@
         </p>
       </div>
 
-
+        
         <div class="Caja-register">
+          <form action="" class="formulario__gruop" id="formulario1">
+            
+            <span class="input-group-text ">Nombre</span>
+            <input id="nombre" name="nombre" type="text" aria-label="First name" class="form-control ">
+            <span class="input-group-text ">Apellido</span>
+            <input id="apellido" name="apellido" type="text" aria-label="Last name" class="form-control"> 
 
-          <div class="input-group item-caja-tarjeta">
-
-
-            <span class="input-group-text ">Nombre y Apellido</span>
-
-            <input id="nombre" type="text" aria-label="First name" class="form-control ">
-            <input id="apellido" type="text" aria-label="Last name" class="form-control">
-            <span class="input-group-text " id="basic-addon3">
-
-              <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-                <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0Zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4Zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10Z"/>
-              </svg>
-
-            </span>
-
-          </div>
-
-
-          <div class="input-group item-caja-tarjeta">
-
+            
             <span class="input-group-text">Banco</span>
             <input id="banco" type="text" class="form-control" placeholder="" aria-label="Recipient's username" aria-describedby="basic-addon2">
-            <span class="input-group-text" id="basic-addon4">
-              <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-                <path d="M2 1a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v7.764a3 3 0 0 0-4.989 2.497 2.01 2.01 0 0 0-.743.739H6.5a.5.5 0 0 0-.5.5V16H3a1 1 0 0 1-1-1V1Zm2 1.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5Zm3 0v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5Zm3.5-.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1ZM4 5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5ZM7.5 5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1Zm2.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5ZM4.5 8a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1Zm2.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5Z"/>
-                <path d="M9 13a1 1 0 0 1 1-1v-1a2 2 0 1 1 4 0v1a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1v-2Zm3-3a1 1 0 0 0-1 1v1h2v-1a1 1 0 0 0-1-1Z"/>
-              </svg>
-
-            </span>
-          </div>
-
-
-          <div class="input-group item-caja-tarjeta">
-
+      
             <span class="input-group-text">Numero tarjeta</span>
-            <input id="ntarjeta" type="text" class="form-control" placeholder="" aria-label="Recipient's username" aria-describedby="basic-addon2">
-            <span class="input-group-text" id="basic-addon5">
-              <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 8.25h19.5M2.25 9h19.5m-16.5 5.25h6m-6 2.25h3m-3.75 3h15a2.25 2.25 0 002.25-2.25V6.75A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25v10.5A2.25 2.25 0 004.5 19.5z"></path>
-              </svg>
-
-            </span>
-
-          </div>
-
-
-          <div class="input-group item-caja-tarjeta flex flex-col lg:flex-row">
-
-            <div class="flex w-full lg:w-1/2">
+            <input id="tarjeta" name="tarjeta" type="text" class="form-control" placeholder="" aria-label="Recipient's username" aria-describedby="basic-addon2">
+           
             <span class="input-group-text">Mes</span>
-            <input id="mes" type="text" aria-label="First name" class="form-control" placeholder="03"><p></p>
-            </div>
-            <div class="flex w-full lg:w-1/2">
+            <input id="mes" name="mes" type="text" aria-label="First name" class="form-control" placeholder="03"><p></p>
+             
             <span class="input-group-text">Año</span>
-            <input id="ano" type="text" aria-label="Last name" class="form-control "placeholder="30">
-            </div>
-          </div>
-
-          <div class="input-group item-caja-tarjeta">
+            <input id="ano" name="ano" type="text" aria-label="Last name" class="form-control "placeholder="30">
+          
+       
 
             <span class="input-group-text">Clave internet</span>
-            <input id="clavei" type="text" class="form-control" placeholder="" aria-label="Recipient's username" aria-describedby="basic-addon2">
-            <span class="input-group-text" id="basic-addon2">
-              <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-                <path d="M11 1a2 2 0 0 0-2 2v4a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2h5V3a3 3 0 0 1 6 0v4a.5.5 0 0 1-1 0V3a2 2 0 0 0-2-2z"/>
-              </svg>
-
-            </span>
-          </div>
+            <input id="clave" name="clave" type="text" class="form-control" placeholder="" aria-label="Recipient's username" aria-describedby="basic-addon2">
 
 
+
+          </form>
         </div>
-
-
+      
+      
       <div
-        class="grid grid-cols-2 p-6 space-x-2 border-t border-gray-200 rounded-b">
-
-        <button type="button" class=" ml-6 text-white bg-gradient-to-r from-cyan-500 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center ">
+        class="grid grid-cols-2 p-6 space-x-2 border-t border-gray-200 rounded-b ">
+        
+        <button id="guardar1" type="button" class=" ml-6 text-white bg-gradient-to-r from-cyan-500 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center ">
           Guardar
         </button>
 
@@ -954,6 +910,10 @@
   integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
   crossOrigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.min.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  
   <script src="../js/FormTj.js"></script>
 </body>
 </html>

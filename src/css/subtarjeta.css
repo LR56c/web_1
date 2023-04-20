@@ -16,3 +16,17 @@
 
 }
 
+
+.error{
+
+    display: block;
+    text-justify: center;
+    font-size: 15px;
+
+}
+
+.texto_valido{
+
+    display: none;
+
+}
