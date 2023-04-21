@@ -1,13 +1,13 @@
-.Caja-register{ 
+.Caja-register{
 
 
-    
+
     margin-left: 10%;
-    margin-right: 10%;  
+    margin-right: 10%;
     padding: 30px;
     border-radius: 20px;
 
-        
+
 }
 
 .item-caja-tarjeta{
@@ -18,11 +18,10 @@
 
 
 .error{
-
+    color: red;
     display: block;
     text-justify: center;
     font-size: 15px;
-
 }
 
 .texto_valido{
