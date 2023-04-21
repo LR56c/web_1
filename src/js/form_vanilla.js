@@ -89,23 +89,23 @@ function checkCausa() {
 }
 
 // eventos
-idInput.addEventListener("input", () => {
+idInput.addEventListener("focusout", () => {
     checkId()
 })
 
-nombreInput.addEventListener("input", () => {
+nombreInput.addEventListener("focusout", () => {
     checkNombre()
 })
 
-porcentajeInput.addEventListener("input", () => {
+porcentajeInput.addEventListener("focusout", () => {
     checkPorcentaje()
 })
 
-causaInput.addEventListener("input", () => {
+causaInput.addEventListener("focusout", () => {
     checkCausa()
 })
 
-// form
+ // form
 form.addEventListener("submit", (e) => {
     e.preventDefault();
     const bId = checkId();
@@ -113,13 +113,19 @@ form.addEventListener("submit", (e) => {
     const bPorcentaje = checkPorcentaje();
     const bCausa = checkCausa();
     if (bId && bNombre && bPorcentaje && bCausa) {
-        form.reset()
-    }else{
         Swal.fire({
-            title: 'Error!',
-            text: 'Revisa los datos del formulario',
-            icon: 'error',
+            title: 'Exito!',
+            text: 'Se ha registrado el descuento',
+            icon: 'success',
             confirmButtonText: 'Cerrar'
         })
+        form.reset()
+    }else{
+        // Swal.fire({
+        //     title: 'Error!',
+        //     text: 'Revisa los datos del formulario',
+        //     icon: 'error',
+        //     confirmButtonText: 'Cerrar'
+        // })
     }
 })

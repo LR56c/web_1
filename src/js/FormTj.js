@@ -35,56 +35,120 @@
 
 
 $(document).ready(function () {
-    let nombre = $("#nombre");
-    let apellido = $("#apellido");
-    let banco = $("#banco");
-    let tarjeta = $("#tarjeta");
-    let mes = $("#mes");
-    let ano = $("#ano");
-    let clave = $("#clave");
+  let nombre = $("#nombre");
+  let apellido = $("#apellido");
+  let banco = $("#banco");
+  let tarjeta = $("#tarjeta");
+  let mes = $("#mes");
+  let ano = $("#ano");
+  let clave = $("#clave");
 
-    $("#formulario1").validate({
+  $("#formulario1").validate({
 
-        rules: {
-            nombre: { required: true,minlength: 1, maxlength: 50 },
+    rules: {
+      nombre: {
+        required: true,
+        minlength: 1,
+        maxlength: 50
+      },
 
-            apellido: { required: true, minlength: 1, maxlength: 50 },
+      apellido: {
+        required: true,
+        minlength: 1,
+        maxlength: 50
+      },
 
-            banco:{required: true, minlength: 1, maxlength: 50},
-            
-            tarjeta: { required: true, minlength: 8, maxlength: 8},
+      banco: {
+        required: true,
+        minlength: 1,
+        maxlength: 50
+      },
 
-            mes: { required: true, number:true, min:1, max: 12},
+      tarjeta: {
+        required: true,
+        minlength: 8,
+        maxlength: 8
+      },
 
-            ano: { required: true, minlength: 2, maxlength:2},
+      mes: {
+        required: true,
+        number: true,
+        min: 1,
+        max: 12
+      },
 
-            clave: { required: true, minlength: 10, maxlength: 10}
+      ano: {
+        required: true,
+        minlength: 2,
+        maxlength: 2
+      },
 
+      clave: {
+        required: true,
+        minlength: 10,
+        maxlength: 10
+      }
+
+    },
+    messages:
+      {
+        nombre: {
+          required: "Ingrese un nombre",
+          minlength: "Debe tener almenos 1 caracter",
+          maxlength: "Debe tener maximo 50 caracter",
         },
-        messages:
-        {
-            nombre: "Ingrese una  nombre valido.",
-            apellido: "Ingrese una apellido valido.",
-            banco:"Ingresa un banco pailon.",
-            tarjeta: "La tarjeta debe de llevar 8 digitos.",
-            mes: "Solo numeros del 01 al 12.",
-            ano: "Solo los dos ultimos digitos del año.",
-            clave: "La clave es de 10 digitos!."
+        apellido: {
+          required: "Ingrese un apellido",
+          minlength: "Debe tener almenos 1 caracter",
+          maxlength: "Debe tener maximo 50 caracter",
+        },
+        banco: {
+          required: "Ingrese un banco valido",
+          minlength: "Debe tener almenos 1 caracter",
+          maxlength: "Debe tener maximo 50 caracter",
+        },
+        tarjeta: {
+          required: "Ingrese una tarjeta valida",
+          minlength: "La tarjeta debe tener 8 digitos",
+          maxlength: "La tarjeta debe tener 8 digitos"
+        },
+        mes: {
+          required: "Ingrese un mes valido",
+          number: "Solo numeros del 01 al 12",
+          min: "Solo numeros del 01 al 12",
+          max: "Solo numeros del 01 al 12",
+        },
+        ano: {
+          required: "Ingrese un año valido",
+          minlength: "Solo los dos ultimos digitos del año",
+          maxlength: "Solo los dos ultimos digitos del año"
+        },
+        clave: {
+          required: "Ingrese una clave valida",
+          minlength: "La clave debe tener 10 digitos",
+          maxlength: "La clave debe tener 10 digitos"
         }
+      }
+  })
 
+  $("#guardar1").click(function () {
+    if ($("#formulario1").valid() == false) {
 
-    })
-
-    $("#guardar1").click(function () {
-        if ($("#formulario1").valid() == false) {
-
-            Swal.fire({
-                title: 'Error!',
-                text: 'Vuelve a internarlo',
-                icon: 'error',
-                confirmButtonText: 'Cerrar'
-            })
-            return;
-        }
-    })
+      // Swal.fire({
+      //   title: 'Error!',
+      //   text: 'Vuelve a internarlo',
+      //   icon: 'error',
+      //   confirmButtonText: 'Cerrar'
+      // })
+      return;
+    }
+    else{
+      Swal.fire({
+        title: 'Exito!',
+        text: 'Se ha registrado la tarjeta',
+        icon: 'success',
+        confirmButtonText: 'Cerrar'
+      })
+    }
+  })
 })
