@@ -54,9 +54,9 @@ $(document).ready(function () {
             
             tarjeta: { required: true, minlength: 8, maxlength: 8},
 
-            mes: { required: true, number:true, min:1, max: 12},
+            mes: { required: true, number:true, min:1, max: 12,minlength: 2, maxlength:2},
 
-            ano: { required: true, minlength: 2, maxlength:2},
+            ano: { required: true, minlength: 2, maxlength:2, number:true},
 
             clave: { required: true, minlength: 10, maxlength: 10}
 
