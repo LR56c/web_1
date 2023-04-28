@@ -39,7 +39,7 @@
       <a href="../pages/index.html"
          class="hover:text-black flex w-full basis-auto items-center justify-center xs:basis-2/4 md:basis-2/6 xs:justify-start lg:basis-5/12">
         <img src="../../imagens/R.png" class="h-6 mr-3 sm:h-9" alt="Flowbite Logo"/>
-        <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white">PokemonShop</span>
+        <span class="self-center text-xl font-semibold whitespace-nowrap">PokemonShop</span>
       </a>
       <div class="relative flex w-full basis-auto md:basis-3/12">
         <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
@@ -52,14 +52,14 @@
           <span class="sr-only">Search icon</span>
         </div>
         <input type="text" id="search-navbar"
-               class="w-full rounded-lg border border-gray-300 bg-gray-50 pl-10 pr-2 py-2 text-sm text-gray-900 focus:border-blue-600 focus:ring-blue-600 dark:placeholder-gray-400 dark:border-gray-600 dark:bg-gray-700 dark:text-white md:w-52 lg:w-60 dark:focus:border-blue-600 dark:focus:ring-blue-600"
+               class="w-full rounded-lg border border-gray-300 bg-gray-50 pl-10 pr-2 py-2 text-sm text-gray-900 focus:border-blue-600 focus:ring-blue-600 md:w-52 lg:w-60"
                placeholder="Search..."/>
       </div>
       <div class="flex w-full basis-auto justify-around md:basis-3/12">
 
         <button type="button" data-drawer-target="drawer-cart" data-drawer-show="drawer-cart"
                 data-drawer-placement="right" aria-controls="drawer-cart"
-                class="p-2 text-white bg-blue-600 hover:bg-blue-600/90 focus:ring-4 focus:outline-none focus:ring-blue-600/50 font-medium rounded-full text-sm text-center inline-flex items-center dark:focus:ring-blue-600/55">
+                class="p-2 text-white bg-blue-600 hover:bg-blue-600/90 focus:ring-4 focus:outline-none focus:ring-blue-600/50 font-medium rounded-full text-sm text-center inline-flex items-center">
           <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"
                xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
             <path stroke-linecap="round" stroke-linejoin="round"
@@ -67,9 +67,9 @@
             </path>
           </svg>
         </button>
-        <a href="../pages/admin_usuarios_list.html">
+        <a href="../pages/user_detail.html">
           <button type="button"
-                  class="p-2 text-white bg-blue-600 hover:bg-blue-600/90 focus:ring-4 focus:outline-none focus:ring-blue-600/50 font-medium rounded-full text-sm text-center inline-flex items-center dark:focus:ring-blue-600/55">
+                  class="p-2 text-white bg-blue-600 hover:bg-blue-600/90 focus:ring-4 focus:outline-none focus:ring-blue-600/50 font-medium rounded-full text-sm text-center inline-flex items-center">
             <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"
                  xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
               <path stroke-linecap="round" stroke-linejoin="round"
@@ -79,7 +79,7 @@
           </button>
         </a>
         <button type="button" id="dropdownMenuIconButton" data-dropdown-toggle="dropdownDots"
-                class="p-2 text-white bg-blue-600 hover:bg-blue-600/90 focus:ring-4 focus:outline-none focus:ring-blue-600/50 font-medium rounded-full text-sm text-center inline-flex items-center dark:focus:ring-blue-600/55">
+                class="p-2 text-white bg-blue-600 hover:bg-blue-600/90 focus:ring-4 focus:outline-none focus:ring-blue-600/50 font-medium rounded-full text-sm text-center inline-flex items-center">
           <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"
                xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
             <path stroke-linecap="round" stroke-linejoin="round"
@@ -88,15 +88,15 @@
           </svg>
         </button>
         <div id="dropdownDots"
-             class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600">
-          <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownMenuIconButton">
+             class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44">
+          <ul class="py-2 text-sm text-gray-700" aria-labelledby="dropdownMenuIconButton">
             <li>
               <a href="../pages/user_suscription.html"
-                 class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Suscription</a>
+                 class="block px-4 py-2 hover:bg-gray-100">Suscription</a>
             </li>
             <li>
               <a href="../pages/login.html"
-                 class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Iniciar
+                 class="block px-4 py-2 hover:bg-gray-100">Iniciar
                 Sesion</a>
             </li>
           </ul>
@@ -105,13 +105,13 @@
     </div>
   </nav>
   <div id="drawer-cart"
-       class="fixed w-full xs:w-96 top-0 right-0 z-50 h-screen p-4 overflow-y-auto transition-transform translate-x-full bg-white dark:bg-gray-800"
+       class="fixed w-full xs:w-96 top-0 right-0 z-50 h-screen p-4 overflow-y-auto transition-transform translate-x-full bg-white"
        aria-labelledby="drawer-cart-right-label">
     <h5 id="drawer-right-label"
-        class="inline-flex items-center mb-4 text-base font-semibold text-gray-500 dark:text-gray-400">Listado
+        class="inline-flex items-center mb-4 text-base font-semibold text-gray-500">Listado
       carrito</h5>
     <button type="button" data-drawer-hide="drawer-cart" aria-controls="drawer-cart"
-            class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 absolute top-2.5 right-2.5 inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white">
+            class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 absolute top-2.5 right-2.5 inline-flex items-center">
       close
       <span class="sr-only">Close menu</span>
     </button>
@@ -122,7 +122,7 @@
         </p>
       </div>
       <a href="../pages/checkout.html"
-         class="h-12 px-12 py-2.5 text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-center">
+         class="h-12 px-12 py-2.5 text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-center">
         Ir a Pagar
       </a>
     </div>
@@ -516,64 +516,64 @@
       class="w-full sm:w-3/4 lg:max-w-3xl border border-gray-200 shadow p-8 mx-auto Caja-register bg-white rounded-lg z-10">
       <div class="space-y-6 flex flex-col">
         <h5
-          class="text-xl font-medium text-gray-900 dark:text-white">Registra tu cuenta</h5>
+          class="text-xl font-medium text-gray-900">Registra tu cuenta</h5>
         <div>
           <label for="nombre"
-                 class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nombre</label>
+                 class="block mb-2 text-sm font-medium text-gray-900">Nombre</label>
           <input type="text" name="nombre" id="nombre"
                  placeholder="name"
-                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                  required/>
         </div>
         <div>
           <label for="email"
-                 class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Correo</label>
+                 class="block mb-2 text-sm font-medium text-gray-900">Correo</label>
           <input type="email" name="email" id="email"
-                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                  placeholder="name@company.com" required/>
         </div>
         <div>
           <label for="password"
-                 class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Contraseña</label>
+                 class="block mb-2 text-sm font-medium text-gray-900">Contraseña</label>
           <input type="password" name="password" id="password"
                  placeholder="••••••••"
-                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                  required/>
         </div>
 
         <div>
           <label for="celular"
-                 class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Numero
+                 class="block mb-2 text-sm font-medium text-gray-900">Numero
             celular</label>
           <input type="text" name="celular" id="celular"
                  placeholder="+56912345678"
-                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                  required/>
         </div>
         <div>
           <label for="direccion"
-                 class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Direccion</label>
+                 class="block mb-2 text-sm font-medium text-gray-900">Direccion</label>
           <input type="text" name="direccion" id="direccion"
                  placeholder="Av. Siempre Viva 123"
-                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                  required/>
         </div>
         <div class="flex items-start mb-6 my-8">
           <div class="flex items-center h-5">
             <input id="remember" type="checkbox" value=""
-                   class="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800"
+                   class="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300"
                    required>
           </div>
-          <label for="remember" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Acepto <a
+          <label for="remember" class="ml-2 text-sm font-medium text-gray-900">Acepto <a
             href="../pages/404.html"
-            class="text-blue-600 hover:underline dark:text-blue-500">condiciones</a>.</label>
+            class="text-blue-600 hover:underline">condiciones</a>.</label>
         </div>
         <a
-          class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Registrarse
+          class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Registrarse
         </a>
-        <div class="text-sm font-medium text-gray-500 dark:text-gray-300">
+        <div class="text-sm font-medium text-gray-500">
           Ya estas registrado? <a href="../pages/login.html"
-                                  class="text-blue-700 hover:underline dark:text-blue-500">Ingresa
+                                  class="text-blue-700 hover:underline">Ingresa
           aqui</a>
         </div>
       </div>

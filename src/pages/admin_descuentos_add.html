@@ -35,13 +35,13 @@
 <body>
 
 <nav
-  class="sticky shadow px-2 py-2.5 sm:px-4 top-0 z-50 w-full bg-white border-b border-gray-200 dark:bg-gray-800 dark:border-gray-700">
+  class="sticky shadow px-2 py-2.5 sm:px-4 top-0 z-50 w-full bg-white border-b border-gray-200">
   <div
     class="flex flex-wrap items-center justify-center xs:justify-start gap-3 md:gap-0 md:justify-between md:flex-nowrap">
     <div class="flex">
       <button data-drawer-target="logo-sidebar" data-drawer-toggle="logo-sidebar" aria-controls="logo-sidebar"
               type="button"
-              class="inline-flex items-center p-2 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600">
+              class="inline-flex items-center p-2 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200">
         <span class="sr-only">Open sidebar</span>
         <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20"
              xmlns="http://www.w3.org/2000/svg">
@@ -52,7 +52,7 @@
       <a href="../pages/index.html"
          class="hover:text-black flex w-full basis-auto items-center justify-center xs:basis-2/4 md:basis-2/6 xs:justify-start lg:basis-5/12">
         <img src="../../imagens/R.png" class="h-6 mr-3 sm:h-9" alt="Flowbite Logo"/>
-        <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white">PokemonShop</span>
+        <span class="self-center text-xl font-semibold whitespace-nowrap">PokemonShop</span>
       </a>
     </div>
     <div class="relative flex w-full basis-auto md:basis-3/12">
@@ -68,7 +68,7 @@
         <span class="sr-only">Search icon</span>
       </div>
       <input type="text" id="search-navbar"
-             class="w-full rounded-lg border border-gray-300 bg-gray-50 pl-10 pr-2 py-2 text-sm text-gray-900 focus:border-blue-600 focus:ring-blue-600 dark:placeholder-gray-400 dark:border-gray-600 dark:bg-gray-700 dark:text-white md:w-52 lg:w-60 dark:focus:border-blue-600 dark:focus:ring-blue-600"
+             class="w-full rounded-lg border border-gray-300 bg-gray-50 pl-10 pr-2 py-2 text-sm text-gray-900 focus:border-blue-600 focus:ring-blue-600 md:w-52 lg:w-60"
              placeholder="Search..."/>
     </div>
     <div
@@ -79,7 +79,7 @@
               data-drawer-show="drawer-cart"
               data-drawer-placement="right"
               aria-controls="drawer-cart"
-              class="p-2 text-white bg-blue-600 hover:bg-blue-600/90 focus:ring-4 focus:outline-none focus:ring-blue-600/50 font-medium rounded-full text-sm text-center inline-flex items-center dark:focus:ring-blue-600/55">
+              class="p-2 text-white bg-blue-600 hover:bg-blue-600/90 focus:ring-4 focus:outline-none focus:ring-blue-600/50 font-medium rounded-full text-sm text-center inline-flex items-center">
         <svg class="h-5 w-5" fill="none" stroke="currentColor"
              stroke-width="1.5" viewBox="0 0 24 24"
              xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -87,9 +87,9 @@
                 d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z"></path>
         </svg>
       </button>
-      <a href="../pages/admin_usuarios_list.html">
+      <a href="../pages/user_detail.html">
         <button type="button"
-                class="p-2 text-white bg-blue-600 hover:bg-blue-600/90 focus:ring-4 focus:outline-none focus:ring-blue-600/50 font-medium rounded-full text-sm text-center inline-flex items-center dark:focus:ring-blue-600/55">
+                class="p-2 text-white bg-blue-600 hover:bg-blue-600/90 focus:ring-4 focus:outline-none focus:ring-blue-600/50 font-medium rounded-full text-sm text-center inline-flex items-center">
           <svg class="h-5 w-5" fill="none" stroke="currentColor"
                stroke-width="1.5" viewBox="0 0 24 24"
                xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -101,7 +101,7 @@
       <button type="button"
               id="dropdownMenuIconButton"
               data-dropdown-toggle="dropdownDots"
-              class="p-2 text-white bg-blue-600 hover:bg-blue-600/90 focus:ring-4 focus:outline-none focus:ring-blue-600/50 font-medium rounded-full text-sm text-center inline-flex items-center dark:focus:ring-blue-600/55">
+              class="p-2 text-white bg-blue-600 hover:bg-blue-600/90 focus:ring-4 focus:outline-none focus:ring-blue-600/50 font-medium rounded-full text-sm text-center inline-flex items-center">
         <svg class="h-5 w-5" fill="none" stroke="currentColor"
              stroke-width="1.5" viewBox="0 0 24 24"
              xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -110,16 +110,16 @@
         </svg>
       </button>
       <div id="dropdownDots"
-           class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600">
-        <ul class="py-2 text-sm text-gray-700 dark:text-gray-200"
+           class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44">
+        <ul class="py-2 text-sm text-gray-700"
             aria-labelledby="dropdownMenuIconButton">
           <li>
             <a href="../pages/user_suscription.html"
-               class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Suscription</a>
+               class="block px-4 py-2 hover:bg-gray-100">Suscription</a>
           </li>
           <li>
             <a href="../pages/login.html"
-               class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Iniciar Sesion</a>
+               class="block px-4 py-2 hover:bg-gray-100">Iniciar Sesion</a>
           </li>
         </ul>
       </div>
@@ -127,14 +127,14 @@
   </div>
 </nav>
 <div id="drawer-cart"
-     class="fixed w-full xs:w-96 top-0 right-0 z-50 h-screen p-4 overflow-y-auto transition-transform translate-x-full bg-white dark:bg-gray-800"
+     class="fixed w-full xs:w-96 top-0 right-0 z-50 h-screen p-4 overflow-y-auto transition-transform translate-x-full bg-white"
      aria-labelledby="drawer-cart-right-label">
   <h5 id="drawer-right-label"
-      class="inline-flex items-center mb-4 text-base font-semibold text-gray-500 dark:text-gray-400">Listado
+      class="inline-flex items-center mb-4 text-base font-semibold text-gray-500">Listado
     carrito</h5>
   <button type="button" data-drawer-hide="drawer-cart"
           aria-controls="drawer-cart"
-          class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 absolute top-2.5 right-2.5 inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white">
+          class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 absolute top-2.5 right-2.5 inline-flex items-center">
     close
     <span class="sr-only">Close menu</span>
   </button>
@@ -148,7 +148,7 @@
     </div>
     <a
       href="../pages/checkout.html"
-      class="h-12 px-12 py-2.5 text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-center">
+      class="h-12 px-12 py-2.5 text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-center">
       Ir a Pagar
     </a>
   </div>
@@ -637,17 +637,17 @@
 </div>
 <!-- * ASIDE -->
 <aside id="logo-sidebar"
-       class="fixed top-0 left-0 z-[49] w-64 h-screen pt-44 md:pt-20 transition-transform -translate-x-full bg-white border-r border-gray-200 md:translate-x-0 dark:bg-gray-800 dark:border-gray-700"
+       class="fixed top-0 left-0 z-[49] w-64 h-screen pt-44 md:pt-20 transition-transform -translate-x-full bg-white border-r border-gray-200 md:translate-x-0"
        aria-label="Sidebar">
-  <div class="h-full px-3 pb-4 overflow-y-auto bg-white dark:bg-gray-800">
+  <div class="h-full px-3 pb-4 overflow-y-auto bg-white">
     <ul class="space-y-2 font-medium">
       <li>
         <button type="button"
-                class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
+                class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100"
                 aria-controls="dropdown-p1" data-collapse-toggle="dropdown-p1">
 
           <svg
-            class="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white"
+            class="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 group-hover:text-gray-900"
             fill="none" stroke="currentColor" stroke-width="1.5"
             viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
             aria-hidden="true">
@@ -668,18 +668,18 @@
         <ul id="dropdown-p1" class="hidden py-2 space-y-2">
           <li>
             <a href="../pages/admin_productos_sidebar_add.html"
-               class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Agregar</a>
+               class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100">Agregar</a>
           </li>
           <li>
             <a href="../pages/admin_productos_sidebar_list.html"
-               class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Listado</a>
+               class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100">Listado</a>
           </li>
         </ul>
       </li>
       <li>
-        <a href="../pages/admin_usuarios_list.html" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
+        <a href="../pages/admin_usuarios_list.html" class="flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-100">
           <svg
-            class="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
+            class="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 group-hover:text-gray-900"
             fill="none"
             stroke="currentColor" stroke-width="1.5"
             viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
@@ -692,11 +692,11 @@
       </li>
       <li>
         <button type="button"
-                class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
+                class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100"
                 aria-controls="dropdown-p3" data-collapse-toggle="dropdown-p3">
 
           <svg
-            class="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
+            class="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 group-hover:text-gray-900"
             fill="none" stroke="currentColor" stroke-width="1.5"
             viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
             aria-hidden="true">
@@ -719,24 +719,24 @@
         <ul id="dropdown-p3" class="hidden py-2 space-y-2">
           <li>
             <a href="../pages/admin_descuentos_add.html"
-               class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Agregar</a>
+               class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100">Agregar</a>
           </li>
           <li>
             <a href="../pages/admin_descuentos_list.html"
-               class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Listado</a>
+               class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100">Listado</a>
           </li>
         </ul>
       </li>
 
       <li>
         <button type="button"
-                class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
+                class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100"
                 aria-controls="dropdown-p4" data-collapse-toggle="dropdown-p4">
 
                 <svg class="h-6 w-6 text-gray-500"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
                 </svg>
-                
+
 
           <span class="flex-1 ml-3 text-left whitespace-nowrap" sidebar-toggle-item>Cuenta</span>
 
@@ -752,15 +752,15 @@
         <ul id="dropdown-p4" class="hidden py-2 space-y-2">
           <li>
             <a href="../pages/user_detail.html"
-               class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Detalles de la cuenta</a>
+               class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100">Detalles de la cuenta</a>
           </li>
           <li>
             <a href="../pages/user_history.html"
-               class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Historial de pedidos</a>
+               class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100">Historial de pedidos</a>
           </li>
           <li>
             <a href="../pages/user_suscription.html"
-               class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Suscripcion</a>
+               class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100">Suscripcion</a>
           </li>
         </ul>
       </li>
@@ -773,46 +773,46 @@
 <div class="w-full flex flex-col h-full">
   <div class="p-4 md:ml-64 h-full">
     <div
-      class="sm:w-3/4 lg:max-w-3xl mx-auto sm:my-8 py-4 bg-white border border-gray-200 rounded-lg shadow p-8 dark:bg-gray-800 dark:border-gray-700">
+      class="sm:w-3/4 lg:max-w-3xl mx-auto sm:my-8 py-4 bg-white border border-gray-200 rounded-lg shadow p-8">
       <div class="space-y-6">
         <h5
-          class="text-xl font-medium text-gray-900 dark:text-white">Nuevo Descuento</h5>
+          class="text-xl font-medium text-gray-900">Nuevo Descuento</h5>
         <div>
           <label for="id-producto"
-                 class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">ID Producto</label>
+                 class="block mb-2 text-sm font-medium text-gray-900">ID Producto</label>
           <input type="text" name="id-producto" id="id-producto"
-                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"/>
+                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"/>
         </div>
         <div>
           <label for="nombre"
-                 class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nombre</label>
+                 class="block mb-2 text-sm font-medium text-gray-900">Nombre</label>
           <input type="text" name="nombre" id="nombre"
-                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"/>
+                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"/>
         </div>
         <div>
           <label for="porcentaje"
-                 class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Porcentaje</label>
+                 class="block mb-2 text-sm font-medium text-gray-900">Porcentaje</label>
           <input type="text" name="porcentaje" id="porcentaje"
-                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
           />
         </div>
         <div>
           <label for="causa"
-                 class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Causa Descuento</label>
+                 class="block mb-2 text-sm font-medium text-gray-900">Causa Descuento</label>
           <input type="text" name="causa" id="causa"
-                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
           />
         </div>
         <button
           href="/"
-          class="w-full text-white bg-gradient-to-r from-cyan-500 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+          class="w-full text-white bg-gradient-to-r from-cyan-500 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
           Crear
         </button>
       </div>
     </div>
   </div>
 
-  <footer class="bg-gray-200 dark:bg-gray-900 md:ml-64">
+  <footer class="bg-gray-200 md:ml-64">
     <div class="mx-auto w-full container p-4 sm:p-6">
       <div class="md:flex md:justify-between">
         <div class="flex md:basis-1/2 flex-col items-center mb-6 md:mb-0">
@@ -820,11 +820,11 @@
             <img src="../../imagens/R.png" class="h-24 object-contain w-8 mr-3"
                  alt="Flowbite Logo"/>
             <span
-              class="self-center text-xl font-semibold whitespace-nowrap dark:text-white">PokemonShop</span>
+              class="self-center text-xl font-semibold whitespace-nowrap">PokemonShop</span>
           </a>
           <div class="flex mt-4 space-x-6 sm:justify-center sm:mt-0">
             <a href="https://www.facebook.com/"
-               class="text-gray-500 hover:text-gray-900 dark:hover:text-white">
+               class="text-gray-500 hover:text-gray-900">
               <svg class="w-5 h-5" fill="currentColor"
                    viewBox="0 0 24 24" aria-hidden="true">
                 <path fill-rule="evenodd"
@@ -834,7 +834,7 @@
               <span class="sr-only">Facebook page</span>
             </a>
             <a href="https://www.instagram.com/"
-               class="text-gray-500 hover:text-gray-900 dark:hover:text-white">
+               class="text-gray-500 hover:text-gray-900">
               <svg class="w-5 h-5" fill="currentColor"
                    viewBox="0 0 24 24" aria-hidden="true">
                 <path fill-rule="evenodd"
@@ -844,7 +844,7 @@
               <span class="sr-only">Instagram page</span>
             </a>
             <a href="https://twitter.com/"
-               class="text-gray-500 hover:text-gray-900 dark:hover:text-white">
+               class="text-gray-500 hover:text-gray-900">
               <svg class="w-5 h-5" fill="currentColor"
                    viewBox="0 0 24 24" aria-hidden="true">
                 <path
@@ -858,9 +858,9 @@
           class="grid grid-cols-1 xxs:grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3">
           <div>
             <h2
-              class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">
+              class="mb-6 text-sm font-semibold text-gray-900 uppercase">
               Informacion</h2>
-            <ul class="text-gray-600 dark:text-gray-400">
+            <ul class="text-gray-600">
               <li class="mb-4">
                 <a href="../pages/404.html"
                    class="hover:underline hover:text-black">politica
@@ -885,10 +885,10 @@
           </div>
           <div>
             <h2
-              class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">
+              class="mb-6 text-sm font-semibold text-gray-900 uppercase">
               Servicio
               al cliente</h2>
-            <ul class="text-gray-600 dark:text-gray-400">
+            <ul class="text-gray-600">
               <li class="mb-4">
                 <a href="../pages/404.html"
                    class="hover:text-black hover:underline">formulario de
@@ -903,9 +903,9 @@
           </div>
           <div>
             <h2
-              class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">
+              class="mb-6 text-sm font-semibold text-gray-900 uppercase">
               Contactanos</h2>
-            <ul class="text-gray-600 dark:text-gray-400">
+            <ul class="text-gray-600">
               <li class="mb-4">
                 <a href="../pages/404.html"
                    class="hover:text-black hover:underline">+569
@@ -930,10 +930,10 @@
         </div>
       </div>
       <hr
-        class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8"/>
+        class="my-6 border-gray-200 sm:mx-auto lg:my-8"/>
       <div class="flex items-center justify-center">
         <span
-          class="text-sm text-gray-500 text-center dark:text-gray-400">© 2023. All Rights Reserved.
+          class="text-sm text-gray-500 text-center">© 2023. All Rights Reserved.
           </span>
       </div>
     </div>
