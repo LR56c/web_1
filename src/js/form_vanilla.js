@@ -105,6 +105,22 @@ causaInput.addEventListener("focusout", () => {
     checkCausa()
 })
 
+idInput.addEventListener("input", () => {
+    checkId()
+})
+
+nombreInput.addEventListener("input", () => {
+    checkNombre()
+})
+
+porcentajeInput.addEventListener("input", () => {
+    checkPorcentaje()
+})
+
+causaInput.addEventListener("input", () => {
+    checkCausa()
+})
+
  // form
 form.addEventListener("submit", (e) => {
     e.preventDefault();
@@ -120,12 +136,5 @@ form.addEventListener("submit", (e) => {
             confirmButtonText: 'Cerrar'
         })
         form.reset()
-    }else{
-        // Swal.fire({
-        //     title: 'Error!',
-        //     text: 'Revisa los datos del formulario',
-        //     icon: 'error',
-        //     confirmButtonText: 'Cerrar'
-        // })
     }
 })
