@@ -1,38 +1,19 @@
-// let nombre = $("#nombre");
-// nombre.on("input", function (event) {
-//     console.log(`Me llego ${nombre.val()}`)
-// });
+let suscrito = false
 
-// let apellido = $("#apellido");
-// apellido.on("input", function (event) {
-//     console.log(`Me llego ${apellido.val()}`)
-// });
+const subSettings = {
+  async: true,
+  crossDomain: true,
+  url: 'http://127.0.0.1:8000/api/sub',
+  method: 'GET',
+};
 
-// let banco = $("#banco");
-// banco.on("input", function (event) {
-//     console.log(`Me llego ${banco.val()}`)
-// });
-
-// let ntarjeta = $("#ntarjeta");
-// ntarjeta.on("input", function (event) {
-//     console.log(`Me llego ${ntarjeta.val()}`)
-// });
-
-// let mes = $("#mes");
-// mes.on("input", function (event) {
-//     console.log(`Me llego ${mes.val()}`)
-// });
-
-// let ano = $("#ano");
-// ano.on("input", function (event) {
-//     console.log(`Me llego ${ano.val()}`)
-// });
-
-// let clavei = $("#clavei");
-// clavei.on("input", function (event) {
-//     console.log(`Me llego ${clavei.val()}`)
-// });
-
+const swalWithBootstrapButtons = Swal.mixin({
+  customClass: {
+    confirmButton: 'text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2',
+    cancelButton: 'text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2'
+  },
+  buttonsStyling: false
+})
 
 $(document).ready(function () {
   let nombre = $("#nombre");
@@ -43,7 +24,31 @@ $(document).ready(function () {
   let ano = $("#ano");
   let clave = $("#clave");
 
-  $("#formulario1").validate({
+  let formContent = $("#form-content");
+  let formActivated = $("#form-activated");
+  let form = $("#formulario1");
+
+  const p = $.ajax(subSettings)
+
+  p.fail(function (error, status) {
+    suscrito = false
+  })
+
+  p.done(function (response) {
+    suscrito = response.sub
+  })
+
+  p.always(function () {
+    if (suscrito) {
+      formActivated.removeClass("hidden");
+      formContent.hide();
+    } else {
+      formContent.removeClass("hidden");
+      formActivated.hide();
+    }
+  })
+
+  form.validate({
 
     rules: {
       nombre: {
@@ -110,7 +115,7 @@ $(document).ready(function () {
         tarjeta: {
           required: "Ingrese una tarjeta valida",
           minlength: "La tarjeta debe tener 8 digitos",
-          maxlength: "La tarjeta debe tener 8 digitos"
+          maxlength: "La tarjketa debe tener 8 digitos"
         },
         mes: {
           required: "Ingrese un mes valido",
@@ -132,23 +137,36 @@ $(document).ready(function () {
   })
 
   $("#guardar1").click(function () {
-    if ($("#formulario1").valid() == false) {
-
-      // Swal.fire({
-      //   title: 'Error!',
-      //   text: 'Vuelve a internarlo',
-      //   icon: 'error',
-      //   confirmButtonText: 'Cerrar'
-      // })
-      return;
-    }
-    else{
+    if (form.valid()) {
       Swal.fire({
         title: 'Exito!',
         text: 'Se ha registrado la tarjeta',
         icon: 'success',
         confirmButtonText: 'Cerrar'
       })
+      suscrito = true
+      formContent.hide();
+      formActivated.show();
     }
   })
+
+  $("#desuscribir").click(function () {
+    swalWithBootstrapButtons.fire({
+      title: 'Estas seguro?',
+      text: "Te desuscribiras de la pagina",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Si',
+      cancelButtonText: 'No',
+      focusConfirm: false,
+      focusCancel: true,
+    }).then((result) => {
+      if (result.isConfirmed) {
+        suscrito = false
+        formContent.show();
+        formActivated.hide();
+      }
+    })
+  })
+
 })
