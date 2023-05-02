@@ -28,17 +28,17 @@ $(document).ready(function () {
   let formActivated = $("#form-activated");
   let form = $("#formulario1");
 
-  const p = $.ajax(subSettings)
+  const peticionSubcripcion = $.ajax(subSettings)
 
-  p.fail(function (error, status) {
+  peticionSubcripcion.fail(function (error, status) {
     suscrito = false
   })
 
-  p.done(function (response) {
+  peticionSubcripcion.done(function (response) {
     suscrito = response.sub
   })
 
-  p.always(function () {
+  peticionSubcripcion.always(function () {
     if (suscrito) {
       formActivated.removeClass("hidden");
       formContent.hide();
