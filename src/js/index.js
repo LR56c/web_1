@@ -18,6 +18,7 @@ $(document).ready(function () {
     const ofertas = $('#ofertas')
     const productos = $('#productos')
 
+     //Agrega objetos al div 1
     const peticionProductos = $.ajax(productsSettings)
     peticionProductos.done(function (response) {
         $.each(response, function (i, item) {
@@ -84,6 +85,7 @@ $(document).ready(function () {
 </div>`)
     })
 
+      //Agrega objetos al div 2 
     const peticionOfertas = $.ajax(offerSettings)
     peticionOfertas.done(function (response) {
         $.each(response, function (i, item) {
