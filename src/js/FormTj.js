@@ -3,7 +3,7 @@ let suscrito = false
 const subSettings = {
   async: true,
   crossDomain: true,
-  url: 'http://127.0.0.1:8000/api/sub',
+  url: 'https://django-server-production-157c.up.railway.app/api/sub',
   method: 'GET',
 };
 
