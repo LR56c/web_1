@@ -115,7 +115,7 @@ $(document).ready(function () {
         tarjeta: {
           required: "Ingrese una tarjeta valida",
           minlength: "La tarjeta debe tener 8 digitos",
-          maxlength: "La tarjketa debe tener 8 digitos"
+          maxlength: "La tarjeta debe tener 8 digitos"
         },
         mes: {
           required: "Ingrese un mes valido",
