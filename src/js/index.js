@@ -49,7 +49,7 @@ $(document).ready(function () {
                 id="${divId}-price"
                 class="text-2xl font-bold">
               $${Math.round(item.price - (item.price * (item.discount / 100)))}
-</div>
+      </div>
             <div 
                 id="${divId}-discount"
                 class="text-xs">(-${item.discount}% descuento)</div>
