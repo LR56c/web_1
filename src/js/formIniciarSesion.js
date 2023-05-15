@@ -10,23 +10,23 @@ $(document).ready(function (){
 
         form.validate({
             rules:{
-                email:{
-                    requiered: true,
+                emailc:{
+                    required: true,
                     maxlength: 50,
                     minlength: 10
                 },
-                password:{
-                    requiered: true  
+                password1:{
+                    required: true  
                 }
             },
             messages:{
-                email:{
-                    requiered: "Debe ingresar son correo electronico",
+                emailc:{
+                    required: "Debe ingresar un correo electronico",
                     maxlength: "El correo es demaciado largo",
                     minlength: "El correo es demaciado corto"
                 },
-                pasword:{
-                    requiered: "Debe ingresar una contraseña"
+                password1:{
+                    required: "Debe ingresar una contraseña"
                 }
             }
         })
