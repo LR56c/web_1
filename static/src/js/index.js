@@ -29,7 +29,7 @@ $(document).ready(function () {
       <a href="../pages/product_detail.html" class="basis-3/5 flex justify-center items-center">
         <img 
         class="object-contain rounded-t-lg max-h-32"
-             src="../../imagens/muchilpokebol.png"
+             src="https://firebasestorage.googleapis.com/v0/b/django-28580.appspot.com/o/muchilpokebol.png?alt=media&token=7d07e642-596c-47e8-a364-baa055027773"
              alt=""/>
       </a>
       <div
@@ -101,7 +101,7 @@ $(document).ready(function () {
               <div class="h-full w-full basis-2/3 flex justify-center items-center">
                 <img
                   class="rounded-t-lg max-h-32 object-contain"
-                  src="../../imagens/chalapuchu.png"
+                  src="https://firebasestorage.googleapis.com/v0/b/django-28580.appspot.com/o/muchilpokebol.png?alt=media&token=7d07e642-596c-47e8-a364-baa055027773"
                   alt=""/>
             </div>
           <div class="mx-auto basis-1/3">
