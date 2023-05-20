@@ -1,9 +1,18 @@
 {
-  "dependencies": {
-    "flowbite": "^1.6.4",
-    "joi": "^17.9.1"
-  },
+  "name": "web_1",
+  "version": "1.0.0",
+  "description": "nombre proyecto: Tienda accesorios pokemon",
+  "main": "tailwind.config.js",
   "devDependencies": {
     "tailwindcss": "^3.3.2"
+  },
+  "scripts": {
+    "tw": "npx tailwindcss -i ./static/src/css/input.css -o ./static/src/css/output.css --watch"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "flowbite": "^1.6.5"
   }
 }

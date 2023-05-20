@@ -1,26 +1,17 @@
-{% load compress %}
+{% extends 'base.html' %}
 {% load static %}
 
-<!DOCTYPE html>
-<html lang="en">
+{% block title %}Título personalizado{% endblock %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Django + Tailwind CSS + Flowbite</title>
+{% block css %}
+<link href="{% static 'src/css/index.css' %}" rel="stylesheet">
+{% endblock %}
 
-    {% compress css %}
-    <link rel="stylesheet" href="{% static 'src/output.css' %}">
-    {% endcompress %}
+{% block nav %}
+<div>soy un nav de la tienda</div>
+{% endblock %}
 
-</head>
-
-<body class="bg-green-50">
-<div class="container mx-auto mt-4">
-    {% block content %}
-    {% endblock content %}
-</div>
-</body>
-
-</html>
+{% block content %}
+<h1 class="text-3xl text-green-800">Django + Tailwind CSS + Flowbite</h1>
+<h2 class="Titulo-1">hola</h2>
+{% endblock content %}
