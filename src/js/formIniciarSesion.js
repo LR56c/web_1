@@ -3,11 +3,10 @@
 $(document).ready(function (){
 
     let email = $("#emailc");
-    let password = $("#password1");  
+    let password = $("#password1");
     let form = $("#formulario2");
 
     $("#guardar1").click(function (){
-
         form.validate({
             rules:{
                 emailc:{
@@ -30,7 +29,7 @@ $(document).ready(function (){
                 }
             }
         })
-        
+
     })
 
 })

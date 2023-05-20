@@ -1,20 +1,9 @@
 {
-  "name": "web_1",
-  "version": "1.0.0",
-  "description": "",
-  "type": "module",
-  "main": "index.js",
-  "scripts": {
-    "dev": "tailwindcss -i ./src/css/global.css -o ./dist/output.css --watch"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "devDependencies": {
-    "tailwindcss": "^3.2.7"
-  },
   "dependencies": {
     "flowbite": "^1.6.4",
     "joi": "^17.9.1"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.3.2"
   }
 }
