@@ -1,5 +1,4 @@
 
-
 $(document).ready(function (){
 
     let email = $("#emailc");
@@ -15,17 +14,19 @@ $(document).ready(function (){
                     minlength: 10
                 },
                 password1:{
-                    required: true  
+                    required: true, 
+                    minlength: 8 
                 }
             },
             messages:{
                 emailc:{
-                    required: "Debe ingresar un correo electronico",
-                    maxlength: "El correo es demaciado largo",
-                    minlength: "El correo es demaciado corto"
+                    required: "Debe ingresar un correo electronico.",
+                    maxlength: "El correo es demaciado largo.",
+                    minlength: "El correo es demaciado corto."
                 },
                 password1:{
-                    required: "Debe ingresar una contraseña"
+                    required: "Debe ingresar una contraseña.",
+                    minlength: "Clave incorrecta."
                 }
             }
         })
