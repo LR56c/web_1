@@ -22,7 +22,7 @@ $(document).ready(function (){
                     minlength: 1
                 },
                 email:{
-                    required: true  
+                    required: true
                 },
                 password:{
                     required: true

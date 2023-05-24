@@ -7,7 +7,7 @@
     "tailwindcss": "^3.3.2"
   },
   "scripts": {
-    "tw": "npx tailwindcss -i ./static/src/css/input.css -o ./static/src/css/output.css --watch"
+    "tw": "npx tailwindcss -i ./static/src/css/input.css -o ./static/src/css/output.css"
   },
   "keywords": [],
   "author": "",
