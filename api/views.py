@@ -1,5 +1,12 @@
+import os
+from django.core.files.uploadedfile import InMemoryUploadedFile
 from django.http import JsonResponse
-from tienda import models as tienda_models
+from django.shortcuts import redirect, render
+from firebase_admin import storage
+
+from pokemonShop import settings
+from tienda import forms as tienda_forms
+from tienda.models import Producto
 
 pokemonAccesoriesList = ["Gorra de Ash Ketchum", "Bufanda de Pikachu",
 	"Mochila de Pokémon", "Calcetines con diseños de Poké Balls",
@@ -66,22 +73,7 @@ for i in range( len( offerList ) ):
 	}
 
 
-def products( request ):
-	# ref = db.reference('productos')
-	# print(ref.get())
-
-	# bucket = storage.bucket()
-	# ruta_al_archivo_local = os.path.join(BASE_DIR, 'static',
-	# 'muchilpokebol.png')
-	# ruta_en_storage = 'muchilpokebol.png'
-	# blob = bucket.blob(ruta_en_storage)
-	# blob.upload_from_filename(ruta_al_archivo_local)
-
-	# bucket_name = 'django-28580.appspot.com'
-	# blob_name = 'muchilpokebol.png'
-	# bucket = storage.bucket(bucket_name)
-	# blob = bucket.blob(blob_name)
-	# print(blob)
+def productsData( request ):
 	return JsonResponse( data )
 
 
@@ -95,27 +87,145 @@ subcriptionData = {
 
 
 def subcription( request ):
-	# usuario = Usuario( nombre='John Doe', email='johndoe@example.com' )
-	# usuario.save()
-	# usuarios = Usuario.objects.filter( nombre='John Doe' )
-	# print(usuarios[0].email)
 	return JsonResponse( subcriptionData )
 
+def product_get( request, id ):
+	context = { }
 
-def file( request ):
+	if request.method == 'GET':
+		try:
+			producto = Producto.objects.get( id=id )
+			context['producto'] = producto
+			return render( request, 'ver_producto.html', context, status=200 )
+		except Exception as e:
+			pass
+
+	return redirect( 'index' )
+
+
+def product_edit( request, id ):
+	context = { }
+
 	if request.method == 'POST':
-		form = tienda_models.ProductoForm( request.POST, request.FILES )
-		if form.is_valid():
-			image_file = form.cleaned_data['image']
-			return JsonResponse( {
-				# 'status': 'Imagen subida exitosamente'
-				'status': 'true'
-			} )
+		print( 'PUT' )
+		producto = Producto.objects.get( id=id )
+		if producto:
+			valor = request.POST.get( 'valor' )
+			nombre = request.POST.get( 'nombre' )
+			imagen = request.FILES.get( 'imagen' )
+			imageName = request.POST.get( 'imageName' )
 
-		return JsonResponse( {
-			'status': 'false'
+			# bucket = storage.bucket()
+			# blob = bucket.blob( producto.imagen )
+			# blob.rewrite( imagen )
+			print( 'imagen' )
+			print( producto.imageName )
+			firebaseDelete( producto.imageName )
+			image_url = firebaseUpload( imagen )
+
+			# form = tienda_forms.ProductoForm( request.POST, request.FILES )
+			form = tienda_forms.ProductoForm( {
+				'id'       : id,
+				'valor'    : valor,
+				'nombre'   : nombre,
+				'imagen'   : image_url,
+				'imageName': imageName
+			}, instance=producto )
+
+			if form.is_valid():
+				form.save()
+				form = tienda_forms.ProductoForm()
+
+				context['success'] = True
+
+				return JsonResponse( context, status=200 )
+			else:
+				context['success'] = False
+
+				errors = form.errors.as_json()
+				context['errors'] = errors
+		else:
+			context['errors'] = ['Producto no encontrado']
+
+	return JsonResponse( context, status=404 )
+
+
+def products( request ):
+	productos = Producto.objects.all()
+	context = {
+		'productos': productos,
+	}
+	return render( request, 'index_tienda.html', context )
+
+
+def product_create( request ):
+	print( 'POST' )
+	context = { }
+	if request.method == 'POST':
+		valor = request.POST.get( 'valor' )
+		nombre = request.POST.get( 'nombre' )
+		imagen = request.FILES.get( 'imagen' )
+		imageName = request.POST.get( 'imageName' )
+
+		image_url = firebaseUpload( imagen )
+
+		# form = tienda_forms.ProductoForm( request.POST, request.FILES )
+		form = tienda_forms.ProductoForm( {
+			'valor'    : valor,
+			'nombre'   : nombre,
+			'imagen'   : image_url,
+			'imageName': imageName
 		} )
 
-	return JsonResponse( {
-		'error': 'Error en la solicitud'
-	}, status=400 )
+		if form.is_valid():
+			form.save()
+			form = tienda_forms.ProductoForm()
+
+			context['success'] = True
+
+			return JsonResponse( context, status=200 )
+		else:
+			context['success'] = False
+
+			errors = form.errors.as_json()
+			context['errors'] = errors
+
+	return JsonResponse( context, status=404 )
+
+
+def firebaseUpload( imagen ):
+	imagen: InMemoryUploadedFile = imagen
+	temp_image_path = os.path.join( settings.STATIC_URL, 'imagens', imagen.name )
+	with open( temp_image_path, 'wb' ) as temp_image_file:
+		temp_image_file.write( imagen.read() )
+	bucket = storage.bucket()
+	ruta_en_storage = imagen.name
+	blob = bucket.blob( ruta_en_storage )
+	blob.upload_from_filename( temp_image_path )
+	blob.make_public()
+	os.remove( temp_image_path )
+	return blob.public_url
+
+
+def product_delete( request, id ):
+	context = { }
+
+	if request.method == 'GET':
+		producto = Producto.objects.get( id=id )
+		if producto:
+
+			firebaseDelete( producto.imageName )
+
+			producto.delete()
+			context['success'] = True
+			return JsonResponse( context, status=200 )
+		else:
+			context['errors'] = ['Producto no encontrado']
+
+	return JsonResponse( context, status=404 )
+
+
+def firebaseDelete( imagen_url ):
+	bucket = storage.bucket()
+	blob = bucket.blob( imagen_url )
+	blob.delete()

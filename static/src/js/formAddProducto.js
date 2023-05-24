@@ -1,10 +1,3 @@
-const productsSettings = {
-	async      : true,
-	crossDomain: true,
-	url        : 'https://django-server-production-d59b.up.railway.app/api/file',
-	method     : 'GET'
-}
-
 $( document )
 	.ready( function () {
 
@@ -14,27 +7,9 @@ $( document )
 
 		form.submit( function ( e ) {
 			e.preventDefault()
-			console.log( 'form' )
-			const file = $( '#dropzone-file' )
 
-			let formData = new FormData( this )
+			if (!form.valid()) return
 
-			formData.append( 'file', file.val() )
-
-			const peticionProductos = $.ajax( {
-					async      : true,
-					crossDomain: true,
-					url        : 'https://django-server-production-d59b.up.railway.app/api/file',
-					method     : 'POST',
-					data       : JSON.stringify( formData ),
-				}
-			)
-			peticionProductos.done( function ( response ) {
-				console.log( 'response' )
-				console.log( response )
-			} )
-
-			return
 			form.validate( {
 				rules   : {
 					nombre: {
@@ -55,6 +30,25 @@ $( document )
 						required: 'Debe ingresar un precio valido.'
 					}
 				}
+			} )
+
+			const file = $( '#imagen' )
+
+			let formData = new FormData( this )
+
+			formData.append( 'file', file.val() )
+
+			const peticionProductos = $.ajax( {
+					async      : true,
+					crossDomain: true,
+					url        : 'http://ec2-18-231-153-185.sa-east-1.compute.amazonaws.com:8000/api/product/crear',
+					method     : 'POST',
+					data       : JSON.stringify( formData ),
+				}
+			)
+			peticionProductos.done( function ( response ) {
+				console.log( 'response' )
+				console.log( response )
 			} )
 		} )
 	} )
