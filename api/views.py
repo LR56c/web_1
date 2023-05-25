@@ -107,7 +107,6 @@ def product_edit( request, id ):
 	context = { }
 
 	if request.method == 'POST':
-		print( 'PUT' )
 		producto = Producto.objects.get( id=id )
 		if producto:
 			valor = request.POST.get( 'valor' )
@@ -115,11 +114,6 @@ def product_edit( request, id ):
 			imagen = request.FILES.get( 'imagen' )
 			imageName = request.POST.get( 'imageName' )
 
-			# bucket = storage.bucket()
-			# blob = bucket.blob( producto.imagen )
-			# blob.rewrite( imagen )
-			print( 'imagen' )
-			print( producto.imageName )
 			firebaseDelete( producto.imageName )
 			image_url = firebaseUpload( imagen )
 
@@ -159,7 +153,6 @@ def products( request ):
 
 
 def product_create( request ):
-	print( 'POST' )
 	context = { }
 	if request.method == 'POST':
 		valor = request.POST.get( 'valor' )
@@ -181,6 +174,7 @@ def product_create( request ):
 			form.save()
 			form = tienda_forms.ProductoForm()
 
+			print( 'to sucess' )
 			context['success'] = True
 
 			return JsonResponse( context, status=200 )

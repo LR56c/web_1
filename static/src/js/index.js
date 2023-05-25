@@ -2,14 +2,20 @@ const productsSettings = {
 	async      : true,
 	crossDomain: true,
 	url        : 'http://ec2-18-231-153-185.sa-east-1.compute.amazonaws.com:8000/api',
-	method     : 'GET'
+	// url        : 'http://127.0.0.1:8000/api',
+	method     : 'GET',
+	processData: false,
+	contentType: false
 }
 
 const offerSettings = {
 	async      : true,
 	crossDomain: true,
 	url        : 'http://ec2-18-231-153-185.sa-east-1.compute.amazonaws.com:8000/api/offer',
-	method     : 'GET'
+	// url        : 'http://127.0.0.1:8000/api/offer',
+	method     : 'GET',
+	processData: false,
+	contentType: false
 }
 
 const productsList = []

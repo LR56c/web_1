@@ -11,7 +11,8 @@
 				<form
 					method="POST"
 					enctype="multipart/form-data"
-					action="{% url 'crear_producto'%}"
+					{#					action="{% url 'crear_producto'%}"#}
+					action="/api/product/crear"
 					class="space-y-6"
 					id="form4">
 					{% csrf_token %}

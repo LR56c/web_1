@@ -8,7 +8,9 @@ $( document )
 		form.submit( function ( e ) {
 			e.preventDefault()
 
-			if (!form.valid()) return
+			if ( !form.valid() ) {
+				return
+			}
 
 			form.validate( {
 				rules   : {
@@ -32,18 +34,21 @@ $( document )
 				}
 			} )
 
-			const file = $( '#imagen' )
-
 			let formData = new FormData( this )
-
-			formData.append( 'file', file.val() )
+			console.log( 'formData' )
+			const imageName = formData.get('imagen').name
+			formData.append( 'imageName', imageName )
+			console.log( formData )
 
 			const peticionProductos = $.ajax( {
 					async      : true,
 					crossDomain: true,
 					url        : 'http://ec2-18-231-153-185.sa-east-1.compute.amazonaws.com:8000/api/product/crear',
+					// url        : 'http://127.0.0.1:8000/api/product/crear',
 					method     : 'POST',
-					data       : JSON.stringify( formData ),
+					data       : formData,
+					processData: false,
+					contentType: false
 				}
 			)
 			peticionProductos.done( function ( response ) {
