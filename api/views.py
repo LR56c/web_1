@@ -174,9 +174,7 @@ def product_create( request ):
 			form.save()
 			form = tienda_forms.ProductoForm()
 
-			print( 'to sucess' )
 			context['success'] = True
-
 			return JsonResponse( context, status=200 )
 		else:
 			context['success'] = False

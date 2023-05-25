@@ -1,6 +1,21 @@
 {% extends 'base_admin.html' %}
 {% block title %}Ver Productos{% endblock %}
 {% block aside-content %}
+	<div>
+		{% if productos %}
+			{% for producto in productos %}
+				<div>{{ producto.id }}</div>
+				<div>{{ producto.valor }}</div>
+				<div>{{ producto.nombre }}</div>
+				<img
+					src="{{ producto.imagen }}"
+					class="h-12 w-12 object-contain"
+					alt="..."/>
+			{% endfor %}
+		{% else %} 
+			No hay productos
+		{% endif %}
+	</div>
 	<div aria-hidden="true"
 		id="edit-modal"
 		class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] md:h-full">
