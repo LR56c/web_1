@@ -38,6 +38,9 @@ $( document )
 					},
 					valor : {
 						required: true
+					},
+					descripcion: {
+						required: true
 					}
 				},
 				messages: {
@@ -47,6 +50,9 @@ $( document )
 					},
 					valor : {
 						required: 'Debe ingresar un precio valido.'
+					},
+					descripcion : {
+						required: 'Debe ingresar una descripcion.'
 					}
 				}
 			} )
