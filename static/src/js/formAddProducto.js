@@ -70,8 +70,8 @@ $( document )
 			const peticionProductos = $.ajax( {
 					async      : true,
 					crossDomain: true,
-					url        : 'http://ec2-18-231-153-185.sa-east-1.compute.amazonaws.com:8000/api/product/crear',
-					// url        : 'http://127.0.0.1:8000/api/product/crear',
+					// url        : 'http://ec2-18-231-153-185.sa-east-1.compute.amazonaws.com:8000/api/product/crear',
+					url        : 'http://127.0.0.1:8000/api/product/crear',
 					method     : 'POST',
 					data       : formData,
 					processData: false,

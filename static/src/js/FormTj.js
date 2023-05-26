@@ -3,8 +3,8 @@ let suscrito = false
 const subSettings = {
   async: true,
   crossDomain: true,
-  url: 'http://ec2-18-231-153-185.sa-east-1.compute.amazonaws.com:8000/api/sub',
-  // url        : 'http://127.0.0.1:8000/api/sub',
+  // url: 'http://ec2-18-231-153-185.sa-east-1.compute.amazonaws.com:8000/api/sub',
+  url        : 'http://127.0.0.1:8000/api/sub',
   method: 'GET',
   processData: false,
   contentType: false
