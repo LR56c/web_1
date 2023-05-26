@@ -159,9 +159,9 @@ def product_create(request):
         valor = request.POST.get('valor')
         nombre = request.POST.get('nombre')
         imagen = request.FILES.get('imagen')
+        stock = request.POST.get('stock')
         imageName = request.POST.get('imageName')
         descripcion = request.POST.get('descripcion')
-
         image_url = firebaseUpload(imagen)
 
         form = tienda_forms.ProductoForm({
@@ -169,9 +169,11 @@ def product_create(request):
             'nombre': nombre,
             'imagen': image_url,
             'imageName': imageName,
+            'stock': stock,
             'descripcion': descripcion
         })
 
+        print(form)
         if form.is_valid():
             form.save()
             form = tienda_forms.ProductoForm()

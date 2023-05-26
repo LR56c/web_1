@@ -23,8 +23,6 @@ $( document )
 			imagenTextPreview.text( file.name )
 		} )
 
-		let nombre = $( '#nombre' )
-		let precio = $( '#precio' )
 		let form   = $( '#form4' )
 
 		form.submit( function ( e ) {
@@ -34,9 +32,11 @@ $( document )
 				rules   : {
 					nombre: {
 						required: true
-
 					},
 					valor : {
+						required: true
+					},
+					stock : {
 						required: true
 					},
 					descripcion: {
@@ -46,10 +46,12 @@ $( document )
 				messages: {
 					nombre: {
 						required: 'Debe ingresar un nombre'
-
 					},
 					valor : {
 						required: 'Debe ingresar un precio valido.'
+					},
+					stock : {
+						required: 'Debe ingresar un stock valido.'
 					},
 					descripcion : {
 						required: 'Debe ingresar una descripcion.'

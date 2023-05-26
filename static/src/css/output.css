@@ -1541,6 +1541,10 @@ input:checked + .toggle-bg {
   height: calc(100% - 1rem);
 }
 
+.h-auto {
+  height: auto;
+}
+
 .h-full {
   height: 100%;
 }
@@ -1555,6 +1559,10 @@ input:checked + .toggle-bg {
 
 .max-h-36 {
   max-height: 9rem;
+}
+
+.max-h-96 {
+  max-height: 24rem;
 }
 
 .min-h-screen {
@@ -4513,6 +4521,10 @@ input:checked + .toggle-bg {
 }
 
 @media (min-width: 768px) {
+  .md\:relative {
+    position: relative;
+  }
+
   .md\:inset-0 {
     inset: 0px;
   }
@@ -4543,6 +4555,10 @@ input:checked + .toggle-bg {
 
   .md\:h-full {
     height: 100%;
+  }
+
+  .md\:max-h-\[32rem\] {
+    max-height: 32rem;
   }
 
   .md\:w-52 {
@@ -4594,6 +4610,10 @@ input:checked + .toggle-bg {
     gap: 0px;
   }
 
+  .md\:p-4 {
+    padding: 1rem;
+  }
+
   .md\:p-6 {
     padding: 1.5rem;
   }
@@ -4607,8 +4627,8 @@ input:checked + .toggle-bg {
     padding-left: 16rem;
   }
 
-  .md\:pt-20 {
-    padding-top: 5rem;
+  .md\:pt-4 {
+    padding-top: 1rem;
   }
 }
 

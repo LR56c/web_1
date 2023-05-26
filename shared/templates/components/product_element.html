@@ -1,0 +1,32 @@
+{% if productoParam.id|divisibleby:2 %}
+	<tr class="border-b bg-gray-50">
+		{% else %}
+	<tr class="bg-white border-b">
+{% endif %}
+<th scope="row"
+	class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
+	{{ productoParam.id }}
+</th>
+<td class="px-6 py-4"
+	id="{{ productoParam.id }}-{{ productoParam.valor }}"
+>
+	${{ productoParam.valor }}
+</td>
+<td class="px-6 py-4">
+	{{ productoParam.nombre }}
+</td>
+<td class="px-6 py-4">
+	<img
+		src="{{ productoParam.imagen }}"
+		class="h-12 w-12 object-contain"
+		alt="..."/>
+</td>
+<td class="px-3 py-4">
+	<button type="button"
+		data-modal-target="edit-modal"
+		data-modal-toggle="edit-modal"
+		class="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-1.5 text-center">
+		Editar
+	</button>
+</td>
+</tr>

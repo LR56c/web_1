@@ -3,6 +3,7 @@ from django.db import models
 class Producto(models.Model):
 	id = models.AutoField(primary_key=True)
 	valor = models.IntegerField()
+	stock = models.IntegerField()
 	imagen = models.URLField()
 	nombre = models.CharField( max_length=30 )
 	descripcion = models.CharField( max_length=100 )

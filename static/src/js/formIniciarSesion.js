@@ -15,7 +15,7 @@ $(document).ready(function (){
                     minlength: 10
                 },
                 password1:{
-                    required: true  
+                    required: true
                 }
             },
             messages:{
