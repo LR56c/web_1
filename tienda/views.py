@@ -3,9 +3,6 @@ from django.shortcuts import render
 
 @login_required
 def index(request):
-    # context = {
-    #   'user': request.session['user']
-    # }
     return render(request, 'index_tienda.html')
 
 def error_page(request ):

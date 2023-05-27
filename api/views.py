@@ -82,7 +82,7 @@ def offer(request):
 
 
 subcriptionData = {
-    'sub': True,
+    'sub': False,
 }
 
 

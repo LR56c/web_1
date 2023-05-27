@@ -9,22 +9,22 @@ $(document).ready(function (){
     $("#guardar1").click(function (){
         form.validate({
             rules:{
-                emailc:{
+                username:{
                     required: true,
                     maxlength: 50,
                     minlength: 10
                 },
-                password1:{
+                password:{
                     required: true
                 }
             },
             messages:{
-                emailc:{
+                username:{
                     required: "Debe ingresar un correo electronico",
                     maxlength: "El correo es demaciado largo",
                     minlength: "El correo es demaciado corto"
                 },
-                password1:{
+                password:{
                     required: "Debe ingresar una contraseña"
                 }
             }

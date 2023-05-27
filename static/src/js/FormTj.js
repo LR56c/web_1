@@ -43,10 +43,10 @@ $(document).ready(function () {
 
   peticionSubcripcion.always(function () {
     if (suscrito) {
-      formActivated.removeClass("hidden");
+      formActivated.show()
       formContent.hide();
     } else {
-      formContent.removeClass("hidden");
+      formContent.show()
       formActivated.hide();
     }
   })
