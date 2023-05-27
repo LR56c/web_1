@@ -2,112 +2,112 @@
 {% load static %}
 {% block title %}Crear Producto{% endblock %}
 {% block aside-content %}
-	<div class="xs:p-4 h-full w-full">
-		<div
-			class="h-full ">
-			<div class="space-y-6">
-				<h5
-					class="text-xl font-medium text-gray-900">Nuevo Producto</h5>
-				<form
-					method="POST"
-					enctype="multipart/form-data"
-					class="space-y-6"
-					id="form4">
-					{% csrf_token %}
-					<div>
-						<label for="nombre"
-							class="block mb-2 text-sm font-medium text-gray-900">Nombre</label>
-						<input type="text"
-							name="nombre"
-							id="nombre"
-							class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"/>
-					</div>
-					<div>
-						<label for="descripcion"
-							class="block mb-2 text-sm font-medium text-gray-900">Descripcion</label>
-						<textarea type="text"
-							name="descripcion"
-							id="descripcion"
-							class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"></textarea>
-					</div>
-					<div>
-						<label for="valor"
-							class="block mb-2 text-sm font-medium text-gray-900">Precio</label>
-						<input type="text"
-							name="valor"
-							id="valor"
-							class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-						/>
-					</div>
-					<div>
-						<label for="stock"
-							class="block mb-2 text-sm font-medium text-gray-900">Stock</label>
-						<input type="text"
-							name="stock"
-							id="stock"
-							class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-						/>
-					</div>
-					<div>
-						<label
-							class="block mb-2 text-sm font-medium text-gray-900">Imagen</label>
-						<div class="flex items-center justify-center w-full">
-							<label for="imagen"
+    <div class="xs:p-4 h-full w-full flex justify-center">
+        <div
+                class="w-full h-full sm:w-3/4 lg:max-w-3xl bg-white border border-gray-200 rounded-lg shadow p-8">
+            <div class="space-y-6">
+                <h5
+                        class="text-xl font-medium text-gray-900">Nuevo Producto</h5>
+                <form
+                        method="POST"
+                        enctype="multipart/form-data"
+                        class="space-y-6"
+                        id="form4">
+                    {% csrf_token %}
+                    <div>
+                        <label for="nombre"
+                               class="block mb-2 text-sm font-medium text-gray-900">Nombre</label>
+                        <input type="text"
+                               name="nombre"
+                               id="nombre"
+                               class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"/>
+                    </div>
+                    <div>
+                        <label for="descripcion"
+                               class="block mb-2 text-sm font-medium text-gray-900">Descripcion</label>
+                        <textarea type="text"
+                                  name="descripcion"
+                                  id="descripcion"
+                                  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"></textarea>
+                    </div>
+                    <div>
+                        <label for="valor"
+                               class="block mb-2 text-sm font-medium text-gray-900">Precio</label>
+                        <input type="text"
+                               name="valor"
+                               id="valor"
+                               class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                        />
+                    </div>
+                    <div>
+                        <label for="stock"
+                               class="block mb-2 text-sm font-medium text-gray-900">Stock</label>
+                        <input type="text"
+                               name="stock"
+                               id="stock"
+                               class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                        />
+                    </div>
+                    <div>
+                        <label
+                                class="block mb-2 text-sm font-medium text-gray-900">Imagen</label>
+                        <div class="flex items-center justify-center w-full">
+                            <label for="imagen"
 
-								class="flex flex-col items-center justify-center w-full h-42 xxs:h-32 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 hover:bg-gray-100">
-								<div
-									id="post-imagen"
-									class="hidden"
-								>
-									<img
-										id="imagen-preview"
-										class="w-20 h-20 object-contain rounded-lg"
-										src="#"
-									/>
-									<p id="imagen-text-preview"
-										class="text-center"
-									></p>
-								</div>
-								<div class="flex flex-col items-center justify-center py-2"
-									id="pre-imagen"
-								>
-									<svg aria-hidden="true"
-										class="w-10 h-10 mb-3 text-gray-400"
-										fill="none"
-										stroke="currentColor"
-										viewBox="0 0 24 24"
-										xmlns="http://www.w3.org/2000/svg">
-										<path stroke-linecap="round"
-											stroke-linejoin="round"
-											stroke-width="2"
-											d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path>
-									</svg>
-									<p class="mb-2 text-sm text-gray-500"><span
-										class="font-semibold">Click to upload</span>
-										or drag and drop</p>
-									<p class="text-xs text-gray-500">SVG, PNG, JPG or GIF (MAX.
-										800x400px)</p>
-								</div>
-								<input id="imagen"
-									name="imagen"
-									type="file"
-									class="hidden"/>
-							</label>
-						</div>
-						<p class="hidden"
-							id="imagen-warning">Debe ingresar una imagen</p>
-					</div>
-					<button
-						type="submit"
-						class="w-full text-white bg-gradient-to-r from-cyan-500 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
-						Crear
-					</button>
-				</form>
-			</div>
-		</div>
-	</div>
+                                   class="flex flex-col items-center justify-center w-full h-42 xxs:h-32 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 hover:bg-gray-100">
+                                <div
+                                        id="post-imagen"
+                                        class="hidden"
+                                >
+                                    <img
+                                            id="imagen-preview"
+                                            class="w-20 h-20 object-contain rounded-lg"
+                                            src="#"
+                                    />
+                                    <p id="imagen-text-preview"
+                                       class="text-center"
+                                    ></p>
+                                </div>
+                                <div class="flex flex-col items-center justify-center py-2"
+                                     id="pre-imagen"
+                                >
+                                    <svg aria-hidden="true"
+                                         class="w-10 h-10 mb-3 text-gray-400"
+                                         fill="none"
+                                         stroke="currentColor"
+                                         viewBox="0 0 24 24"
+                                         xmlns="http://www.w3.org/2000/svg">
+                                        <path stroke-linecap="round"
+                                              stroke-linejoin="round"
+                                              stroke-width="2"
+                                              d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path>
+                                    </svg>
+                                    <p class="mb-2 text-sm text-gray-500"><span
+                                            class="font-semibold">Click to upload</span>
+                                        or drag and drop</p>
+                                    <p class="text-xs text-gray-500">SVG, PNG, JPG or GIF (MAX.
+                                        800x400px)</p>
+                                </div>
+                                <input id="imagen"
+                                       name="imagen"
+                                       type="file"
+                                       class="hidden"/>
+                            </label>
+                        </div>
+                        <p class="hidden"
+                           id="imagen-warning">Debe ingresar una imagen</p>
+                    </div>
+                    <button
+                            type="submit"
+                            class="w-full text-white bg-gradient-to-r from-cyan-500 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
+                        Crear
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
 {% endblock %}
 
 {% block js %}
-	<script src="{% static '/src/js/formAddProducto.js' %}"></script>
+    <script src="{% static '/src/js/formAddProducto.js' %}"></script>
 {% endblock %}
