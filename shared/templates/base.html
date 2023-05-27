@@ -10,27 +10,12 @@
 		content="width=device-width, initial-scale=1.0">
 	<title>{% block title %}Django + Tailwind CSS + Flowbite{% endblock %}</title>
 	{% block css %}{% endblock %}
-	<script src="https://cdn.tailwindcss.com"></script>
-	<script>
-		tailwind.config = {
-			theme: {
-				screens: {
-					xxs: "320px",
-					xs: "480px",
-					sm: "640px",
-					md: "768px",
-					lg: "1024px",
-					xl: "1280px",
-					xxl: "1536px"
-				},
-				extend: {}
-			}
-		}
-	</script>
+	<link rel="stylesheet"
+		href="{% static 'src/css/output.css'%}">
 </head>
 <body>
 <div class="h-screen w-full flex flex-col">
-	{% include 'nav.html' %}
+	{% include 'nav.html' with userParam=user_session%}
 	{% block content %}
 	{% endblock content %}
 	{% include 'footer.html' %}
