@@ -1,12 +1,20 @@
 
 .Caja-register{
-    
+
     height: auto;
-    /* width:  100%;    
+    /* width:  100%;
     background-color: white;
     border-radius: 10px;
     padding: 20px;
     margin-left: 25%;
     margin-right: 25%; */
 
+}
+
+
+.error{
+    color: red;
+    display: block;
+    text-justify: center;
+    font-size: 15px;
 }
