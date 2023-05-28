@@ -3,7 +3,7 @@ from django.core.files.uploadedfile import InMemoryUploadedFile
 from django.http import JsonResponse
 from django.shortcuts import redirect, render
 from firebase_admin import storage
-
+from administracion import forms as administracionForm
 from pokemonShop import settings
 from tienda import forms as tienda_forms
 from tienda.models import Producto
@@ -173,7 +173,6 @@ def product_create(request):
             'descripcion': descripcion
         })
 
-        print(form)
         if form.is_valid():
             form.save()
             form = tienda_forms.ProductoForm()
@@ -225,3 +224,19 @@ def firebaseDelete(imagen_url):
     bucket = storage.bucket()
     blob = bucket.blob(imagen_url)
     blob.delete()
+
+
+def addDescuento(request):
+    context = {}
+    print(request.method)
+    print("post")
+    if request.method == 'POST':
+
+
+            form = administracionForm.OfertaForm()
+            context['success'] = False
+
+            errors = form.errors.as_json()
+            context['errors'] = errors
+
+    return JsonResponse(context, status=404)

@@ -1,7 +1,4 @@
 // inputs con warnings
-const idInput = document.getElementById("id-producto");
-const idTextInput = document.getElementById("id-producto-text");
-
 const nombreInput = document.getElementById("nombre");
 const nombreTextInput = document.getElementById("nombre-text");
 
@@ -20,22 +17,7 @@ const inputValid = ["focus:ring-green-500", "focus:border-green-500"]
 const inputInvalid = ["focus:ring-red-500", "focus:border-red-500"]
 
 // funciones
-function checkId() {
-    const id = Number(idInput.value);
-    if (typeof id !== "number" || isNaN(id) || id <= 0) {
-        idTextInput.classList.add(...textInvalid);
-        idTextInput.classList.remove(...textValid);
-        idInput.classList.remove(...inputValid)
-        idInput.classList.add(...inputInvalid)
-        return false;
-    } else {
-        idInput.classList.add(...inputValid)
-        idTextInput.classList.add(...textValid);
-        idTextInput.classList.remove(...textInvalid);
-        idInput.classList.remove(...inputInvalid)
-        return true;
-    }
-}
+
 
 function checkNombre() {
     const nombre = String(nombreInput.value)
@@ -89,9 +71,7 @@ function checkCausa() {
 }
 
 // eventos
-idInput.addEventListener("focusout", () => {
-    checkId()
-})
+
 
 nombreInput.addEventListener("focusout", () => {
     checkNombre()
@@ -105,9 +85,6 @@ causaInput.addEventListener("focusout", () => {
     checkCausa()
 })
 
-idInput.addEventListener("input", () => {
-    checkId()
-})
 
 nombreInput.addEventListener("input", () => {
     checkNombre()
@@ -121,20 +98,56 @@ causaInput.addEventListener("input", () => {
     checkCausa()
 })
 
- // form
-form.addEventListener("submit", (e) => {
+// form
+form.addEventListener("submit", function (e) {
     e.preventDefault();
-    const bId = checkId();
+
     const bNombre = checkNombre();
     const bPorcentaje = checkPorcentaje();
     const bCausa = checkCausa();
-    if (bId && bNombre && bPorcentaje && bCausa) {
-        Swal.fire({
-            title: 'Exito!',
-            text: 'Se ha registrado el descuento',
-            icon: 'success',
-            confirmButtonText: 'Cerrar'
+
+    if (bNombre && bPorcentaje && bCausa) {
+
+        let formData = new FormData()
+
+        const token = document.getElementsByName('csrfmiddlewaretoken')[0]
+        formData.append('name', nombreInput.value)
+        formData.append('porcentaje', porcentajeInput.value)
+        formData.append('causa', causaInput.value)
+        formData.append('csrfmiddlewaretoken',token.value)
+
+
+
+        const peticionProductos = $.ajax({
+            async: true,
+            crossDomain: true,
+            // url        : 'http://ec2-18-231-153-185.sa-east-1.compute.amazonaws.com:8000/api/descuento/crear',
+            url: 'http://127.0.0.1:8000/api/descuento/crear',
+            method: 'POST',
+            data: formData,
+            processData: false,
+            contentType: false
         })
+
+        peticionProductos.done(function (response) {
+            if (response.success) {
+                Swal.fire({
+                    title: 'Exito!',
+                    text: 'Se ha registrado el descuento',
+                    icon: 'success',
+                    confirmButtonText: 'Cerrar'
+                })
+            }
+        })
+
+         peticionProductos.fail(function (response) {
+
+             console.log(response.errors)
+             nombreTextInput.innerHTML = 'fallos'
+
+
+         })
+
         form.reset()
     }
 })
