@@ -14,10 +14,10 @@
 
 {% block aside-content %}
 	<div
-		class="w-full xs:p-4 flex justify-center items-center place-items-center ">
+		class="w-full h-full xs:p-4 flex justify-center items-center place-items-center">
 		<div
 			id="form-content"
-			class="hidden xl:w-2/3 sm:w-2/3 md:w-full w-full h-full bg-white rounded-lg shadow xs:w-5/5">
+			class="xl:w-2/3 sm:w-2/3 md:w-full w-full h-full bg-white rounded-lg shadow xs:w-5/5">
 			<div
 				class="p-4 space-y-2 border-b rounded-t">
 				<h3
@@ -28,85 +28,86 @@
 					Tu proximo pago sera de $ 0.00 el 2021-08-01
 				</p>
 			</div>
-
-			<div class="Caja-register px-4 pt-4 h-full">
+			<div class="px-4 pt-4 h-full">
 				<form
-					class="formulario__gruop space-y-4"
-					id="formulario1">
+					class="formulario__gruop space-y-4 h-full"
+					id="formulario1"
+					method="get"
+				>
+					<div class="overflow-y-scroll max-h-96">
+						<div>
+							<span class="input-group-text ">Nombre</span>
+							<input id="nombre"
+								name="nombre"
+								type="text"
+								aria-label="First name"
+								class="form-control ">
+						</div>
+						<div>
+							<span class="input-group-text ">Apellido</span>
+							<input id="apellido"
+								name="apellido"
+								type="text"
+								aria-label="Last name"
+								class="form-control">
+						</div>
+						<div>
+							<span class="input-group-text">Banco</span>
+							<input id="banco"
+								name="banco"
+								type="text"
+								class="form-control"
+								placeholder=""
+								aria-label="Recipient's username"
+								aria-describedby="basic-addon2">
+						</div>
+						<div>
+							<span class="input-group-text">Numero tarjeta</span>
+							<input id="tarjeta"
+								name="tarjeta"
+								type="number"
+								class="form-control"
+								placeholder=""
+								aria-label="Recipient's username"
+								aria-describedby="basic-addon2">
+						</div>
+						<div>
+							<span class="input-group-text">Mes</span>
+							<input id="mes"
+								name="mes"
+								type="number"
+								aria-label="First name"
+								class="form-control"
+								placeholder="03">
+						</div>
+						<div>
+							<span class="input-group-text">Año</span>
+							<input id="ano"
+								name="ano"
+								type="number"
+								aria-label="Last name"
+								class="form-control "
+								placeholder="">
+						</div>
 
-					<div>
-					<span class="input-group-text ">Nombre</span>
-					<input id="nombre"
-						name="nombre"
-						type="text"
-						aria-label="First name"
-						class="form-control ">
+						<div>
+							<span class="input-group-text">Clave internet</span>
+							<input id="clave"
+								name="clave"
+								type="text"
+								class="form-control"
+								placeholder=""
+								aria-label="Recipient's username"
+								aria-describedby="basic-addon2">
+						</div>
 					</div>
-					<div>
-					<span class="input-group-text ">Apellido</span>
-					<input id="apellido"
-						name="apellido"
-						type="text"
-						aria-label="Last name"
-						class="form-control">
-					</div>
-					<div>
-					<span class="input-group-text">Banco</span>
-					<input id="banco"
-						name="banco"
-						type="text"
-						class="form-control"
-						placeholder=""
-						aria-label="Recipient's username"
-						aria-describedby="basic-addon2">
-					</div>
-					<div>
-					<span class="input-group-text">Numero tarjeta</span>
-					<input id="tarjeta"
-						name="tarjeta"
-						type="number"
-						class="form-control"
-						placeholder=""
-						aria-label="Recipient's username"
-						aria-describedby="basic-addon2">
-					</div>
-					<div>
-					<span class="input-group-text">Mes</span>
-					<input id="mes"
-						name="mes"
-						type="number"
-						aria-label="First name"
-						class="form-control"
-						placeholder="03">
-					</div>
-					<div>
-					<span class="input-group-text">Año</span>
-					<input id="ano"
-						name="ano"
-						type="number"
-						aria-label="Last name"
-						class="form-control "
-						placeholder="">
-					</div>
-
-					<div>
-					<span class="input-group-text">Clave internet</span>
-					<input id="clave"
-						name="clave"
-						type="text"
-						class="form-control"
-						placeholder=""
-						aria-label="Recipient's username"
-						aria-describedby="basic-addon2">
-					</div>
-
 					<div
 						class="flex justify-center items-center border-gray-200 rounded-b ">
 						<button
 							id="guardar1"
-							type="button"
+							type="submit"
 							class=" ml-6 text-white bg-gradient-to-r from-cyan-500 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center ">
-							Guardar
+							Enviar
 						</button>
 					</div>
 				</form>

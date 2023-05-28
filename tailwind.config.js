@@ -12,7 +12,11 @@ module.exports = {
       xs: "480px",
       ...defaultTheme.screens,
     },
-    extend: {},
+    extend: {
+      height: {
+        '128': '32rem',
+      }
+    },
   },
   plugins: [
     require('flowbite/plugin')
