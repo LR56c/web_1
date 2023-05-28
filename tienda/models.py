@@ -1,21 +1,29 @@
 from django.db import models
 
+class ProductoImagenes(models.Model):
+	id = models.AutoField(primary_key=True)
+	imagen = models.URLField()
+
 class Producto(models.Model):
 	id = models.AutoField(primary_key=True)
 	valor = models.IntegerField()
 	stock = models.IntegerField()
 	imagen = models.URLField()
+	# imagenes_secundarias = models.ForeignKey(ProductoImagenes, on_delete=models.CASCADE)
 	nombre = models.CharField( max_length=30 )
 	descripcion = models.CharField( max_length=100 )
 	imageName = models.CharField( max_length=100)
 
 class Oferta(models.Model):
 	id = models.AutoField(primary_key=True)
-	producto = models.ForeignKey(Producto, on_delete=models.CASCADE)
 	porcentaje = models.DecimalField( max_digits=3, decimal_places=2 )
 	causa = models.CharField( max_length=100 )
 	fecha_inicio = models.DateField()
 	fecha_fin = models.DateField()
+
+class OfertaProductos(models.Model):
+	oferta = models.ForeignKey(Oferta, on_delete=models.CASCADE)
+	producto = models.ForeignKey(Producto, on_delete=models.CASCADE)
 
 class Usuario(models.Model):
 	email = models.EmailField(primary_key=True)
@@ -67,3 +75,15 @@ class Pago(models.Model):
 	nombre_cliente = models.CharField( max_length=60 )
 	codigo = models.IntegerField()
 
+# tabla 1
+class Author(models.Model):
+	id = models.AutoField(primary_key=True)
+	name = models.CharField(max_length=100)
+	age = models.IntegerField()
+
+# tabla 2 foreign key
+class Books(models.Model):
+	id = models.AutoField(primary_key=True)
+	title = models.CharField(max_length=100)
+	# id_author
+	author = models.ForeignKey(Author, on_delete=models.CASCADE)

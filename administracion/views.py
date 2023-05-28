@@ -5,7 +5,10 @@ from tienda.models import Producto
 
 @login_required
 def crear_descuento(request):
-	return render(request, 'crear_descuento.html' )
+	context = {}
+	productos = Producto.objects.all()
+	context['productos'] = productos
+	return render(request, 'crear_descuento.html', context )
 
 @login_required
 def ver_descuento(request):
