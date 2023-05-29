@@ -1,4 +1,7 @@
+import json
 import os
+from datetime import datetime
+from django.core import serializers
 from django.core.files.uploadedfile import InMemoryUploadedFile
 from django.http import JsonResponse
 from django.shortcuts import redirect, render
@@ -6,7 +9,7 @@ from firebase_admin import storage
 from administracion import forms as administracionForm
 from pokemonShop import settings
 from tienda import forms as tienda_forms
-from tienda.models import Producto
+from tienda.models import OfertaProductos, Producto
 
 pokemonAccesoriesList = ["Gorra de Ash Ketchum", "Bufanda de Pikachu",
 	"Mochila de Pokémon", "Calcetines con diseños de Poké Balls",
@@ -146,11 +149,15 @@ def product_edit( request, id ):
 
 
 def products( request ):
-	productos = Producto.objects.all()
-	context = {
-		'productos': productos,
-	}
-	return render( request, 'index_tienda.html', context )
+	context = { }
+
+	if request.method == 'GET':
+		productos = Producto.objects.all()
+
+		context['productos'] = serializers.serialize( 'json', productos )
+		return JsonResponse( context, status=200)
+
+	return JsonResponse( context, status=404 )
 
 
 def product_create( request ):
@@ -163,6 +170,8 @@ def product_create( request ):
 		imageName = request.POST.get( 'imageName' )
 		descripcion = request.POST.get( 'descripcion' )
 		image_url = firebaseUpload( imagen )
+
+		# form = tienda_forms.ProductoForm(request.POST, request.FILES )
 
 		form = tienda_forms.ProductoForm( {
 			'valor'      : valor,
@@ -230,17 +239,47 @@ def firebaseDelete( imagen_url ):
 def addDescuento( request ):
 	context = { }
 	if request.method == 'POST':
+		arr = json.loads( request.POST.get( 'data' ) )
+
+		for i in range( len( arr ) ):
+			# form = administracionForm.OfertaProductosForm( request.POST )
+			print( arr[i] )
+		return JsonResponse( context, status=200 )
+
+		fechaInicio = request.POST.get( 'fecha_inicio' )
+
+		partesFechaInicio = fechaInicio.split( ',' )
+		diaInicio = partesFechaInicio[0]
+		mesInicio = partesFechaInicio[1]
+		anoInicio = partesFechaInicio[2]
+		horaInicio = partesFechaInicio[3]
+		minutoInicio = partesFechaInicio[4]
+
+		dateFechaInicio = datetime( int( anoInicio ), int( mesInicio ), int( diaInicio ), int( horaInicio ), int( minutoInicio ) )
+
+		fechaFin = request.POST.get( 'fecha_fin' )
+		partesFechaFin = fechaFin.split( ',' )
+		diaFin = partesFechaFin[0]
+		mesFin = partesFechaFin[1]
+		anoFin = partesFechaFin[2]
+		horaFin = partesFechaFin[3]
+		minutoFin = partesFechaFin[4]
+
+		dateFechaFin = datetime( int( anoFin ), int( mesFin ), int( diaFin ), int( horaFin ), int( minutoFin ) )
+
+		# print( request.POST )
+
 		form = administracionForm.OfertaForm( request.POST )
-
-		if form.is_valid():
-			form.save()
-			form = administracionForm.OfertaForm()
-
-			context['success'] = True
-			return JsonResponse( context, status=200 )
-		else:
-			context['success'] = False
-			errors = form.errors.as_json()
-			context['errors'] = errors
-
-	return JsonResponse( context, status=404 )
+	#
+	# 	if form.is_valid():
+	# 		form.save()
+	# 		form = administracionForm.OfertaForm()
+	#
+	# 		context['success'] = True
+	# 		return JsonResponse( context, status=200 )
+	# 	else:
+	# 		context['success'] = False
+	# 		errors = form.errors.as_json()
+	# 		context['errors'] = errors
+	#
+	# return JsonResponse( context, status=404 )
