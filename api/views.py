@@ -171,28 +171,27 @@ def product_create( request ):
 		descripcion = request.POST.get( 'descripcion' )
 		image_url = firebaseUpload( imagen )
 
-		# form = tienda_forms.ProductoForm(request.POST, request.FILES )
-
-		form = tienda_forms.ProductoForm( {
-			'valor'      : valor,
-			'nombre'     : nombre,
-			'imagen'     : image_url,
-			'imageName'  : imageName,
-			'stock'      : stock,
-			'descripcion': descripcion,
-		} )
-
-		if form.is_valid():
-			form.save()
-			form = tienda_forms.ProductoForm()
+		try:
+			producto = Producto.objects.create(
+				valor=valor,
+				nombre=nombre,
+				imagen=image_url,
+				imageName=imageName,
+				stock=stock,
+				descripcion=descripcion,
+				oferta=None
+			)
+			producto.save()
 
 			context['success'] = True
 			return JsonResponse( context, status=200 )
-		else:
+		except Exception as e:
+			print(e)
 			context['success'] = False
 
-			errors = form.errors.as_json()
-			context['errors'] = errors
+			context['errors'] = {
+				'message': f'Error en creacion de producto',
+			}
 
 	return JsonResponse( context, status=404 )
 

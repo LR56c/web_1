@@ -25,7 +25,7 @@ class Producto( models.Model ):
 	nombre = models.CharField( max_length=30 )
 	descripcion = models.CharField( max_length=100 )
 	imageName = models.CharField( max_length=100 )
-	oferta = models.ForeignKey( Oferta, on_delete=models.CASCADE , null=True, blank=True)
+	oferta = models.ForeignKey( Oferta, on_delete=models.SET_NULL, null=True)
 
 class Usuario( models.Model ):
 	email = models.EmailField( primary_key=True )
