@@ -155,7 +155,7 @@ def products( request ):
 		productos = Producto.objects.all()
 
 		context['productos'] = serializers.serialize( 'json', productos )
-		return JsonResponse( context, status=200)
+		return JsonResponse( context, status=200 )
 
 	return JsonResponse( context, status=404 )
 
@@ -237,16 +237,16 @@ def firebaseDelete( imagen_url ):
 
 
 def getHistorial( request ):
-	context = {}
+	context = { }
 
 	if request.method == 'GET':
 
 		# guarda el user del usuario iniciado para.
 		email = request.session['user_session']
-		print(email)
+		print( email )
 
 		#
-		usuario_query = Usuario.objects.filter(email=email)
+		usuario_query = Usuario.objects.filter( email=email )
 
 		# valida que el usuario existe.
 		if usuario_query.exists():
@@ -258,65 +258,105 @@ def getHistorial( request ):
 			ordenes = []
 			for orden in usuario_ordenes_query:
 				ordenEntry = {
-					'id':orden.id,
-					'estado': orden.estado,
-					'valor':orden.valor,
-					'direccion':usuario.direccion
+					'id'       : orden.id,
+					'estado'   : orden.estado,
+					'valor'    : orden.valor,
+					'direccion': usuario.direccion
 				}
-				ordenes.append(ordenEntry)
+				ordenes.append( ordenEntry )
 
-			context['ventas'] = json.dumps(ordenes)
+			context['ventas'] = json.dumps( ordenes )
 
+			return JsonResponse( context, status=200 )
 
-			return JsonResponse(context, status=200)
-
-	return JsonResponse(context, status=404)
+	return JsonResponse( context, status=404 )
 
 
 def addDescuento( request ):
 	context = { }
 	if request.method == 'POST':
-		arr = json.loads( request.POST.get( 'data' ) )
-
-		for i in range( len( arr ) ):
-			# form = administracionForm.OfertaProductosForm( request.POST )
-			print( arr[i] )
-		return JsonResponse( context, status=200 )
+		name = request.POST.get( 'name' )
+		porcentaje = request.POST.get( 'porcentaje' )
+		causa = request.POST.get( 'causa' )
 
 		fechaInicio = request.POST.get( 'fecha_inicio' )
 
-		partesFechaInicio = fechaInicio.split( ',' )
+		partesInicio = fechaInicio.split( ' ' )
+		partesFechaInicio = partesInicio[0].split( '/' )
 		diaInicio = partesFechaInicio[0]
 		mesInicio = partesFechaInicio[1]
 		anoInicio = partesFechaInicio[2]
-		horaInicio = partesFechaInicio[3]
-		minutoInicio = partesFechaInicio[4]
 
-		dateFechaInicio = datetime( int( anoInicio ), int( mesInicio ), int( diaInicio ), int( horaInicio ), int( minutoInicio ) )
+		partesTiempoInicio = partesInicio[1].split( ':' )
+		horaInicio = partesTiempoInicio[0]
+		minutoInicio = partesTiempoInicio[1]
+
+		dateFechaInicio = datetime( int( anoInicio ), int( mesInicio ),
+			int( diaInicio ), int( horaInicio ), int( minutoInicio ) )
 
 		fechaFin = request.POST.get( 'fecha_fin' )
-		partesFechaFin = fechaFin.split( ',' )
+
+		partesFin = fechaFin.split( ' ' )
+		partesFechaFin = partesFin[0].split( '/' )
 		diaFin = partesFechaFin[0]
 		mesFin = partesFechaFin[1]
 		anoFin = partesFechaFin[2]
-		horaFin = partesFechaFin[3]
-		minutoFin = partesFechaFin[4]
 
-		dateFechaFin = datetime( int( anoFin ), int( mesFin ), int( diaFin ), int( horaFin ), int( minutoFin ) )
+		partesTiempoFin = partesFin[1].split( ':' )
+		horaFin = partesTiempoFin[0]
+		minutoFin = partesTiempoFin[1]
 
-		# print( request.POST )
+		dateFechaFin = datetime( int( anoFin ), int( mesFin ), int( diaFin ),
+			int( horaFin ), int( minutoFin ) )
 
-		form = administracionForm.OfertaForm( request.POST )
-	#
-	# 	if form.is_valid():
-	# 		form.save()
-	# 		form = administracionForm.OfertaForm()
-	#
-	# 		context['success'] = True
-	# 		return JsonResponse( context, status=200 )
-	# 	else:
-	# 		context['success'] = False
-	# 		errors = form.errors.as_json()
-	# 		context['errors'] = errors
-	#
-	# return JsonResponse( context, status=404 )
+		if dateFechaInicio and dateFechaFin:
+			stringInicio = f'{diaInicio}/{mesInicio}/{anoInicio} {horaInicio}:' \
+			               f'{minutoInicio}'
+			stringFin = f'{diaFin}/{mesFin}/{anoFin} {horaFin}:{minutoFin}'
+
+			# dateFechaInicioConfirm = datetime.strptime(stringInicio, '%d/%m/%Y
+			# %H:%M')
+			form = administracionForm.OfertaForm( {
+				'name'      : name,
+				'porcentaje': porcentaje,
+				'causa'     : causa,
+				'fecha_inicio': stringInicio,
+				'fecha_fin'   : stringFin,
+			} )
+
+			if form.is_valid():
+				form.save()
+				id_oferta = form.instance.id
+				form = administracionForm.OfertaForm()
+
+				productosIds = json.loads( request.POST.get( 'data' ) )
+
+				for productoId in productosIds:
+					sub_form = administracionForm.OfertaProductosForm( {
+						'oferta'  : id_oferta,
+						'producto': productoId
+					} )
+
+					if sub_form.is_valid():
+						sub_form.save()
+					else:
+						context['success'] = False
+						errors = sub_form.errors.as_json()
+						context['errors'] = errors
+						return JsonResponse( context, status=404 )
+
+				context['success'] = True
+				return JsonResponse( context, status=200 )
+			else:
+				context['success'] = False
+				errors = form.errors.as_json()
+				context['errors'] = errors
+				return JsonResponse( context, status=404 )
+
+		else:
+			context['errors'] = {
+				'message': 'Fechas incorrectas',
+			}
+			return JsonResponse( context, status=404 )
+
+	return JsonResponse( context, status=404 )

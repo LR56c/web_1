@@ -418,6 +418,12 @@ form.addEventListener( 'submit', function ( e ) {
 		} )
 
 		peticionProductos.done( function ( response ) {
+			console.log( response )
+		} )
+
+		peticionProductos.fail( function (response) {
+			console.log( 'responseError' )
+			console.log( response )
 		} )
 
 		form.reset()
@@ -441,7 +447,8 @@ function parseDate( time, date ) {
 		return null
 	}
 	else {
-		return `${ dia },${ mes + 1 },${ anio },${ horas },${ minutos }`
+		return `${ dia }/${ mes + 1 }/${ anio } ${ horas }:${ minutos }`
+		// return `${ dia },${ mes + 1 },${ anio },${ horas },${ minutos }`
 		// return fechaHora
 	}
 }

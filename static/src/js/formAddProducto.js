@@ -24,6 +24,7 @@ $( document )
 		} )
 
 		let form   = $( '#form4' )
+		let parentImagen   = $( '#parent-imagen' )
 
 		form.submit( function ( e ) {
 			e.preventDefault()
@@ -90,5 +91,10 @@ $( document )
 					})
 				}
 			} )
+			form.trigger( 'reset' )
+			firstPreview = true
+			preImagen.show()
+			postImagen.hide()
 		} )
 	} )
+
