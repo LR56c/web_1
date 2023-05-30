@@ -418,7 +418,12 @@ form.addEventListener( 'submit', function ( e ) {
 		} )
 
 		peticionProductos.done( function ( response ) {
-			console.log( response )
+			Swal.fire({
+				title: 'Exito!',
+				text: 'Se ha registrado la nueva oferta',
+				icon: 'success',
+				confirmButtonText: 'Cerrar'
+			})
 		} )
 
 		peticionProductos.fail( function (response) {

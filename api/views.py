@@ -9,7 +9,7 @@ from firebase_admin import storage
 from administracion import forms as administracionForm
 from pokemonShop import settings
 from tienda import forms as tienda_forms
-from tienda.models import OfertaProductos, Producto, Usuario
+from tienda.models import  Producto, Usuario
 
 pokemonAccesoriesList = ["Gorra de Ash Ketchum", "Bufanda de Pikachu",
 	"Mochila de Pokémon", "Calcetines con diseños de Poké Balls",
@@ -179,7 +179,7 @@ def product_create( request ):
 			'imagen'     : image_url,
 			'imageName'  : imageName,
 			'stock'      : stock,
-			'descripcion': descripcion
+			'descripcion': descripcion,
 		} )
 
 		if form.is_valid():
@@ -243,9 +243,7 @@ def getHistorial( request ):
 
 		# guarda el user del usuario iniciado para.
 		email = request.session['user_session']
-		print( email )
 
-		#
 		usuario_query = Usuario.objects.filter( email=email )
 
 		# valida que el usuario existe.
@@ -332,17 +330,15 @@ def addDescuento( request ):
 				productosIds = json.loads( request.POST.get( 'data' ) )
 
 				for productoId in productosIds:
-					sub_form = administracionForm.OfertaProductosForm( {
-						'oferta'  : id_oferta,
-						'producto': productoId
-					} )
-
-					if sub_form.is_valid():
-						sub_form.save()
-					else:
+					try:
+						productEntry = Producto.objects.get( id=productoId )
+						productEntry.oferta = id_oferta
+						productEntry.save()
+					except Exception as e:
 						context['success'] = False
-						errors = sub_form.errors.as_json()
-						context['errors'] = errors
+						context['errors'] = {
+							'message': f'Error en el producto {productoId}',
+						}
 						return JsonResponse( context, status=404 )
 
 				context['success'] = True

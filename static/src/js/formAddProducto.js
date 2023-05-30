@@ -83,6 +83,11 @@ $( document )
 			)
 			peticionProductos.done( function ( response ) {
 				if ( response.success ){
+					form.trigger( 'reset' )
+					firstPreview = true
+					preImagen.show()
+					postImagen.hide()
+
 					Swal.fire({
 						title: 'Exito!',
 						text: 'Se ha registrado el nuevo producto',
@@ -91,10 +96,6 @@ $( document )
 					})
 				}
 			} )
-			form.trigger( 'reset' )
-			firstPreview = true
-			preImagen.show()
-			postImagen.hide()
 		} )
 	} )
 

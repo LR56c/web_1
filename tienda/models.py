@@ -5,6 +5,15 @@ class ProductoImagenes( models.Model ):
 	id = models.AutoField( primary_key=True )
 	imagen = models.URLField()
 
+class Oferta( models.Model ):
+	id = models.AutoField( primary_key=True )
+	name = models.CharField( max_length=100 )
+	porcentaje = models.IntegerField()
+	causa = models.CharField( max_length=100 )
+	# DateTime format: DD-MM-YYYY HH:MM
+	fecha_inicio = models.CharField( max_length=20 )
+	# DateTime format: DD-MM-YYYY HH:MM
+	fecha_fin = models.CharField( max_length=20 )
 
 class Producto( models.Model ):
 	id = models.AutoField( primary_key=True )
@@ -16,23 +25,7 @@ class Producto( models.Model ):
 	nombre = models.CharField( max_length=30 )
 	descripcion = models.CharField( max_length=100 )
 	imageName = models.CharField( max_length=100 )
-
-
-class Oferta( models.Model ):
-	id = models.AutoField( primary_key=True )
-	name = models.CharField( max_length=100 )
-	porcentaje = models.IntegerField()
-	causa = models.CharField( max_length=100 )
-	# DateTime format: DD-MM-YYYY HH:MM
-	fecha_inicio = models.CharField( max_length=20 )
-	# DateTime format: DD-MM-YYYY HH:MM
-	fecha_fin = models.CharField( max_length=20 )
-
-
-class OfertaProductos( models.Model ):
-	oferta = models.ForeignKey( Oferta, on_delete=models.CASCADE )
-	producto = models.ForeignKey( Producto, on_delete=models.CASCADE )
-
+	oferta = models.ForeignKey( Oferta, on_delete=models.CASCADE , null=True, blank=True)
 
 class Usuario( models.Model ):
 	email = models.EmailField( primary_key=True )
@@ -57,6 +50,7 @@ class DetalleOrden( models.Model ):
 	orden = models.ForeignKey( Orden, on_delete=models.CASCADE )
 	cantidad = models.IntegerField()
 	fecha = models.CharField( max_length=20 )
+# 	monto total
 
 
 class Carrito( models.Model ):
