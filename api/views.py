@@ -9,7 +9,7 @@ from firebase_admin import storage
 from administracion import forms as administracionForm
 from pokemonShop import settings
 from tienda import forms as tienda_forms
-from tienda.models import OfertaProductos, Producto
+from tienda.models import OfertaProductos, Producto, Usuario
 
 pokemonAccesoriesList = ["Gorra de Ash Ketchum", "Bufanda de Pikachu",
 	"Mochila de Pokémon", "Calcetines con diseños de Poké Balls",
@@ -234,6 +234,43 @@ def firebaseDelete( imagen_url ):
 	bucket = storage.bucket()
 	blob = bucket.blob( imagen_url )
 	blob.delete()
+
+
+def getHistorial( request ):
+	context = {}
+
+	if request.method == 'GET':
+
+		# guarda el user del usuario iniciado para.
+		email = request.session['user_session']
+		print(email)
+
+		#
+		usuario_query = Usuario.objects.filter(email=email)
+
+		# valida que el usuario existe.
+		if usuario_query.exists():
+
+			usuario = usuario_query.get()
+
+			usuario_ordenes_query = usuario.orden_set.all()
+
+			ordenes = []
+			for orden in usuario_ordenes_query:
+				ordenEntry = {
+					'id':orden.id,
+					'estado': orden.estado,
+					'valor':orden.valor,
+					'direccion':usuario.direccion
+				}
+				ordenes.append(ordenEntry)
+
+			context['ventas'] = json.dumps(ordenes)
+
+
+			return JsonResponse(context, status=200)
+
+	return JsonResponse(context, status=404)
 
 
 def addDescuento( request ):
