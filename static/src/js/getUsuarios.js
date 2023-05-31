@@ -48,11 +48,11 @@ $( document )
 
 				usuariosList.append( `
 					<tr class="${ id % 2 === 0 ? 'border-b bg-gray-50' : 'border-b bg-white'}">
-						<th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">${id}</th>
-						<td class="px-6 py-4">${item['nombre']}</td>
-						<td class="px-6 py-4">${item['correo']}</td>
-						<td class="px-6 py-4">${item['telefono']}</td>
-						<td class="px-6 py-4">${item['direccion']}</td>
+						<th id="${id}-id" scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">${id}</th>
+						<td id="${id}-nombre" class="px-6 py-4">${item['nombre']}</td>
+						<td id="${id}-correo" class="px-6 py-4">${item['correo']}</td>
+						<td id="${id}-tel" class="px-6 py-4">${item['telefono']}</td>
+						<td id="${id}-dir" class="px-6 py-4">${item['direccion']}</td>
 						<td class="px-3 py-4">
 							<button type="button"
 							id="${id}-button"

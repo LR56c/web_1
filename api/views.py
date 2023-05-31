@@ -1,4 +1,5 @@
 import json
+import humanize
 from django.contrib.auth.models import User
 import os
 from datetime import datetime
@@ -7,7 +8,6 @@ from django.core.files.uploadedfile import InMemoryUploadedFile
 from django.http import JsonResponse
 from django.shortcuts import redirect, render
 from firebase_admin import storage
-from administracion import forms as administracionForm
 from pokemonShop import settings
 from tienda import forms as tienda_forms
 from tienda.models import Oferta, Producto, Usuario
@@ -155,6 +155,10 @@ def products( request ):
 	if request.method == 'GET':
 		productos = Producto.objects.all()
 
+		for producto in productos:
+			producto.valor = humanize.intword( producto.valor )
+			producto.stock = humanize.intword( producto.stock )
+
 		context['productos'] = serializers.serialize( 'json', productos )
 		return JsonResponse( context, status=200 )
 
@@ -165,7 +169,6 @@ def product_create( request ):
 	context = { }
 	if request.method == 'POST':
 		valor = request.POST.get( 'valor' )
-		# humanize.intword( 123455913 )
 		nombre = request.POST.get( 'nombre' )
 		imagen = request.FILES.get( 'imagen' )
 		stock = request.POST.get( 'stock' )
@@ -341,7 +344,6 @@ def create_ofertas( request ):
 				# stringify de JS
 				# json.dumps()
 
-				# [1,4,10]
 				for productoId in productos_list:
 					try:
 						# 	SELECT * FROM producto WHERE id = 1
@@ -384,7 +386,7 @@ def getUsuarios( request ):
 		for user in users:
 			if not user.is_staff:
 				usuario = usuarios.get( user=user )
-				userEntry = {}
+				userEntry = { }
 				userEntry['id'] = user.id
 				userEntry['nombre'] = user.first_name
 				userEntry['correo'] = user.email
