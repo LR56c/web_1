@@ -11,10 +11,9 @@ class Oferta( models.Model ):
 	name = models.CharField( max_length=100 )
 	porcentaje = models.IntegerField()
 	causa = models.CharField( max_length=100 )
-	# DateTime format: DD-MM-YYYY HH:MM
-	fecha_inicio = models.CharField( max_length=20 )
-	# DateTime format: DD-MM-YYYY HH:MM
-	fecha_fin = models.CharField( max_length=20 )
+	fecha_inicio = models.DateTimeField()
+	fecha_fin = models.DateTimeField()
+
 
 class Producto( models.Model ):
 	id = models.AutoField( primary_key=True )
@@ -38,8 +37,7 @@ class Usuario( models.Model ):
 class Orden( models.Model ):
 	id = models.AutoField( primary_key=True )
 	usuario = models.ForeignKey( Usuario, on_delete=models.CASCADE )
-	# DateTime format: DD-MM-YYYY HH:MM
-	fecha = models.CharField( max_length=20 )
+	fecha = models.DateTimeField()
 	# Monto total con iva y descuentos
 	valor = models.IntegerField()
 	estado = models.CharField( max_length=100 )
@@ -51,7 +49,8 @@ class DetalleOrden( models.Model ):
 	orden = models.ForeignKey( Orden, on_delete=models.CASCADE )
 	cantidad = models.IntegerField()
 	fecha = models.CharField( max_length=20 )
-# 	monto total
+	# Monto total sin iva
+	monto = models.IntegerField()
 
 
 class Carrito( models.Model ):
@@ -66,18 +65,15 @@ class Envio( models.Model ):
 	estado = models.CharField( max_length=100 )
 	compania = models.CharField( max_length=100 )
 	numero_seguimiento = models.IntegerField()
-	# Date format: DD-MM-YYYY
-	fecha = models.CharField( max_length=20 )
+	fecha = models.DateField()
 
 
 class Suscripcion( models.Model ):
 	id = models.AutoField( primary_key=True )
 	usuario = models.ForeignKey( Usuario, on_delete=models.CASCADE )
 	monto = models.IntegerField()
-	# Date format: DD-MM-YYYY
-	fecha_inicio = models.CharField( max_length=20 )
-	# Date format: DD-MM-YYYY
-	fecha_expiracion = models.CharField( max_length=20 )
+	fecha_inicio = models.DateField()
+	fecha_expiracion = models.DateField()
 
 
 class Pago( models.Model ):
@@ -89,9 +85,3 @@ class Pago( models.Model ):
 	codigo = models.IntegerField()
 	anno_vencimiento = models.IntegerField()
 	mes_vencimiento = models.IntegerField()
-
-
-class Bookmark( models.Model ):
-	id = models.AutoField( primary_key=True )
-	nombre = models.CharField( max_length=60 )
-	fecha = models.DateTimeField()

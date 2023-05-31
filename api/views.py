@@ -1,4 +1,5 @@
 import json
+import re
 import humanize
 from django.contrib.auth.models import User
 import os
@@ -155,7 +156,9 @@ def products( request ):
 	if request.method == 'GET':
 		productos = Producto.objects.all()
 
+		humanize.i18n.activate( "es_ES" )
 		for producto in productos:
+
 			producto.valor = humanize.intword( producto.valor )
 			producto.stock = humanize.intword( producto.stock )
 
@@ -177,11 +180,10 @@ def product_create( request ):
 		oferta = request.POST.get( 'oferta' )
 		image_url = firebaseUpload( imagen )
 
-		print( oferta )
 		if len( oferta ) == 0:
 			oferta = None
-
-		print( oferta )
+		else:
+			oferta = Oferta.objects.get( id=oferta)
 
 		try:
 			producto = Producto.objects.create( valor=valor, nombre=nombre,
@@ -249,12 +251,12 @@ def getHistorial( request ):
 		# guarda el user del usuario iniciado para.
 		email = request.session['user_session']
 
-		usuario_query = Usuario.objects.filter( email=email )
+		user_query = User.objects.filter( username=email )
 
 		# valida que el usuario existe.
-		if usuario_query.exists():
+		if user_query.exists():
 
-			usuario = usuario_query.get()
+			usuario = user_query.get().usuario
 
 			usuario_ordenes_query = usuario.orden_set.all()
 
@@ -280,8 +282,45 @@ def get_ofertas( request ):
 
 	if request.method == 'GET':
 		ofertas = Oferta.objects.all()
+
+		ofertasList = []
+
+		for oferta in ofertas:
+			ofertaEntry = { }
+			fechaInicioString = str( oferta.fecha_inicio )
+			fechaFinString = str( oferta.fecha_fin )
+			regex = r"(\d{4})-(\d{2})-(\d{2}) (\d{2}):(\d{2}):"
+
+			matchesInicio = re.search( regex, fechaInicioString )
+			matchesFin = re.search( regex, fechaFinString )
+			if matchesInicio:
+				year = matchesInicio.group( 1 )
+				month = matchesInicio.group( 2 )
+				day = matchesInicio.group( 3 )
+				hour = matchesInicio.group( 4 )
+				minutes = matchesInicio.group( 5 )
+				fechaInicioFormat = f"{day}/{month}/{year} {hour}:{minutes}"
+				ofertaEntry['fecha_inicio'] = fechaInicioFormat
+
+			if matchesFin:
+				year = matchesFin.group( 1 )
+				month = matchesFin.group( 2 )
+				day = matchesFin.group( 3 )
+				hour = matchesFin.group( 4 )
+				minutes = matchesFin.group( 5 )
+				fechaFinFormat = f"{day}/{month}/{year} {hour}:{minutes}"
+				ofertaEntry['fecha_fin'] = fechaFinFormat
+
+			ofertaEntry['porcentaje'] = oferta.porcentaje
+			ofertaEntry['causa'] = oferta.causa
+			ofertaEntry['name'] = oferta.name
+			ofertaEntry['id'] = oferta.id
+			ofertasList.append( ofertaEntry )
+
 		# json stringify / json.dumps (pero con clases)
-		context['ofertas'] = serializers.serialize( 'json', ofertas )
+		# context['ofertas'] = serializers.serialize( 'json', ofertas )
+
+		context['ofertas'] = json.dumps( ofertasList )
 		return JsonResponse( context, status=200 )
 
 	return JsonResponse( context, status=404 )
@@ -295,45 +334,32 @@ def create_ofertas( request ):
 		causa = request.POST.get( 'causa' )
 
 		fechaInicio = request.POST.get( 'fecha_inicio' )
-
-		partesInicio = fechaInicio.split( ' ' )
-		partesFechaInicio = partesInicio[0].split( '/' )
+		partesFechaInicio = fechaInicio.split( ',' )
 		diaInicio = partesFechaInicio[0]
 		mesInicio = partesFechaInicio[1]
 		anoInicio = partesFechaInicio[2]
-
-		partesTiempoInicio = partesInicio[1].split( ':' )
-		horaInicio = partesTiempoInicio[0]
-		minutoInicio = partesTiempoInicio[1]
+		horaInicio = partesFechaInicio[3]
+		minutoInicio = partesFechaInicio[4]
 
 		dateFechaInicio = datetime( int( anoInicio ), int( mesInicio ),
 			int( diaInicio ), int( horaInicio ), int( minutoInicio ) )
 
 		fechaFin = request.POST.get( 'fecha_fin' )
-
-		partesFin = fechaFin.split( ' ' )
-		partesFechaFin = partesFin[0].split( '/' )
+		partesFechaFin = fechaFin.split( ',' )
 		diaFin = partesFechaFin[0]
 		mesFin = partesFechaFin[1]
 		anoFin = partesFechaFin[2]
-
-		partesTiempoFin = partesFin[1].split( ':' )
-		horaFin = partesTiempoFin[0]
-		minutoFin = partesTiempoFin[1]
+		horaFin = partesFechaFin[3]
+		minutoFin = partesFechaFin[4]
 
 		dateFechaFin = datetime( int( anoFin ), int( mesFin ), int( diaFin ),
 			int( horaFin ), int( minutoFin ) )
 
 		if dateFechaInicio and dateFechaFin:
-			stringInicio = f'{diaInicio}/{mesInicio}/{anoInicio} {horaInicio}:' \
-			               f'{minutoInicio}'
-			stringFin = f'{diaFin}/{mesFin}/{anoFin} {horaFin}:{minutoFin}'
-
-			# dateFechaInicioConfirm = datetime.strptime(stringInicio, '%d/%m/%Y
-			# %H:%M')
 			try:
 				oferta = Oferta.objects.create( name=name, porcentaje=porcentaje,
-					causa=causa, fecha_inicio=stringInicio, fecha_fin=stringFin, )
+					causa=causa, fecha_inicio=dateFechaInicio, fecha_fin=dateFechaFin, )
+				oferta.save()
 
 				# json en linea
 				productos_ids_string = request.POST.get( 'data' )

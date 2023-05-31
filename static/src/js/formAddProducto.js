@@ -30,15 +30,12 @@ $( document )
 
 		peticionOfertas.done( function ( response ) {
 			const ofertasResponse = JSON.parse( response['ofertas'] )
-
 			if ( ofertasResponse.length === 0 ) {
 				ofertaWarning.removeClass( 'hidden' )
 				return
 			}
-
-			ofertasResponse.forEach( function ( ofertaObject ) {
-				const id   = ofertaObject['pk']
-				const item = ofertaObject['fields']
+			ofertasResponse.forEach( function ( item ) {
+				const id   = item['id']
 
 				oferta.append( `
 				<tr class="${ id % 2 === 0 ? 'border-b bg-gray-50' : 'border-b bg-white'}">
@@ -76,6 +73,7 @@ $( document )
 					}
 				})
 			})
+
 		})
 
 		inputFile.change( function ( e ) {

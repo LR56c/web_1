@@ -42,14 +42,12 @@ $( document )
 				return
 			}
 
-			ofertasResponse.forEach( function ( ofertaObject ) {
-
-				const id   = ofertaObject['pk']
-				const item = ofertaObject['fields']
+			ofertasResponse.forEach( function ( item ) {
+				const id   = item['id']
 
 				descuentosList.append( `
-					<tr class="${ id % 2 === 0 ? 'border-b bg-gray-50' : 'border-b bg-white'}>
-						<th scope="row"class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">101</th>
+					<tr class="${ id % 2 === 0 ? 'border-b bg-gray-50' : 'border-b bg-white'}">
+						<th id="${id}-id" scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">${id}</th>
 						<td id="${id}-name" class="px-6 py-4">${item['name']}</td>
 						<td id="${id}-porc" class="px-6 py-4">${item['porcentaje']}</td>
 						<td id="${id}-causa" class="px-6 py-4">${item['causa']}</td>

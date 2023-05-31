@@ -465,8 +465,8 @@ function parseDate( time, date ) {
 		return null
 	}
 	else {
-		return `${ dia }/${ mes + 1 }/${ anio } ${ horas }:${ minutos }`
-		// return `${ dia },${ mes + 1 },${ anio },${ horas },${ minutos }`
+		// return `${ dia }/${ mes + 1 }/${ anio } ${ horas }:${ minutos }`
+		return `${ dia },${ mes + 1 },${ anio },${ horas },${ minutos }`
 		// return fechaHora
 	}
 }
