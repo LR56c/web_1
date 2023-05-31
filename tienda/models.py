@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 
 class ProductoImagenes( models.Model ):
@@ -28,7 +29,7 @@ class Producto( models.Model ):
 	oferta = models.ForeignKey( Oferta, on_delete=models.SET_NULL, null=True)
 
 class Usuario( models.Model ):
-	email = models.EmailField( primary_key=True )
+	user = models.OneToOneField( User, on_delete=models.CASCADE, primary_key=True )
 	nombre = models.CharField( max_length=60 )
 	telefono = models.CharField( max_length=10 )
 	direccion = models.CharField( max_length=50 )

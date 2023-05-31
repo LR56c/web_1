@@ -1,4 +1,5 @@
 {% extends 'base_admin.html' %}
+
 {% load static %}
 {% block title %}Crear Producto{% endblock %}
 {% block css %}
@@ -12,6 +13,27 @@
 			<div class="space-y-6">
 				<h5
 					class="text-xl font-medium text-gray-900">Nuevo Producto</h5>
+				<div>
+					<label class="block mb-2 text-sm font-medium text-gray-900">Oferta
+						seleccionada</label>
+					<div class="py-4 border-b bg-gray-50 rounded-lg">
+						<div id="selected-null"
+							class="flex justify-around">
+							<div>Ninguna</div>
+							<div>&nbsp;</div>
+							<div>&nbsp;</div>
+							<div>&nbsp;</div>
+						</div>
+
+						<div id="selected-tr"
+							class="justify-around hidden">
+							<div id="selected-name"></div>
+							<div id="selected-porc"></div>
+							<div id="selected-fi"></div>
+							<div id="selected-fe"></div>
+						</div>
+					</div>
+				</div>
 				<form
 					method="POST"
 					enctype="multipart/form-data"
@@ -52,6 +74,39 @@
 								id="stock"
 								class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
 							/>
+						</div>
+						<div>
+							<label
+								class="block mb-2 text-sm font-medium text-gray-900">Ofertas</label>
+							<table class="w-full text-sm text-left text-gray-500">
+								<thead class="text-xs text-gray-700 uppercase bg-gray-50">
+								<tr>
+									<th scope="col"
+										class="px-6 py-3">
+
+									</th>
+									<th scope="col"
+										class="px-6 py-3">
+										Nombre
+									</th>
+									<th scope="col"
+										class="px-6 py-3">
+										Porcentaje
+									</th>
+									<th scope="col"
+										class="px-6 py-3">
+										Fecha Inicio
+									</th>
+									<th scope="col"
+										class="px-6 py-3">
+										Fecha Fin
+									</th>
+								</tr>
+								</thead>
+								<tbody id="oferta-list">
+								</tbody>
+							</table>
+							<div id="oferta-warning" class="hidden">No hay ofertas disponibles</div>
 						</div>
 						<div>
 							<label

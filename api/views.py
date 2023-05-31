@@ -1,4 +1,5 @@
 import json
+from django.contrib.auth.models import User
 import os
 from datetime import datetime
 from django.core import serializers
@@ -9,7 +10,7 @@ from firebase_admin import storage
 from administracion import forms as administracionForm
 from pokemonShop import settings
 from tienda import forms as tienda_forms
-from tienda.models import  Producto, Usuario
+from tienda.models import Oferta, Producto, Usuario
 
 pokemonAccesoriesList = ["Gorra de Ash Ketchum", "Bufanda de Pikachu",
 	"Mochila de Pokémon", "Calcetines con diseños de Poké Balls",
@@ -164,29 +165,31 @@ def product_create( request ):
 	context = { }
 	if request.method == 'POST':
 		valor = request.POST.get( 'valor' )
+		# humanize.intword( 123455913 )
 		nombre = request.POST.get( 'nombre' )
 		imagen = request.FILES.get( 'imagen' )
 		stock = request.POST.get( 'stock' )
 		imageName = request.POST.get( 'imageName' )
 		descripcion = request.POST.get( 'descripcion' )
+		oferta = request.POST.get( 'oferta' )
 		image_url = firebaseUpload( imagen )
 
+		print( oferta )
+		if len( oferta ) == 0:
+			oferta = None
+
+		print( oferta )
+
 		try:
-			producto = Producto.objects.create(
-				valor=valor,
-				nombre=nombre,
-				imagen=image_url,
-				imageName=imageName,
-				stock=stock,
-				descripcion=descripcion,
-				oferta=None
-			)
+			producto = Producto.objects.create( valor=valor, nombre=nombre,
+				imagen=image_url, imageName=imageName, stock=stock,
+				descripcion=descripcion, oferta=oferta )
 			producto.save()
 
 			context['success'] = True
 			return JsonResponse( context, status=200 )
 		except Exception as e:
-			print(e)
+			print( e )
 			context['success'] = False
 
 			context['errors'] = {
@@ -269,7 +272,19 @@ def getHistorial( request ):
 	return JsonResponse( context, status=404 )
 
 
-def addDescuento( request ):
+def get_ofertas( request ):
+	context = { }
+
+	if request.method == 'GET':
+		ofertas = Oferta.objects.all()
+		# json stringify / json.dumps (pero con clases)
+		context['ofertas'] = serializers.serialize( 'json', ofertas )
+		return JsonResponse( context, status=200 )
+
+	return JsonResponse( context, status=404 )
+
+
+def create_ofertas( request ):
 	context = { }
 	if request.method == 'POST':
 		name = request.POST.get( 'name' )
@@ -313,27 +328,28 @@ def addDescuento( request ):
 
 			# dateFechaInicioConfirm = datetime.strptime(stringInicio, '%d/%m/%Y
 			# %H:%M')
-			form = administracionForm.OfertaForm( {
-				'name'      : name,
-				'porcentaje': porcentaje,
-				'causa'     : causa,
-				'fecha_inicio': stringInicio,
-				'fecha_fin'   : stringFin,
-			} )
+			try:
+				oferta = Oferta.objects.create( name=name, porcentaje=porcentaje,
+					causa=causa, fecha_inicio=stringInicio, fecha_fin=stringFin, )
 
-			if form.is_valid():
-				form.save()
-				id_oferta = form.instance.id
-				form = administracionForm.OfertaForm()
+				# json en linea
+				productos_ids_string = request.POST.get( 'data' )
 
-				productosIds = json.loads( request.POST.get( 'data' ) )
+				# json en lista, gracias al json loads (parse de JS)
+				productos_list = json.loads( productos_ids_string )
 
-				for productoId in productosIds:
+				# stringify de JS
+				# json.dumps()
+
+				# [1,4,10]
+				for productoId in productos_list:
 					try:
+						# 	SELECT * FROM producto WHERE id = 1
 						productEntry = Producto.objects.get( id=productoId )
-						productEntry.oferta = id_oferta
+						productEntry.oferta = oferta
 						productEntry.save()
 					except Exception as e:
+
 						context['success'] = False
 						context['errors'] = {
 							'message': f'Error en el producto {productoId}',
@@ -342,10 +358,12 @@ def addDescuento( request ):
 
 				context['success'] = True
 				return JsonResponse( context, status=200 )
-			else:
+			except Exception as e:
+
 				context['success'] = False
-				errors = form.errors.as_json()
-				context['errors'] = errors
+				context['errors'] = {
+					'message': f'Error en la oferta',
+				}
 				return JsonResponse( context, status=404 )
 
 		else:
@@ -353,5 +371,29 @@ def addDescuento( request ):
 				'message': 'Fechas incorrectas',
 			}
 			return JsonResponse( context, status=404 )
+	return JsonResponse( context, status=404 )
+
+
+def getUsuarios( request ):
+	context = { }
+
+	if request.method == 'GET':
+		users = User.objects.all()
+		usuarios = Usuario.objects.all()
+		userResponse = []
+		for user in users:
+			if not user.is_staff:
+				usuario = usuarios.get( user=user )
+				userEntry = {}
+				userEntry['id'] = user.id
+				userEntry['nombre'] = user.first_name
+				userEntry['correo'] = user.email
+				userEntry['telefono'] = usuario.telefono
+				userEntry['direccion'] = usuario.direccion
+
+				userResponse.append( userEntry )
+
+		context['usuarios'] = json.dumps( userResponse )
+		return JsonResponse( context, status=200 )
 
 	return JsonResponse( context, status=404 )

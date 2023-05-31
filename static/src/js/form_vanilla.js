@@ -1,5 +1,7 @@
 // inputs con warnings
 const productoListBody = document.getElementById( 'producto-list' )
+const productosWarning = document.getElementById( 'productos-warning' )
+const productosDisponibleText = document.getElementById( 'producto-disp' )
 
 const nombreInput     = document.getElementById( 'nombre' )
 const nombreTextInput = document.getElementById( 'nombre-text' )
@@ -41,9 +43,16 @@ const peticionProductos = $.ajax( {
 
 peticionProductos.done( function ( response ) {
 	const productosResponse = JSON.parse( response['productos'] )
+
+	if ( productosResponse.length === 0 ) {
+		productosWarning.classList.remove( 'hidden' )
+		return
+	}
+
 	productosResponse.forEach( function ( producto ) {
-		const id   = producto.pk
-		const item = producto.fields
+		const id   = producto['pk']
+		const item = producto['fields']
+
 		const tr   = document.createElement( 'tr' )
 		tr.classList.add( 'bg-white', 'border-b' )
 
@@ -74,19 +83,19 @@ peticionProductos.done( function ( response ) {
 		th.id    = id + '-nombre'
 		th.classList.add( 'px-6', 'py-4', 'font-medium', 'text-gray-900',
 			'whitespace-nowrap' )
-		th.innerText = item.nombre
+		th.innerText = item['nombre']
 		tr.appendChild( th )
 
 		const tdValor = document.createElement( 'td' )
 		tdValor.id    = id + '-valor'
 		tdValor.classList.add( 'px-6', 'py-4' )
-		tdValor.innerText = '$' + item.valor
+		tdValor.innerText = '$' + item['valor']
 		tr.appendChild( tdValor )
 
 		const tdStock = document.createElement( 'td' )
 		tdStock.id    = id + '-stock'
 		tdStock.classList.add( 'px-6', 'py-4' )
-		tdStock.innerText = item.stock
+		tdStock.innerText = item['stock']
 		tr.appendChild( tdStock )
 
 		const tdImagen = document.createElement( 'td' )
@@ -95,7 +104,7 @@ peticionProductos.done( function ( response ) {
 		const img = document.createElement( 'img' )
 		img.id    = id + '-imagen'
 		img.classList.add( 'h-12', 'w-12', 'object-contain' )
-		img.src = item.imagen
+		img.src = item['imagen']
 		img.alt = '...'
 
 		tdImagen.appendChild( img )
@@ -111,6 +120,7 @@ peticionProductos.done( function ( response ) {
 				elementosChecked.delete( input )
 				listaIdProductos.delete( id )
 			}
+			productosDisponibleText.innerText = listaIdProductos.size
 		} )
 	} )
 } )
@@ -388,6 +398,7 @@ form.addEventListener( 'submit', function ( e ) {
 		break
 	}
 
+
 	if ( bNombre && bPorcentaje && bCausa && bStartDate && bEndDate && bTime &&
 		bEmptyStartDate && bEmptyEndDate && bEmptyStartTime && bEmptyEndTime )
 	{
@@ -404,7 +415,9 @@ form.addEventListener( 'submit', function ( e ) {
 		formData.append( 'fecha_fin',
 			parseDate( endTimeInput.value, endDateInput.value ) )
 		// formData.append( 'data', JSON.stringify(listaIdProductos) )
-		formData.append( 'data', JSON.stringify( [ ...listaIdProductos ] ) )
+		const productJsonList = JSON.stringify( [ ...listaIdProductos ] )
+		formData.append( 'data', productJsonList )
+
 
 		const peticionProductos = $.ajax( {
 			async      : true,

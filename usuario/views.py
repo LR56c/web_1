@@ -36,18 +36,19 @@ def signin(request):
         if password1 == password2:
             try:
                 username = request.POST["username"]
-                user = User.objects.create_user(username, password=password1)
-                user.save()
+
 
                 nombre = request.POST["nombre"]
                 telefono = request.POST["telefono"]
                 direccion = request.POST["direccion"]
-                usuario = Usuario.objects.create(email=username, nombre=nombre, telefono=telefono,
+
+                user = User.objects.create_user( username, password=password1, email=username, first_name=nombre)
+                user.save()
+                usuario = Usuario.objects.create(user=user, nombre=nombre, telefono=telefono,
                                                  direccion=direccion)
                 usuario.save()
 
-                login(request, user)
-                request.session['algo'] = 34234
+                login(request, user=user)
                 request.session['user_session'] = user.username
                 return redirect('inicio')
             except IntegrityError:
