@@ -113,6 +113,8 @@ def product_edit( request, id ):
 	context = { }
 
 	if request.method == 'POST':
+		print( 'request.POST')
+		print( request.POST)
 		producto = Producto.objects.get( id=id )
 		if producto:
 			valor = request.POST.get( 'valor' )

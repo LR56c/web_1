@@ -1,0 +1,163 @@
+{% extends 'base_admin.html' %}
+
+{% load static %}
+{% block title %}Editar Producto{% endblock %}
+{% block css %}
+	<link rel="stylesheet"
+		href="{% static 'src/css/register.css' %}">
+{% endblock %}
+{% block aside-content %}
+	<div class="xs:p-4 h-full w-full flex justify-center">
+		<div
+			class="w-full h-full sm:w-3/4 lg:max-w-3xl bg-white border border-gray-200 rounded-lg shadow p-8">
+			<div class="space-y-6">
+				<h5
+					class="text-xl font-medium text-gray-900">Nuevo Producto</h5>
+				<div>
+					<label class="block mb-2 text-sm font-medium text-gray-900">Oferta
+						seleccionada</label>
+					<div class="py-4 border-b bg-gray-50 rounded-lg">
+						<div id="selected-null"
+							class="flex justify-around">
+							<div>Ninguna</div>
+							<div>&nbsp;</div>
+							<div>&nbsp;</div>
+							<div>&nbsp;</div>
+						</div>
+
+						<div id="selected-tr"
+							class="justify-around hidden">
+							<div id="selected-name"></div>
+							<div id="selected-porc"></div>
+							<div id="selected-fi"></div>
+							<div id="selected-fe"></div>
+						</div>
+					</div>
+				</div>
+				<form
+					method="POST"
+					enctype="multipart/form-data"
+					class="space-y-6"
+					id="form4">
+					{% csrf_token %}
+					<div class="overflow-y-scroll h-96 space-y-6">
+						<div>
+							<label for="nombre"
+								class="block mb-2 text-sm font-medium text-gray-900">Nombre</label>
+							<input type="text"
+								name="nombre"
+								id="nombre"
+								class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"/>
+						</div>
+						<div>
+							<label for="descripcion"
+								class="block mb-2 text-sm font-medium text-gray-900">Descripcion</label>
+							<textarea type="text"
+								name="descripcion"
+								id="descripcion"
+								class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"></textarea>
+						</div>
+						<div>
+							<label for="valor"
+								class="block mb-2 text-sm font-medium text-gray-900">Precio</label>
+							<input type="text"
+								name="valor"
+								id="valor"
+								class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+							/>
+						</div>
+						<div>
+							<label for="stock"
+								class="block mb-2 text-sm font-medium text-gray-900">Stock</label>
+							<input type="text"
+								name="stock"
+								id="stock"
+								class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+							/>
+						</div>
+						<div>
+							<label
+								class="block mb-2 text-sm font-medium text-gray-900">Ofertas</label>
+							<table class="w-full text-sm text-left text-gray-500">
+								<thead class="text-xs text-gray-700 uppercase bg-gray-50">
+								<tr>
+									<th scope="col"
+										class="px-6 py-3">
+
+									</th>
+									<th scope="col"
+										class="px-6 py-3">
+										Nombre
+									</th>
+									<th scope="col"
+										class="px-6 py-3">
+										Porcentaje
+									</th>
+									<th scope="col"
+										class="px-6 py-3">
+										Fecha Inicio
+									</th>
+									<th scope="col"
+										class="px-6 py-3">
+										Fecha Fin
+									</th>
+								</tr>
+								</thead>
+								<tbody id="oferta-list">
+								</tbody>
+							</table>
+							<div id="oferta-warning" class="hidden">No hay ofertas disponibles</div>
+						</div>
+						<div>
+							<label
+								class="block mb-2 text-sm font-medium text-gray-900">Imagen</label>
+							<div class="flex items-center justify-center w-full">
+								<label id="parent-imagen"
+									for="imagen"
+
+									class="flex flex-col items-center justify-center w-full h-42 xxs:h-32 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 hover:bg-gray-100">
+									<div
+										id="post-imagen"
+									>
+										<img
+											id="imagen-preview"
+											class="w-20 h-20 object-contain rounded-lg"
+											src="#"
+										/>
+										<p id="imagen-text-preview"
+											class="text-center"
+										></p>
+									</div>
+
+									<input id="imagen"
+										name="imagen"
+										type="file"
+										class="hidden"/>
+								</label>
+							</div>
+							<p class="hidden error"
+								id="imagen-warning">Debe ingresar una imagen</p>
+						</div>
+					</div>
+					<button
+						type="submit"
+						class="w-full text-white bg-gradient-to-r from-cyan-500 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
+						Crear
+					</button>
+				</form>
+			</div>
+		</div>
+	</div>
+		<input id="p-id" type="hidden" value="{{ producto.id }}"/>
+		<input id="nombre-esc" type="hidden" value="{{ producto.nombre }}"/>
+		<input id="descripcion-esc" type="hidden" value="{{ producto.descripcion }}"/>
+		<input id="valor-esc" type="hidden" value="{{ producto.valor }}"/>
+		<input id="stock-esc" type="hidden" value="{{ producto.stock }}"/>
+		<input id="imagen-esc" type="hidden" value="{{ producto.imagen }}"/>
+		<input id="imageName-esc" type="hidden" value="{{ producto.imageName }}"/>
+		<input id="oferta-esc" type="hidden" value="{{ producto.oferta_id }}"/>
+{% endblock %}
+
+{% block js %}
+	<script src="{% static '/src/js/editarProducto.js' %}"></script>
+{% endblock %}

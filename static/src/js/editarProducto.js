@@ -1,14 +1,28 @@
 $( document )
 	.ready( function () {
-		let firstPreview = true
+		const idEsc      = $( '#p-id' )
+		const nombreEsc      = $( '#nombre-esc' )
+		const descripcionEsc = $( '#descripcion-esc' )
+		const valorEsc       = $( '#valor-esc' )
+		const stockEsc       = $( '#stock-esc' )
+		const imagenEsc      = $( '#imagen-esc' )
+		const imageNameEsc   = $( '#imageName-esc' )
+		const ofertaEsc      = $( '#oferta-esc' )
 
-		let preImagen  = $( '#pre-imagen' )
+		const idProducto	= Number( idEsc.val() )
+		const nombre      = $( '#nombre' )
+		const descripcion = $( '#descripcion' )
+		const valor       = $( '#valor' )
+		const stock       = $( '#stock' )
+		const imagen      = String(imagenEsc.val())
+		const imageName   = String(imageNameEsc.val())
+		const ofertaId    = Number( ofertaEsc.val() )
+
 		let postImagen = $( '#post-imagen' )
 
 		let imagenPreview     = $( '#imagen-preview' )
 		let imagenTextPreview = $( '#imagen-text-preview' )
 		let inputFile         = $( '#imagen' )
-		let imagenWarning     = $( '#imagen-warning' )
 		let oferta            = $( '#oferta-list' )
 		let ofertaWarning     = $( '#oferta-warning' )
 
@@ -16,6 +30,14 @@ $( document )
 
 		let selectionNull = $( '#selected-null' )
 		let selectionTR   = $( '#selected-tr' )
+
+		nombre.val( nombreEsc.val() )
+		descripcion.text( descripcionEsc.val() )
+		valor.val( valorEsc.val() )
+		stock.val( stockEsc.val() )
+
+		imagenPreview.attr( 'src', imagen )
+		imagenTextPreview.text( imageName )
 
 		const peticionOfertas = $.ajax( {
 				async      : true,
@@ -84,16 +106,24 @@ $( document )
 					} )
 			} )
 
+
+			if ( !isNaN(ofertaId) ) {
+
+				lastSelectedOferta = ofertaId
+				$( `#${ ofertaId }-check` ).prop( 'checked', true )
+				lastSelectedOferta = ofertaId
+				selectionNull.addClass( 'hidden' )
+				selectionTR.removeClass( 'hidden' )
+				selectionTR.addClass( [ 'flex', 'flex-row' ] )
+				$( `#selected-name` ).text( $( `#${ofertaId}-name` ).text() )
+				$( `#selected-porc` ).text( $( `#${ofertaId}-porc` ).text() )
+				$( `#selected-fi` ).text( $( `#${ofertaId}-fi` ).text() )
+				$( `#selected-fe` ).text( $( `#${ofertaId}-fe` ).text() )
+			}
 		} )
 
 		inputFile.change( function ( e ) {
-			if ( firstPreview ) {
-				preImagen.hide()
-				postImagen.show()
-			}
 
-			imagenWarning.hide()
-			firstPreview = false
 			const file   = e.target.files[0]
 			imagenPreview.attr( 'src', URL.createObjectURL( file ) )
 			imagenTextPreview.text( file.name )
@@ -136,45 +166,43 @@ $( document )
 			} )
 
 
-			if ( !form.valid() && firstPreview ) {
-				imagenWarning.show()
-				return
-			}
+			if ( !form.valid()) return
 
 			const ofertaInput = lastSelectedOferta === 0 ? '' : String(
 				lastSelectedOferta )
 
 			let formData    = new FormData( this )
 			const imageName = formData.get( 'imagen' ).name
+			console.log( 'imageName' )
+			console.log( imageName )
 			formData.append( 'imageName', imageName )
 			formData.append( 'oferta', ofertaInput )
+			console.log( 'formData')
+			console.log( formData)
+			return
 
 			const peticionProductos = $.ajax( {
 					async      : true,
 					crossDomain: true,
-					// url        : 'http://ec2-18-231-153-185.sa-east-1.compute.amazonaws.com:8000/api/product/crear',
-					url        : 'http://127.0.0.1:8000/api/product/crear',
+					// url        : 'http://ec2-18-231-153-185.sa-east-1.compute.amazonaws.com:8000/api/product/editar/' + idProducto,
+					url        : 'http://127.0.0.1:8000/api/product/editar/' + idProducto,
 					method     : 'POST',
 					data       : formData,
 					processData: false,
 					contentType: false
 				}
 			)
-			peticionProductos.done( function ( response ) {
-				if ( response.success ) {
-					form.trigger( 'reset' )
-					firstPreview = true
-					preImagen.show()
-					postImagen.hide()
 
-					Swal.fire( {
-						title            : 'Exito!',
-						text             : 'Se ha registrado el nuevo producto',
-						icon             : 'success',
-						confirmButtonText: 'Cerrar'
-					} )
-				}
-			} )
+			peticionProductos.fail( function ( response ) {
+				console.log( 'fallo' )
+			})
+			// peticionProductos.done( function ( response ) {
+			// 	if ( response.success ) {
+			// 		form.trigger( 'reset' )
+			// 		firstPreview = true
+			// 		preImagen.show()
+			// 		postImagen.hide()
+			// 	}
+			// } )
 		} )
 	} )
-

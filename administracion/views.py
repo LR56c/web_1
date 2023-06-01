@@ -1,5 +1,5 @@
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import render
+from django.shortcuts import get_object_or_404, redirect, render
 from tienda.models import Producto
 
 @login_required
@@ -28,3 +28,20 @@ def ver_productos(request ):
 @login_required
 def ver_usuarios(request):
 	return render(request, 'ver_usuarios.html' )
+
+
+@login_required
+def editar_producto( request, id ):
+	try:
+		producto = Producto.objects.get( id=id )
+
+		context = {
+			'producto': producto,
+		}
+
+		return render( request, 'editar_producto.html', context )
+
+	except Exception as e:
+		print(e)
+
+		return redirect('404')

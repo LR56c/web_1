@@ -1,26 +1,5 @@
-const options = {
-	placement: 'center',
-	backdrop: 'dynamic',
-	backdropClasses: 'bg-gray-900 bg-opacity-50 fixed inset-0 z-40',
-	closable: true,
-	onHide: () => {
-	},
-	onShow: () => {
-	},
-	onToggle: () => {
-	}
-}
-
 $( document )
 	.ready( function () {
-		const editModal     = document.getElementById( 'edit-modal' )
-		const closeModal     = document.getElementById( 'close-modal' )
-		const modal = new Modal( editModal, options )
-
-		closeModal.addEventListener( 'click', function () {
-			modal.hide()
-		})
-
 		const peticionProductos = $.ajax( {
 				async      : true,
 				crossDomain: true,
@@ -66,10 +45,6 @@ $( document )
 						</button>
 					</td>
 				</tr>`)
-
-				$(`#${id}-button`).click( function () {
-					modal.show()
-				})
 			} )
 		})
 	})

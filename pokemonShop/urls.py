@@ -20,10 +20,12 @@ from tienda import views as tienda_views
 
 urlpatterns = [path( 'admin/', admin.site.urls ),
 	path( '', include( 'tienda.urls' ) ),
-	path( '404', tienda_views.error_page, name='404' ),
+	path( '404', tienda_views.custom_404, name='404' ),
 	path( 'registro', usuario_views.signin, name='registro' ),
 	path( 'login', usuario_views.signup, name='login' ),
 	path( 'logout', usuario_views.signout, name='logout' ),
 	path( 'api/', include( 'api.urls' ) ),
 	path( 'usuario/', include( 'usuario.urls' ) ),
 	path( 'administracion/', include( 'administracion.urls' ) ), ]
+
+# handler404 = 'tienda.views.custom_404'

@@ -5,8 +5,8 @@ from django.shortcuts import render
 def index(request):
     return render(request, 'index_tienda.html')
 
-def error_page(request ):
-    return render(request, '404.html')
+def custom_404(request):
+    return render(request, '404.html', status=404)
 
 @login_required
 def orden(request):
