@@ -165,21 +165,16 @@ $( document )
 				}
 			} )
 
-
 			if ( !form.valid()) return
 
 			const ofertaInput = lastSelectedOferta === 0 ? '' : String(
 				lastSelectedOferta )
 
 			let formData    = new FormData( this )
-			const imageName = formData.get( 'imagen' ).name
-			console.log( 'imageName' )
-			console.log( imageName )
-			formData.append( 'imageName', imageName )
+			const imagenCurrentName = formData.get( 'imagen' ).name
+			const imageNameData = imagenCurrentName === '' ? imageName : imagenCurrentName
+			formData.append( 'imageName', imageNameData )
 			formData.append( 'oferta', ofertaInput )
-			console.log( 'formData')
-			console.log( formData)
-			return
 
 			const peticionProductos = $.ajax( {
 					async      : true,
@@ -196,13 +191,14 @@ $( document )
 			peticionProductos.fail( function ( response ) {
 				console.log( 'fallo' )
 			})
-			// peticionProductos.done( function ( response ) {
-			// 	if ( response.success ) {
-			// 		form.trigger( 'reset' )
-			// 		firstPreview = true
-			// 		preImagen.show()
-			// 		postImagen.hide()
-			// 	}
-			// } )
+			peticionProductos.done( function ( response ) {
+				// TODO: hacer aparecer modal exito y obligar boton ir a productos
+				// if ( response.success ) {
+				// 	form.trigger( 'reset' )
+				// 	firstPreview = true
+				// 	preImagen.show()
+				// 	postImagen.hide()
+				// }
+			} )
 		} )
 	} )

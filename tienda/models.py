@@ -20,8 +20,7 @@ class Producto( models.Model ):
 	valor = models.IntegerField()
 	stock = models.IntegerField()
 	imagen = models.URLField()
-	# imagenes_secundarias = models.ForeignKey(ProductoImagenes,
-	# on_delete=models.CASCADE)
+	# imagenes_secundarias = models.ForeignKey(ProductoImagenes,on_delete=models.CASCADE)
 	nombre = models.CharField( max_length=30 )
 	descripcion = models.CharField( max_length=100 )
 	imageName = models.CharField( max_length=100 )

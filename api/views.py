@@ -1,4 +1,5 @@
 import json
+from django.contrib import messages
 import re
 import humanize
 from django.contrib.auth.models import User
@@ -10,7 +11,6 @@ from django.http import JsonResponse
 from django.shortcuts import redirect, render
 from firebase_admin import storage
 from pokemonShop import settings
-from tienda import forms as tienda_forms
 from tienda.models import Oferta, Producto, Usuario
 
 pokemonAccesoriesList = ["Gorra de Ash Ketchum", "Bufanda de Pikachu",
@@ -113,41 +113,42 @@ def product_edit( request, id ):
 	context = { }
 
 	if request.method == 'POST':
-		print( 'request.POST')
-		print( request.POST)
-		producto = Producto.objects.get( id=id )
-		if producto:
+		try:
+			producto = Producto.objects.get( id=id )
 			valor = request.POST.get( 'valor' )
-			nombre = request.POST.get( 'nombre' )
+			stock = request.POST.get( 'stock' )
 			imagen = request.FILES.get( 'imagen' )
+			nombre = request.POST.get( 'nombre' )
+			descripcion = request.POST.get( 'descripcion' )
 			imageName = request.POST.get( 'imageName' )
+			oferta = request.POST.get( 'oferta' )
+			oferta = Oferta.objects.get( id=oferta)
 
-			firebaseDelete( producto.imageName )
-			image_url = firebaseUpload( imagen )
+			image_url = producto.imagen
 
-			# form = tienda_forms.ProductoForm( request.POST, request.FILES )
-			form = tienda_forms.ProductoForm( {
-				'id'       : id,
-				'valor'    : valor,
-				'nombre'   : nombre,
-				'imagen'   : image_url,
-				'imageName': imageName
-			}, instance=producto )
-
-			if form.is_valid():
-				form.save()
-				form = tienda_forms.ProductoForm()
-
-				context['success'] = True
-
-				return JsonResponse( context, status=200 )
+			if imagen is not None and not imageName != producto.imageName:
+				print( '------------imagen update------------' )
+				firebaseDelete( producto.imageName )
+				image_url = firebaseUpload( imagen )
 			else:
-				context['success'] = False
+				print( '------------no update------------' )
 
-				errors = form.errors.as_json()
-				context['errors'] = errors
-		else:
-			context['errors'] = ['Producto no encontrado']
+			producto.valor = valor
+			producto.stock = stock
+			producto.imagen = image_url
+			producto.nombre = nombre
+			producto.descripcion = descripcion
+			producto.imageName = imageName
+			producto.oferta = oferta
+
+			producto.save()
+
+			context['success'] = True
+
+			return JsonResponse( context, status=200 )
+			# return redirect( 'ver_productos')
+		except Exception as e:
+			context['success'] = False
 
 	return JsonResponse( context, status=404 )
 
@@ -185,7 +186,7 @@ def product_create( request ):
 		if len( oferta ) == 0:
 			oferta = None
 		else:
-			oferta = Oferta.objects.get( id=oferta)
+			oferta = Oferta.objects.get( id=oferta )
 
 		try:
 			producto = Producto.objects.create( valor=valor, nombre=nombre,
