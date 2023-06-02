@@ -1,17 +1,30 @@
 {% extends 'base.html' %}
 {% load static %}
-
+{% block css %}
+	<link rel="stylesheet"
+		href="{% static 'src/css/register.css' %}">
+{% endblock %}
 {% block content %}
 
-<div
-	class="w-full h-full flex md:flex-row-reverse flex-col justify-center items-center">
-	<p class="py-10 text-xl xs:text-4xl text-center">Estamos en contruccion,
-		pagina no encontrada.</p>
+	<div
+		class="w-full h-full flex md:flex-row-reverse flex-col justify-center items-center">
+		<div class="flex flex-col justify-center items-center">
 
-	<img src="{% static 'imagens/gatoerror2.png' %}"
-		alt="..."
-		class="object-contain"/>
+			<p class="py-10 text-xl xs:text-4xl text-center">Estamos en contruccion,
+				pagina no encontrada.</p>
+			{% if messages %}
+				<ul class="messages">
+					{% for message in messages %}
+						<li class="error text-2xl text-center">{{ message }}</li>
+					{% endfor %}
+				</ul>
+			{% endif %}
+		</div>
 
-</div>
+		<img src="{% static 'imagens/gatoerror2.png' %}"
+			alt="..."
+			class="object-contain"/>
+
+	</div>
 	{% include 'drawer.html' %}
 {% endblock content %}

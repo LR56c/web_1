@@ -1,14 +1,13 @@
 import json
-from django.contrib import messages
+from babel.numbers import format_currency, format_decimal
 import re
-import humanize
 from django.contrib.auth.models import User
 import os
 from datetime import datetime
 from django.core import serializers
 from django.core.files.uploadedfile import InMemoryUploadedFile
 from django.http import JsonResponse
-from django.shortcuts import redirect, render
+from django.shortcuts import redirect
 from firebase_admin import storage
 from pokemonShop import settings
 from tienda.models import Oferta, Producto, Usuario
@@ -102,7 +101,8 @@ def product_get( request, id ):
 		try:
 			producto = Producto.objects.get( id=id )
 			context['producto'] = producto
-			return render( request, 'ver_producto.html', context, status=200 )
+
+			# return render( request, 'ver_producto.html', context, status=200 )
 		except Exception as e:
 			pass
 
@@ -126,12 +126,9 @@ def product_edit( request, id ):
 
 			image_url = producto.imagen
 
-			if imagen is not None and not imageName != producto.imageName:
-				print( '------------imagen update------------' )
+			if imagen is not None:
 				firebaseDelete( producto.imageName )
 				image_url = firebaseUpload( imagen )
-			else:
-				print( '------------no update------------' )
 
 			producto.valor = valor
 			producto.stock = stock
@@ -140,13 +137,11 @@ def product_edit( request, id ):
 			producto.descripcion = descripcion
 			producto.imageName = imageName
 			producto.oferta = oferta
-
 			producto.save()
 
 			context['success'] = True
 
 			return JsonResponse( context, status=200 )
-			# return redirect( 'ver_productos')
 		except Exception as e:
 			context['success'] = False
 
@@ -159,11 +154,11 @@ def products( request ):
 	if request.method == 'GET':
 		productos = Producto.objects.all()
 
-		humanize.i18n.activate( "es_ES" )
 		for producto in productos:
 
-			producto.valor = humanize.intword( producto.valor )
-			producto.stock = humanize.intword( producto.stock )
+			codigo_moneda = "CLP"
+			producto.valor = format_currency( producto.valor, codigo_moneda,locale="es_CL" )
+			producto.stock = format_decimal( producto.stock, locale='es_CL' )
 
 		context['productos'] = serializers.serialize( 'json', productos )
 		return JsonResponse( context, status=200 )

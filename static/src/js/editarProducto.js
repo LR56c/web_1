@@ -1,5 +1,27 @@
+const options = {
+	placement: 'center',
+	backdrop: 'dynamic',
+	backdropClasses: 'bg-gray-900 bg-opacity-50 fixed inset-0 z-40',
+	closable: false,
+	onHide: () => {
+	},
+	onShow: () => {
+	},
+	onToggle: () => {
+	}
+}
+
+
 $( document )
 	.ready( function () {
+		const editModal     = document.getElementById( 'edit-modal' )
+		const submitModal     = document.getElementById( 'submit-modal' )
+		const modal = new Modal( editModal, options )
+
+		submitModal.addEventListener( 'click', function () {
+			console.log('submit')
+		})
+
 		const idEsc      = $( '#p-id' )
 		const nombreEsc      = $( '#nombre-esc' )
 		const descripcionEsc = $( '#descripcion-esc' )
@@ -188,17 +210,10 @@ $( document )
 				}
 			)
 
-			peticionProductos.fail( function ( response ) {
-				console.log( 'fallo' )
-			})
+			// peticionProductos.fail( function ( response ) {})
+
 			peticionProductos.done( function ( response ) {
-				// TODO: hacer aparecer modal exito y obligar boton ir a productos
-				// if ( response.success ) {
-				// 	form.trigger( 'reset' )
-				// 	firstPreview = true
-				// 	preImagen.show()
-				// 	postImagen.hide()
-				// }
+				modal.show()
 			} )
 		} )
 	} )

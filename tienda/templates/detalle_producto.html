@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load extras_filters %}
+
 
 {% block title %}Producto X{% endblock %}
 
@@ -15,117 +17,98 @@
 	<div
 		class="relative flex flex-col md:flex-row w-full gap-4 p-4">
 		<div class="flex flex-col basis-2/3 gap-4">
-			<div class="block md:hidden w-full flex justify-center">
+			<div class="md:hidden w-full flex justify-center">
 				<img
 					class="h-24 xxs:h-36 xs:h-56 sm:h-72 object-contain rounded-lg"
-					src="{% static 'imagens/polera.png' %}"
-					alt=""/>
-			</div>
-			<div
-				class="md:hidden flex justify-start gap-4 h-40 overflow-x-auto flex">
-				<img class="object-contain max-h-36 aspect-square rounded-lg"
-					src="{% static 'imagens/cinturon.png' %}"
-					alt=""/>
-				<img class="object-contain max-h-36 aspect-square rounded-lg"
-					src="{% static 'imagens/gorra.png' %}"
-					alt=""/>
-				<img class="object-contain max-h-36 aspect-square rounded-lg"
-					src="{% static 'imagens/polerapokebol.png' %}"
-					alt=""/>
-				<img class="object-contain max-h-36 aspect-square rounded-lg"
-					src="{% static 'imagens/tasaeve.png' %}"
-					alt=""/>
-				<img class="object-contain max-h-36 aspect-square rounded-lg"
-					src="{% static 'imagens/gorraroja.png' %}"
+					src="{{ producto.imagen }}"
 					alt=""/>
 			</div>
 			<div class="hidden md:block">
 				<div class="flex justify-center items-center">
 					<div class="rounded-lg bg-gray-200 max-w-lg">
 						<img class="object-contain w-full h-full rounded-lg"
-							src="{% static 'imagens/polera.png' %}"
+							src="{{ producto.imagen }}"
 							alt=""/>
 					</div>
 				</div>
-			</div>
-			<div
-				class="hidden md:flex flex-wrap justify-center overflow-x-auto gap-4">
-				<img class="object-contain max-h-36 aspect-square rounded-lg"
-					src="{% static 'imagens/cinturon.png' %}"
-					alt=""/>
-				<img class="object-contain max-h-36 aspect-square rounded-lg"
-					src="{% static 'imagens/gorra.png' %}"
-					alt=""/>
-				<img class="object-contain max-h-36 aspect-square rounded-lg"
-					src="{% static 'imagens/poleron.png' %}"
-					alt=""/>
-				<img class="object-contain max-h-36 aspect-square rounded-lg"
-					src="{% static 'imagens/tasaeve.png' %}"
-					alt=""/>
-				<img class="object-contain max-h-36 aspect-square rounded-lg"
-					src="{% static 'imagens/gorraroja.png' %}"
-					alt=""/>
 			</div>
 		</div>
 		<div
 			class="w-full basis-1/3 flex flex-col items-start">
 			<div
-				class="w-full text-sm">
-				id del producto
+				class="w-full my-2 font-medium">
+				{{ producto.nombre }}
 			</div>
 			<div
-				class="w-full my-2 font-medium">
-				Nombre del producto
+				class="w-full my-2">
+				Stock: {{ producto.stock }}
 			</div>
 			<div
 				class="w-full flex flex-col">
-				<div class="text-gray-400 line-through">$100</div>
-				<div class="flex items-center gap-2">
-					<div class="text-red-600 text-2xl font-bold">$60</div>
-					<div class="text-red-600 text-sm">(-40% descuento)</div>
-				</div>
+				{% if producto.descuento == '0' %}
+					<div class="text-black text-2xl font-bold">{{ producto.valor }}</div>
+				{% else %}
+					<div class="text-gray-400 line-through">{{ producto.valor }}</div>
+					<div class="flex items-center gap-2">
+						<div class="text-red-600 text-2xl font-bold">{{ producto.rebaja }}</div>
+						<div class="text-red-600 text-sm">(-{{ producto.descuento }}%
+							descuento)
+						</div>
+					</div>
+				{% endif %}
 			</div>
 			<div class="w-full flex my-2 flex-col">
 				<p class="font-bold my-2">Cantidad</p>
 				<div
 					class="w-full flex xxs:flex-row flex-col items-center gap-4">
-					<div
-						class="h-12 border-2 rounded-full flex justify-center items-center">
-						<div class="flex gap-2 px-2">
-							<button>
-								<svg class="h-6 w-6"
-									fill="none"
-									stroke="currentColor"
-									stroke-width="1.5"
-									viewBox="0 0 24 24"
-									xmlns="http://www.w3.org/2000/svg"
-									aria-hidden="true">
-									<path stroke-linecap="round"
-										stroke-linejoin="round"
-										d="M18 12H6"></path>
-
-								</svg>
-							</button>
-							<p class="mx-2">0</p>
-							<button>
-								<svg class="h-6 w-6"
-									fill="none"
-									stroke="currentColor"
-									stroke-width="1.5"
-									viewBox="0 0 24 24"
-									xmlns="http://www.w3.org/2000/svg"
-									aria-hidden="true">
-									<path stroke-linecap="round"
-										stroke-linejoin="round"
-										d="M12 6v12m6-6H6"></path>
-								</svg>
-							</button>
-						</div>
+					<div class="flex items-center space-x-3">
+						<button class="inline-flex items-center p-1 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-full focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
+							id="button-dec"
+							type="button">
+							<span class="sr-only">Quantity button</span>
+							<svg class="w-4 h-4"
+								aria-hidden="true"
+								fill="currentColor"
+								viewBox="0 0 20 20"
+								xmlns="http://www.w3.org/2000/svg">
+								<path fill-rule="evenodd"
+									d="M3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
+									clip-rule="evenodd"></path>
+							</svg>
+						</button>
+						<input type="number"
+							id="input-num"
+							value="1"
+							class="bg-gray-50 w-14 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block px-2.5 py-1 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"/>
+						<button class="inline-flex items-center p-1 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-full focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
+							id="button-add"
+							type="button">
+							<span class="sr-only">Quantity button</span>
+							<svg class="w-4 h-4"
+								aria-hidden="true"
+								fill="currentColor"
+								viewBox="0 0 20 20"
+								xmlns="http://www.w3.org/2000/svg">
+								<path fill-rule="evenodd"
+									d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z"
+									clip-rule="evenodd"></path>
+							</svg>
+						</button>
 					</div>
-					<button type="button"
-						class="h-12 px-5 py-2.5 text-white bg-yellow-600 hover:bg-green-600 focus:outline-none focus:ring-4 focus:ring-yellow-300 font-medium rounded-full text-xs lg:text-sm text-center">
-						Agregar al carrito
-					</button>
+					<form method="post"
+						action="{{ producto.id }}">
+						{% csrf_token %}
+						<input type="hidden"
+							id="input-add"
+							name="input-add"
+							value="5"
+							class="bg-gray-50 w-14 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block px-2.5 py-1 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"/>
+						<button type="submit"
+							id="button-submit"
+							class="h-12 px-5 py-2.5 text-white bg-yellow-600 hover:bg-green-600 focus:outline-none focus:ring-4 focus:ring-yellow-300 font-medium rounded-full text-xs lg:text-sm text-center">
+							Agregar al carrito
+						</button>
+					</form>
 				</div>
 			</div>
 			<div
@@ -133,7 +116,7 @@
 			</div>
 			<div
 				class="w-full">
-				Descripcion del producto
+				{{ producto.descripcion }}
 			</div>
 		</div>
 	</div>
@@ -148,7 +131,8 @@
 		<div class="h-80 w-44">
 			<div
 				class="h-80 w-44 flex flex-col gap-2 bg-white border border-gray-200 rounded-lg shadow">
-				<a href="{% url '404' %}" class="basis-3/5 flex justify-center items-center">
+				<a href="{% url '404' %}"
+					class="basis-3/5 flex justify-center items-center">
 					<img
 						class="object-contain rounded-t-lg max-h-32"
 						src="{% static 'imagens/poleron.png' %}"
@@ -158,19 +142,22 @@
 					class="basis-2/5 w-full h-full">
 					<div class="w-full flex justify-center items-center">
 						<a
-							class="line-clamp-1" href="{% url '404' %}">Nombre producto</a>
+							class="line-clamp-1"
+							href="{% url '404' %}">Nombre producto</a>
 					</div>
 					<div
 						class="w-full flex p-2 flex-col">
 						<div
-							class="text-gray-400 line-through">Precio</div>
+							class="text-gray-400 line-through">Precio
+						</div>
 						<div class="flex items-center gap-2">
 							<div
 								class="text-2xl font-bold">
 								desc
 							</div>
 							<div
-								class="text-xs">%descuento</div>
+								class="text-xs">%descuento
+							</div>
 						</div>
 					</div>
 					<div class="w-full p-2">
@@ -178,11 +165,14 @@
 							class="px-2 py-2.5 h-12 w-full text-white bg-gray-500 hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm text-center">
 							Agregar al carrito
 						</button>
-						</a>
 					</div>
 				</div>
-		</div>
+			</div>
 		</div>
 	</div>
 
 {% endblock content %}
+
+{% block js %}
+<script src="{% static 'src/js/addDetalleProducto.js' %}"></script>
+{% endblock %}

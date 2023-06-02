@@ -7,12 +7,28 @@
 		href="{% static 'src/css/register.css' %}">
 {% endblock %}
 {% block aside-content %}
+	<div aria-hidden="true"
+		id="edit-modal"
+		class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] md:h-full">
+		<div class="relative w-full h-full max-w-md md:h-auto">
+			<div class="relative bg-white rounded-lg shadow">
+				<div class="px-6 py-6 lg:px-8">
+					<h3
+						class="mb-4 text-xl font-medium text-gray-900">Edicion completa</h3>
+						<button
+							class="w-full text-white bg-gradient-to-r from-cyan-500 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
+							<a id="submit-modal" href="{% url 'ver_productos' %}">Ir a productos</a>
+						</button>
+				</div>
+			</div>
+		</div>
+	</div>
 	<div class="xs:p-4 h-full w-full flex justify-center">
 		<div
 			class="w-full h-full sm:w-3/4 lg:max-w-3xl bg-white border border-gray-200 rounded-lg shadow p-8">
 			<div class="space-y-6">
 				<h5
-					class="text-xl font-medium text-gray-900">Nuevo Producto</h5>
+					class="text-xl font-medium text-gray-900">Editar Producto '{{ producto.nombre }}'</h5>
 				<div>
 					<label class="block mb-2 text-sm font-medium text-gray-900">Oferta
 						seleccionada</label>
@@ -83,7 +99,6 @@
 								<tr>
 									<th scope="col"
 										class="px-6 py-3">
-
 									</th>
 									<th scope="col"
 										class="px-6 py-3">

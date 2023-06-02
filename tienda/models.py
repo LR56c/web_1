@@ -2,10 +2,6 @@ from django.db import models
 from django.contrib.auth.models import User
 
 
-class ProductoImagenes( models.Model ):
-	id = models.AutoField( primary_key=True )
-	imagen = models.URLField()
-
 class Oferta( models.Model ):
 	id = models.AutoField( primary_key=True )
 	name = models.CharField( max_length=100 )
@@ -20,7 +16,6 @@ class Producto( models.Model ):
 	valor = models.IntegerField()
 	stock = models.IntegerField()
 	imagen = models.URLField()
-	# imagenes_secundarias = models.ForeignKey(ProductoImagenes,on_delete=models.CASCADE)
 	nombre = models.CharField( max_length=30 )
 	descripcion = models.CharField( max_length=100 )
 	imageName = models.CharField( max_length=100 )
@@ -32,22 +27,10 @@ class Usuario( models.Model ):
 	telefono = models.CharField( max_length=10 )
 	direccion = models.CharField( max_length=50 )
 
-
-class Orden( models.Model ):
-	id = models.AutoField( primary_key=True )
-	usuario = models.ForeignKey( Usuario, on_delete=models.CASCADE )
-	fecha = models.DateTimeField()
-	# Monto total con iva y descuentos
-	valor = models.IntegerField()
-	estado = models.CharField( max_length=100 )
-
-
 class DetalleOrden( models.Model ):
 	id = models.AutoField( primary_key=True )
 	producto = models.ForeignKey( Producto, on_delete=models.CASCADE )
-	orden = models.ForeignKey( Orden, on_delete=models.CASCADE )
 	cantidad = models.IntegerField()
-	fecha = models.CharField( max_length=20 )
 	# Monto total sin iva
 	monto = models.IntegerField()
 
@@ -57,6 +40,18 @@ class Carrito( models.Model ):
 	usuario = models.ForeignKey( Usuario, on_delete=models.CASCADE )
 	detalle_orden = models.ForeignKey( DetalleOrden, on_delete=models.CASCADE )
 
+class Compra( models.Model ):
+	id = models.AutoField( primary_key=True )
+	detalle_orden = models.ForeignKey( DetalleOrden, on_delete=models.CASCADE )
+
+class Orden( models.Model ):
+	id = models.AutoField( primary_key=True )
+	usuario = models.ForeignKey( Usuario, on_delete=models.CASCADE )
+	fecha = models.DateTimeField()
+	compra = models.ForeignKey( Compra, on_delete=models.CASCADE )
+	# Monto total con iva y descuentos
+	valor = models.IntegerField()
+	estado = models.CharField( max_length=100 )
 
 class Envio( models.Model ):
 	id = models.AutoField( primary_key=True )
