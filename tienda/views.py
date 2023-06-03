@@ -20,7 +20,6 @@ def index( request ):
 	ind = rn.sample( range( len( productos ) ), 3 )
 
 	for i in range( len( productos ) ):
-		# random  = rn.randint( 0, len( randomSet ) - 1 )
 		productoEntry = { }
 		producto = productos[i]
 		productoEntry['id'] = producto.id
@@ -74,12 +73,13 @@ def producto( request, id ):
 		user = User.objects.get( username=username )
 		usuario = Usuario.objects.get( user=user )
 		producto = Producto.objects.get( id=id )
-		# producto
-		# cantidad
-		# monto
-		detalle_orden = DetalleOrden.objects.create( producto=producto)
-		carrito = Carrito.objects.create( usuario=usuario, producto=producto )
-
+		cantidad = request.POST['input-add']
+		monto = int( producto.valor ) * int( cantidad )
+		detalle_orden = DetalleOrden.objects.create( producto=producto,cantidad=cantidad, monto=monto )
+		carrito = Carrito.objects.create( usuario=usuario,detalle_orden=detalle_orden )
+		carrito.save()
+		detalle_orden.save()
+		context['sucess'] = True
 	try:
 		producto = Producto.objects.get( id=id )
 		productoEntry = { }

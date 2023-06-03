@@ -10,7 +10,7 @@ from django.http import JsonResponse
 from django.shortcuts import redirect
 from firebase_admin import storage
 from pokemonShop import settings
-from tienda.models import Oferta, Producto, Usuario
+from tienda.models import Carrito, Oferta, Producto, Usuario
 
 pokemonAccesoriesList = ["Gorra de Ash Ketchum", "Bufanda de Pikachu",
 	"Mochila de Pokémon", "Calcetines con diseños de Poké Balls",
@@ -102,7 +102,7 @@ def product_get( request, id ):
 			producto = Producto.objects.get( id=id )
 			context['producto'] = producto
 
-			# return render( request, 'ver_producto.html', context, status=200 )
+		# return render( request, 'ver_producto.html', context, status=200 )
 		except Exception as e:
 			pass
 
@@ -122,7 +122,7 @@ def product_edit( request, id ):
 			descripcion = request.POST.get( 'descripcion' )
 			imageName = request.POST.get( 'imageName' )
 			oferta = request.POST.get( 'oferta' )
-			oferta = Oferta.objects.get( id=oferta)
+			oferta = Oferta.objects.get( id=oferta )
 
 			image_url = producto.imagen
 
@@ -157,7 +157,8 @@ def products( request ):
 		for producto in productos:
 
 			codigo_moneda = "CLP"
-			producto.valor = format_currency( producto.valor, codigo_moneda,locale="es_CL" )
+			producto.valor = format_currency( producto.valor, codigo_moneda,
+				locale="es_CL" )
 			producto.stock = format_decimal( producto.stock, locale='es_CL' )
 
 		context['productos'] = serializers.serialize( 'json', productos )
@@ -423,3 +424,49 @@ def getUsuarios( request ):
 		return JsonResponse( context, status=200 )
 
 	return JsonResponse( context, status=404 )
+
+
+def getCarrito( request ):
+	context = { }
+	if request.method == 'POST':
+		userEmail = request.POST.get( 'user-email' )
+
+		try:
+			user = User.objects.get( username=userEmail )
+			usuario = Usuario.objects.get( user=user )
+
+			carritoListUsuario = usuario.carrito_set.all()
+
+			carritoListResult = []
+			codigo_moneda = "CLP"
+			montoTotal = 0
+
+			for carrito in carritoListUsuario:
+				carritoEntry = { }
+				cantidad = carrito.detalle_orden.cantidad
+				valorRaw = carrito.detalle_orden.producto.valor * cantidad
+
+				valor = format_currency( valorRaw, codigo_moneda, locale="es_CL" )
+				carritoEntry['precio'] = valor
+				if carrito.detalle_orden.producto.oferta_id is not None:
+					oferta = carrito.detalle_orden.producto.oferta
+					rebajaRaw = (valorRaw - (valorRaw * (oferta.porcentaje / 100)))
+					carritoEntry['rebaja'] = format_currency( rebajaRaw, codigo_moneda,locale="es_CL" )
+					carritoEntry['descuento'] = oferta.porcentaje
+					montoTotal += rebajaRaw
+				else:
+					montoTotal += valorRaw
+					carritoEntry['descuento'] = '0'
+
+				carritoEntry['id'] = carrito.detalle_orden.producto.id
+				carritoEntry['nombre'] = carrito.detalle_orden.producto.nombre
+				carritoEntry['imagen'] = carrito.detalle_orden.producto.imagen
+				carritoEntry['cantidad'] = cantidad
+
+				carritoListResult.append( carritoEntry )
+
+			context['carrito'] = json.dumps( carritoListResult )
+			context['montoTotal'] = format_currency( montoTotal, codigo_moneda,locale="es_CL" )
+			return JsonResponse( context, status=200 )
+		except Exception as e:
+			return JsonResponse( context, status=404 )
