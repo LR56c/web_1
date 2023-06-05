@@ -19,13 +19,16 @@ class Producto( models.Model ):
 	nombre = models.CharField( max_length=30 )
 	descripcion = models.CharField( max_length=100 )
 	imageName = models.CharField( max_length=100 )
-	oferta = models.ForeignKey( Oferta, on_delete=models.SET_NULL, null=True)
+	oferta = models.ForeignKey( Oferta, on_delete=models.SET_NULL, null=True )
+
 
 class Usuario( models.Model ):
-	user = models.OneToOneField( User, on_delete=models.CASCADE, primary_key=True )
+	user = models.OneToOneField( User, on_delete=models.CASCADE,
+		primary_key=True )
 	nombre = models.CharField( max_length=60 )
 	telefono = models.CharField( max_length=10 )
 	direccion = models.CharField( max_length=50 )
+
 
 class DetalleOrden( models.Model ):
 	id = models.AutoField( primary_key=True )
@@ -40,26 +43,27 @@ class Carrito( models.Model ):
 	usuario = models.ForeignKey( Usuario, on_delete=models.CASCADE )
 	detalle_orden = models.ForeignKey( DetalleOrden, on_delete=models.CASCADE )
 
-class Compra( models.Model ):
+class Envio( models.Model ):
 	id = models.AutoField( primary_key=True )
-	detalle_orden = models.ForeignKey( DetalleOrden, on_delete=models.CASCADE )
+	estado = models.CharField( max_length=100 )
+	compania = models.CharField( max_length=100 )
+	direccion = models.CharField( max_length=50 )
+	numero_seguimiento = models.IntegerField()
+	fecha = models.DateField()
 
 class Orden( models.Model ):
 	id = models.AutoField( primary_key=True )
 	usuario = models.ForeignKey( Usuario, on_delete=models.CASCADE )
+	envio = models.ForeignKey( Envio, on_delete=models.CASCADE )
 	fecha = models.DateTimeField()
-	compra = models.ForeignKey( Compra, on_delete=models.CASCADE )
 	# Monto total con iva y descuentos
 	valor = models.IntegerField()
 	estado = models.CharField( max_length=100 )
 
-class Envio( models.Model ):
+class Compra( models.Model ):
 	id = models.AutoField( primary_key=True )
+	detalle_orden = models.ForeignKey( DetalleOrden, on_delete=models.CASCADE )
 	orden = models.ForeignKey( Orden, on_delete=models.CASCADE )
-	estado = models.CharField( max_length=100 )
-	compania = models.CharField( max_length=100 )
-	numero_seguimiento = models.IntegerField()
-	fecha = models.DateField()
 
 
 class Suscripcion( models.Model ):

@@ -15,19 +15,19 @@
 			<div class="relative p-4 space-y-6">
 				<div class="max-w-md">
 					<label for="first_name" class="block mb-2 text-sm font-medium text-gray-900">Nombre</label>
-					<input type="text" id="first_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+					<input disabled value="{{ nombre }}" type="text" id="first_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
 				</div>
 				<div class="max-w-md mb-6">
 					<label for="email" class="block mb-2 text-sm font-medium text-gray-900">Correo</label>
-					<input type="email" id="email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+					<input disabled value="{{ email }}" type="email" id="email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
 				</div>
 				<div class="max-w-md mb-6">
 					<label for="first_name" class="block mb-2 text-sm font-medium text-gray-900">Celular</label>
-					<input type="text" id="first_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+					<input disabled value="{{ telefono }}" type="text" id="first_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
 				</div>
 				<div class="max-w-md mb-6">
 					<label for="first_name" class="block mb-2 text-sm font-medium text-gray-900">Direccion</label>
-					<input type="text" id="first_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+					<input disabled value="{{ direccion }}" type="text" id="first_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
 				</div>
 			</div>
 			<div
@@ -35,16 +35,7 @@
 				<button type="button"
 					id="edit-info"
 					class="w-48 xxs:w-52 text-white bg-gradient-to-r from-cyan-500 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2.5 text-center">
-					Editar
-				</button>
-				<button type="button"
-					id="change"
-					class="w-48 xxs:w-52 text-white bg-gradient-to-r from-cyan-500 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2.5 text-center">
-					<a href="{% url 'cambiar_contrasena' %}"
-						class="text-white"
-					>
-						Cambiar Contraseña
-					</a>
+					<a href="{% url 'detalle_cuenta_editar' %}">Editar</a>
 				</button>
 			</div>
 		</div>
@@ -52,5 +43,5 @@
 {% endblock %}
 
 {% block js %}
-	<script src="{% static 'src/js/user_detail.js' %}"></script>
+{#	<script src="{% static 'src/js/user_detail.js' %}"></script>#}
 {% endblock %}

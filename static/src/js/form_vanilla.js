@@ -89,7 +89,7 @@ peticionProductos.done( function ( response ) {
 		const tdValor = document.createElement( 'td' )
 		tdValor.id    = id + '-valor'
 		tdValor.classList.add( 'px-6', 'py-4' )
-		tdValor.innerText = '$' + item['valor']
+		tdValor.innerText = item['valor']
 		tr.appendChild( tdValor )
 
 		const tdStock = document.createElement( 'td' )

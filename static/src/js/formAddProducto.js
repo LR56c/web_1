@@ -167,6 +167,10 @@ $( document )
 					preImagen.show()
 					postImagen.hide()
 
+					selectionNull.removeClass( 'hidden' )
+					selectionTR.addClass( 'hidden' )
+					selectionTR.removeClass( [ 'flex', 'flex-row' ] )
+
 					Swal.fire( {
 						title            : 'Exito!',
 						text             : 'Se ha registrado el nuevo producto',

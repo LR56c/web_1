@@ -14,6 +14,7 @@ urlpatterns = [
 	path( 'descuentos', views.get_ofertas, name='ver_oferta'),
 	path( 'usuario/historial', views.getHistorial, name='getHistorial'),
 	path( 'usuarios', views.getUsuarios, name='getUsuarios'),
+	path( 'usuario/editar', views.editUsuario, name='editUsuario'),
 	path( 'carrito', views.getCarrito, name='getCarrito')
 ]
 

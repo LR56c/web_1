@@ -3,7 +3,7 @@
 {% load extras_filters %}
 
 
-{% block title %}Producto X{% endblock %}
+{% block title %}{{ producto.nombre }}{% endblock %}
 
 {% block css %}
 	<link href="{% static 'src/css/index.css' %}"
@@ -12,7 +12,7 @@
 
 {% block content %}
 	<!--drawer-->
-	{% include 'drawer.html' %}
+	{% include 'drawer.html' with carrito=carrito montoTotal=montoTotal%}
 
 	<div
 		class="relative flex flex-col md:flex-row w-full gap-4 p-4">

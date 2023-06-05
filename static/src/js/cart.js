@@ -1,15 +1,11 @@
 const productsList = document.getElementById( 'products-list' )
 const totalCompra = document.getElementById( 'total-compra' )
-const formData     = new FormData()
-const token        = document.getElementsByName( 'csrfmiddlewaretoken' )[0]
-formData.append( 'csrfmiddlewaretoken', token.value )
-formData.append( 'user-email', userEmail )
 
 const fetchCarrito = async () => {
 	const response = await fetch( 'http://127.0.0.1:8000/api/carrito', {
-		method: 'POST',
-		body  : formData
+		method: 'GET',
 	} )
+
 	const data     = await response
 	if ( data.ok ) {
 		const dataJson   = await response.json()
@@ -122,6 +118,8 @@ const fetchCarrito = async () => {
 			const button = document.createElement( 'button' )
 			button.classList.add( 'absolute', 'right-2', 'top-2' )
 			button.textContent = 'delete'
+			button.addEventListener( 'click', async () => {
+			})
 
 			div.appendChild( imgDiv )
 			div.appendChild( priceDiv )
@@ -129,5 +127,6 @@ const fetchCarrito = async () => {
 			productsList.append( div )
 		}
 	}
+
 }
 fetchCarrito()

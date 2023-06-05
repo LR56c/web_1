@@ -4,8 +4,7 @@
 	aria-labelledby="drawer-cart-right-label">
 	<h5 id="drawer-right-label"
 		class="inline-flex items-center mb-4 text-base font-semibold text-gray-500">
-		Listado
-		carrito</h5>
+		Listado carrito</h5>
 	<button type="button"
 		data-drawer-hide="drawer-cart"
 		aria-controls="drawer-cart"
@@ -18,24 +17,81 @@
 		<div
 			class="p-3 bg-white border border-gray-200 rounded-lg shadow">
 			<p class="font-normal text-gray-700 inline">
-				Total: <p id="total-compra" class="inline">$0</p>
-			</p>
+				Total:
+			<p id="total-compra"
+				class="inline">{{ montoTotal }}</p>
 		</div>
+        {% if carrito %}
 		<a
 			href="{% url 'pago' %}"
 			class="h-12 px-12 py-2.5 text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-center">
 			Ir a Pagar
 		</a>
+        {% endif %}
 	</div>
 	<div id="products-list"
 		class="w-full flex flex-col gap-4 my-4 items-center">
+		{% if carrito %}
+			{% for item in carrito %}
+				<p> {{ item.nombre }}</p>
+				<div
+					class="relative flex flex-col justify-center items-center gap-2 w-4/5 xs:max-w-sm p-4 bg-white border border-gray-200 rounded-lg shadow">
+					<div
+						class="flex w-full flex-col xxs:flex-row justify-center items-center">
+						<img
+							src="{{ item.imagen }}"
+							class="h-20 w-20 bg-gray-700 basis-1/2 object-contain rounded-lg"
+							alt="..."/>
+						<div
+							class="flex w-full basis-1/2 justify-center items-center">{{ item.nombre }}
+						</div>
+					</div>
+					<div
+						class="flex w-full xxs:flex-row flex-col justify-center items-center">
+						<div
+							class="w-full h-full flex flex-col items-center">
+							{% if item.descuento == '0' %}
+								<div class="text-black text-2xl font-bold">{{ item.valor }}</div>
+							{% else %}
+								<div class="text-gray-400 line-through">{{ item.valor }}</div>
+								<div class="flex items-center flex-col gap-2">
+									<div class="text-red-600 text-2xl font-bold">{{ item.rebaja }}</div>
+									<div
+										class="text-red-600 text-xs xs:text-sm rounded-full bg-red-100">
+										-{{ item.descuento }}%
+										descuento
+									</div>
+								</div>
+							{% endif %}
+						</div>
+						<div
+							class="w-full h-full flex flex-col justify-center items-center">
+							<p class="font-bold my-2">Cantidad</p>
+							<div
+								class="w-full flex xxs:flex-row flex-col justify-center items-center gap-4">
+								<div
+									class="h-10 border-2 rounded-full flex justify-center items-center">
+									<div class="flex gap-2 px-2">
+										<p class="mx-2">{{ item.cantidad }}</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
 
+					<form method="post"
+						action="{% url 'index_carrito_delete' item.carritoId %}">
+						{% csrf_token %}
+						<button
+							type="submit"
+							class="absolute right-2 top-2">delete
+						</button>
+					</form>
+				</div>
+			{% endfor %}
+		{% else %}
+			<p>No hay productos en el carrito</p>
+		{% endif %}
 	</div>
-	<form>
-		{% csrf_token %}
-	</form>
 </div>
-<script>
-	const userEmail = '{{ user_session }}'
-</script>
-<script src="{% static 'src/js/cart.js' %}"></script>
+{#<script src="{% static 'src/js/cart.js' %}"></script>#}

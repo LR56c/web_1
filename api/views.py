@@ -9,8 +9,10 @@ from django.core.files.uploadedfile import InMemoryUploadedFile
 from django.http import JsonResponse
 from django.shortcuts import redirect
 from firebase_admin import storage
+
+import api.methods
 from pokemonShop import settings
-from tienda.models import Carrito, Oferta, Producto, Usuario
+from tienda.models import Oferta, Producto, Usuario
 
 pokemonAccesoriesList = ["Gorra de Ash Ketchum", "Bufanda de Pikachu",
 	"Mochila de Pokémon", "Calcetines con diseños de Poké Balls",
@@ -288,27 +290,9 @@ def get_ofertas( request ):
 			ofertaEntry = { }
 			fechaInicioString = str( oferta.fecha_inicio )
 			fechaFinString = str( oferta.fecha_fin )
-			regex = r"(\d{4})-(\d{2})-(\d{2}) (\d{2}):(\d{2}):"
 
-			matchesInicio = re.search( regex, fechaInicioString )
-			matchesFin = re.search( regex, fechaFinString )
-			if matchesInicio:
-				year = matchesInicio.group( 1 )
-				month = matchesInicio.group( 2 )
-				day = matchesInicio.group( 3 )
-				hour = matchesInicio.group( 4 )
-				minutes = matchesInicio.group( 5 )
-				fechaInicioFormat = f"{day}/{month}/{year} {hour}:{minutes}"
-				ofertaEntry['fecha_inicio'] = fechaInicioFormat
-
-			if matchesFin:
-				year = matchesFin.group( 1 )
-				month = matchesFin.group( 2 )
-				day = matchesFin.group( 3 )
-				hour = matchesFin.group( 4 )
-				minutes = matchesFin.group( 5 )
-				fechaFinFormat = f"{day}/{month}/{year} {hour}:{minutes}"
-				ofertaEntry['fecha_fin'] = fechaFinFormat
+			ofertaEntry['fecha_inicio'] = api.methods.fecha( fechaInicioString )
+			ofertaEntry['fecha_fin'] = api.methods.fecha( fechaFinString )
 
 			ofertaEntry['porcentaje'] = oferta.porcentaje
 			ofertaEntry['causa'] = oferta.causa
@@ -428,45 +412,45 @@ def getUsuarios( request ):
 
 def getCarrito( request ):
 	context = { }
-	if request.method == 'POST':
-		userEmail = request.POST.get( 'user-email' )
-
+	if request.method == 'GET':
 		try:
-			user = User.objects.get( username=userEmail )
-			usuario = Usuario.objects.get( user=user )
-
-			carritoListUsuario = usuario.carrito_set.all()
-
-			carritoListResult = []
-			codigo_moneda = "CLP"
-			montoTotal = 0
-
-			for carrito in carritoListUsuario:
-				carritoEntry = { }
-				cantidad = carrito.detalle_orden.cantidad
-				valorRaw = carrito.detalle_orden.producto.valor * cantidad
-
-				valor = format_currency( valorRaw, codigo_moneda, locale="es_CL" )
-				carritoEntry['precio'] = valor
-				if carrito.detalle_orden.producto.oferta_id is not None:
-					oferta = carrito.detalle_orden.producto.oferta
-					rebajaRaw = (valorRaw - (valorRaw * (oferta.porcentaje / 100)))
-					carritoEntry['rebaja'] = format_currency( rebajaRaw, codigo_moneda,locale="es_CL" )
-					carritoEntry['descuento'] = oferta.porcentaje
-					montoTotal += rebajaRaw
-				else:
-					montoTotal += valorRaw
-					carritoEntry['descuento'] = '0'
-
-				carritoEntry['id'] = carrito.detalle_orden.producto.id
-				carritoEntry['nombre'] = carrito.detalle_orden.producto.nombre
-				carritoEntry['imagen'] = carrito.detalle_orden.producto.imagen
-				carritoEntry['cantidad'] = cantidad
-
-				carritoListResult.append( carritoEntry )
-
-			context['carrito'] = json.dumps( carritoListResult )
-			context['montoTotal'] = format_currency( montoTotal, codigo_moneda,locale="es_CL" )
+			userEmail = request.user
+			carrito, montoTotal = api.methods.getCart( userEmail )
+			context['carrito'] = carrito
+			context['montoTotal'] = montoTotal
 			return JsonResponse( context, status=200 )
 		except Exception as e:
 			return JsonResponse( context, status=404 )
+
+
+def editUsuario( request ):
+	context = { }
+	if request.method == 'POST':
+		try:
+			user = request.user
+			usuario = Usuario.objects.get( user=user )
+
+			name = request.POST.get( 'name' )
+			email = request.POST.get( 'email' )
+			telefono = request.POST.get( 'telefono' )
+			direccion = request.POST.get( 'direccion' )
+
+			user.first_name = name
+			user.email = email
+			user.username = email
+			user.save()
+
+			usuario.nombre = name
+			usuario.telefono = telefono
+			usuario.direccion = direccion
+			usuario.save()
+
+			context['success'] = True
+
+			return JsonResponse( context, status=200 )
+
+		except Exception as e:
+			context['success'] = False
+			return JsonResponse( context, status=404 )
+
+	return JsonResponse( context, status=404 )
