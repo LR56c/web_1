@@ -532,3 +532,83 @@ def editar_usuarios( request, id ):
 			return JsonResponse( context, status=404 )
 
 	return JsonResponse( context, status=404 )
+
+
+@login_required
+def edit_ofertas( request ):
+	context = { }
+	if request.method == 'POST':
+		idDescuento = request.POST.get( 'id-descuento' )
+		name = request.POST.get( 'name' )
+		porcentaje = request.POST.get( 'porcentaje' )
+		causa = request.POST.get( 'causa' )
+
+		fechaInicio = request.POST.get( 'fecha_inicio' )
+		partesFechaInicio = fechaInicio.split( ',' )
+		diaInicio = partesFechaInicio[0]
+		mesInicio = partesFechaInicio[1]
+		anoInicio = partesFechaInicio[2]
+		horaInicio = partesFechaInicio[3]
+		minutoInicio = partesFechaInicio[4]
+
+		dateFechaInicio = datetime( int( anoInicio ), int( mesInicio ),
+			int( diaInicio ), int( horaInicio ), int( minutoInicio ) )
+
+		fechaFin = request.POST.get( 'fecha_fin' )
+		partesFechaFin = fechaFin.split( ',' )
+		diaFin = partesFechaFin[0]
+		mesFin = partesFechaFin[1]
+		anoFin = partesFechaFin[2]
+		horaFin = partesFechaFin[3]
+		minutoFin = partesFechaFin[4]
+
+		dateFechaFin = datetime( int( anoFin ), int( mesFin ), int( diaFin ),
+			int( horaFin ), int( minutoFin ) )
+
+		if dateFechaInicio and dateFechaFin:
+			try:
+
+				oferta = Oferta.objects.get( id=idDescuento )
+				oferta.name = name
+				oferta.porcentaje = porcentaje
+				oferta.causa = causa
+				oferta.fecha_inicio = dateFechaInicio
+				oferta.fecha_fin = dateFechaFin
+				oferta.save()
+
+				productos_ids_string = request.POST.get( 'data' )
+				productos_list = json.loads( productos_ids_string )
+
+				print( 'productos_list')
+				print( productos_list)
+				context['success'] = True
+				return JsonResponse( context, status=200 )
+				for productoId in productos_list:
+					try:
+						productEntry = Producto.objects.get( id=productoId )
+						productEntry.oferta = oferta
+						productEntry.save()
+					except Exception as e:
+
+						context['success'] = False
+						context['errors'] = {
+							'message': f'Error en el producto {productoId}',
+						}
+						return JsonResponse( context, status=404 )
+
+				context['success'] = True
+				return JsonResponse( context, status=200 )
+			except Exception as e:
+
+				context['success'] = False
+				context['errors'] = {
+					'message': f'Error en la oferta',
+				}
+				return JsonResponse( context, status=404 )
+
+		else:
+			context['errors'] = {
+				'message': 'Fechas incorrectas',
+			}
+			return JsonResponse( context, status=404 )
+	return JsonResponse( context, status=404 )

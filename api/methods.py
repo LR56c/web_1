@@ -85,3 +85,15 @@ def fechaDate(fecha):
 		day = matchesStr.group( 3 )
 		fechaFormat = f"{day}/{month}/{year}"
 		return fechaFormat
+
+
+def horaDate( fecha ):
+	regex = r"(\d{4})-(\d{2})-(\d{2}) (\d{2}):(\d{2}):"
+
+	matchesStr = re.search( regex, str( fecha ) )
+
+	if matchesStr:
+		hour = matchesStr.group( 4 )
+		minutes = matchesStr.group( 5 )
+		fechaFormat = f"{hour}:{minutes}"
+		return fechaFormat
