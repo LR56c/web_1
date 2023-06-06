@@ -50,48 +50,81 @@
 		</div>
 	</div>
 	<div class="md:p-4 w-full h-full">
-		<div class="max-h-96 md:max-h-[32rem] w-full overflow-auto shadow-md sm:rounded-lg">
-			<table
-				class="w-full text-sm text-left text-gray-500">
-				<thead
-					class="text-xs text-gray-700 uppercase bg-gray-50">
-				<tr>
-					<th scope="col"
-						class="px-6 py-3">
-						ID
-					</th>
-					<th scope="col"
-						class="px-6 py-3">
-						NOMBRE
-					</th>
-					<th scope="col"
-						class="px-6 py-3">
-						CORREO
-					</th>
-					<th scope="col"
-						class="px-6 py-3">
-						CELULAR
-					</th>
-					<th scope="col"
-						class="px-6 py-3">
-						DIRECCION
-					</th>
-					<th scope="col"
-						class="px-6 py-3">
-						ACCION
-					</th>
-				</tr>
-				</thead>
-				<tbody id="usuarios-list">
-				</tbody>
-			</table>
-			<div id="usuarios-warning"
-				class="hidden">No se han encontrado usuarios
+		{% if usuarios %}
+			<div class="max-h-96 md:max-h-[32rem] w-full overflow-auto shadow-md sm:rounded-lg">
+				<table
+					class="w-full text-sm text-left text-gray-500">
+					<thead
+						class="text-xs text-gray-700 uppercase bg-gray-50">
+					<tr>
+						<th scope="col"
+							class="px-6 py-3">
+							ID
+						</th>
+						<th scope="col"
+							class="px-6 py-3">
+							NOMBRE
+						</th>
+						<th scope="col"
+							class="px-6 py-3">
+							CORREO
+						</th>
+						<th scope="col"
+							class="px-6 py-3">
+							CELULAR
+						</th>
+						<th scope="col"
+							class="px-6 py-3">
+							DIRECCION
+						</th>
+						<th scope="col"
+							class="px-6 py-3">
+							ACCION
+						</th>
+					</tr>
+					</thead>
+					<tbody id="usuarios-list">
+					{% for usuario in usuarios %}
+						<tr class="border-b bg-white">
+							<th id="{{ usuario.user.id }}-id"
+								scope="row"
+								class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
+								{{ usuario.user.id }}</th>
+							<td id="{{ usuario.user.id }}-nombre"
+								class="px-6 py-4">{{ usuario.nombre }}
+							</td>
+							<td id="{{ usuario.user.id }}-correo"
+								class="px-6 py-4">{{ usuario.user.email }}
+							</td>
+							<td id="{{ usuario.user.id }}-tel"
+								class="px-6 py-4">{{ usuario.telefono }}
+							</td>
+							<td id="{{ usuario.user.id }}-dir"
+								class="px-6 py-4">{{ usuario.direccion }}
+							</td>
+							<td class="px-3 py-4">
+								<button type="button"
+									class="text-white bg-gradient-to-r from-yellow-300 via-yellow-400 to-yellow-500 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-1.5 text-center">
+									<a href="{% url 'editar_usuarios' usuario.user.id %}">Editar</a>
+								</button>
+								<button
+									type="submit"
+									id="edit-submit"
+									class="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-1.5 text-center">
+									<a href="{% url 'eliminar_usuarios' usuario.user.id %}">Eliminar</a>
+								</button>
+							</td>
+						</tr>
+					{% endfor %}
+					</tbody>
+				</table>
 			</div>
-		</div>
+		{% else %}
+			<div id="usuarios-warning">No se han encontrado usuarios</div>
+		{% endif %}
 	</div>
 
 {% endblock %}
 {% block js %}
-	<script src="{% static 'src/js/getUsuarios.js' %}"></script>
+	{#	<script src="{% static 'src/js/getUsuarios.js' %}"></script>#}
 {% endblock %}

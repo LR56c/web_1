@@ -499,3 +499,36 @@ def editUsuario( request ):
 			return JsonResponse( context, status=404 )
 
 	return JsonResponse( context, status=404 )
+
+@login_required
+def editar_usuarios( request, id ):
+	context = { }
+	if request.method == 'POST':
+		try:
+			user = request.user
+			usuario = Usuario.objects.get( user=user )
+
+			name = request.POST.get( 'name' )
+			email = request.POST.get( 'email' )
+			telefono = request.POST.get( 'telefono' )
+			direccion = request.POST.get( 'direccion' )
+
+			user.first_name = name
+			user.email = email
+			user.username = email
+			user.save()
+
+			usuario.nombre = name
+			usuario.telefono = telefono
+			usuario.direccion = direccion
+			usuario.save()
+
+			context['success'] = True
+
+			return JsonResponse( context, status=200 )
+
+		except Exception as e:
+			context['success'] = False
+			return JsonResponse( context, status=404 )
+
+	return JsonResponse( context, status=404 )

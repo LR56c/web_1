@@ -128,7 +128,20 @@ def signout( request ):
 
 @login_required
 def detalle_cuenta_editar( request ):
-	return render( request, 'detalle_cuenta_editar.html' )
+	if request.method == 'GET':
+		try:
+			context = { }
+			user = request.user
+			usuario = Usuario.objects.get( user=user )
+
+			context['nombre'] = usuario.nombre
+			context['email'] = user.email
+			context['telefono'] = usuario.telefono
+			context['direccion'] = usuario.direccion
+			return render( request, 'detalle_cuenta_editar.html', context )
+		except Exception as e:
+			return redirect( '404' )
+	return redirect( '404' )
 
 
 @login_required

@@ -6,6 +6,23 @@
 {% endblock %}
 {% block title %}Editar Cuenta Usuario{% endblock %}
 {% block aside-content %}
+	<div aria-hidden="true"
+		id="edit-modal"
+		class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] md:h-full">
+		<div class="relative w-full h-full max-w-md md:h-auto">
+			<div class="relative bg-white rounded-lg shadow">
+				<div class="px-6 py-6 lg:px-8">
+					<h3
+						class="mb-4 text-xl font-medium text-gray-900">Cuenta editada
+						correctamente</h3>
+					<button type="button"
+						class="w-full text-white bg-gradient-to-r from-cyan-500 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
+						<a href="{% url 'ver_usuarios' %}">Ver listado usuarios</a>
+					</button>
+				</div>
+			</div>
+		</div>
+	</div>
 	<div
 		class="w-full h-full xs:p-4 flex justify-center items-center place-items-center">
 		<div class="w-full lg:w-3/4 bg-white rounded-lg shadow">
@@ -13,7 +30,7 @@
 				class="p-4 border-b rounded-t">
 				<h3
 					class="text-xl font-semibold text-gray-900">
-					Editar informacion de la cuenta
+					Editar informacion de la cuenta de usuario '{{ nombre }}'
 				</h3>
 			</div>
 			<div>
@@ -21,6 +38,10 @@
 					method="post"
 					class="relative px-4 pt-4">
 					{% csrf_token %}
+					<input
+						value="{{ id }}"
+						id="id-user"
+						type="hidden">
 					<div class="max-w-md mb-6">
 						<label for="name"
 							class="block mb-2 text-sm font-medium text-gray-900">Nombre</label>
@@ -76,5 +97,5 @@
 {% endblock %}
 
 {% block js %}
-	<script src="{% static 'src/js/user_detail_edit.js' %}"></script>
+	<script src="{% static 'src/js/users_edit.js' %}"></script>
 {% endblock %}

@@ -16,6 +16,7 @@ urlpatterns = [
 	path( 'usuario/historial', views.getHistorial, name='getHistorial'),
 	path( 'usuarios', views.getUsuarios, name='getUsuarios'),
 	path( 'usuario/editar', views.editUsuario, name='editUsuario'),
+	path( 'usuarios/editar/<int:id>', views.editar_usuarios, name='editar_usuarios' ),
 	path( 'carrito', views.getCarrito, name='getCarrito')
 ]
 
