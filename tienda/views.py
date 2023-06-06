@@ -79,7 +79,6 @@ def orden( request ):
 				return redirect( 'inicio' )
 
 			montoTotal = parse_number( montoTotal[1:], locale='es_CL' )
-			montoTotal = montoTotal * 1.19
 
 			# Preparacion - En Curso - Entregado
 			envio = Envio.objects.create( estado='Entregado', compania='Chilexpress',
@@ -106,14 +105,12 @@ def orden( request ):
 
 			return redirect( 'orden_id', id=orden.id )
 		except Exception as e:
-			print( e )
 			return redirect( 'pago' )
 
 	return redirect( 'pago' )
 
 @login_required
 def carrito_repetir( request, id):
-	context = { }
 	if request.method == 'GET':
 		try:
 			user = User.objects.get( username=request.user )
@@ -131,9 +128,8 @@ def carrito_repetir( request, id):
 				cantidad = compra.detalle_orden.cantidad
 				api.methods.save_to_cart( usuario, producto, cantidad)
 
-			return redirect( 'orden' )
+			return redirect( 'pago' )
 		except Exception as e:
-			print( e )
 			return redirect( '404' )
 	return redirect( '404' )
 
@@ -147,7 +143,6 @@ def orden_id( request, id ):
 
 		return render( request, 'orden.html', context )
 	except Exception as e:
-		print( e )
 		return redirect( '404' )
 
 
@@ -204,7 +199,6 @@ def producto( request, id ):
 
 		return render( request, 'detalle_producto.html', context )
 	except Exception as e:
-		print( e )
 		messages.error( request, 'El producto no existe' )
 		return redirect( '404' )
 
@@ -218,9 +212,7 @@ def index_carrito( request, id ):
 		result = api.methods.save_to_cart( usuario, producto, cantidad )
 		if result:
 			messages.success( request, 'Producto agregado al carrito' )
-			print( 'Producto agregado al carrito' )
 		else:
-			print( 'No se pudo agregar el producto al carrito' )
 			messages.error( request, 'No se pudo agregar el producto al carrito' )
 		return redirect( 'inicio' )
 

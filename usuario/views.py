@@ -7,9 +7,10 @@ from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.contrib.auth.models import User
 from django.db import IntegrityError
 from django.shortcuts import redirect, render
+from datetime import datetime, timedelta
 
 import api.methods
-from tienda.models import Usuario
+from tienda.models import Pago, Usuario
 
 
 # login
@@ -79,7 +80,6 @@ def detalle_cuenta( request ):
 			context['direccion'] = usuario.direccion
 			return render( request, 'detalle_cuenta.html', context )
 		except Exception as e:
-			print( e )
 			return redirect( '404' )
 
 	return redirect( '404' )
@@ -91,8 +91,8 @@ def historial_pedidos( request ):
 	if request.method == 'GET':
 		try:
 			usuario = Usuario.objects.get( user=request.user )
-			ordenes = usuario.orden_set.all( )
-			ordenList = [ ]
+			ordenes = usuario.orden_set.all()
+			ordenList = []
 
 			for orden in ordenes:
 				ordenEntry = { }
@@ -102,7 +102,7 @@ def historial_pedidos( request ):
 				ordenEntry['valor'] = format_currency( orden.valor, codigo_moneda,
 					locale="es_CL" )
 
-				ordenEntry['fecha'] = api.methods.fecha(orden.fecha)
+				ordenEntry['fecha'] = api.methods.fecha( orden.fecha )
 				ordenList.append( ordenEntry )
 
 			# context['ordenes'] = json.dumps(ordenList)
@@ -110,14 +110,8 @@ def historial_pedidos( request ):
 
 			return render( request, 'historial_pedidos.html', context )
 		except Exception as e:
-			print( e )
 			return redirect( '404' )
 	return redirect( '404' )
-
-
-@login_required
-def suscripcion( request ):
-	return render( request, 'suscripcion.html' )
 
 
 @login_required
@@ -135,3 +129,33 @@ def signout( request ):
 @login_required
 def detalle_cuenta_editar( request ):
 	return render( request, 'detalle_cuenta_editar.html' )
+
+
+@login_required
+def suscripcion( request ):
+	if request.method == 'GET':
+		try:
+			context = { }
+			usuario = Usuario.objects.get( user=request.user )
+			suscripcion = None
+			codigo_moneda = "CLP"
+			try:
+				suscripcion = usuario.suscripcion_set.all().get( active=True )
+				suscripcion.monto = format_currency( suscripcion.monto, codigo_moneda,
+					locale="es_CL" )
+				suscripcion.fecha_expiracion = api.methods.fechaDate( suscripcion.fecha_expiracion )
+				pago = Pago.objects.get( usuario=usuario)
+				numero = str( pago.numero_tarjeta )
+				context['numeros'] = numero[-4:]
+
+			except Exception as e:
+				context['monto'] = format_currency( 1000, codigo_moneda,
+					locale="es_CL" )
+				proxima_fecha = datetime.now() + timedelta( days=30 )
+				context['duracion'] = api.methods.fechaDate( proxima_fecha )
+
+			context['suscripcion'] = suscripcion
+			return render( request, 'suscripcion.html', context )
+		except Exception as e:
+			return redirect( '404' )
+	return redirect( '404' )

@@ -1,0 +1,80 @@
+{% extends 'base_admin.html' %}
+{% load static %}
+{% block css %}
+	<link rel="stylesheet"
+		href="{% static 'src/css/register.css' %}">
+{% endblock %}
+{% block title %}Editar Cuenta Usuario{% endblock %}
+{% block aside-content %}
+	<div
+		class="w-full h-full xs:p-4 flex justify-center items-center place-items-center">
+		<div class="w-full lg:w-3/4 bg-white rounded-lg shadow">
+			<div
+				class="p-4 border-b rounded-t">
+				<h3
+					class="text-xl font-semibold text-gray-900">
+					Editar informacion de la cuenta
+				</h3>
+			</div>
+			<div>
+				<form id="formulario5"
+					method="post"
+					class="relative px-4 pt-4">
+					{% csrf_token %}
+					<div class="max-w-md mb-6">
+						<label for="name"
+							class="block mb-2 text-sm font-medium text-gray-900">Nombre</label>
+						<input
+							value="{{ nombre }}"
+							type="text"
+							name="name"
+							id="name"
+							class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+					</div>
+					<div class="max-w-md mb-6">
+						<label for="email"
+							class="block mb-2 text-sm font-medium text-gray-900">Correo</label>
+						<input
+							value="{{ email }}"
+							name="email"
+							type="email"
+							id="email"
+							class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+					</div>
+					<div class="max-w-md mb-6">
+						<label for="telefono"
+							class="block mb-2 text-sm font-medium text-gray-900">Celular</label>
+						<input
+							value="{{ telefono }}"
+							type="text"
+							id="telefono"
+							name="telefono"
+							class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+					</div>
+					<div class="max-w-md mb-6">
+						<label for="direccion"
+							class="block mb-2 text-sm font-medium text-gray-900">Direccion</label>
+						<input
+							value="{{ direccion }}"
+							type="text"
+							id="direccion"
+							name="direccion"
+							class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+					</div>
+					<div
+						class="flex flex-col xs:flex-row items-center gap-4 xs:gap-0 pt-4 xs:space-x-2 border-t border-gray-200 rounded-b">
+						<button type="submit"
+							id="edit-submit"
+							class="w-48 xxs:w-52 text-white bg-gradient-to-r from-cyan-500 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2.5 text-center">
+							Enviar
+						</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+{% endblock %}
+
+{% block js %}
+	<script src="{% static 'src/js/user_detail_edit.js' %}"></script>
+{% endblock %}

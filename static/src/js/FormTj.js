@@ -1,175 +1,177 @@
-let suscrito = false
+const buttonEnable = [
+	'ml-6',
+	'text-white',
+	'bg-gradient-to-r',
+	'from-cyan-500',
+	'to-blue-500',
+	'hover:bg-gradient-to-bl',
+	'focus:ring-4',
+	'focus:outline-none',
+	'focus:ring-blue-300',
+	'font-medium',
+	'rounded-lg',
+	'text-sm',
+	'px-5',
+	'py-2.5',
+	'text-center'
+]
 
-const subSettings = {
-  async: true,
-  crossDomain: true,
-  // url: 'http://ec2-18-231-153-185.sa-east-1.compute.amazonaws.com:8000/api/sub',
-  url        : 'http://127.0.0.1:8000/api/sub',
-  method: 'GET',
-  processData: false,
-  contentType: false
-};
+const buttonDisable = [
+	'text-white',
+	'bg-blue-400',
+	'dark:bg-blue-500',
+	'cursor-not-allowed',
+	'font-medium',
+	'rounded-lg',
+	'text-sm',
+	'px-5',
+	'py-2.5',
+	'text-center'
+]
 
-const swalWithBootstrapButtons = Swal.mixin({
-  customClass: {
-    confirmButton: 'text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2',
-    cancelButton: 'text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2'
-  },
-  buttonsStyling: false
-})
 
-$(document).ready(function () {
-  let nombre = $("#nombre");
-  let apellido = $("#apellido");
-  let banco = $("#banco");
-  let tarjeta = $("#tarjeta");
-  let mes = $("#mes");
-  let ano = $("#ano");
-  let clave = $("#clave");
+$( document )
+	.ready( function () {
+		let nombre       = $( '#nombre' )
+		let apellido     = $( '#apellido' )
+		let banco        = $( '#banco' )
+		let tarjeta      = $( '#tarjeta' )
+		let mes          = $( '#mes' )
+		let ano          = $( '#ano' )
+		let clave        = $( '#clave' )
+		let form         = $( '#formulario1' )
+		let buttonSubmit = $( '#guardar1' )
 
-  let formContent = $("#form-content");
-  let formActivated = $("#form-activated");
-  let form = $("#formulario1");
+		function validarForm() {
+			form.validate( {
+				rules   : {
+					nombre: {
+						required : true,
+						minlength: 1,
+						maxlength: 50
+					},
 
-  const peticionSubcripcion = $.ajax(subSettings)
+					apellido: {
+						required : true,
+						minlength: 1,
+						maxlength: 50
+					},
 
-  peticionSubcripcion.fail(function (error, status) {
-    suscrito = false
-  })
+					banco: {
+						required : true,
+						minlength: 1,
+						maxlength: 50
+					},
 
-  peticionSubcripcion.done(function (response) {
-    suscrito = response.sub
-  })
+					tarjeta: {
+						required : true,
+						minlength: 16,
+						maxlength: 16
+					},
 
-  peticionSubcripcion.always(function () {
-    if (suscrito) {
-      formActivated.show()
-      formContent.hide();
-    } else {
-      formContent.show()
-      formActivated.hide();
-    }
-  })
+					mes: {
+						required: true,
+						number  : true,
+						min     : 1,
+						max     : 12
+					},
 
-  form.validate({
+					ano: {
+						required : true,
+						minlength: 2,
+						maxlength: 2
+					},
 
-    rules: {
-      nombre: {
-        required: true,
-        minlength: 1,
-        maxlength: 50
-      },
+					clave: {
+						required : true,
+						minlength: 3,
+						maxlength: 3
+					}
 
-      apellido: {
-        required: true,
-        minlength: 1,
-        maxlength: 50
-      },
+				},
+				messages:
+					{
+						nombre  : {
+							required : 'Ingrese un nombre',
+							minlength: 'Debe tener almenos 1 caracter',
+							maxlength: 'Debe tener maximo 50 caracter'
+						},
+						apellido: {
+							required : 'Ingrese un apellido',
+							minlength: 'Debe tener almenos 1 caracter',
+							maxlength: 'Debe tener maximo 50 caracter'
+						},
+						banco   : {
+							required : 'Ingrese un banco valido',
+							minlength: 'Debe tener almenos 1 caracter',
+							maxlength: 'Debe tener maximo 50 caracter'
+						},
+						tarjeta : {
+							required : 'Ingrese una tarjeta valida',
+							minlength: 'La tarjeta debe tener 16 digitos',
+							maxlength: 'La tarjeta debe tener 16 digitos'
+						},
+						mes     : {
+							required: 'Ingrese un mes valido',
+							number  : 'Solo numeros del 01 al 12',
+							min     : 'Solo numeros del 01 al 12',
+							max     : 'Solo numeros del 01 al 12'
+						},
+						ano     : {
+							required : 'Ingrese un año valido',
+							minlength: 'Solo los dos ultimos digitos del año',
+							maxlength: 'Solo los dos ultimos digitos del año'
+						},
+						clave   : {
+							required : 'Ingrese una clave valida',
+							minlength: 'La clave debe tener 3 digitos',
+							maxlength: 'La clave debe tener 3 digitos'
+						}
+					}
+			} )
 
-      banco: {
-        required: true,
-        minlength: 1,
-        maxlength: 50
-      },
+			if ( form.valid() ) {
+				buttonSubmit.prop( 'disabled', false )
+				buttonSubmit.removeClass( buttonDisable.join( ' ' ) )
+				buttonSubmit.addClass( buttonEnable.join( ' ' ) )
+			}
+			else {
+				buttonSubmit.prop( 'disabled', true )
+				buttonSubmit.removeClass( buttonEnable.join( ' ' ) )
+				buttonSubmit.addClass( buttonDisable.join( ' ' ) )
+			}
+		}
 
-      tarjeta: {
-        required: true,
-        minlength: 8,
-        maxlength: 8
-      },
+		buttonSubmit.prop( 'disabled', true )
+		buttonSubmit.removeClass( buttonEnable.join( ' ' ) )
+		buttonSubmit.addClass( buttonDisable.join( ' ' ) )
 
-      mes: {
-        required: true,
-        number: true,
-        min: 1,
-        max: 12
-      },
+		nombre.on( 'input', function () {
+			validarForm()
+		} )
 
-      ano: {
-        required: true,
-        minlength: 2,
-        maxlength: 2
-      },
+		apellido.on( 'input', function () {
+			validarForm()
+		} )
 
-      clave: {
-        required: true,
-        minlength: 10,
-        maxlength: 10
-      }
+		banco.on( 'input', function () {
+			validarForm()
+		} )
 
-    },
-    messages:
-      {
-        nombre: {
-          required: "Ingrese un nombre",
-          minlength: "Debe tener almenos 1 caracter",
-          maxlength: "Debe tener maximo 50 caracter",
-        },
-        apellido: {
-          required: "Ingrese un apellido",
-          minlength: "Debe tener almenos 1 caracter",
-          maxlength: "Debe tener maximo 50 caracter",
-        },
-        banco: {
-          required: "Ingrese un banco valido",
-          minlength: "Debe tener almenos 1 caracter",
-          maxlength: "Debe tener maximo 50 caracter",
-        },
-        tarjeta: {
-          required: "Ingrese una tarjeta valida",
-          minlength: "La tarjeta debe tener 8 digitos",
-          maxlength: "La tarjeta debe tener 8 digitos"
-        },
-        mes: {
-          required: "Ingrese un mes valido",
-          number: "Solo numeros del 01 al 12",
-          min: "Solo numeros del 01 al 12",
-          max: "Solo numeros del 01 al 12",
-        },
-        ano: {
-          required: "Ingrese un año valido",
-          minlength: "Solo los dos ultimos digitos del año",
-          maxlength: "Solo los dos ultimos digitos del año"
-        },
-        clave: {
-          required: "Ingrese una clave valida",
-          minlength: "La clave debe tener 10 digitos",
-          maxlength: "La clave debe tener 10 digitos"
-        }
-      }
-  })
+		tarjeta.on( 'input', function () {
+			validarForm()
+		} )
 
-  $("#guardar1").click(function () {
-    if (form.valid()) {
-      Swal.fire({
-        title: 'Exito!',
-        text: 'Se ha registrado la tarjeta',
-        icon: 'success',
-        confirmButtonText: 'Cerrar'
-      })
-      suscrito = true
-      formContent.hide();
-      formActivated.show();
-    }
-  })
+		mes.on( 'input', function () {
+			validarForm()
+		} )
 
-  $("#desuscribir").click(function () {
-    swalWithBootstrapButtons.fire({
-      title: 'Estas seguro?',
-      text: "Te desuscribiras de la pagina",
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonText: 'Si',
-      cancelButtonText: 'No',
-      focusConfirm: false,
-      focusCancel: true,
-    }).then((result) => {
-      if (result.isConfirmed) {
-        suscrito = false
-        formContent.show();
-        formActivated.hide();
-      }
-    })
-  })
+		ano.on( 'input', function () {
+			validarForm()
+		} )
 
-})
+		clave.on( 'input', function () {
+			validarForm()
+		} )
+	} )
+

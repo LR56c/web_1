@@ -1,6 +1,7 @@
 import json
 from babel.numbers import format_currency, format_decimal
-import re
+from datetime import datetime, timedelta
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 import os
 from datetime import datetime
@@ -12,7 +13,7 @@ from firebase_admin import storage
 
 import api.methods
 from pokemonShop import settings
-from tienda.models import Oferta, Producto, Usuario
+from tienda.models import Oferta, Pago, Producto, Suscripcion, Usuario
 
 pokemonAccesoriesList = ["Gorra de Ash Ketchum", "Bufanda de Pikachu",
 	"Mochila de Pokémon", "Calcetines con diseños de Poké Balls",
@@ -92,8 +93,53 @@ subcriptionData = {
 }
 
 
-def subcription( request ):
-	return JsonResponse( subcriptionData )
+@login_required
+def suscripcion_crear( request ):
+		if request.method == 'POST':
+			try:
+				usuario = Usuario.objects.get( user=request.user)
+				fecha_inicio = datetime.now()
+				fecha_expiracion = fecha_inicio + timedelta( days=30 )
+				monto_cobrar = 1000
+				suscripcion = Suscripcion.objects.create(usuario=usuario, monto=monto_cobrar, active=True, fecha_inicio=fecha_inicio, fecha_expiracion=fecha_expiracion)
+				suscripcion.save()
+				try:
+					pago = Pago.objects.get( usuario=usuario)
+				except Exception as e:
+					nombre = request.POST.get( 'nombre')
+					apellido = request.POST.get( 'apellido')
+					nombre_cliente = nombre + ' ' + apellido
+
+					nombre_banco = request.POST.get( 'banco')
+
+					numero_tarjeta = request.POST.get( 'tarjeta')
+					codigo = request.POST.get( 'clave')
+					anno_vencimiento = request.POST.get( 'ano')
+					mes_vencimiento = request.POST.get( 'mes')
+
+					pago = Pago.objects.create( usuario=usuario, numero_tarjeta=numero_tarjeta, nombre_banco=nombre_banco, nombre_cliente=nombre_cliente, codigo=codigo, anno_vencimiento=anno_vencimiento, mes_vencimiento=mes_vencimiento)
+					pago.save()
+
+				return redirect( 'suscripcion' )
+			except Exception as e:
+				return redirect( '404' )
+		return redirect( '404' )
+
+@login_required
+def suscripcion_cancelar( request ):
+	if request.method == 'POST':
+		try:
+			# suscripcion_id = request.POST.get( 'suscripcion_id')
+			usuario = Usuario.objects.get( user=request.user)
+			suscripcion = usuario.suscripcion_set.all().get( active=True )
+			suscripcion.active = False
+			suscripcion.save()
+			pago = Pago.objects.get( usuario=usuario )
+			pago.delete()
+			return redirect( 'suscripcion' )
+		except Exception as e:
+			return redirect( '404' )
+	return redirect( '404' )
 
 
 def product_get( request, id ):
@@ -195,7 +241,6 @@ def product_create( request ):
 			context['success'] = True
 			return JsonResponse( context, status=200 )
 		except Exception as e:
-			print( e )
 			context['success'] = False
 
 			context['errors'] = {

@@ -51,7 +51,7 @@ def editar_producto( request, id ):
 		}
 
 		return render( request, 'editar_producto.html', context )
-
+	# TODO: integrar con firebase
 	except Exception as e:
 		return redirect('404')
 
@@ -64,3 +64,8 @@ def eliminar_producto( request , id):
 	except Exception as e:
 		messages.error(request, 'No se pudo eliminar el producto')
 		return redirect('404')
+
+
+@login_required
+def editar_usuarios( request , id):
+	return None

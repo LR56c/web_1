@@ -34,7 +34,6 @@ class DetalleOrden( models.Model ):
 	id = models.AutoField( primary_key=True )
 	producto = models.ForeignKey( Producto, on_delete=models.CASCADE )
 	cantidad = models.IntegerField()
-	# Monto total sin iva
 	monto = models.IntegerField()
 
 
@@ -56,7 +55,6 @@ class Orden( models.Model ):
 	usuario = models.ForeignKey( Usuario, on_delete=models.CASCADE )
 	envio = models.ForeignKey( Envio, on_delete=models.CASCADE )
 	fecha = models.DateTimeField()
-	# Monto total con iva y descuentos
 	valor = models.IntegerField()
 	estado = models.CharField( max_length=100 )
 
@@ -70,6 +68,7 @@ class Suscripcion( models.Model ):
 	id = models.AutoField( primary_key=True )
 	usuario = models.ForeignKey( Usuario, on_delete=models.CASCADE )
 	monto = models.IntegerField()
+	active = models.BooleanField()
 	fecha_inicio = models.DateField()
 	fecha_expiracion = models.DateField()
 

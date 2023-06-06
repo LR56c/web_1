@@ -57,14 +57,13 @@ def save_to_cart(usuario, producto, cantidad ):
 		detalle_orden.save()
 		return True
 	except Exception as e:
-		print( e )
 		return False
 	ḉ
 
-def fecha(fecha_string):
+def fecha(fecha):
 	regex = r"(\d{4})-(\d{2})-(\d{2}) (\d{2}):(\d{2}):"
 
-	matchesStr = re.search( regex, str(fecha_string) )
+	matchesStr = re.search( regex, str(fecha) )
 
 	if matchesStr:
 		year = matchesStr.group( 1 )
@@ -73,4 +72,16 @@ def fecha(fecha_string):
 		hour = matchesStr.group( 4 )
 		minutes = matchesStr.group( 5 )
 		fechaFormat = f"{day}/{month}/{year} {hour}:{minutes}"
+		return fechaFormat
+
+def fechaDate(fecha):
+	regex = r"(\d{4})-(\d{2})-(\d{2})"
+
+	matchesStr = re.search( regex, str(fecha) )
+
+	if matchesStr:
+		year = matchesStr.group( 1 )
+		month = matchesStr.group( 2 )
+		day = matchesStr.group( 3 )
+		fechaFormat = f"{day}/{month}/{year}"
 		return fechaFormat
