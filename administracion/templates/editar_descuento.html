@@ -167,14 +167,20 @@
 								</thead>
 								<tbody id="producto-list">
 								{% for producto in productos %}
+
 									<tr class="bg-white border-b">
 										<td class="w-4 p-4">
 											<div class="flex items-center">
-												<input id="{{ producto.id }}-check"
+												<input id="check-{{ producto.id }}"
 													type="checkbox"
+													name="check"
+													value="{{ producto.id }}"
+													{% if producto.oferta.id == id %}
+														checked
+													{% endif %}
 													onchange="tt(this, {{ producto.id }})"
 													class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500">
-												<label for="{{ producto.id }}-check"
+												<label for="check"
 													class="sr-only">checkbox</label>
 											</div>
 										</td>

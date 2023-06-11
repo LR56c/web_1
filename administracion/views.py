@@ -1,5 +1,8 @@
+import json
+
 from babel.numbers import format_currency, format_decimal
 import api.methods
+from django.core import serializers
 
 from tienda.models import Oferta, Usuario
 from django.contrib.auth.models import User
@@ -89,11 +92,29 @@ def ver_usuarios( request ):
 @login_required
 def editar_producto( request, id ):
 	try:
-		producto = Producto.objects.get( id=id )
+		context = {}
 
-		context = {
-			'producto': producto,
-		}
+		producto = Producto.objects.get( id=id )
+		ofertas = Oferta.objects.all()
+
+		ofertasList = []
+
+		for oferta in ofertas:
+			ofertaEntry = { }
+			fechaInicioString = str( oferta.fecha_inicio )
+			fechaFinString = str( oferta.fecha_fin )
+
+			ofertaEntry['fecha_inicio'] = api.methods.fecha( fechaInicioString )
+			ofertaEntry['fecha_fin'] = api.methods.fecha( fechaFinString )
+
+			ofertaEntry['porcentaje'] = oferta.porcentaje
+			ofertaEntry['causa'] = oferta.causa
+			ofertaEntry['name'] = oferta.name
+			ofertaEntry['id'] = oferta.id
+			ofertasList.append( ofertaEntry )
+
+		context['ofertas'] = ofertasList
+		context['producto'] = producto
 
 		return render( request, 'editar_producto.html', context )
 	# TODO: integrar con firebase

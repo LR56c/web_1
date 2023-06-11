@@ -1,6 +1,6 @@
 // inputs con warnings
-const productoListBody = document.getElementById( 'producto-list' )
-const productosWarning = document.getElementById( 'productos-warning' )
+const productoListBody        = document.getElementById( 'producto-list' )
+const productosWarning        = document.getElementById( 'productos-warning' )
 const productosDisponibleText = document.getElementById( 'producto-disp' )
 
 const nombreInput     = document.getElementById( 'nombre' )
@@ -10,7 +10,7 @@ const porcentajeInput     = document.getElementById( 'porcentaje' )
 const porcentajeTextInput = document.getElementById( 'porcentaje-text' )
 
 const causaInput     = document.getElementById( 'causa' )
-causaInput.value = causaArea
+causaInput.value     = causaArea
 const causaTextInput = document.getElementById( 'causa-text' )
 
 const startDateInput = document.getElementById( 'start' )
@@ -27,9 +27,14 @@ const endTimeText  = document.getElementById( 'time-end-text' )
 
 const form = document.getElementById( 'form1' )
 
-let listaIdProductos = new Set()
-let elementosChecked = new Set()
-let elementosError   = new Set()
+let listaIdAdder    = new Set()
+let listaIdRemoved  = new Set()
+let listaIdInit     = new Set()
+let listaIdExternal = new Set()
+let numProductos    = 0
+
+// let elementosChecked = new Set()
+let elementosError = new Set()
 
 // estilos de validacion
 const textInvalid  = [ 'text-red-600', 'block' ]
@@ -322,8 +327,10 @@ form.addEventListener( 'submit', function ( e ) {
 		formData.append( 'fecha_fin',
 			parseDate( endTimeInput.value, endDateInput.value ) )
 		// formData.append( 'data', JSON.stringify(listaIdProductos) )
-		const productJsonList = JSON.stringify( [ ...listaIdProductos ] )
-		formData.append( 'data', productJsonList )
+		const productJsonList       = JSON.stringify( [ ...listaIdAdder ] )
+		const productRemoveJsonList = JSON.stringify( [ ...listaIdRemoved ] )
+		formData.append( 'toAdd', productJsonList )
+		formData.append( 'toRemove', productRemoveJsonList )
 
 
 		const peticionProductos = $.ajax( {
@@ -338,15 +345,21 @@ form.addEventListener( 'submit', function ( e ) {
 		} )
 
 		peticionProductos.done( function ( response ) {
-			Swal.fire({
-				title: 'Exito!',
-				text: 'Se ha registrado la nueva oferta',
-				icon: 'success',
+			Swal.fire( {
+				title            : 'Exito!',
+				text             : 'Se ha registrado la nueva oferta',
+				icon             : 'success',
 				confirmButtonText: 'Cerrar'
-			})
+			} )
+
+			const newIds = response['products']
+			for ( const id of newIds ) {
+				const check   = document.getElementById( `check-${ id }` )
+				check.checked = true
+			}
 		} )
 
-		peticionProductos.fail( function (response) {
+		peticionProductos.fail( function ( response ) {
 			console.log( 'responseError' )
 			console.log( response )
 		} )
@@ -380,12 +393,30 @@ function parseDate( time, date ) {
 
 function tt( e, id ) {
 	if ( e.checked ) {
-		elementosChecked.add( e )
-		listaIdProductos.add( id )
+		if ( !listaIdInit.has( id ) ) {
+			listaIdAdder.add( id )
+		}
+		numProductos++
+		listaIdRemoved.delete( id )
 	}
 	else {
-		elementosChecked.delete( e )
-		listaIdProductos.delete( id )
+		listaIdAdder.delete( id )
+		if ( !listaIdExternal.has( id ) ) {
+			listaIdRemoved.add( id )
+		}
+		numProductos--
 	}
-	productosDisponibleText.innerText = listaIdProductos.size
+	productosDisponibleText.innerText = numProductos
 }
+
+const checkElements = document.getElementsByName( 'check' )
+for ( const element of checkElements ) {
+	if ( element.checked ) {
+		listaIdInit.add( Number( element.value ) )
+		numProductos++
+	}
+	else {
+		listaIdExternal.add( Number( element.value ) )
+	}
+}
+productosDisponibleText.innerText = numProductos

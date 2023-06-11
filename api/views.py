@@ -1,6 +1,6 @@
 import json
 from babel.numbers import format_currency, format_decimal
-from datetime import datetime, timedelta
+from datetime import timedelta
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 import os
@@ -162,6 +162,8 @@ def product_edit( request, id ):
 
 	if request.method == 'POST':
 		try:
+			print( 'request.POST' )
+			print( request.POST )
 			producto = Producto.objects.get( id=id )
 			valor = request.POST.get( 'valor' )
 			stock = request.POST.get( 'stock' )
@@ -170,11 +172,18 @@ def product_edit( request, id ):
 			descripcion = request.POST.get( 'descripcion' )
 			imageName = request.POST.get( 'imageName' )
 			oferta = request.POST.get( 'oferta' )
-			oferta = Oferta.objects.get( id=oferta )
+
+			if oferta == '':
+				oferta = None
+			else:
+				oferta = Oferta.objects.get( id=oferta )
+
 
 			image_url = producto.imagen
 
-			if imagen is not None:
+			if imageName == '':
+				imageName = producto.imageName
+			else:
 				firebaseDelete( producto.imageName )
 				image_url = firebaseUpload( imagen )
 
@@ -191,6 +200,8 @@ def product_edit( request, id ):
 
 			return JsonResponse( context, status=200 )
 		except Exception as e:
+			print( 'erro' )
+			print( e )
 			context['success'] = False
 
 	return JsonResponse( context, status=404 )
@@ -567,7 +578,6 @@ def edit_ofertas( request ):
 
 		if dateFechaInicio and dateFechaFin:
 			try:
-
 				oferta = Oferta.objects.get( id=idDescuento )
 				oferta.name = name
 				oferta.porcentaje = porcentaje
@@ -576,26 +586,45 @@ def edit_ofertas( request ):
 				oferta.fecha_fin = dateFechaFin
 				oferta.save()
 
-				productos_ids_string = request.POST.get( 'data' )
+				productos_ids_string = request.POST.get( 'toAdd' )
+				productos_removed_ids_string = request.POST.get( 'toRemove' )
 				productos_list = json.loads( productos_ids_string )
+				productos_removed_list = json.loads( productos_removed_ids_string )
 
-				print( 'productos_list')
-				print( productos_list)
-				context['success'] = True
-				return JsonResponse( context, status=200 )
-				for productoId in productos_list:
-					try:
-						productEntry = Producto.objects.get( id=productoId )
-						productEntry.oferta = oferta
-						productEntry.save()
-					except Exception as e:
+				if len( productos_list ) >= 0:
+					for productoId in productos_list:
+						try:
+							productEntry = Producto.objects.get( id=productoId )
+							productEntry.oferta = oferta
+							productEntry.save()
+						except Exception as e:
 
-						context['success'] = False
-						context['errors'] = {
-							'message': f'Error en el producto {productoId}',
-						}
-						return JsonResponse( context, status=404 )
+							context['success'] = False
+							context['errors'] = {
+								'message': f'Error en el producto {productoId}',
+							}
+							return JsonResponse( context, status=404 )
 
+				if len( productos_removed_list ) >= 0:
+					for productoId in productos_removed_list:
+						try:
+							productEntry = Producto.objects.get( id=productoId )
+							productEntry.oferta = None
+							productEntry.save()
+						except Exception as e:
+
+							context['success'] = False
+							context['errors'] = {
+								'message': f'Error en el producto {productoId}',
+							}
+							return JsonResponse( context, status=404 )
+
+				products = Producto.objects.filter( oferta=oferta )
+				productsIds = [ ]
+				for product in products:
+					productsIds.append( product.id )
+
+				context['products'] = productsIds
 				context['success'] = True
 				return JsonResponse( context, status=200 )
 			except Exception as e:
