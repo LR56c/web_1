@@ -1636,6 +1636,18 @@ input:checked + .toggle-bg {
   width: 100%;
 }
 
+.w-auto {
+  width: auto;
+}
+
+.w-screen {
+  width: 100vw;
+}
+
+.w-96 {
+  width: 24rem;
+}
+
 .max-w-lg {
   max-width: 32rem;
 }
@@ -1650,6 +1662,27 @@ input:checked + .toggle-bg {
 
 .max-w-xs {
   max-width: 20rem;
+}
+
+.max-w-4xl {
+  max-width: 56rem;
+}
+
+.max-w-2xl {
+  max-width: 42rem;
+}
+
+.max-w-xl {
+  max-width: 36rem;
+}
+
+.max-w-full {
+  max-width: 100%;
+}
+
+.max-w-fit {
+  max-width: -moz-fit-content;
+  max-width: fit-content;
 }
 
 .flex-1 {
@@ -4521,6 +4554,10 @@ input:checked + .toggle-bg {
     width: 100%;
   }
 
+  .md\:max-w-xl {
+    max-width: 36rem;
+  }
+
   .md\:basis-1\/2 {
     flex-basis: 50%;
   }
@@ -4578,9 +4615,25 @@ input:checked + .toggle-bg {
   .md\:pt-4 {
     padding-top: 1rem;
   }
+
+  .md\:pt-12 {
+    padding-top: 3rem;
+  }
+
+  .md\:pt-20 {
+    padding-top: 5rem;
+  }
 }
 
 @media (min-width: 1024px) {
+  .lg\:relative {
+    position: relative;
+  }
+
+  .lg\:z-\[10\] {
+    z-index: 10;
+  }
+
   .lg\:mx-auto {
     margin-left: auto;
     margin-right: auto;
@@ -4591,12 +4644,24 @@ input:checked + .toggle-bg {
     margin-bottom: 2rem;
   }
 
+  .lg\:flex {
+    display: flex;
+  }
+
+  .lg\:hidden {
+    display: none;
+  }
+
   .lg\:h-12 {
     height: 3rem;
   }
 
   .lg\:h-6 {
     height: 1.5rem;
+  }
+
+  .lg\:h-full {
+    height: 100%;
   }
 
   .lg\:w-1\/2 {
@@ -4623,12 +4688,25 @@ input:checked + .toggle-bg {
     width: 100%;
   }
 
+  .lg\:w-4 {
+    width: 1rem;
+  }
+
   .lg\:max-w-3xl {
     max-width: 48rem;
   }
 
+  .lg\:max-w-full {
+    max-width: 100%;
+  }
+
   .lg\:basis-5\/12 {
     flex-basis: 41.666667%;
+  }
+
+  .lg\:translate-x-0 {
+    --tw-translate-x: 0px;
+    transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
   }
 
   .lg\:grid-cols-5 {
@@ -4639,8 +4717,16 @@ input:checked + .toggle-bg {
     flex-direction: row;
   }
 
+  .lg\:flex-nowrap {
+    flex-wrap: nowrap;
+  }
+
   .lg\:items-start {
     align-items: flex-start;
+  }
+
+  .lg\:justify-between {
+    justify-content: space-between;
   }
 
   .lg\:gap-0 {
@@ -4655,6 +4741,22 @@ input:checked + .toggle-bg {
   .lg\:px-8 {
     padding-left: 2rem;
     padding-right: 2rem;
+  }
+
+  .lg\:pt-4 {
+    padding-top: 1rem;
+  }
+
+  .lg\:pt-44 {
+    padding-top: 11rem;
+  }
+
+  .lg\:pt-80 {
+    padding-top: 20rem;
+  }
+
+  .lg\:pt-12 {
+    padding-top: 3rem;
   }
 
   .lg\:text-sm {
