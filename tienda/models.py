@@ -10,6 +10,9 @@ class Oferta( models.Model ):
 	fecha_inicio = models.DateTimeField()
 	fecha_fin = models.DateTimeField()
 
+	def __str__( self ):
+		return self.name
+
 
 class Producto( models.Model ):
 	id = models.AutoField( primary_key=True )
@@ -21,6 +24,9 @@ class Producto( models.Model ):
 	imageName = models.CharField( max_length=100 )
 	oferta = models.ForeignKey( Oferta, on_delete=models.SET_NULL, null=True )
 
+	def __str__( self ):
+		return self.nombre
+
 
 class Usuario( models.Model ):
 	user = models.OneToOneField( User, on_delete=models.CASCADE,
@@ -28,6 +34,8 @@ class Usuario( models.Model ):
 	nombre = models.CharField( max_length=60 )
 	telefono = models.CharField( max_length=10 )
 	direccion = models.CharField( max_length=50 )
+	def __str__( self ):
+		return self.nombre
 
 
 class DetalleOrden( models.Model ):
@@ -35,12 +43,16 @@ class DetalleOrden( models.Model ):
 	producto = models.ForeignKey( Producto, on_delete=models.CASCADE )
 	cantidad = models.IntegerField()
 	monto = models.IntegerField()
-
+	def __str__( self ):
+		return "Detalle de orden " + str(self.id) + ", producto: " + self.producto.nombre
 
 class Carrito( models.Model ):
 	id = models.AutoField( primary_key=True )
 	usuario = models.ForeignKey( Usuario, on_delete=models.CASCADE )
 	detalle_orden = models.ForeignKey( DetalleOrden, on_delete=models.CASCADE )
+	def __str__( self ):
+		return "Carrito " + str(self.id) + " del usuario " + self.usuario.nombre
+
 
 class Envio( models.Model ):
 	id = models.AutoField( primary_key=True )
@@ -49,6 +61,8 @@ class Envio( models.Model ):
 	direccion = models.CharField( max_length=50 )
 	numero_seguimiento = models.IntegerField()
 	fecha = models.DateField()
+	def __str__( self ):
+		return "Envio " + str(self.id) + ", estado:" + self.estado
 
 class Orden( models.Model ):
 	id = models.AutoField( primary_key=True )
@@ -57,11 +71,15 @@ class Orden( models.Model ):
 	fecha = models.DateTimeField()
 	valor = models.IntegerField()
 	estado = models.CharField( max_length=100 )
+	def __str__( self ):
+		return "Orden " + str(self.id) + " del usuario " + self.usuario.nombre
 
 class Compra( models.Model ):
 	id = models.AutoField( primary_key=True )
 	detalle_orden = models.ForeignKey( DetalleOrden, on_delete=models.CASCADE )
 	orden = models.ForeignKey( Orden, on_delete=models.CASCADE )
+	def __str__( self ):
+		return "Item " + str(self.id) + " de la orden " + str(self.orden.id) + " con el usuario " + self.orden.usuario.nombre
 
 
 class Suscripcion( models.Model ):
@@ -71,7 +89,8 @@ class Suscripcion( models.Model ):
 	active = models.BooleanField()
 	fecha_inicio = models.DateField()
 	fecha_expiracion = models.DateField()
-
+	def __str__( self ):
+		return self.usuario.nombre + " esta " + 'activo' if self.active else 'inactivo'
 
 class Pago( models.Model ):
 	id = models.AutoField( primary_key=True )
@@ -82,3 +101,5 @@ class Pago( models.Model ):
 	codigo = models.IntegerField()
 	anno_vencimiento = models.IntegerField()
 	mes_vencimiento = models.IntegerField()
+	def __str__( self ):
+		return "Tarjeta id " + str(self.id) + " del cliente " + self.nombre_cliente
