@@ -439,10 +439,7 @@ form.addEventListener( 'submit', function ( e ) {
 			})
 		} )
 
-		peticionProductos.fail( function (response) {
-			console.log( 'responseError' )
-			console.log( response )
-		} )
+		// peticionProductos.fail( function (response) {} )
 
 		form.reset()
 	}

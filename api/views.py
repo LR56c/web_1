@@ -162,8 +162,6 @@ def product_edit( request, id ):
 
 	if request.method == 'POST':
 		try:
-			print( 'request.POST' )
-			print( request.POST )
 			producto = Producto.objects.get( id=id )
 			valor = request.POST.get( 'valor' )
 			stock = request.POST.get( 'stock' )
@@ -200,8 +198,6 @@ def product_edit( request, id ):
 
 			return JsonResponse( context, status=200 )
 		except Exception as e:
-			print( 'erro' )
-			print( e )
 			context['success'] = False
 
 	return JsonResponse( context, status=404 )

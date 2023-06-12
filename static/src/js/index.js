@@ -74,11 +74,10 @@ $( document )
     </div>`
 				)
 
-				$( `#${ divId }-buton` )
-					.click( function () {
-						const name = $( `#${ divId }-name` )
-						console.log( `name: ${ name.text() }` )
-					} )
+				// $( `#${ divId }-buton` )
+				// 	.click( function () {
+				// 		const name = $( `#${ divId }-name` )
+				// 	} )
 			} )
 		} )
 
@@ -143,11 +142,10 @@ $( document )
         </div>
       </div>`
 				)
-				$( `#${ divId }-buton` )
-					.click( function () {
-						const name = $( `#${ divId }-name` )
-						console.log( `name: ${ name.text() }` )
-					} )
+				// $( `#${ divId }-buton` )
+				// 	.click( function () {
+				// 		const name = $( `#${ divId }-name` )
+				// 	} )
 			} )
 		} )
 

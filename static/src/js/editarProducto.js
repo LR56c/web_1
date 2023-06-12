@@ -21,9 +21,7 @@ $( document )
 		const submitModal = document.getElementById( 'submit-modal' )
 		const modal       = new Modal( editModal, options )
 
-		submitModal.addEventListener( 'click', function () {
-			console.log( 'submit' )
-		} )
+		// submitModal.addEventListener( 'click', function () {} )
 
 		$( '#descripcion' )
 			.text( descArea )
@@ -120,10 +118,7 @@ $( document )
 				}
 			)
 
-			peticionProductos.fail( function ( response ) {
-				console.log( 'fail' )
-				console.log( response )
-			} )
+			// peticionProductos.fail( function ( response ) {} )
 
 			peticionProductos.done( function ( response ) {
 				modal.show()
