@@ -3,6 +3,7 @@
 	aria-label="Sidebar">
 	<div class="h-full px-3 pb-4 overflow-y-auto bg-white">
 		<ul class="space-y-2 font-medium">
+			{% if user.is_staff == 1 %}
 			<li>
 				<button type="button"
 					class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100"
@@ -93,7 +94,7 @@
 					</li>
 				</ul>
 			</li>
-
+			{% endif %}
 			<li>
 				<button type="button"
 					class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100"

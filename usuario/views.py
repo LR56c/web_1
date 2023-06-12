@@ -8,7 +8,7 @@ from django.shortcuts import redirect, render
 from datetime import datetime, timedelta
 
 import api.methods
-from tienda.models import Pago, Usuario
+from tienda.models import Tarjeta, Usuario
 
 
 # login
@@ -155,7 +155,7 @@ def suscripcion( request ):
 				suscripcion.monto = format_currency( suscripcion.monto, codigo_moneda,
 					locale="es_CL" )
 				suscripcion.fecha_expiracion = api.methods.fechaDate( suscripcion.fecha_expiracion )
-				pago = Pago.objects.get( usuario=usuario)
+				pago = Tarjeta.objects.get( usuario=usuario)
 				numero = str( pago.numero_tarjeta )
 				context['numeros'] = numero[-4:]
 

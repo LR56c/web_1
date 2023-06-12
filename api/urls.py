@@ -2,8 +2,6 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-	path( '', views.productsData ),
-	path( 'offer', views.offer ),
 	path( 'suscripcion_crear', views.suscripcion_crear, name='suscripcion_crear' ),
 	path( 'suscripcion_cancelar', views.suscripcion_cancelar, name='suscripcion_cancelar' ),
 	path( 'product', views.products, name='productos'),

@@ -107,12 +107,18 @@
 				class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44">
 				<ul class="py-2 text-sm text-gray-700"
 					aria-labelledby="dropdownMenuIconButton">
+				{% if user %}
+					<li>
+						<p
+							class="block px-4 py-2 hover:bg-gray-100">Hola {{ user.first_name }}</p>
+					</li>
+				{% endif %}
 					<li>
 						<a href="{% url 'suscripcion' %}"
 							class="block px-4 py-2 hover:bg-gray-100">Suscripcion</a>
 					</li>
 					<li>
-						{% if user_session %}
+						{% if user %}
 							<a href="{% url 'logout' %}"
 								class="block px-4 py-2 hover:bg-gray-100">Cerrar Sesion</a>
 						{% else %}

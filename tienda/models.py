@@ -28,12 +28,24 @@ class Producto( models.Model ):
 		return self.nombre
 
 
+class Suscripcion( models.Model ):
+	id = models.AutoField( primary_key=True )
+	monto = models.IntegerField()
+	active = models.BooleanField()
+	fecha_inicio = models.DateField()
+	fecha_expiracion = models.DateField()
+	def __str__( self ):
+		return self.usuario_set.name + " esta " + 'activo' if self.active else 'inactivo'
+
+
 class Usuario( models.Model ):
 	user = models.OneToOneField( User, on_delete=models.CASCADE,
 		primary_key=True )
 	nombre = models.CharField( max_length=60 )
 	telefono = models.CharField( max_length=10 )
 	direccion = models.CharField( max_length=50 )
+	suscripcion = models.ForeignKey( Suscripcion, on_delete=models.SET_NULL, null=True, blank=True )
+
 	def __str__( self ):
 		return self.nombre
 
@@ -82,17 +94,7 @@ class Compra( models.Model ):
 		return "Item " + str(self.id) + " de la orden " + str(self.orden.id) + " con el usuario " + self.orden.usuario.nombre
 
 
-class Suscripcion( models.Model ):
-	id = models.AutoField( primary_key=True )
-	usuario = models.ForeignKey( Usuario, on_delete=models.CASCADE )
-	monto = models.IntegerField()
-	active = models.BooleanField()
-	fecha_inicio = models.DateField()
-	fecha_expiracion = models.DateField()
-	def __str__( self ):
-		return self.usuario.nombre + " esta " + 'activo' if self.active else 'inactivo'
-
-class Pago( models.Model ):
+class Tarjeta( models.Model ):
 	id = models.AutoField( primary_key=True )
 	usuario = models.ForeignKey( Usuario, on_delete=models.CASCADE )
 	numero_tarjeta = models.IntegerField()
