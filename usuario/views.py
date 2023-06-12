@@ -72,6 +72,8 @@ def detalle_cuenta( request ):
 			user = request.user
 			usuario = Usuario.objects.get( user=user )
 
+			tarjetas = usuario.tarjeta_set.all()
+			context['tarjetas'] = tarjetas
 			context['nombre'] = usuario.nombre
 			context['email'] = user.email
 			context['telefono'] = usuario.telefono
@@ -131,6 +133,9 @@ def detalle_cuenta_editar( request ):
 			context = { }
 			user = request.user
 			usuario = Usuario.objects.get( user=user )
+
+			tarjetas = usuario.tarjeta_set.all()
+			context['tarjetas'] = tarjetas
 
 			context['nombre'] = usuario.nombre
 			context['email'] = user.email

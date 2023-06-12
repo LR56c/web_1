@@ -33,10 +33,11 @@
 					Editar informacion de la cuenta
 				</h3>
 			</div>
-			<div>
+			<div class="flex">
+
 				<form id="formulario5"
 					method="post"
-					class="relative px-4 pt-4">
+					class="w-full relative px-4 pt-4">
 					{% csrf_token %}
 					<div class="max-w-md mb-6">
 						<label for="name"
@@ -87,6 +88,28 @@
 						</button>
 					</div>
 				</form>
+				{% if tarjetas %}
+					<div class="w-full relative p-4 space-y-6">
+						<div>Listado de tarjetas:</div>
+						{% for tarjeta in tarjetas %}
+							<div class="max-w-md mb-6">
+								<label for="first_name"
+									class="block mb-2 text-sm font-medium text-gray-900">Tarjeta</label>
+								<input disabled
+									value="{{ tarjeta.numero_tarjeta }}"
+									type="text"
+									id="first_name"
+									class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+							</div>
+						{% endfor %}
+					</div>
+				{% else %}
+					<div class="w-full relative p-4 space-y-6">
+						<label for="first_name"
+							class="block mb-2 text-sm font-medium text-gray-900">No tienes
+							tarjetas registradas</label>
+					</div>
+				{% endif %}
 			</div>
 		</div>
 	</div>

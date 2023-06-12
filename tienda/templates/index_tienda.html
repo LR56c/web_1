@@ -150,11 +150,10 @@
 					</div>
 				{% endfor %}
 			{% else %}
-				<h2>No hay productos</h2>
+				<h2>No hay ofertas disponibles</h2>
 			{% endif %}
 		</div>
 	</div>
-
 	<div class="section-queofresemos">
 		<h2 class="Titulo-1">
 			¿Que ofrecemos?
@@ -169,7 +168,6 @@
 			</p>
 		</div>
 	</div>
-
 	<!-- div 2 -->
 	<div
 		id="productos"
@@ -201,13 +199,21 @@
 								{{ producto.valor }}</div>
 						</div>
 						<div class="w-full p-2">
-							<button
-								id="{{ producto.id }}-buton"
-								class="px-2 py-2.5 h-12 w-full text-white bg-gray-500 hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm text-center">
-								<a href="#">
+							<form method="post"
+								action="{% url 'inicio_carrito' producto.id %}">
+								{% csrf_token %}
+								<input type="hidden"
+									id="input-add"
+									name="input-add"
+									value="1"
+									class="bg-gray-50 w-14 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block px-2.5 py-1 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"/>
+								<button
+									type="submit"
+									id="{{ producto.id }}-buton"
+									class="px-2 py-2.5 h-12 w-full text-white bg-gray-500 hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm text-center">
 									Agregar al carrito
-								</a>
-							</button>
+								</button>
+							</form>
 						</div>
 					</div>
 				</div>
