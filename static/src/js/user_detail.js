@@ -1,32 +1,40 @@
-const swalWithBootstrapButtons = Swal.mixin({
-  customClass: {
-    confirmButton: 'text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2',
-    cancelButton: 'text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2'
-  },
-  buttonsStyling: false
-})
+const inputsId = document.getElementsByName( 'input-id' )
 
+for ( let input of inputsId ) {
+	console.log( 'input' )
+	const id         = input.value
+	const imgElement = document.getElementById( `${ id }-img` )
+	const numElement = document.getElementById( `${ id }-num` )
+	const num        = getCardType( numElement.value )
 
-$(document).ready(function () {
-  let editInfo = $('#edit-info')
+	if ( num === 'visa' ) {
+		imgElement.src = '/static/tarj/visa.png'
+	}
+	else if ( num === 'mastercard' ) {
+		imgElement.src = '/static/tarj/mastercard.jpg'
+	}
+}
 
-  editInfo.click(function () {
-    swalWithBootstrapButtons.fire({
-      title: 'Estas seguro?',
-      text: "Se actualizara tu perfil con los nuevos datos",
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonText: 'Si',
-      cancelButtonText: 'No',
-      focusConfirm: false,
-      focusCancel: true,
-    }).then((result) => {
-      if (result.isConfirmed) {
-        suscrito = false
-        formContent.show();
-        formActivated.hide();
-      }
-    })
+function getCardType( num ) {
+	let re = new RegExp( `^4` )
+	if ( re.test( num ) ) {
+		return 'visa'
+	}
 
-  })
-});
+	re = new RegExp( `^(34|37)` )
+	if ( re.test( num ) ) {
+		return 'amex'
+	}
+
+	re = new RegExp( `^6011` )
+	if ( re.test( num ) ) {
+		return 'discover'
+	}
+
+	re = new RegExp( `^(5[1-5]|222[1-9]|22[3-9]|2[3-6]|27[01]|2720)` )
+	if ( re.test( num ) ) {
+		return 'mastercard'
+	}
+
+	return 'visa'
+}

@@ -70,7 +70,13 @@
 						</th>
 						<th scope="col"
 							class="px-6 py-3">
-							PRECIO
+							<form method="get"
+							action="{% url 'ver_productos' %}">
+								<input type="hidden" name="filtro" value="valor">
+								<button type="submit">
+									PRECIO
+								</button>
+							</form>
 						</th>
 						<th scope="col"
 							class="px-6 py-3">
@@ -93,43 +99,43 @@
 								{% else %}
 							<tr class="border-b bg-white">
 						{% endif %}
-							<th scope="row"
-								id="{{ producto.id }}-id"
-								class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">{{ producto.id }}</th>
-							<td class="px-6 py-4"
-								id="{{ producto.id }}-nombre">{{ producto.nombre }}</td>
-							<td class="px-6 py-4"
-								id="{{ producto.id }}-valor">{{ producto.valor}}</td>
-							<td class="px-6 py-4"
-								id="{{ producto.id }}-stock">{{ producto.stock}}</td>
-							<td class="px-6 py-4">
-								<img id="{{ producto.id }}-imagen"
-									src="{{ producto.imagen }}"
-									class="h-12 w-12 object-contain"
-									alt="..."/>
-							</td>
-							<td class="px-3 py-4">
-								<button type="button"
-									id="{{ producto.id }}-button-editar"
-									class="text-white bg-gradient-to-r from-yellow-300 via-yellow-400 to-yellow-500 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-1.5 text-center">
-									<a href="{% url 'editar_producto' producto.id %}">Editar</a>
-								</button>
-								<form
-									id="form-{{ producto.id }}"
-								>
-									{% csrf_token %}
-									<button
-										type="button"
-										name="delete-button"
-										onclick="tt(this, '{{ producto.id }}')"
-										class="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-1.5 text-center"
-									>
-										Eliminar
-									</button>
-								</form>
+					<th scope="row"
+						id="{{ producto.id }}-id"
+						class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">{{ producto.id }}</th>
+					<td class="px-6 py-4"
+						id="{{ producto.id }}-nombre">{{ producto.nombre }}</td>
+					<td class="px-6 py-4"
+						id="{{ producto.id }}-valor">{{ producto.valor }}</td>
+					<td class="px-6 py-4"
+						id="{{ producto.id }}-stock">{{ producto.stock }}</td>
+					<td class="px-6 py-4">
+						<img id="{{ producto.id }}-imagen"
+							src="{{ producto.imagen }}"
+							class="h-12 w-12 object-contain"
+							alt="..."/>
+					</td>
+					<td class="px-3 py-4">
+						<button type="button"
+							id="{{ producto.id }}-button-editar"
+							class="text-white bg-gradient-to-r from-yellow-300 via-yellow-400 to-yellow-500 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-1.5 text-center">
+							<a href="{% url 'editar_producto' producto.id %}">Editar</a>
+						</button>
+						<form
+							id="form-{{ producto.id }}"
+						>
+							{% csrf_token %}
+							<button
+								type="button"
+								name="delete-button"
+								onclick="tt(this, '{{ producto.id }}')"
+								class="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-1.5 text-center"
+							>
+								Eliminar
+							</button>
+						</form>
 
-							</td>
-						</tr>
+					</td>
+					</tr>
 					{% endfor %}
 					</tbody>
 				</table>
