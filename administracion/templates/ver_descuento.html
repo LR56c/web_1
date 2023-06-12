@@ -4,7 +4,6 @@
 {% block aside-content %}
 	<div class="p-4 h-full w-full">
 		{% if ofertas %}
-
 			<div class="max-h-96 md:max-h-[32rem] w-full overflow-auto shadow-md sm:rounded-lg">
 				<table
 					class="w-full text-sm text-left text-gray-500">
@@ -44,24 +43,24 @@
 					<tbody id="descuentos-list">
 					{% for oferta in ofertas %}
 						<tr class="border-b bg-white">
-							<th id="{{oferta.id}}-id"
+							<th id="{{ oferta.id }}-id"
 								scope="row"
 								class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-								{{oferta.id}}
+								{{ oferta.id }}
 							</th>
-							<td id="{{oferta.id}}-name"
+							<td id="{{ oferta.id }}-name"
 								class="px-6 py-4">{{ oferta.name }}
 							</td>
-							<td id="{{oferta.id}}-porc"
+							<td id="{{ oferta.id }}-porc"
 								class="px-6 py-4">{{ oferta.porcentaje }}
 							</td>
-							<td id="{{oferta.id}}-causa"
+							<td id="{{ oferta.id }}-causa"
 								class="px-6 py-4">{{ oferta.causa }}
 							</td>
-							<td id="{{oferta.id}}-fi"
+							<td id="{{ oferta.id }}-fi"
 								class="px-6 py-4">{{ oferta.fecha_inicio }}
 							</td>
-							<td id="{{oferta.id}}-fe"
+							<td id="{{ oferta.id }}-fe"
 								class="px-6 py-4">{{ oferta.fecha_fin }}
 							</td>
 							<td class="px-3 py-4">
@@ -70,17 +69,22 @@
 									class="text-white bg-gradient-to-r from-yellow-300 via-yellow-400 to-yellow-500 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-1.5 text-center"
 								>
 									<a href="{% url 'editar_descuento' oferta.id %}">
-									Editar
+										Editar
 									</a>
 								</button>
-								<button
-									type="button"
-									class="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-1.5 text-center"
+								<form
+									id="form-{{ oferta.id }}"
 								>
-									<a href="{% url 'eliminar_descuento' oferta.id %}">
-									Eliminar
-									</a>
-								</button>
+									{% csrf_token %}
+									<button
+										type="button"
+										name="delete-button"
+										onclick="tt(this, '{{ oferta.id }}')"
+										class="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-1.5 text-center"
+									>
+										Eliminar
+									</button>
+								</form>
 							</td>
 						</tr>
 					{% endfor %}
@@ -88,12 +92,11 @@
 				</table>
 			</div>
 		{% else %}
-			<div id="descuentos-warning"
-				class="hidden">No hay descuentos disponibles
+			<div id="descuentos-warning">No hay descuentos disponibles
 			</div>
 		{% endif %}
 	</div>
 {% endblock %}
 {% block js %}
-{#		<script src="{% static 'src/js/getDescuentos.js' %}"></script>#}
+	<script src="{% static 'src/js/getDescuentos.js' %}"></script>
 {% endblock %}

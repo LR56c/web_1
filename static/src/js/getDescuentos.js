@@ -1,22 +1,62 @@
-const options    = {
-	placement      : 'center',
-	backdrop       : 'dynamic',
-	backdropClasses: 'bg-gray-900 bg-opacity-50 fixed inset-0 z-40',
-	closable       : true,
-	onHide         : () => {
+const swalWithBootstrapButtons = Swal.mixin( {
+	customClass   : {
+		confirmButton: 'text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2',
+		cancelButton : 'text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2'
 	},
-	onShow         : () => {
-	},
-	onToggle       : () => {
-	}
-}
-const editModal  = document.getElementById( 'edit-modal' )
-const modal      = new Modal( editModal, options )
+	buttonsStyling: false
+} )
 
-function closeModal( ) {
-	modal.hide()
+
+const buttonDelete = document.getElementsByName( 'delete-button' )
+
+
+let idSelected = 0
+for ( const buttonDeleteElement of buttonDelete ) {
+	buttonDeleteElement.addEventListener( 'click', function () {
+		if ( idSelected === 0 ) {
+			return
+		}
+		swalWithBootstrapButtons.fire( {
+			title            : 'Estas seguro?',
+			text             : 'Se eliminara este descuento',
+			icon             : 'warning',
+			showCancelButton : true,
+			confirmButtonText: 'Si',
+			cancelButtonText : 'No',
+			focusConfirm     : false,
+			focusCancel      : true
+		} )
+      .then( ( result ) => {
+        if ( result.isConfirmed ) {
+          const formContent = document.getElementById(
+            `form-${ idSelected }` )
+          const token       = formContent.querySelector(
+            'input[name="csrfmiddlewaretoken"]' )
+          const formData    = new FormData()
+          formData.append( 'csrfmiddlewaretoken',
+            token.value )
+
+          const peticion = $.ajax( {
+            async      : true,
+            crossDomain: true,
+            // url        : 'http://ec2-18-231-153-185.sa-east-1.compute.amazonaws.com:8000/administracion/descuentos/eliminar/' + idSelected,
+            url        : 'http://127.0.0.1:8000/administracion/descuentos/eliminar/' +
+              idSelected,
+            method     : 'POST',
+            data       : formData,
+            processData: false,
+            contentType: false
+          } )
+
+          peticion.done( function ( response ) {
+            window.location.reload()
+          } )
+        }
+      } )
+	} )
+
 }
 
-function openModal( ) {
-	modal.show()
+function tt( element, id ) {
+	idSelected = id
 }

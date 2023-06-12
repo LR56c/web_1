@@ -195,6 +195,3 @@ def eliminar_descuento( request, id ):
 	except Exception as e:
 		messages.error( request, 'No se pudo eliminar el descuento' )
 		return redirect( '404' )
-
-def hola() -> str:
-	return 10

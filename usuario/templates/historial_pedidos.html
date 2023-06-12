@@ -3,8 +3,8 @@
 {% block title %}Historial de Pedidos{% endblock %}
 {% block aside-content %}
 	<div class="p-4 h-full w-full">
-		<div class="max-h-96 md:max-h-[32rem] w-full overflow-auto shadow-md sm:rounded-lg">
-			{% if ordenes %}
+		{% if ordenes %}
+			<div class="max-h-96 md:max-h-[32rem] w-full overflow-auto shadow-md sm:rounded-lg">
 				<table
 					class="w-full text-sm text-left text-gray-500">
 					<thead
@@ -41,26 +41,31 @@
 							<td class="px-6 py-4">{{ orden.valor }}</td>
 							<td class="px-6 py-4">{{ orden.fecha }}</td>
 							<td class="px-3 py-4">
-								<div id="tooltip-hover" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
+								<div id="tooltip-hover"
+									role="tooltip"
+									class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
 									Se eliminara tu carrito actual, al realizar esta accion
-									<div class="tooltip-arrow" data-popper-arrow></div>
+									<div class="tooltip-arrow"
+										data-popper-arrow></div>
 								</div>
 								<button type="button"
-									data-tooltip-target="tooltip-hover" data-tooltip-trigger="hover"
+									data-tooltip-target="tooltip-hover"
+									data-tooltip-trigger="hover"
 									class="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-1.5 text-center">
-									<a href="{% url 'carrito_repetir' orden.id %}">Repetir Pedido</a>
+									<a href="{% url 'carrito_repetir' orden.id %}">Repetir
+										Pedido</a>
 								</button>
 							</td>
 						</tr>
 					{% endfor %}
 					</tbody>
 				</table>
-			{% else %}
-				<p class="text-lg text-gray-500">No hay datos disponibles</p>
-			{% endif %}
-		</div>
+			</div>
+		{% else %}
+			<p class="text-lg text-gray-500">No hay datos disponibles</p>
+		{% endif %}
 	</div>
 {% endblock %}
 {% block js %}
-{#	    <script src="{% static 'src/js/addHistorialCompras.js' %}"></script>#}
+	{#	    <script src="{% static 'src/js/addHistorialCompras.js' %}"></script>#}
 {% endblock %}
