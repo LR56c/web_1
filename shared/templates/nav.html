@@ -2,8 +2,8 @@
 <nav
 	class="sticky shadow px-2 py-2.5 sm:px-4 top-0 z-50 w-full bg-white border-b border-gray-200">
 	<div
-		class="flex flex-wrap items-center justify-center xs:justify-start gap-3 md:gap-0 md:justify-between md:flex-nowrap">
-		<div class="flex">
+		class="flex flex-wrap items-center justify-center gap-3 md:gap-0 md:justify-between md:flex-nowrap">
+		<div class="flex w-full justify-center md:basis-3/12">
 			<button data-drawer-target="logo-sidebar"
 				data-drawer-toggle="logo-sidebar"
 				aria-controls="logo-sidebar"
@@ -21,56 +21,60 @@
 				</svg>
 			</button>
 			<a href="{% url 'inicio' %}"
-				class="hover:text-black flex w-full basis-auto items-center justify-center xs:basis-2/4 md:basis-2/6 xs:justify-start lg:basis-5/12">
+				class="hover:text-black flex w-full basis-auto items-center justify-center">
 				<img src="{% static 'imagens/R.png' %}"
-					class="h-6 mr-3 sm:h-9"
+					class="h-6 mr-3"
 					alt="Flowbite Logo"/>
 				<span class="self-center text-xl font-semibold whitespace-nowrap">PokemonShop</span>
 			</a>
 		</div>
-		<div class="relative flex w-full basis-auto md:basis-3/12">
-			<div
-				class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
-				<svg class="h-5 w-5 text-gray-500"
-					aria-hidden="true"
-					fill="currentColor"
-					viewBox="0 0 20 20"
-					xmlns="http://www.w3.org/2000/svg">
-					<path fill-rule="evenodd"
-						d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
-						clip-rule="evenodd"></path>
-				</svg>
-				<span class="sr-only">Search icon</span>
+		{% if index %}
+			<div class="relative flex flex-col xxs:flex-row w-full basis-auto justify-center md:basis-6/12">
+				<div class="flex items-center">
+					<a href="{% url 'inicio' %}">
+						<img class="h-6 w-6 object-contain"
+							alt="..."
+							src="{% static 'icons/close.svg' %}"/>
+					</a>
+				</div>
+				<form method="get"
+					class="my-auto"
+					action="{% url 'inicio' %}">
+					<input type="search"
+						id="default-search"
+						name="search"
+						class="w-full xxs:w-32 xs:w-fit text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500"
+						placeholder="...">
+					<button type="submit"
+						class="w-full xxs:w-fit text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2">
+						Search
+					</button>
+				</form>
 			</div>
-			<input type="text"
-				id="search-navbar"
-				class="w-full rounded-lg border border-gray-300 bg-gray-50 pl-10 pr-2 py-2 text-sm text-gray-900 focus:border-blue-600 focus:ring-blue-600 md:w-52 lg:w-60"
-				placeholder="Search..."/>
-		</div>
+		{% endif %}
 		<div
-			class="flex w-full basis-auto justify-around md:basis-3/12">
-
-            {% if disabled_carrito %}
-            {% else %}
-                <button type="button"
-                        data-drawer-target="drawer-cart"
-                        data-drawer-show="drawer-cart"
-                        data-drawer-placement="right"
-                        aria-controls="drawer-cart"
-                        class="p-2 text-white bg-blue-600 hover:bg-blue-600/90 focus:ring-4 focus:outline-none focus:ring-blue-600/50 font-medium rounded-full text-sm text-center inline-flex items-center">
-                    <svg class="h-5 w-5"
-                         fill="none"
-                         stroke="currentColor"
-                         stroke-width="1.5"
-                         viewBox="0 0 24 24"
-                         xmlns="http://www.w3.org/2000/svg"
-                         aria-hidden="true">
-                        <path stroke-linecap="round"
-                              stroke-linejoin="round"
-                              d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z"></path>
-                    </svg>
-                </button>
-            {% endif %}
+			class="flex w-full basis-auto justify-around md:basis-2/12">
+			{% if disabled_carrito %}
+			{% else %}
+				<button type="button"
+					data-drawer-target="drawer-cart"
+					data-drawer-show="drawer-cart"
+					data-drawer-placement="right"
+					aria-controls="drawer-cart"
+					class="p-2 text-white bg-blue-600 hover:bg-blue-600/90 focus:ring-4 focus:outline-none focus:ring-blue-600/50 font-medium rounded-full text-sm text-center inline-flex items-center">
+					<svg class="h-5 w-5"
+						fill="none"
+						stroke="currentColor"
+						stroke-width="1.5"
+						viewBox="0 0 24 24"
+						xmlns="http://www.w3.org/2000/svg"
+						aria-hidden="true">
+						<path stroke-linecap="round"
+							stroke-linejoin="round"
+							d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z"></path>
+					</svg>
+				</button>
+			{% endif %}
 			<a href="{% url 'detalle_cuenta' %}">
 				<button type="button"
 					class="p-2 text-white bg-blue-600 hover:bg-blue-600/90 focus:ring-4 focus:outline-none focus:ring-blue-600/50 font-medium rounded-full text-sm text-center inline-flex items-center">
@@ -107,12 +111,13 @@
 				class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44">
 				<ul class="py-2 text-sm text-gray-700"
 					aria-labelledby="dropdownMenuIconButton">
-				{% if user %}
-					<li>
-						<p
-							class="block px-4 py-2 hover:bg-gray-100">Hola {{ user.first_name }}</p>
-					</li>
-				{% endif %}
+					{% if user %}
+						<li>
+							<p
+								class="block px-4 py-2 hover:bg-gray-100">
+								Hola {{ user.first_name }}</p>
+						</li>
+					{% endif %}
 					<li>
 						<a href="{% url 'suscripcion' %}"
 							class="block px-4 py-2 hover:bg-gray-100">Suscripcion</a>

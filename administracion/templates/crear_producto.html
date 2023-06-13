@@ -10,9 +10,8 @@
 	<div class="xs:p-4 h-full w-full flex justify-center">
 		<div
 			class="w-full h-full sm:w-3/4 lg:max-w-3xl bg-white border border-gray-200 rounded-lg shadow p-8">
-			<div class="space-y-6">
 				<h5
-					class="text-xl font-medium text-gray-900">Nuevo Producto</h5>
+					class="text-xl font-medium text-gray-900 mb-4">Nuevo Producto</h5>
 				<div>
 					<label class="block mb-2 text-sm font-medium text-gray-900">Oferta
 						seleccionada</label>
@@ -37,7 +36,7 @@
 				<form
 					method="POST"
 					enctype="multipart/form-data"
-					class="space-y-6"
+					class="overflow-y-scroll space-y-6"
 					id="form4">
 					{% csrf_token %}
 					<div class="overflow-y-scroll h-96 space-y-6">
@@ -158,14 +157,13 @@
 							<p class="hidden error"
 								id="imagen-warning">Debe ingresar una imagen</p>
 						</div>
-					</div>
 					<button
 						type="submit"
 						class="w-full text-white bg-gradient-to-r from-cyan-500 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
 						Crear
 					</button>
+					</div>
 				</form>
-			</div>
 		</div>
 	</div>
 {% endblock %}

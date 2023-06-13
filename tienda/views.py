@@ -68,6 +68,8 @@ def index( request ):
 	carrito, montoTotal = api.methods.getCart( request.user )
 	context['carrito'] = carrito
 	context['montoTotal'] = montoTotal
+	context['index'] = True
+
 
 	return render( request, 'index_tienda.html', context )
 
