@@ -35,11 +35,22 @@
 					<div class="w-full relative p-4 space-y-6">
 						<div>Listado de tarjetas:</div>
 						{% for tarjeta in tarjetas %}
-							<div class="max-w-md mb-6">
-								<input type="hidden" name="input-id" value="{{ tarjeta.id }}"/>
-								<img class="w-8 h-8 object-contain" id="{{ tarjeta.id }}-img"/>
-								<label for="first_name" class="block mb-2 text-sm font-medium text-gray-900">Tarjeta</label>
+							<div class="max-w-md mb-6 flex items-center gap-2">
+								<img class="w-8 h-8 object-contain" id="{{ tarjeta.id }}-img"
+									alt="..."
+								/>
 								<input disabled value="{{ tarjeta.numero_tarjeta }}" type="text" id="{{ tarjeta.id }}-num" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+								<form class="my-auto"
+									method="post"
+									action="{% url 'eliminar_tarjeta' %}">
+									{% csrf_token %}
+									<input type="hidden" name="tarjeta_id" value="{{ tarjeta.id }}"/>
+									<button
+										type="submit"
+										class="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-1.5 text-center">
+										Eliminar
+									</button>
+								</form>
 							</div>
 						{% endfor %}
 					</div>
@@ -55,6 +66,11 @@
 					id="edit-info"
 					class="w-48 xxs:w-52 text-white bg-gradient-to-r from-cyan-500 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2.5 text-center">
 					<a href="{% url 'detalle_cuenta_editar' %}">Editar</a>
+				</button>
+				<button type="button"
+					id="add-tarjeta"
+					class="w-48 xxs:w-52 text-white bg-gradient-to-r from-yellow-300 via-yellow-400 to-yellow-500 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2.5 text-center">
+					<a href="{% url 'agregar_tarjeta' %}">Agregar Tarjeta</a>
 				</button>
 			</div>
 		</div>

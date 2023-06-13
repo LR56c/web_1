@@ -31,12 +31,12 @@ class Producto( models.Model ):
 class Suscripcion( models.Model ):
 	id = models.AutoField( primary_key=True )
 	monto = models.IntegerField()
+	numero_tarjeta = models.IntegerField()
 	active = models.BooleanField()
 	fecha_inicio = models.DateField()
 	fecha_expiracion = models.DateField()
 	def __str__( self ):
 		return self.usuario_set.name + " esta " + 'activo' if self.active else 'inactivo'
-
 
 class Usuario( models.Model ):
 	user = models.OneToOneField( User, on_delete=models.CASCADE,
@@ -48,6 +48,18 @@ class Usuario( models.Model ):
 
 	def __str__( self ):
 		return self.nombre
+
+class Tarjeta( models.Model ):
+	id = models.AutoField( primary_key=True )
+	usuario = models.ForeignKey( Usuario, on_delete=models.CASCADE )
+	numero_tarjeta = models.IntegerField()
+	nombre_banco = models.CharField( max_length=60 )
+	nombre_cliente = models.CharField( max_length=60 )
+	codigo = models.IntegerField()
+	anno_vencimiento = models.IntegerField()
+	mes_vencimiento = models.IntegerField()
+	def __str__( self ):
+		return "Tarjeta id " + str(self.id) + " del cliente " + self.nombre_cliente
 
 
 class DetalleOrden( models.Model ):
@@ -94,14 +106,3 @@ class Compra( models.Model ):
 		return "Item " + str(self.id) + " de la orden " + str(self.orden.id) + " con el usuario " + self.orden.usuario.nombre
 
 
-class Tarjeta( models.Model ):
-	id = models.AutoField( primary_key=True )
-	usuario = models.ForeignKey( Usuario, on_delete=models.CASCADE )
-	numero_tarjeta = models.IntegerField()
-	nombre_banco = models.CharField( max_length=60 )
-	nombre_cliente = models.CharField( max_length=60 )
-	codigo = models.IntegerField()
-	anno_vencimiento = models.IntegerField()
-	mes_vencimiento = models.IntegerField()
-	def __str__( self ):
-		return "Tarjeta id " + str(self.id) + " del cliente " + self.nombre_cliente

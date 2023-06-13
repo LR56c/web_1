@@ -1,4 +1,4 @@
-const inputsId = document.getElementsByName( 'input-id' )
+const inputsId = document.getElementsByName( 'tarjeta_id' )
 
 for ( let input of inputsId ) {
 	console.log( 'input' )
@@ -17,18 +17,9 @@ for ( let input of inputsId ) {
 
 function getCardType( num ) {
 	let re = new RegExp( `^4` )
+
 	if ( re.test( num ) ) {
 		return 'visa'
-	}
-
-	re = new RegExp( `^(34|37)` )
-	if ( re.test( num ) ) {
-		return 'amex'
-	}
-
-	re = new RegExp( `^6011` )
-	if ( re.test( num ) ) {
-		return 'discover'
 	}
 
 	re = new RegExp( `^(5[1-5]|222[1-9]|22[3-9]|2[3-6]|27[01]|2720)` )

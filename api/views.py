@@ -23,27 +23,22 @@ def suscripcion_crear( request ):
 		if request.method == 'POST':
 			try:
 				usuario = Usuario.objects.get( user=request.user)
+				num = request.POST.get( 'num-val' )
 				fecha_inicio = datetime.now()
 				fecha_expiracion = fecha_inicio + timedelta( days=30 )
 				monto_cobrar = 1000
-				suscripcion = Suscripcion.objects.create(usuario=usuario, monto=monto_cobrar, active=True, fecha_inicio=fecha_inicio, fecha_expiracion=fecha_expiracion)
+				tarjeta = Tarjeta.objects.get( usuario=usuario, id=num )
+				suscripcion = Suscripcion.objects.create(usuario=usuario, monto=monto_cobrar,
+					active=True, fecha_inicio=fecha_inicio, fecha_expiracion=fecha_expiracion,
+					numero_tarjeta=tarjeta.numero_tarjeta
+				)
 				suscripcion.save()
-				try:
-					pago = Tarjeta.objects.get( usuario=usuario)
-				except Exception as e:
-					nombre = request.POST.get( 'nombre')
-					apellido = request.POST.get( 'apellido')
-					nombre_cliente = nombre + ' ' + apellido
+				if usuario.suscripcion is not None:
+					usuario.suscripcion.active = False
+					usuario.suscripcion.save()
 
-					nombre_banco = request.POST.get( 'banco')
-
-					numero_tarjeta = request.POST.get( 'tarjeta')
-					codigo = request.POST.get( 'clave')
-					anno_vencimiento = request.POST.get( 'ano')
-					mes_vencimiento = request.POST.get( 'mes')
-
-					pago = Tarjeta.objects.create( usuario=usuario, numero_tarjeta=numero_tarjeta, nombre_banco=nombre_banco, nombre_cliente=nombre_cliente, codigo=codigo, anno_vencimiento=anno_vencimiento, mes_vencimiento=mes_vencimiento)
-					pago.save()
+				usuario.suscripcion = suscripcion
+				usuario.save()
 
 				return redirect( 'suscripcion' )
 			except Exception as e:
@@ -55,14 +50,15 @@ def suscripcion_cancelar( request ):
 	if request.method == 'POST':
 		try:
 			# suscripcion_id = request.POST.get( 'suscripcion_id')
+			print( 'entro')
 			usuario = Usuario.objects.get( user=request.user)
-			suscripcion = usuario.suscripcion_set.all().get( active=True )
-			suscripcion.active = False
-			suscripcion.save()
-			pago = Tarjeta.objects.get( usuario=usuario )
-			pago.delete()
+			suscripcion = usuario.suscripcion
+			suscripcion.delete()
+			print( 'entro' )
 			return redirect( 'suscripcion' )
 		except Exception as e:
+			print( 'eee' )
+			print( e )
 			return redirect( '404' )
 	return redirect( '404' )
 
@@ -558,7 +554,52 @@ def edit_ofertas( request ):
 
 		else:
 			context['errors'] = {
-				'message': 'Fechas incorrectas',
+				'message': 'Fechas21 incorrectas',
 			}
 			return JsonResponse( context, status=404 )
 	return JsonResponse( context, status=404 )
+
+
+@login_required
+def crear_tarjeta( request ):
+	if request.method == 'POST':
+			try:
+				usuario = Usuario.objects.get( user=request.user )
+
+				nombre = request.POST.get( 'nombre' )
+				apellido = request.POST.get( 'apellido' )
+				nombre_cliente = nombre + ' ' + apellido
+
+				nombre_banco = request.POST.get( 'banco' )
+
+				numero_tarjeta = request.POST.get( 'tarjeta' )
+				codigo = request.POST.get( 'clave' )
+				anno_vencimiento = request.POST.get( 'ano' )
+				mes_vencimiento = request.POST.get( 'mes' )
+
+				pago = Tarjeta.objects.create( usuario=usuario,
+					numero_tarjeta=numero_tarjeta, nombre_banco=nombre_banco,
+					nombre_cliente=nombre_cliente, codigo=codigo,
+					anno_vencimiento=anno_vencimiento, mes_vencimiento=mes_vencimiento )
+
+				pago.save()
+				return redirect('detalle_cuenta')
+			except Exception as e:
+				return redirect('404')
+	else:
+		return redirect('404')
+
+
+@login_required
+def eliminar_tarjeta( request ):
+	if request.method == 'POST':
+		try:
+			# usuario = Usuario.objects.get( user=request.user )
+			tarjeta_id = request.POST.get( 'tarjeta_id' )
+			tarjeta = Tarjeta.objects.get( id=tarjeta_id )
+			tarjeta.delete()
+			return redirect('detalle_cuenta')
+		except Exception as e:
+			return redirect('404')
+	else:
+		return redirect('404')

@@ -8,7 +8,7 @@ from django.shortcuts import redirect, render
 from datetime import datetime, timedelta
 
 import api.methods
-from tienda.models import Tarjeta, Usuario
+from tienda.models import Suscripcion, Tarjeta, Usuario
 
 
 # login
@@ -73,6 +73,11 @@ def detalle_cuenta( request ):
 			usuario = Usuario.objects.get( user=user )
 
 			tarjetas = usuario.tarjeta_set.all()
+
+			for tarjeta in tarjetas:
+				tarjeta.numero_tarjeta = api.methods.ocultar_caracteres(
+					tarjeta.numero_tarjeta )
+
 			context['tarjetas'] = tarjetas
 			context['nombre'] = usuario.nombre
 			context['email'] = user.email
@@ -134,9 +139,6 @@ def detalle_cuenta_editar( request ):
 			user = request.user
 			usuario = Usuario.objects.get( user=user )
 
-			tarjetas = usuario.tarjeta_set.all()
-			context['tarjetas'] = tarjetas
-
 			context['nombre'] = usuario.nombre
 			context['email'] = user.email
 			context['telefono'] = usuario.telefono
@@ -150,28 +152,37 @@ def detalle_cuenta_editar( request ):
 @login_required
 def suscripcion( request ):
 	if request.method == 'GET':
+		context = { }
+		usuario = Usuario.objects.get( user=request.user )
 		try:
-			context = { }
-			usuario = Usuario.objects.get( user=request.user )
-			suscripcion = None
 			codigo_moneda = "CLP"
-			try:
-				suscripcion = usuario.suscripcion_set.all().get( active=True )
-				suscripcion.monto = format_currency( suscripcion.monto, codigo_moneda,
-					locale="es_CL" )
-				suscripcion.fecha_expiracion = api.methods.fechaDate( suscripcion.fecha_expiracion )
-				pago = Tarjeta.objects.get( usuario=usuario)
-				numero = str( pago.numero_tarjeta )
-				context['numeros'] = numero[-4:]
-
-			except Exception as e:
-				context['monto'] = format_currency( 1000, codigo_moneda,
-					locale="es_CL" )
-				proxima_fecha = datetime.now() + timedelta( days=30 )
-				context['duracion'] = api.methods.fechaDate( proxima_fecha )
-
+			suscripcion = usuario.suscripcion
+			suscripcion.monto = format_currency( suscripcion.monto, codigo_moneda,
+				locale="es_CL" )
+			suscripcion.fecha_expiracion = api.methods.fechaDate(
+				suscripcion.fecha_expiracion )
+			tarjeta = Tarjeta.objects.get( usuario=usuario,
+				numero_tarjeta=suscripcion.numero_tarjeta )
+			context['numeros'] = api.methods.ocultar_caracteres(
+				tarjeta.numero_tarjeta )
+			context['monto'] = format_currency( 1000, codigo_moneda, locale="es_CL" )
+			proxima_fecha = datetime.now() + timedelta( days=30 )
+			context['duracion'] = api.methods.fechaDate( proxima_fecha )
 			context['suscripcion'] = suscripcion
 			return render( request, 'suscripcion.html', context )
 		except Exception as e:
-			return redirect( '404' )
+			tarjetas = usuario.tarjeta_set.all()
+
+			for tarjeta in tarjetas:
+				tarjeta.numero_tarjeta = api.methods.ocultar_caracteres(
+					tarjeta.numero_tarjeta )
+
+			context['tarjetas'] = tarjetas
+
+			context['suscripcion'] = None
+			return render( request, 'suscripcion.html', context )
 	return redirect( '404' )
+
+
+def agregar_tarjeta( request ):
+	return render( request, 'ingreso_tarjeta.html' )

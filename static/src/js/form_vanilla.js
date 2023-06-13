@@ -442,6 +442,7 @@ form.addEventListener( 'submit', function ( e ) {
 		// peticionProductos.fail( function (response) {} )
 
 		form.reset()
+		productosDisponibleText.innerText = 0
 	}
 } )
 

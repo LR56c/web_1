@@ -97,3 +97,9 @@ def horaDate( fecha ):
 		minutes = matchesStr.group( 5 )
 		fechaFormat = f"{hour}:{minutes}"
 		return fechaFormat
+
+
+def ocultar_caracteres( numero ):
+	numeroStr = str( numero )
+	numero_oculto = numeroStr[0:4] + " **** " + " **** " + numeroStr[12:]
+	return numero_oculto
