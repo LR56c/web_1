@@ -26,6 +26,8 @@ def index( request ):
 	ind = None if len( productos ) < 3 else rn.sample( range( len( productos ) ),
 		3 )
 
+	codigo_moneda = "CLP"
+
 	for i in range( len( productos ) ):
 		productoEntry = { }
 		producto = productos[i]
@@ -33,7 +35,6 @@ def index( request ):
 		productoEntry['nombre'] = producto.nombre
 		productoEntry['imagen'] = producto.imagen
 
-		codigo_moneda = "CLP"
 		productoEntry['valor'] = format_currency( producto.valor, codigo_moneda,
 			locale="es_CL" )
 
@@ -44,11 +45,21 @@ def index( request ):
 				producto.valor - (producto.valor * (oferta.porcentaje / 100)),
 				codigo_moneda, locale="es_CL" )
 			ofertasList.append( productoEntry )
-		else:
-			productList.append( productoEntry )
+
+		productList.append( productoEntry )
 
 		if ind is not None and i in ind:
 			carruselList.append( productoEntry )
+
+	search = request.GET.get( 'search' )
+
+	if search is not None:
+		productos_search = Producto.objects.filter( nombre__contains=search )
+		productList = []
+		for producto_search in productos_search:
+			producto_search.valor = format_currency( producto_search.valor, codigo_moneda,
+				locale="es_CL" )
+			productList.append( producto_search )
 
 	context['productos'] = productList
 	context['carrusel'] = carruselList

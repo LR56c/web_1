@@ -1170,6 +1170,14 @@ input:checked + .toggle-bg {
   top: 0.75rem;
 }
 
+.bottom-2 {
+  bottom: 0.5rem;
+}
+
+.bottom-2\.5 {
+  bottom: 0.625rem;
+}
+
 .isolate {
   isolation: isolate;
 }

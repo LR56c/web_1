@@ -50,15 +50,11 @@ def suscripcion_cancelar( request ):
 	if request.method == 'POST':
 		try:
 			# suscripcion_id = request.POST.get( 'suscripcion_id')
-			print( 'entro')
 			usuario = Usuario.objects.get( user=request.user)
 			suscripcion = usuario.suscripcion
 			suscripcion.delete()
-			print( 'entro' )
 			return redirect( 'suscripcion' )
 		except Exception as e:
-			print( 'eee' )
-			print( e )
 			return redirect( '404' )
 	return redirect( '404' )
 

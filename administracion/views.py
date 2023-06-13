@@ -56,17 +56,15 @@ def crear_producto( request ):
 
 @login_required
 def ver_productos( request ):
-	print( 'request.GET')
-	print( request.GET)
 	filtro = request.GET.get( 'filtro')
-	print( 'filtro')
-	print( filtro)
+	search = request.GET.get( 'search' )
 
 	productos = None
 
 	if filtro is not None:
 		productos=Producto.objects.order_by( filtro )
-		print( 'filtro is not None')
+	elif search is not None:
+		productos = Producto.objects.filter( nombre__contains=search )
 	else:
 		productos = Producto.objects.all()
 

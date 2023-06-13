@@ -8,7 +8,7 @@ const swalWithBootstrapButtons = Swal.mixin( {
 
 
 const buttonDelete = document.getElementsByName( 'delete-button' )
-
+const filtroValor	= document.getElementById( 'filtro-valor' )
 
 let idSelected = 0
 for ( const buttonDeleteElement of buttonDelete ) {
@@ -59,4 +59,14 @@ for ( const buttonDeleteElement of buttonDelete ) {
 
 function tt( element, id ) {
 	idSelected = id
+}
+
+let precioOrder = 'asc'
+function precioClick(  ) {
+	if ( precioOrder === 'asc' ) {
+		precioOrder = 'desc'
+	} else {
+		precioOrder = 'asc'
+	}
+	filtroValor.value = precioOrder === 'asc' ? 'valor' : '-valor'
 }
