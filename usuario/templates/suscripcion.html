@@ -141,18 +141,20 @@
 				<div class="p-4 h-full flex flex-col items-center justify-center gap-4">
 					<button id="dropdownUsersButton"
 						data-dropdown-toggle="dropdownUsers"
-						data-dropdown-placement="right"
+						data-dropdown-placement="bottom"
 						class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
 						type="button">
 						Selecciona una tarjeta
 						<svg class="w-4 h-4 ml-2"
 							aria-hidden="true"
-							fill="currentColor"
-							viewBox="0 0 20 20"
+							fill="none"
+							stroke="currentColor"
+							viewBox="0 0 24 24"
 							xmlns="http://www.w3.org/2000/svg">
-							<path fill-rule="evenodd"
-								d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
-								clip-rule="evenodd"></path>
+							<path stroke-linecap="round"
+								stroke-linejoin="round"
+								stroke-width="2"
+								d="M19 9l-7 7-7-7"></path>
 						</svg>
 					</button>
 					<!-- Dropdown menu -->
@@ -179,17 +181,18 @@
 						</ul>
 					</div>
 					<p id="selected-tarjeta">No tienes una tarjeta seleccionada</p>
-				<form action="{% url 'suscripcion_crear' %}"
-				method="post">
-					{% csrf_token %}
-					<input type="hidden"
-						id="num-input"
-						name="num-val"/>
-					<button type="submit" id="pay-button"
-						class="text-white bg-blue-400 dark:bg-blue-500 cursor-not-allowed font-medium rounded-lg text-sm px-5 py-2.5 text-center">
-						Realizar Pago
-					</button>
-				</form>
+					<form action="{% url 'suscripcion_crear' %}"
+						method="post">
+						{% csrf_token %}
+						<input type="hidden"
+							id="num-input"
+							name="num-val"/>
+						<button type="submit"
+							id="pay-button"
+							class="text-white bg-blue-400 dark:bg-blue-500 cursor-not-allowed font-medium rounded-lg text-sm px-5 py-2.5 text-center">
+							Realizar Pago
+						</button>
+					</form>
 				</div>
 			</div>
 		{% endif %}

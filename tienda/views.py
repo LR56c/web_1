@@ -41,12 +41,18 @@ def index( request ):
 		if producto.oferta_id is not None:
 			oferta = Oferta.objects.get( id=producto.oferta_id )
 			productoEntry['descuento'] = oferta.porcentaje
+			productoEntry['original'] = productoEntry['valor']
+
 			productoEntry['rebaja'] = format_currency(
 				producto.valor - (producto.valor * (oferta.porcentaje / 100)),
 				codigo_moneda, locale="es_CL" )
+			productoEntry['valor'] = productoEntry['rebaja']
 			ofertasList.append( productoEntry )
 
 		productList.append( productoEntry )
+
+
+
 
 		if ind is not None and i in ind:
 			carruselList.append( productoEntry )
