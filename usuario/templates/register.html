@@ -19,6 +19,7 @@
 				<h5
 					class="text-xl font-medium text-gray-900">Registra tu cuenta</h5>
 				<!-- Formulario registro -->
+				<div class="overflow-y-scroll h-96 space-y-6">
 				<form
 					action="{% url 'registro' %}"
 					method="post"
@@ -59,7 +60,6 @@
 						<p id="pass-equals"
 							class="error hidden">Las contraseñas no coinciden</p>
 					</div>
-
 					<div>
 						<label for="nombre"
 							class="block mb-2 text-sm font-medium text-gray-900">Nombre</label>
@@ -112,6 +112,7 @@
 						aqui</a>
 					</div>
 				</form>
+				</div>
 			</div>
 		</div>
 
