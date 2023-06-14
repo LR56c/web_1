@@ -133,6 +133,7 @@
 							<p id="producto-disp"
 								class="inline">0</p>&nbsp;seleccionados)</p>
 						</label>
+						{% if productos %}
 						<table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
 							<thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
 							<tr>
@@ -160,11 +161,50 @@
 							</tr>
 							</thead>
 							<tbody id="producto-list">
+							{% for producto in productos %}
+								<tr class="bg-white border-b">
+									<td class="w-4 p-4">
+										<div class="flex items-center">
+											<input id="check-{{ producto.id }}"
+												type="checkbox"
+												name="check"
+												value="{{ producto.id }}"
+												onchange="tt(this, {{ producto.id }})"
+												class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500">
+											<label for="check"
+												class="sr-only">checkbox</label>
+										</div>
+									</td>
+									<th scope="row"
+										id="{{ producto.id }}-nombre"
+										class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
+										{{ producto.nombre }}
+									</th>
+									<td id="{{ producto.id }}-valor"
+										class="px-6 py-4">{{ producto.valor }}
+									</td>
+									<td id="{{ producto.id }}-stock"
+										class="px-6 py-4">{{ producto.stock }}
+									</td>
+									<td class="px-6 py-4">
+										<img id="{{ producto.id }}-imagen"
+											class="h-12 w-12 object-contain"
+											{% if producto.imagen.url %}
+												src="{{ producto.imagen.url }}"
+											{% else %}
+												src="{{ producto.imagen }}"
+											{% endif %}
+											alt="...">
+									</td>
+								</tr>
+							{% endfor %}
 							</tbody>
 						</table>
+						{% else %}
 						<div id="productos-warning"
 							class="hidden">No hay productos disponibles
 						</div>
+						{% endif %}
 					</div>
 					<button
 						type="submit"

@@ -54,16 +54,6 @@ def index( request ):
 		if ind is not None and i in ind:
 			carruselList.append( productoEntry )
 
-	search = request.GET.get( 'search' )
-
-	if search is not None:
-		productos_search = Producto.objects.filter( nombre__contains=search )
-		productList = []
-		for producto_search in productos_search:
-			producto_search.valor = format_currency( producto_search.valor,
-				codigo_moneda, locale="es_CL" )
-			productList.append( producto_search )
-
 	context['productos'] = productList
 	context['carrusel'] = carruselList
 	context['ofertas'] = ofertasList
@@ -323,3 +313,18 @@ def pago_eliminar( request, id ):
 
 	return redirect( 'pago' )
 
+
+def index_search( request ):
+	context = { }
+	search = request.GET.get( 'query' )
+	codigo_moneda = "CLP"
+
+	if search is not None:
+		productos_search = Producto.objects.filter( nombre__contains=search )
+		productList = []
+		for producto_search in productos_search:
+			producto_search.valor = format_currency( producto_search.valor,
+				codigo_moneda, locale="es_CL" )
+			productList.append( producto_search )
+		context['productos'] = productList
+	return render( request, 'index_search.html', context )

@@ -3,7 +3,6 @@ const buttonEnable = enabledString.split(' ')
 const buttonDisable = [
 	'text-white',
 	'bg-red-400',
-	'dark:bg-red-500',
 	'cursor-not-allowed',
 	'font-medium',
 	'rounded-lg',

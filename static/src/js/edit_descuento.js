@@ -1,6 +1,4 @@
 // inputs con warnings
-const productoListBody        = document.getElementById( 'producto-list' )
-const productosWarning        = document.getElementById( 'productos-warning' )
 const productosDisponibleText = document.getElementById( 'producto-disp' )
 
 const nombreInput     = document.getElementById( 'nombre' )

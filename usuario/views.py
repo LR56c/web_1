@@ -9,7 +9,7 @@ from datetime import datetime, timedelta
 
 import api.methods
 from tienda.forms import TarjetaForm
-from tienda.models import Suscripcion, Tarjeta, Usuario
+from tienda.models import Orden, Tarjeta, Usuario
 
 
 # login
@@ -103,8 +103,14 @@ def historial_pedidos( request ):
 	context = { }
 	if request.method == 'GET':
 		try:
+			filtro = request.GET.get( 'filtro' )
+
 			usuario = Usuario.objects.get( user=request.user )
 			ordenes = usuario.orden_set.all()
+
+			if filtro is not None:
+				ordenes = ordenes.order_by( filtro )
+
 			ordenList = []
 
 			for orden in ordenes:

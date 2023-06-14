@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Inicio{% endblock %}
+{% block css %}
+	<link href="{% static 'src/css/index.css' %}"
+		rel="stylesheet">
+{% endblock %}
+
+
+{% block content %}
+	<!--drawer-->
+	{% include 'drawer.html' with carrito=carrito montoTotal=montoTotal %}
+	<!-- div 2 -->
+	<div class="w-full h-full">
+		{% if productos %}
+			<div
+				id="productos"
+				class="mx-auto py-4 grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-6 justify-items-center">
+				{% for producto in productos %}
+					<div
+						class="flex flex-col gap-2 w-44 h-80 bg-white border border-gray-200 rounded-lg shadow">
+						<a href="{% url 'detalle_producto' producto.id %}"
+							class="basis-3/5 flex justify-center items-center">
+							<img
+								class="object-contain rounded-t-lg max-h-32"
+								{% if producto.imagen.url %}
+									src="{{ producto.imagen.url }}"
+								{% else %}
+									src="{{ producto.imagen }}"
+								{% endif %}
+								alt=""/>
+						</a>
+						<div
+							class="basis-2/5 w-full h-full">
+							<div class="w-full flex justify-center items-center">
+								<a
+									id="{{ producto.id }}-name"
+									class="line-clamp-1"
+									href="{% url 'detalle_producto' producto.id %}">{{ producto.nombre }}</a>
+							</div>
+							<div
+								class="w-full flex p-2 flex-col">
+								<div
+									id="{{ producto.id }}-price-normal"
+									class="text-2xl font-bold text-center">
+									{{ producto.valor }}</div>
+							</div>
+							<div class="w-full p-2">
+								<form method="post"
+									action="{% url 'inicio_carrito' producto.id %}">
+									{% csrf_token %}
+									<input type="hidden"
+										id="input-add"
+										name="input-add"
+										value="1"
+										class="bg-gray-50 w-14 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block px-2.5 py-1 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"/>
+									<button
+										type="submit"
+										id="{{ producto.id }}-buton"
+										class="px-2 py-2.5 h-12 w-full text-white bg-gray-500 hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm text-center">
+										Agregar al carrito
+									</button>
+								</form>
+							</div>
+						</div>
+					</div>
+				{% endfor %}
+			</div>
+		{% else %}
+			<div class="flex flex-col justify-center items-center w-full h-full">
+				<h2>No se han encontrado coincidencias de productos</h2>
+			<a href="{% url 'inicio' %}"
+				class="text-blue-400 underline">Volver al inicio</a>
+			</div>
+		{% endif %}
+	</div>
+{% endblock content %}
+{% block js %}
+	<script
+		src="{% static 'src/bootstrap-5.2.3-dist/js/bootstrap.bundle.js' %}"></script>
+{% endblock %}

@@ -77,6 +77,7 @@
 						<div>
 							<label
 								class="block mb-2 text-sm font-medium text-gray-900">Ofertas</label>
+							{% if ofertas %}
 							<table class="w-full text-sm text-left text-gray-500">
 								<thead class="text-xs text-gray-700 uppercase bg-gray-50">
 								<tr>
@@ -103,9 +104,41 @@
 								</tr>
 								</thead>
 								<tbody id="oferta-list">
+								{% for oferta in ofertas %}
+									{% if oferta.id|divisibleby:2 %}
+										<tr class="border-b bg-gray-50">
+											{% else %}
+										<tr class="border-b bg-white">
+									{% endif %}
+								<td class="w-4 p-4">
+									<div class="flex items-center">
+										<input id="{{ oferta.id }}-check"
+											type="checkbox"
+											onchange="tt(this, {{ oferta.id }})"
+											class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500">
+										<label for="{{ oferta.id }}-check"
+											class="sr-only">checkbox</label>
+									</div>
+								</td>
+								<td id="{{ oferta.id }}-name"
+									class="px-6 py-4">{{ oferta.name }}
+								</td>
+								<td id="{{ oferta.id }}-porc"
+									class="px-6 py-4 line-clamp-1">{{ oferta.porcentaje }}%
+								</td>
+								<td id="{{ oferta.id }}-fi"
+									class="px-6 py-4">{{ oferta.fecha_inicio }}
+								</td>
+								<td id="{{ oferta.id }}-fe"
+									class="px-6 py-4">{{ oferta.fecha_fin }}
+								</td>
+								</tr>
+								{% endfor %}
 								</tbody>
 							</table>
+							{% else %}
 							<div id="oferta-warning" class="hidden">No hay ofertas disponibles</div>
+							{% endif %}
 						</div>
 						<div>
 							<label

@@ -28,6 +28,7 @@ $( document )
 
 		const idProducto = Number( idProd )
 		const ofertaId   = Number( idOferta )
+		lastSelectedOferta = ofertaId
 
 		selectionNull = $( '#selected-null' )
 		selectionTR   = $( '#selected-tr' )
@@ -128,6 +129,8 @@ $( document )
 
 function tt( e, id ) {
 	if ( id !== lastSelectedOferta ) {
+		const prevCheck			= $( `#${lastSelectedOferta}-check` )
+		prevCheck.prop( 'checked', false )
 		lastSelectedOferta = id
 		$( `#selected-name` ).text( $( `#${lastSelectedOferta}-name` ).text() )
 		$( `#selected-porc` ).text( $( `#${lastSelectedOferta}-porc` ).text() )

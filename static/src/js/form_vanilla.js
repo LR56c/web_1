@@ -1,6 +1,4 @@
 // inputs con warnings
-const productoListBody = document.getElementById( 'producto-list' )
-const productosWarning = document.getElementById( 'productos-warning' )
 const productosDisponibleText = document.getElementById( 'producto-disp' )
 
 const nombreInput     = document.getElementById( 'nombre' )
@@ -26,104 +24,15 @@ const endTimeText  = document.getElementById( 'time-end-text' )
 
 const form = document.getElementById( 'form1' )
 
-let listaIdProductos = new Set()
-let elementosChecked = new Set()
+let listaIdAdder    = new Set()
+let numProductos    = 0
+
 let elementosError   = new Set()
 
+
+
 // peticion
-const peticionProductos = $.ajax( {
-	async      : true,
-	crossDomain: true,
-	// url        : 'http://ec2-18-231-153-185.sa-east-1.compute.amazonaws.com:8000/api/product',
-	url        : 'http://127.0.0.1:8000/api/product',
-	method     : 'GET',
-	processData: false,
-	contentType: false
-} )
 
-peticionProductos.done( function ( response ) {
-	const productosResponse = JSON.parse( response['productos'] )
-
-	if ( productosResponse.length === 0 ) {
-		productosWarning.classList.remove( 'hidden' )
-		return
-	}
-
-	productosResponse.forEach( function ( producto ) {
-		const id   = producto['pk']
-		const item = producto['fields']
-
-		const tr   = document.createElement( 'tr' )
-		tr.classList.add( 'bg-white', 'border-b' )
-
-		const td = document.createElement( 'td' )
-		td.classList.add( 'w-4', 'p-4' )
-
-		const div = document.createElement( 'div' )
-		div.classList.add( 'flex', 'items-center' )
-
-		const input = document.createElement( 'input' )
-		input.id    = id + '-check'
-		input.type  = 'checkbox'
-		input.classList.add( 'w-4', 'h-4', 'text-blue-600', 'bg-gray-100',
-			'border-gray-300', 'rounded', 'focus:ring-blue-500' )
-
-		const label   = document.createElement( 'label' )
-		label.htmlFor = id + '-check'
-		label.classList.add( 'sr-only' )
-		label.innerText = 'checkbox'
-
-		div.appendChild( input )
-		div.appendChild( label )
-		td.appendChild( div )
-		tr.appendChild( td )
-
-		const th = document.createElement( 'th' )
-		th.scope = 'row'
-		th.id    = id + '-nombre'
-		th.classList.add( 'px-6', 'py-4', 'font-medium', 'text-gray-900',
-			'whitespace-nowrap' )
-		th.innerText = item['nombre']
-		tr.appendChild( th )
-
-		const tdValor = document.createElement( 'td' )
-		tdValor.id    = id + '-valor'
-		tdValor.classList.add( 'px-6', 'py-4' )
-		tdValor.innerText = item['valor']
-		tr.appendChild( tdValor )
-
-		const tdStock = document.createElement( 'td' )
-		tdStock.id    = id + '-stock'
-		tdStock.classList.add( 'px-6', 'py-4' )
-		tdStock.innerText = item['stock']
-		tr.appendChild( tdStock )
-
-		const tdImagen = document.createElement( 'td' )
-		tdImagen.classList.add( 'px-6', 'py-4' )
-
-		const img = document.createElement( 'img' )
-		img.id    = id + '-imagen'
-		img.classList.add( 'h-12', 'w-12', 'object-contain' )
-		img.src = item['imagen']
-		img.alt = '...'
-
-		tdImagen.appendChild( img )
-		tr.appendChild( tdImagen )
-		productoListBody.append( tr )
-
-		input.addEventListener( 'change', function () {
-			if ( input.checked ) {
-				elementosChecked.add( input )
-				listaIdProductos.add( id )
-			}
-			else {
-				elementosChecked.delete( input )
-				listaIdProductos.delete( id )
-			}
-			productosDisponibleText.innerText = listaIdProductos.size
-		} )
-	} )
-} )
 
 // estilos de validacion
 const textInvalid  = [ 'text-red-600', 'block' ]
@@ -232,7 +141,6 @@ function emptyEndDate() {
 	return true
 }
 
-
 function startDateValid() {
 
 	if ( startDateInput.value > endDateInput.value ) {
@@ -268,7 +176,6 @@ function endDateValid() {
 	elementosError.delete( endDateInput )
 	return true
 }
-
 
 function timeValid() {
 	if ( startDateInput.value === endDateInput.value )
@@ -414,8 +321,8 @@ form.addEventListener( 'submit', function ( e ) {
 			parseDate( startTimeInput.value, startDateInput.value ) )
 		formData.append( 'fecha_fin',
 			parseDate( endTimeInput.value, endDateInput.value ) )
-		// formData.append( 'data', JSON.stringify(listaIdProductos) )
-		const productJsonList = JSON.stringify( [ ...listaIdProductos ] )
+		// formData.append( 'data', JSON.stringify(listaIdAdder) )
+		const productJsonList = JSON.stringify( [ ...listaIdAdder ] )
 		formData.append( 'data', productJsonList )
 
 
@@ -468,3 +375,17 @@ function parseDate( time, date ) {
 		// return fechaHora
 	}
 }
+
+function tt( e, id ) {
+	if ( e.checked ) {
+		listaIdAdder.add( id )
+		numProductos++
+	}
+	else {
+		listaIdAdder.delete( id )
+		numProductos--
+	}
+	productosDisponibleText.innerText = numProductos
+}
+
+productosDisponibleText.innerText = numProductos

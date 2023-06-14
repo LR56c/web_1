@@ -22,7 +22,19 @@
 						</th>
 						<th scope="col"
 							class="px-6 py-3">
-							TOTAL
+							<div class="flex">
+								TOTAL
+								<a href="{% url 'historial_pedidos' %}?filtro=valor">
+									<img class="w-4 h-4 object-contain"
+										alt="..."
+										src="{% static 'icons/chevron-down.svg' %}"/>
+								</a>
+								<a href="{% url 'historial_pedidos' %}?filtro=-valor">
+									<img class="w-4 h-4 object-contain"
+										alt="..."
+										src="{% static 'icons/chevron-up.svg' %}"/>
+								</a>
+							</div>
 						</th>
 						<th scope="col"
 							class="px-6 py-3">

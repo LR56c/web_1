@@ -1,8 +1,9 @@
 from django.urls import path
-from .views import index, pago, orden, producto, index_carrito, index_carrito_delete, pago_eliminar, orden_id, carrito_repetir, producto_extra
+from .views import index, pago, orden, producto, index_carrito, index_carrito_delete, pago_eliminar, orden_id, carrito_repetir, producto_extra, index_search
 
 urlpatterns = [
 	path( '', index, name='inicio' ),
+	path( 'search', index_search, name='inicio_busqueda' ),
 	path( 'carrito/agregar/<str:id>', index_carrito, name='inicio_carrito' ),
 	path( 'carrito/delete/<str:id>', index_carrito_delete, name='index_carrito_delete' ),
 	path( 'producto/<str:id>', producto, name='detalle_producto' ),

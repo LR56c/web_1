@@ -19,7 +19,6 @@ const buttonEnable = [
 const buttonDisable = [
 	'text-white',
 	'bg-blue-400',
-	'dark:bg-blue-500',
 	'cursor-not-allowed',
 	'font-medium',
 	'rounded-lg',
