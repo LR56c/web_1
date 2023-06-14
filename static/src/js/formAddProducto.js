@@ -146,6 +146,8 @@ $( document )
 
 			let formData    = new FormData( this )
 			const imageName = formData.get( 'imagen' ).name
+			console.log( 'imageName' )
+			console.log( imageName )
 			formData.append( 'imageName', imageName )
 			formData.append( 'oferta', ofertaInput )
 

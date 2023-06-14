@@ -12,7 +12,7 @@
 
 {% block content %}
 	<!--drawer-->
-	{% include 'drawer.html' with carrito=carrito montoTotal=montoTotal%}
+	{% include 'drawer.html' with carrito=carrito montoTotal=montoTotal %}
 
 	<div
 		class="relative flex flex-col md:flex-row w-full gap-4 p-4">
@@ -20,14 +20,22 @@
 			<div class="md:hidden w-full flex justify-center">
 				<img
 					class="h-24 xxs:h-36 xs:h-56 sm:h-72 object-contain rounded-lg"
-					src="{{ producto.imagen }}"
+					{% if producto.imagen.url %}
+						src="{{ producto.imagen.url }}"
+					{% else %}
+						src="{{ producto.imagen }}"
+					{% endif %}
 					alt=""/>
 			</div>
 			<div class="hidden md:block">
 				<div class="flex justify-center items-center">
 					<div class="rounded-lg bg-gray-200 max-w-lg">
 						<img class="object-contain w-full h-full rounded-lg"
-							src="{{ producto.imagen }}"
+							{% if producto.imagen.url %}
+								src="{{ producto.imagen.url }}"
+							{% else %}
+								src="{{ producto.imagen }}"
+							{% endif %}
 							alt=""/>
 					</div>
 				</div>
@@ -127,52 +135,80 @@
 	</div>
 	<div
 		class="flex flex-wrap py-4 w-full gap-4 justify-center items-center">
-
-		<div class="h-80 w-44">
-			<div
-				class="h-80 w-44 flex flex-col gap-2 bg-white border border-gray-200 rounded-lg shadow">
-				<a href="{% url '404' %}"
-					class="basis-3/5 flex justify-center items-center">
-					<img
-						class="object-contain rounded-t-lg max-h-32"
-						src="{% static 'imagens/poleron.png' %}"
-						alt=""/>
-				</a>
-				<div
-					class="basis-2/5 w-full h-full">
-					<div class="w-full flex justify-center items-center">
-						<a
-							class="line-clamp-1"
-							href="{% url '404' %}">Nombre producto</a>
-					</div>
-					<div
-						class="w-full flex p-2 flex-col">
+		{% if productos %}
+			{% for productoElement in productos %}
+				{% if producto.id != productoElement.id %}
+					<div class="h-80 w-44">
 						<div
-							class="text-gray-400 line-through">Precio
-						</div>
-						<div class="flex items-center gap-2">
+							class="h-80 w-44 flex flex-col gap-2 bg-white border border-gray-200 rounded-lg shadow">
+							<a href="{% url 'detalle_producto' productoElement.id %}"
+								class="basis-3/5 flex justify-center items-center">
+								<img
+									{% if productoElement.imagen.url %}
+										src="{{ productoElement.imagen.url }}"
+									{% else %}
+										src="{{ productoElement.imagen }}"
+									{% endif %}
+									class="object-contain rounded-t-lg max-h-32"
+									alt=""/>
+							</a>
 							<div
-								class="text-2xl font-bold">
-								desc
-							</div>
-							<div
-								class="text-xs">%descuento
+								class="basis-2/5 w-full h-full">
+								<div class="w-full flex justify-center items-center">
+									<a
+										class="line-clamp-1"
+										href="{% url 'detalle_producto' productoElement.id %}">{{ productoElement.nombre }}</a>
+								</div>
+								{% if productoElement.descuento == '0' %}
+									<div class="text-black text-2xl font-bold flex justify-center">{{ producto.valor }}</div>
+								{% else %}
+									<div
+										class="w-full flex p-2 flex-col">
+										<div
+											class="text-gray-400 line-through">{{ productoElement.original }}
+										</div>
+										<div class="flex items-center gap-2">
+											<div
+												class="text-2xl font-bold">
+												{{ productoElement.rebaja }}
+											</div>
+											<div
+												class="text-xs">(%{{ productoElement.descuento }}
+												descuento)
+											</div>
+										</div>
+									</div>
+								{% endif %}
+								<div class="w-full p-2">
+									<form method="post"
+										action="{% url 'detalle_producto_extra' productoElement.id %}">
+										{% csrf_token %}
+										<input type="hidden"
+											name="id_from"
+											value="{{ producto.id }}"/>
+										<input type="hidden"
+											name="input-add"
+											value="1"
+											class="bg-gray-50 w-14 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block px-2.5 py-1 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"/>
+										<button
+											type="submit"
+											id="{{ productoElement.id }}-buton"
+											class="px-2 py-2.5 h-12 w-full text-white bg-gray-500 hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm text-center">
+											Agregar al carrito
+										</button>
+									</form>
+								</div>
 							</div>
 						</div>
 					</div>
-					<div class="w-full p-2">
-						<button
-							class="px-2 py-2.5 h-12 w-full text-white bg-gray-500 hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm text-center">
-							Agregar al carrito
-						</button>
-					</div>
-				</div>
-			</div>
-		</div>
+				{% endif %}
+			{% endfor %}
+		{% else %}
+			<p class="text-2xl font-bold text-gray-400">No hay productos</p>
+		{% endif %}
 	</div>
-
 {% endblock content %}
 
 {% block js %}
-<script src="{% static 'src/js/addDetalleProducto.js' %}"></script>
+	<script src="{% static 'src/js/addDetalleProducto.js' %}"></script>
 {% endblock %}

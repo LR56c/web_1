@@ -32,57 +32,45 @@ const buttonDisable = [
 
 $( document )
 	.ready( function () {
-		let nombre       = $( '#nombre' )
-		let apellido     = $( '#apellido' )
-		let banco        = $( '#banco' )
-		let tarjeta      = $( '#tarjeta' )
-		let mes          = $( '#mes' )
-		let ano          = $( '#ano' )
-		let clave        = $( '#clave' )
+		let nombre       = $( '#id_nombre_cliente' )
+		let banco        = $( '#id_nombre_banco' )
+		let tarjeta      = $( '#id_numero_tarjeta' )
+		let mes          = $( '#id_mes_vencimiento' )
+		let ano          = $( '#id_anno_vencimiento' )
+		let clave        = $( '#id_codigo' )
 		let form         = $( '#formulario1' )
 		let buttonSubmit = $( '#guardar1' )
 
 		function validarForm() {
 			form.validate( {
 				rules   : {
-					nombre: {
+					nombre_cliente: {
 						required : true,
 						minlength: 1,
 						maxlength: 50
 					},
-
-					apellido: {
+					nombre_banco: {
 						required : true,
 						minlength: 1,
 						maxlength: 50
 					},
-
-					banco: {
-						required : true,
-						minlength: 1,
-						maxlength: 50
-					},
-
-					tarjeta: {
+					numero_tarjeta: {
 						required : true,
 						minlength: 16,
 						maxlength: 16
 					},
-
-					mes: {
+					mes_vencimiento: {
 						required: true,
 						number  : true,
 						min     : 1,
 						max     : 12
 					},
-
-					ano: {
+					anno_vencimiento: {
 						required : true,
 						minlength: 2,
 						maxlength: 2
 					},
-
-					clave: {
+					codigo: {
 						required : true,
 						minlength: 3,
 						maxlength: 3
@@ -91,38 +79,33 @@ $( document )
 				},
 				messages:
 					{
-						nombre  : {
+						nombre_cliente  : {
 							required : 'Ingrese un nombre',
 							minlength: 'Debe tener almenos 1 caracter',
 							maxlength: 'Debe tener maximo 50 caracter'
 						},
-						apellido: {
-							required : 'Ingrese un apellido',
-							minlength: 'Debe tener almenos 1 caracter',
-							maxlength: 'Debe tener maximo 50 caracter'
-						},
-						banco   : {
+						nombre_banco   : {
 							required : 'Ingrese un banco valido',
 							minlength: 'Debe tener almenos 1 caracter',
 							maxlength: 'Debe tener maximo 50 caracter'
 						},
-						tarjeta : {
+						numero_tarjeta : {
 							required : 'Ingrese una tarjeta valida',
 							minlength: 'La tarjeta debe tener 16 digitos',
 							maxlength: 'La tarjeta debe tener 16 digitos'
 						},
-						mes     : {
+						mes_vencimiento     : {
 							required: 'Ingrese un mes valido',
 							number  : 'Solo numeros del 01 al 12',
 							min     : 'Solo numeros del 01 al 12',
 							max     : 'Solo numeros del 01 al 12'
 						},
-						ano     : {
+						anno_vencimiento     : {
 							required : 'Ingrese un año valido',
 							minlength: 'Solo los dos ultimos digitos del año',
 							maxlength: 'Solo los dos ultimos digitos del año'
 						},
-						clave   : {
+						codigo   : {
 							required : 'Ingrese una clave valida',
 							minlength: 'La clave debe tener 3 digitos',
 							maxlength: 'La clave debe tener 3 digitos'
@@ -147,10 +130,6 @@ $( document )
 		buttonSubmit.addClass( buttonDisable.join( ' ' ) )
 
 		nombre.on( 'input', function () {
-			validarForm()
-		} )
-
-		apellido.on( 'input', function () {
 			validarForm()
 		} )
 

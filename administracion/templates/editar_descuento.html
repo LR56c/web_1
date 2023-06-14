@@ -198,7 +198,11 @@
 										<td class="px-6 py-4">
 											<img id="{{ producto.id }}-imagen"
 												class="h-12 w-12 object-contain"
-												src="{{ producto.imagen }}"
+												{% if producto.imagen.url %}
+													src="{{ producto.imagen.url }}"
+												{% else %}
+													src="{{ producto.imagen }}"
+												{% endif %}
 												alt="...">
 										</td>
 									</tr>

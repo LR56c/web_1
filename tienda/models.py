@@ -18,7 +18,8 @@ class Producto( models.Model ):
 	id = models.AutoField( primary_key=True )
 	valor = models.IntegerField()
 	stock = models.IntegerField()
-	imagen = models.URLField()
+	imagen = models.ImageField( upload_to='productos' )
+	# imagen = models.URLField()
 	nombre = models.CharField( max_length=30 )
 	descripcion = models.CharField( max_length=100 )
 	imageName = models.CharField( max_length=100 )
@@ -90,6 +91,7 @@ class Envio( models.Model ):
 
 class Orden( models.Model ):
 	id = models.AutoField( primary_key=True )
+	numero_tarjeta = models.IntegerField()
 	usuario = models.ForeignKey( Usuario, on_delete=models.CASCADE )
 	envio = models.ForeignKey( Envio, on_delete=models.CASCADE )
 	fecha = models.DateTimeField()

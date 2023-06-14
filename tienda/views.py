@@ -11,7 +11,7 @@ from django.shortcuts import redirect, render
 
 import api.methods
 from tienda.models import (Carrito, Compra, DetalleOrden, Oferta, Orden,
-	Producto, Usuario, Envio, )
+	Producto, Tarjeta, Usuario, Envio, )
 
 
 @login_required
@@ -51,9 +51,6 @@ def index( request ):
 
 		productList.append( productoEntry )
 
-
-
-
 		if ind is not None and i in ind:
 			carruselList.append( productoEntry )
 
@@ -63,8 +60,8 @@ def index( request ):
 		productos_search = Producto.objects.filter( nombre__contains=search )
 		productList = []
 		for producto_search in productos_search:
-			producto_search.valor = format_currency( producto_search.valor, codigo_moneda,
-				locale="es_CL" )
+			producto_search.valor = format_currency( producto_search.valor,
+				codigo_moneda, locale="es_CL" )
 			productList.append( producto_search )
 
 	context['productos'] = productList
@@ -75,7 +72,7 @@ def index( request ):
 	context['carrito'] = carrito
 	context['montoTotal'] = montoTotal
 	context['index'] = True
-
+	context['carrito_enabled'] = True
 
 	return render( request, 'index_tienda.html', context )
 
@@ -86,9 +83,11 @@ def custom_404( request ):
 
 @login_required
 def orden( request ):
-	if request.method == 'GET':
+	if request.method == 'POST':
 		try:
 			user = request.user
+			tarjeta_id = request.POST.get( 'tarjeta_id' )
+			tarjeta = Tarjeta.objects.get( id=tarjeta_id )
 			usuario = Usuario.objects.get( user=user )
 			carritoList, montoTotal = api.methods.getCart( user )
 
@@ -107,7 +106,8 @@ def orden( request ):
 
 			# Pagado, Enviado, Finalizado
 			orden = Orden.objects.create( usuario=usuario, valor=montoTotal,
-				estado='Finalizado', fecha=datetime.now(), envio=envio )
+				estado='Finalizado', fecha=datetime.now(), envio=envio,
+				numero_tarjeta=tarjeta.numero_tarjeta )
 			orden.save()
 
 			for car in carritoList:
@@ -128,13 +128,14 @@ def orden( request ):
 
 	return redirect( 'pago' )
 
+
 @login_required
-def carrito_repetir( request, id):
+def carrito_repetir( request, id ):
 	if request.method == 'GET':
 		try:
 			user = User.objects.get( username=request.user )
 			usuario = Usuario.objects.get( user=user )
-			carritos = usuario.carrito_set.all( )
+			carritos = usuario.carrito_set.all()
 
 			for carrito in carritos:
 				detalle = DetalleOrden.objects.get( id=carrito.detalle_orden.id )
@@ -145,7 +146,7 @@ def carrito_repetir( request, id):
 			for compra in orden.compra_set.all():
 				producto = compra.detalle_orden.producto
 				cantidad = compra.detalle_orden.cantidad
-				api.methods.save_to_cart( usuario, producto, cantidad)
+				api.methods.save_to_cart( usuario, producto, cantidad )
 
 			return redirect( 'pago' )
 		except Exception as e:
@@ -175,8 +176,34 @@ def pago( request ):
 			return redirect( 'inicio' )
 		context['carrito'] = carritoList
 		context['montoTotal'] = montoTotal
+
+		usuario = Usuario.objects.get( user=request.user )
+		tarjetas = None
+		try:
+			tarjetas = usuario.tarjeta_set.all()
+
+			for tarjeta in tarjetas:
+				tarjeta.numero_tarjeta = api.methods.ocultar_caracteres(
+					tarjeta.numero_tarjeta )
+		except Exception as e:
+			pass
+
+		context['tarjetas'] = tarjetas
+
 		return render( request, 'pago.html', context )
 	return render( request, 'pago.html', context )
+
+
+@login_required
+def producto_extra( request, id ):
+	if request.method == 'POST':
+		usuario = Usuario.objects.get( user=request.user )
+		id_from = request.POST.get( 'id_from' )
+		producto = Producto.objects.get( id=id )
+		cantidad = request.POST.get( 'input-add' )
+		api.methods.save_to_cart( usuario, producto, cantidad )
+		return  redirect('detalle_producto', id=id_from)
+	return  redirect('404')
 
 
 @login_required
@@ -186,7 +213,7 @@ def producto( request, id ):
 	if request.method == 'POST':
 		usuario = Usuario.objects.get( user=request.user )
 		producto = Producto.objects.get( id=id )
-		cantidad = request.POST['input-add']
+		cantidad = request.POST.get('input-add')
 		context['sucess'] = api.methods.save_to_cart( usuario, producto, cantidad )
 
 	try:
@@ -212,9 +239,37 @@ def producto( request, id ):
 			productoEntry['descuento'] = '0'
 
 		context['producto'] = productoEntry
+		context['carrito_enabled'] = True
 		carrito, montoTotal = api.methods.getCart( request.user )
 		context['carrito'] = carrito
 		context['montoTotal'] = montoTotal
+
+		productos = Producto.objects.all()
+		productList = [ ]
+
+		for productoElement in productos:
+			productoEntry = { }
+
+			productoEntry['id'] = productoElement.id
+			productoEntry['nombre'] = productoElement.nombre
+			productoEntry['imagen'] = productoElement.imagen
+			productoEntry['valor'] = format_currency( productoElement.valor, codigo_moneda,
+				locale="es_CL" )
+
+			if productoElement.oferta_id is not None:
+				oferta = Oferta.objects.get( id=productoElement.oferta_id )
+				productoEntry['descuento'] = oferta.porcentaje
+				productoEntry['original'] = productoEntry['valor']
+
+				productoEntry['rebaja'] = format_currency(productoElement.valor - (productoElement.valor * (oferta.porcentaje / 100)),
+					codigo_moneda, locale="es_CL" )
+				productoEntry['valor'] = productoEntry['rebaja']
+			else:
+				productoEntry['descuento'] = '0'
+
+			productList.append( productoEntry )
+
+		context['productos'] = productList
 
 		return render( request, 'detalle_producto.html', context )
 	except Exception as e:
@@ -242,10 +297,14 @@ def index_carrito( request, id ):
 def index_carrito_delete( request, id ):
 	if request.method == 'POST':
 		user = User.objects.get( username=request.user )
+		id_from = request.POST.get( 'id_from' )
 		usuario = Usuario.objects.get( user=user )
 		carrito = Carrito.objects.get( id=id, usuario=usuario )
 		detalle = DetalleOrden.objects.get( id=carrito.detalle_orden.id )
 		detalle.delete()
+
+		if id_from:
+			return redirect( 'detalle_producto', id=id_from )
 
 		return redirect( 'inicio' )
 
@@ -263,3 +322,4 @@ def pago_eliminar( request, id ):
 		return redirect( 'pago' )
 
 	return redirect( 'pago' )
+

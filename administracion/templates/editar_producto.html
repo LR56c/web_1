@@ -175,7 +175,11 @@
 										id="post-imagen"
 									>
 										<img
-											src="{{ producto.imagen }}"
+											{% if producto.imagen.url %}
+												src="{{ producto.imagen.url }}"
+											{% else %}
+												src="{{ producto.imagen }}"
+											{% endif %}
 											id="imagen-preview"
 											class="w-20 h-20 object-contain rounded-lg"
 											alt="..."/>

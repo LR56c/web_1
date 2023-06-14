@@ -13,44 +13,46 @@ from firebase_admin import storage
 
 import api.methods
 from pokemonShop import settings
+from tienda.forms import TarjetaForm
 from tienda.models import Oferta, Tarjeta, Producto, Suscripcion, Usuario
-
-
 
 
 @login_required
 def suscripcion_crear( request ):
-		if request.method == 'POST':
-			try:
-				usuario = Usuario.objects.get( user=request.user)
-				num = request.POST.get( 'num-val' )
-				fecha_inicio = datetime.now()
-				fecha_expiracion = fecha_inicio + timedelta( days=30 )
-				monto_cobrar = 1000
-				tarjeta = Tarjeta.objects.get( usuario=usuario, id=num )
-				suscripcion = Suscripcion.objects.create(usuario=usuario, monto=monto_cobrar,
-					active=True, fecha_inicio=fecha_inicio, fecha_expiracion=fecha_expiracion,
-					numero_tarjeta=tarjeta.numero_tarjeta
-				)
-				suscripcion.save()
-				if usuario.suscripcion is not None:
-					usuario.suscripcion.active = False
-					usuario.suscripcion.save()
+	if request.method == 'POST':
+		try:
+			usuario = Usuario.objects.get( user=request.user )
+			num = request.POST.get( 'num-val' )
+			fecha_inicio = datetime.now()
+			fecha_expiracion = fecha_inicio + timedelta( days=30 )
+			monto_cobrar = 1000
+			tarjeta = Tarjeta.objects.get( usuario=usuario, id=num )
 
-				usuario.suscripcion = suscripcion
-				usuario.save()
+			suscripcion = Suscripcion.objects.create( monto=monto_cobrar,
+        active=True,
+				fecha_inicio=fecha_inicio, fecha_expiracion=fecha_expiracion,
+				numero_tarjeta=tarjeta.numero_tarjeta )
+			suscripcion.save()
 
-				return redirect( 'suscripcion' )
-			except Exception as e:
-				return redirect( '404' )
-		return redirect( '404' )
+			if usuario.suscripcion is not None:
+				usuario.suscripcion.active = False
+				usuario.suscripcion.save()
+
+			usuario.suscripcion = suscripcion
+			usuario.save()
+
+			return redirect( 'suscripcion' )
+		except Exception as e:
+			return redirect( '404' )
+	return redirect( '404' )
+
 
 @login_required
 def suscripcion_cancelar( request ):
 	if request.method == 'POST':
 		try:
 			# suscripcion_id = request.POST.get( 'suscripcion_id')
-			usuario = Usuario.objects.get( user=request.user)
+			usuario = Usuario.objects.get( user=request.user )
 			suscripcion = usuario.suscripcion
 			suscripcion.delete()
 			return redirect( 'suscripcion' )
@@ -93,14 +95,14 @@ def product_edit( request, id ):
 			else:
 				oferta = Oferta.objects.get( id=oferta )
 
-
 			image_url = producto.imagen
 
 			if imageName == '':
 				imageName = producto.imageName
 			else:
-				firebaseDelete( producto.imageName )
-				image_url = firebaseUpload( imagen )
+				image_url = imagen
+				# firebaseDelete( producto.imageName )
+				# image_url = firebaseUpload( imagen )
 
 			producto.valor = valor
 			producto.stock = stock
@@ -127,7 +129,6 @@ def products( request ):
 		productos = Producto.objects.all()
 
 		for producto in productos:
-
 			codigo_moneda = "CLP"
 			producto.valor = format_currency( producto.valor, codigo_moneda,
 				locale="es_CL" )
@@ -149,7 +150,8 @@ def product_create( request ):
 		imageName = request.POST.get( 'imageName' )
 		descripcion = request.POST.get( 'descripcion' )
 		oferta = request.POST.get( 'oferta' )
-		image_url = firebaseUpload( imagen )
+		# image_url = firebaseUpload( imagen )
+		image_url = imagen
 
 		if len( oferta ) == 0:
 			oferta = None
@@ -196,7 +198,7 @@ def product_delete( request, id ):
 		producto = Producto.objects.get( id=id )
 		if producto:
 
-			firebaseDelete( producto.imageName )
+			# firebaseDelete( producto.imageName )
 
 			producto.delete()
 			context['success'] = True
@@ -424,6 +426,7 @@ def editUsuario( request ):
 
 	return JsonResponse( context, status=404 )
 
+
 @login_required
 def editar_usuarios( request, id ):
 	context = { }
@@ -533,7 +536,7 @@ def edit_ofertas( request ):
 							return JsonResponse( context, status=404 )
 
 				products = Producto.objects.filter( oferta=oferta )
-				productsIds = [ ]
+				productsIds = []
 				for product in products:
 					productsIds.append( product.id )
 
@@ -559,31 +562,42 @@ def edit_ofertas( request ):
 @login_required
 def crear_tarjeta( request ):
 	if request.method == 'POST':
-			try:
-				usuario = Usuario.objects.get( user=request.user )
+		try:
+			usuario = Usuario.objects.get( user=request.user )
 
-				nombre = request.POST.get( 'nombre' )
-				apellido = request.POST.get( 'apellido' )
-				nombre_cliente = nombre + ' ' + apellido
+			nombre_cliente = request.POST.get( 'nombre_cliente' )
+			nombre_banco = request.POST.get( 'nombre_banco' )
+			numero_tarjeta = request.POST.get( 'numero_tarjeta' )
 
-				nombre_banco = request.POST.get( 'banco' )
+			codigo = request.POST.get( 'codigo' )
+			anno_vencimiento = request.POST.get( 'anno_vencimiento' )
+			mes_vencimiento = request.POST.get( 'mes_vencimiento' )
 
-				numero_tarjeta = request.POST.get( 'tarjeta' )
-				codigo = request.POST.get( 'clave' )
-				anno_vencimiento = request.POST.get( 'ano' )
-				mes_vencimiento = request.POST.get( 'mes' )
+			data = {
+				'usuario'         : usuario,
+				'numero_tarjeta'  : numero_tarjeta,
+				'nombre_banco'    : nombre_banco,
+				'nombre_cliente'  : nombre_cliente,
+				'codigo'          : codigo,
+				'anno_vencimiento': anno_vencimiento,
+				'mes_vencimiento' : mes_vencimiento,
+			}
+			tarjetaForm = TarjetaForm( data )
+			tarjetaForm.save()
 
-				pago = Tarjeta.objects.create( usuario=usuario,
-					numero_tarjeta=numero_tarjeta, nombre_banco=nombre_banco,
-					nombre_cliente=nombre_cliente, codigo=codigo,
-					anno_vencimiento=anno_vencimiento, mes_vencimiento=mes_vencimiento )
-
-				pago.save()
-				return redirect('detalle_cuenta')
-			except Exception as e:
-				return redirect('404')
+			# pago = Tarjeta.objects.create(usuario=usuario,
+			#                               numero_tarjeta=numero_tarjeta,
+      #                               nombre_banco=nombre_banco,
+			#                               nombre_cliente=nombre_cliente,
+      #                               codigo=codigo,
+			#                               anno_vencimiento=anno_vencimiento,
+      #                               mes_vencimiento=mes_vencimiento)
+			# pago.save()
+			return redirect( 'detalle_cuenta' )
+		except Exception as e:
+			return redirect( '404' )
 	else:
-		return redirect('404')
+		return redirect( '404' )
 
 
 @login_required
@@ -594,8 +608,8 @@ def eliminar_tarjeta( request ):
 			tarjeta_id = request.POST.get( 'tarjeta_id' )
 			tarjeta = Tarjeta.objects.get( id=tarjeta_id )
 			tarjeta.delete()
-			return redirect('detalle_cuenta')
+			return redirect( 'detalle_cuenta' )
 		except Exception as e:
-			return redirect('404')
+			return redirect( '404' )
 	else:
-		return redirect('404')
+		return redirect( '404' )

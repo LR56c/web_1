@@ -1,9 +1,9 @@
 from django import forms
 
-from tienda.models import Producto
+from tienda.models import Tarjeta
 
 
-class ProductoForm(forms.ModelForm):
+class TarjetaForm(forms.ModelForm):
 	class Meta:
-		model = Producto
+		model = Tarjeta
 		fields = '__all__'

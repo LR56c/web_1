@@ -8,6 +8,7 @@ from django.shortcuts import redirect, render
 from datetime import datetime, timedelta
 
 import api.methods
+from tienda.forms import TarjetaForm
 from tienda.models import Suscripcion, Tarjeta, Usuario
 
 
@@ -83,6 +84,13 @@ def detalle_cuenta( request ):
 			context['email'] = user.email
 			context['telefono'] = usuario.telefono
 			context['direccion'] = usuario.direccion
+			context['sidebar_enabled'] = True
+			context['carrito_enabled'] = True
+
+			carrito, montoTotal = api.methods.getCart( request.user )
+			context['carrito'] = carrito
+			context['montoTotal'] = montoTotal
+
 			return render( request, 'detalle_cuenta.html', context )
 		except Exception as e:
 			return redirect( '404' )
@@ -113,6 +121,12 @@ def historial_pedidos( request ):
 			# context['ordenes'] = json.dumps(ordenList)
 			context['ordenes'] = ordenList
 
+			context['sidebar_enabled'] = True
+			context['carrito_enabled'] = True
+
+			carrito, montoTotal = api.methods.getCart( request.user )
+			context['carrito'] = carrito
+			context['montoTotal'] = montoTotal
 			return render( request, 'historial_pedidos.html', context )
 		except Exception as e:
 			return redirect( '404' )
@@ -153,6 +167,9 @@ def detalle_cuenta_editar( request ):
 def suscripcion( request ):
 	if request.method == 'GET':
 		context = { }
+		context['sidebar_enabled'] = True
+
+
 		usuario = Usuario.objects.get( user=request.user )
 		try:
 			codigo_moneda = "CLP"
@@ -169,7 +186,6 @@ def suscripcion( request ):
 			proxima_fecha = datetime.now() + timedelta( days=30 )
 			context['duracion'] = api.methods.fechaDate( proxima_fecha )
 			context['suscripcion'] = suscripcion
-			return render( request, 'suscripcion.html', context )
 		except Exception as e:
 			tarjetas = usuario.tarjeta_set.all()
 
@@ -180,9 +196,18 @@ def suscripcion( request ):
 			context['tarjetas'] = tarjetas
 
 			context['suscripcion'] = None
-			return render( request, 'suscripcion.html', context )
+
+
+		context['carrito_enabled'] = True
+		carrito, montoTotal = api.methods.getCart( request.user )
+		context['carrito'] = carrito
+		context['montoTotal'] = montoTotal
+		return render( request, 'suscripcion.html', context )
 	return redirect( '404' )
 
 
 def agregar_tarjeta( request ):
-	return render( request, 'ingreso_tarjeta.html' )
+	context = { }
+	tarjetaForm = TarjetaForm()
+	context['form'] = tarjetaForm
+	return render( request, 'ingreso_tarjeta.html' , context)

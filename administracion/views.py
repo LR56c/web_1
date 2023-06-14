@@ -18,6 +18,7 @@ def crear_descuento( request ):
 	context = { }
 	# productos = Producto.objects.all()
 	# context['productos'] = productos
+	context['sidebar_enabled'] = True
 	return render( request, 'crear_descuento.html', context )
 
 
@@ -45,13 +46,17 @@ def ver_descuento( request ):
 			ofertasList.append( ofertaEntry )
 
 		context['ofertas'] = ofertasList
+		context['sidebar_enabled'] = True
+
 		return render( request, 'ver_descuento.html', context )
 	return render( request, 'ver_descuento.html', context )
 
 
 @login_required
 def crear_producto( request ):
-	return render( request, 'crear_producto.html' )
+	context = { }
+	context['sidebar_enabled'] = True
+	return render( request, 'crear_producto.html' , context)
 
 
 @login_required
@@ -79,6 +84,8 @@ def ver_productos( request ):
 		'productos': productos,
 	}
 
+	context['sidebar_enabled'] = True
+
 	return render( request, 'ver_producto.html', context )
 
 
@@ -94,6 +101,8 @@ def ver_usuarios( request ):
 		context = {
 			'usuarios': usuarios,
 		}
+		context['sidebar_enabled'] = True
+
 		return render( request, 'ver_usuarios.html', context )
 	except Exception as e:
 		return redirect( '404' )
@@ -126,6 +135,8 @@ def editar_producto( request, id ):
 		context['ofertas'] = ofertasList
 		context['producto'] = producto
 
+		context['sidebar_enabled'] = True
+
 		return render( request, 'editar_producto.html', context )
 	# TODO: integrar con firebase
 	except Exception as e:
@@ -154,6 +165,8 @@ def editar_usuarios( request, id ):
 		context['email'] = user.email
 		context['telefono'] = usuario.telefono
 		context['direccion'] = usuario.direccion
+		context['sidebar_enabled'] = True
+
 		return render( request, 'editar_usuarios.html', context )
 	except Exception as e:
 		return redirect( '404' )
@@ -191,6 +204,7 @@ def editar_descuento( request, id ):
 				locale="es_CL" )
 			producto.stock = format_decimal( producto.stock, locale='es_CL' )
 		context['productos'] = productos
+		context['sidebar_enabled'] = True
 		return render( request, 'editar_descuento.html', context )
 	except Exception as e:
 		return redirect( '404' )

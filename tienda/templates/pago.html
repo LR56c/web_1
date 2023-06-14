@@ -52,8 +52,9 @@
 									{{ item.id }}
 								</th>
 								<td class="px-6 py-4">
-									<a href="{% url 'detalle_producto' item.id %}" class="underline">
-									{{ item.nombre }}
+									<a href="{% url 'detalle_producto' item.id %}"
+										class="underline">
+										{{ item.nombre }}
 									</a>
 								</td>
 								<td class="px-6 py-4">
@@ -65,11 +66,15 @@
 								</td>
 								<td class="px-6 py-4">
 									<a href="{% url 'detalle_producto' item.id %}">
-									<img
-										src="{{ item.imagen }}"
-										class="h-12 w-12 object-contain"
-										}
-										alt="..."/>
+										<img
+											{% if item.imagen.url %}
+												src="{{ item.imagen.url }}"
+											{% else %}
+												src="{{ item.imagen }}"
+											{% endif %}
+											class="h-12 w-12 object-contain"
+											}
+											alt="..."/>
 									</a>
 								</td>
 								<td class="px-6 py-4">
@@ -103,17 +108,50 @@
 							Datos Tarjeta
 						</h3>
 					</div>
-					<div role="status"
-						class="max-w-md p-4 space-y-4 divide-y divide-gray-200 animate-pulse md:p-6">
-						<div class="flex items-center justify-between">
-							<div>
-								<div
-									class="h-2.5 bg-gray-300 rounded-full w-24 mb-2.5"></div>
-								<div
-									class="w-32 h-2 bg-gray-200 rounded-full"></div>
+							<div class="p-4 flex flex-col items-center justify-center gap-4">
+								<button id="dropdownUsersButton"
+									data-dropdown-toggle="dropdownUsers"
+									data-dropdown-placement="bottom"
+									class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+									type="button">
+									Selecciona una tarjeta
+									<svg class="w-4 h-4 ml-2"
+										aria-hidden="true"
+										fill="none"
+										stroke="currentColor"
+										viewBox="0 0 24 24"
+										xmlns="http://www.w3.org/2000/svg">
+										<path stroke-linecap="round"
+											stroke-linejoin="round"
+											stroke-width="2"
+											d="M19 9l-7 7-7-7"></path>
+									</svg>
+								</button>
+								<!-- Dropdown menu -->
+								<div id="dropdownUsers"
+									class="z-10 hidden bg-white rounded-lg shadow w-60 dark:bg-gray-700">
+									<ul class="max-h-32 py-2 overflow-y-auto text-gray-700 dark:text-gray-200"
+										aria-labelledby="dropdownUsersButton">
+										{% if tarjetas %}
+											{% for tarjeta in tarjetas %}
+												<li class="flex justify-center">
+													<button onclick="tt(this, {{ tarjeta.id }})"
+														id="{{ tarjeta.id }}-button"
+														type="button"
+														name="tarjeta-button">
+														{{ tarjeta.numero_tarjeta }}
+													</button>
+												</li>
+											{% endfor %}
+										{% else %}
+											<li class="flex justify-center">
+												No hay tarjetas registradas
+											</li>
+										{% endif %}
+									</ul>
+								</div>
+								<p id="selected-tarjeta">No tienes una tarjeta seleccionada</p>
 							</div>
-						</div>
-					</div>
 				</div>
 			</div>
 			<div
@@ -125,15 +163,26 @@
 					</p>
 				</div>
 			</div>
-			<div class="w-full flex justify-center items-center">
-
-				<a href="{% url 'orden' %}"
-					class="w-2/3 text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
-					Realizar Pago
-				</a>
-
-			</div>
+				<form class="w-full flex justify-center"
+					method="post"
+					action="{% url 'orden' %}">
+					{% csrf_token %}
+					<input type="hidden"
+						id="num-input"
+						name="tarjeta_id"
+						value="{{ tarjeta.id }}"/>
+					<button
+						id="pay-button"
+						type="submit"
+						disabled
+						class="text-white bg-red-400 dark:bg-red-500 cursor-not-allowed font-medium rounded-lg text-sm px-5 py-2.5 text-center">
+						Realizar Pago
+					</button>
+				</form>
 		</div>
 	</div>
 
 {% endblock content %}
+{% block js %}
+	<script src="{% static 'src/js/pago.js' %}"></script>
+{% endblock %}

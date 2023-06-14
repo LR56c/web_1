@@ -4,6 +4,7 @@
 	<div
 		class="flex flex-wrap items-center justify-center gap-3 md:gap-0 md:justify-between md:flex-nowrap">
 		<div class="flex w-full justify-center md:basis-3/12">
+            {% if sidebar_enabled %}
 			<button data-drawer-target="logo-sidebar"
 				data-drawer-toggle="logo-sidebar"
 				aria-controls="logo-sidebar"
@@ -20,6 +21,7 @@
 						d="M2 4.75A.75.75 0 012.75 4h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 4.75zm0 10.5a.75.75 0 01.75-.75h7.5a.75.75 0 010 1.5h-7.5a.75.75 0 01-.75-.75zM2 10a.75.75 0 01.75-.75h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 10z"></path>
 				</svg>
 			</button>
+            {% endif %}
 			<a href="{% url 'inicio' %}"
 				class="hover:text-black flex w-full basis-auto items-center justify-center">
 				<img src="{% static 'imagens/R.png' %}"
@@ -47,15 +49,14 @@
 						placeholder="...">
 					<button type="submit"
 						class="w-full xxs:w-fit text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2">
-						Search
+						Buscar
 					</button>
 				</form>
 			</div>
 		{% endif %}
 		<div
 			class="flex w-full basis-auto justify-around md:basis-2/12">
-			{% if disabled_carrito %}
-			{% else %}
+			{% if carrito_enabled %}
 				<button type="button"
 					data-drawer-target="drawer-cart"
 					data-drawer-show="drawer-cart"

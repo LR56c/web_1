@@ -1,7 +1,6 @@
 const inputsId = document.getElementsByName( 'tarjeta_id' )
 
 for ( let input of inputsId ) {
-	console.log( 'input' )
 	const id         = input.value
 	const imgElement = document.getElementById( `${ id }-img` )
 	const numElement = document.getElementById( `${ id }-num` )

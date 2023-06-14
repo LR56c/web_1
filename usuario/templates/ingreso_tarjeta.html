@@ -1,6 +1,6 @@
 {% extends 'base_usuario.html' %}
 {% load static %}
-{% block title %}Suscripcion{% endblock %}
+{% block title %}Ingreso Tarjeta{% endblock %}
 {% block css %}
 	<link
 		href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
@@ -15,88 +15,67 @@
 {% block aside-content %}
 	<div
 		class="w-full h-full xs:p-4 flex flex-col justify-center items-center place-items-center">
-		<form
-			class="formulario__gruop space-y-4 h-full w-full max-w-xl"
-			id="formulario1"
-			action="{% url 'crear_tarjeta' %}"
-			method="post">
-			{% csrf_token %}
-			<div class="overflow-y-scroll max-h-96">
-				<div>
-					<span class="input-group-text ">Nombre</span>
-					<input id="nombre"
-						name="nombre"
-						type="text"
-						aria-label="First name"
-						class="form-control ">
-				</div>
-				<div>
-					<span class="input-group-text ">Apellido</span>
-					<input id="apellido"
-						name="apellido"
-						type="text"
-						aria-label="Last name"
-						class="form-control">
-				</div>
-				<div>
-					<span class="input-group-text">Banco</span>
-					<input id="banco"
-						name="banco"
-						type="text"
-						class="form-control"
-						placeholder=""
-						aria-label="Recipient's username"
-						aria-describedby="basic-addon2">
-				</div>
-				<div>
-					<span class="input-group-text">Numero tarjeta</span>
-					<input id="tarjeta"
-						name="tarjeta"
-						type="number"
-						class="form-control"
-						placeholder=""
-						aria-label="Recipient's username"
-						aria-describedby="basic-addon2">
-				</div>
-				<div>
-					<span class="input-group-text">Mes</span>
-					<input id="mes"
-						name="mes"
-						type="number"
-						aria-label="First name"
-						class="form-control"
-						placeholder="03">
-				</div>
-				<div>
-					<span class="input-group-text">Año</span>
-					<input id="ano"
-						name="ano"
-						type="number"
-						aria-label="Last name"
-						class="form-control "
-						placeholder="">
-				</div>
-				<div>
-					<span class="input-group-text">Clave internet</span>
-					<input id="clave"
-						name="clave"
-						type="text"
-						class="form-control"
-						placeholder=""
-						aria-label="Recipient's username"
-						aria-describedby="basic-addon2">
-				</div>
-			</div>
+		<div class="w-full lg:w-3/4 bg-white rounded-lg shadow">
 			<div
-				class="flex justify-center items-center border-gray-200 rounded-b ">
-				<button
-					id="guardar1"
-					type="submit"
-					class=" ml-6 text-white bg-gradient-to-r from-cyan-500 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center ">
-					Enviar
-				</button>
+				class="p-4 border-b rounded-t">
+				<h3
+					class="text-xl text-gray-900">
+					Ingreso de nueva tarjeta
+				</h3>
 			</div>
-		</form>
+			<div class="flex justify-center">
+			<form
+				class="h-full w-full max-w-xl p-4"
+				id="formulario1"
+				action="{% url 'crear_tarjeta' %}"
+				method="post">
+				{% csrf_token %}
+				<div class="space-y-4 overflow-y-scroll max-h-96">
+					{{ form.non_field_errors }}
+					<div class="fieldWrapper">
+						{{ form.nombre_cliente.errors }}
+						<label for="{{ form.nombre_cliente.id_for_label }}">Nombre</label>
+						{{ form.nombre_cliente }}
+					</div>
+					<div class="fieldWrapper">
+						{{ form.nombre_banco.errors }}
+						<label for="{{ form.nombre_banco.id_for_label }}">Banco</label>
+						{{ form.nombre_banco }}
+					</div>
+					<div class="fieldWrapper">
+						{{ form.numero_tarjeta.errors }}
+						<label for="{{ form.numero_tarjeta.id_for_label }}">Numero
+							Tarjeta</label>
+						{{ form.numero_tarjeta }}
+					</div>
+					<div class="fieldWrapper">
+						{{ form.mes_vencimiento.errors }}
+						<label for="{{ form.mes_vencimiento.id_for_label }}">Mes</label>
+						{{ form.mes_vencimiento }}
+					</div>
+					<div class="fieldWrapper">
+						{{ form.anno_vencimiento.errors }}
+						<label for="{{ form.anno_vencimiento.id_for_label }}">Año</label>
+						{{ form.anno_vencimiento }}
+					</div>
+					<div class="fieldWrapper">
+						{{ form.codigo.errors }}
+						<label for="{{ form.codigo.id_for_label }}">Clave</label>
+						{{ form.codigo }}
+					</div>
+					<div
+						class="flex justify-center items-center border-gray-200 rounded-b ">
+						<button
+							id="guardar1"
+							type="submit"
+							class=" ml-6 text-white bg-gradient-to-r from-cyan-500 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center ">
+							Enviar
+						</button>
+					</div>
+				</div>
+			</form>
+		</div>
+		</div>
 	</div>
 
 {% endblock %}
