@@ -43,6 +43,7 @@ class Usuario( models.Model ):
 	user = models.OneToOneField( User, on_delete=models.CASCADE,
 		primary_key=True )
 	nombre = models.CharField( max_length=60 )
+	rol = models.IntegerField(default=0)
 	telefono = models.CharField( max_length=10 )
 	direccion = models.CharField( max_length=50 )
 	suscripcion = models.ForeignKey( Suscripcion, on_delete=models.SET_NULL, null=True, blank=True )

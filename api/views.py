@@ -80,6 +80,8 @@ def product_edit( request, id ):
 	context = { }
 
 	if request.method == 'POST':
+		print( 'request.POST' )
+		print( request.POST )
 		try:
 			producto = Producto.objects.get( id=id )
 			valor = request.POST.get( 'valor' )
@@ -117,6 +119,8 @@ def product_edit( request, id ):
 
 			return JsonResponse( context, status=200 )
 		except Exception as e:
+			print( 'e' )
+			print( e )
 			context['success'] = False
 
 	return JsonResponse( context, status=404 )
@@ -360,20 +364,22 @@ def getUsuarios( request ):
 	context = { }
 
 	if request.method == 'GET':
-		users = User.objects.all()
 		usuarios = Usuario.objects.all()
 		userResponse = []
-		for user in users:
-			if not user.is_staff:
-				usuario = usuarios.get( user=user )
-				userEntry = { }
+		for usuario in usuarios:
+			userEntry = { }
+			if usuario.rol == 0:
+				user = User.objects.get(id=usuario.user)
 				userEntry['id'] = user.id
 				userEntry['nombre'] = user.first_name
 				userEntry['correo'] = user.email
 				userEntry['telefono'] = usuario.telefono
 				userEntry['direccion'] = usuario.direccion
+				userEntry['rol'] = 'cliente'
+			if usuario.role == 1:
+				userEntry['rol'] = 'vendedor'
 
-				userResponse.append( userEntry )
+			userResponse.append( userEntry )
 
 		context['usuarios'] = json.dumps( userResponse )
 		return JsonResponse( context, status=200 )

@@ -17,9 +17,9 @@ let selectionTR
 
 $( document )
 	.ready( function () {
-		const editModal   = document.getElementById( 'edit-modal' )
-		const submitModal = document.getElementById( 'submit-modal' )
-		const modal       = new Modal( editModal, options )
+		const editModal = document.getElementById( 'edit-modal' )
+		// const submitModal = document.getElementById( 'submit-modal' )
+		const modal     = new Modal( editModal, options )
 
 		// submitModal.addEventListener( 'click', function () {} )
 
@@ -28,7 +28,6 @@ $( document )
 
 		const idProducto = Number( idProd )
 		const ofertaId   = Number( idOferta )
-		lastSelectedOferta = ofertaId
 
 		selectionNull = $( '#selected-null' )
 		selectionTR   = $( '#selected-tr' )
@@ -37,16 +36,24 @@ $( document )
 		let imagenTextPreview = $( '#imagen-text-preview' )
 		let inputFile         = $( '#imagen' )
 
-		if ( !isNaN(ofertaId) ) {
+		if ( !isNaN( ofertaId ) ) {
 			selectionNull.addClass( 'hidden' )
 			selectionTR.removeClass( 'hidden' )
 			selectionTR.addClass( [ 'flex', 'flex-row' ] )
 
 			lastSelectedOferta = ofertaId
-			$( `#selected-name` ).text( $( `#${ofertaId}-name` ).text() )
-			$( `#selected-porc` ).text( $( `#${ofertaId}-porc` ).text() )
-			$( `#selected-fi` ).text( $( `#${ofertaId}-fi` ).text() )
-			$( `#selected-fe` ).text( $( `#${ofertaId}-fe` ).text() )
+			$( `#selected-name` )
+				.text( $( `#${ ofertaId }-name` )
+					.text() )
+			$( `#selected-porc` )
+				.text( $( `#${ ofertaId }-porc` )
+					.text() )
+			$( `#selected-fi` )
+				.text( $( `#${ ofertaId }-fi` )
+					.text() )
+			$( `#selected-fe` )
+				.text( $( `#${ ofertaId }-fe` )
+					.text() )
 		}
 
 		inputFile.change( function ( e ) {
@@ -98,6 +105,8 @@ $( document )
 
 			const ofertaInput = lastSelectedOferta === 0 ? '' : String(
 				lastSelectedOferta )
+			console.log( 'ofertaInput' )
+			console.log( ofertaInput )
 
 			let formData            = new FormData( this )
 			const imagenCurrentName = formData.get( 'imagen' ).name
@@ -129,13 +138,21 @@ $( document )
 
 function tt( e, id ) {
 	if ( id !== lastSelectedOferta ) {
-		const prevCheck			= $( `#${lastSelectedOferta}-check` )
+		const prevCheck = $( `#${ lastSelectedOferta }-check` )
 		prevCheck.prop( 'checked', false )
 		lastSelectedOferta = id
-		$( `#selected-name` ).text( $( `#${lastSelectedOferta}-name` ).text() )
-		$( `#selected-porc` ).text( $( `#${lastSelectedOferta}-porc` ).text() )
-		$( `#selected-fi` ).text( $( `#${lastSelectedOferta}-fi` ).text() )
-		$( `#selected-fe` ).text( $( `#${lastSelectedOferta}-fe` ).text() )
+		$( `#selected-name` )
+			.text( $( `#${ lastSelectedOferta }-name` )
+				.text() )
+		$( `#selected-porc` )
+			.text( $( `#${ lastSelectedOferta }-porc` )
+				.text() )
+		$( `#selected-fi` )
+			.text( $( `#${ lastSelectedOferta }-fi` )
+				.text() )
+		$( `#selected-fe` )
+			.text( $( `#${ lastSelectedOferta }-fe` )
+				.text() )
 
 		selectionNull.addClass( 'hidden' )
 		selectionTR.removeClass( 'hidden' )

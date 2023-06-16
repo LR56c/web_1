@@ -115,6 +115,12 @@ def ver_usuarios( request ):
 		usuarios = []
 		for user in users:
 			usuario = Usuario.objects.get( user=user )
+
+			if usuario.rol == 0:
+				usuario.rol = 'cliente'
+			elif usuario.rol == 1:
+				usuario.rol = 'vendedor'
+
 			usuarios.append( usuario )
 
 		context = {
