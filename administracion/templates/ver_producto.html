@@ -4,177 +4,173 @@
 
 {% block title %}Ver Productos{% endblock %}
 {% block aside-content %}
-	<div class="md:p-4 h-full w-full">
-		<div aria-hidden="true"
-			id="edit-modal"
-			class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] md:h-full">
-			<div class="relative w-full h-full max-w-md md:h-auto">
-				<div class="relative bg-white rounded-lg shadow">
-					<button type="button"
-						id="close-modal"
-						class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center"
-					>
-						<svg aria-hidden="true"
-							class="w-5 h-5"
-							fill="currentColor"
-							viewBox="0 0 20 20"
-							xmlns="http://www.w3.org/2000/svg">
-							<path fill-rule="evenodd"
-								d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-								clip-rule="evenodd"></path>
-						</svg>
-						<span class="sr-only">Close modal</span>
-					</button>
-					<div class="px-6 py-6 lg:px-8">
-						<h3
-							class="mb-4 text-xl font-medium text-gray-900">Editar
-							x</h3>
-						<form class="space-y-6"
-							id="form-modal"
-							action="#">
-							<div>
-								<label htmlFor="text1"
-									class="block mb-2 text-sm font-medium text-gray-900">
-									campo1
-								</label>
-								<input type="text"
-									name="text"
-									id="text1"
-									class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-									required/>
-							</div>
-							<button type="submit"
-								id="submit-modal"
-								class="w-full text-white bg-gradient-to-r from-cyan-500 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
-								boton
-							</button>
-						</form>
-					</div>
-				</div>
-			</div>
-		</div>
-		{% if productos %}
-			<div class="max-h-96 md:max-h-[32rem] w-full overflow-auto shadow-md sm:rounded-lg">
-				<table
-					class="w-full text-sm text-left text-gray-500">
-					<thead
-						class="text-xs text-gray-700 uppercase bg-gray-50">
-					<tr>
-						<th scope="col"
-							class="px-6 py-3">
-							ID PRODUCTO
-						</th>
-						<th scope="col"
-							class="px-6 py-3">
-							NOMBRE
-						</th>
-						<th scope="col"
-							class="px-6 py-3">
-							<div class="flex">
-								PRECIO
-								<a href="{% url 'ver_productos' %}?filtro=valor">
-									<img class="w-4 h-4 object-contain"
-										alt="..."
-										src="{% static 'icons/chevron-down.svg' %}"/>
-								</a>
-								<a href="{% url 'ver_productos' %}?filtro=-valor">
-									<img class="w-4 h-4 object-contain"
-										alt="..."
-										src="{% static 'icons/chevron-up.svg' %}"/>
-								</a>
-							</div>
-						</th>
-						<th scope="col"
-							class="px-6 py-3">
-							<div class="flex">
+    <div class="md:p-4 h-full w-full">
+        <div aria-hidden="true"
+             id="edit-modal"
+             class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] md:h-full">
+            <div class="relative w-full h-full max-w-md md:h-auto">
+                <div class="relative bg-white rounded-lg shadow">
+                    <button type="button"
+                            id="close-modal"
+                            class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center"
+                    >
+                        <svg aria-hidden="true"
+                             class="w-5 h-5"
+                             fill="currentColor"
+                             viewBox="0 0 20 20"
+                             xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd"
+                                  d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                                  clip-rule="evenodd"></path>
+                        </svg>
+                        <span class="sr-only">Close modal</span>
+                    </button>
+                    <div class="px-6 py-6 lg:px-8">
+                        <h3
+                                class="mb-4 text-xl font-medium text-gray-900">Editar
+                            x</h3>
+                        <form class="space-y-6"
+                              id="form-modal"
+                              action="#">
+                            <div>
+                                <label htmlFor="text1"
+                                       class="block mb-2 text-sm font-medium text-gray-900">
+                                    campo1
+                                </label>
+                                <input type="text"
+                                       name="text"
+                                       id="text1"
+                                       class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                                       required/>
+                            </div>
+                            <button type="submit"
+                                    id="submit-modal"
+                                    class="w-full text-white bg-gradient-to-r from-cyan-500 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
+                                boton
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% if productos %}
+            <div class="max-h-96 md:max-h-[32rem] w-full overflow-auto shadow-md sm:rounded-lg">
+                <table
+                        class="w-full text-sm text-left text-gray-500">
+                    <thead
+                            class="text-xs text-gray-700 uppercase bg-gray-50">
+                    <tr>
+                        <th scope="col"
+                            class="px-6 py-3">
+                            ID PRODUCTO
+                        </th>
+                        <th scope="col"
+                            class="px-6 py-3">
+                            NOMBRE
+                        </th>
+                        <th scope="col"
+                            class="px-6 py-3">
+                            <div class="flex">
+                                PRECIO
+                                <a href="{% url 'ver_productos' %}?filtro=valor">
+                                    <img class="w-4 h-4 object-contain"
+                                         alt="..."
+                                         src="{% static 'icons/chevron-down.svg' %}"/>
+                                </a>
+                                <a href="{% url 'ver_productos' %}?filtro=-valor">
+                                    <img class="w-4 h-4 object-contain"
+                                         alt="..."
+                                         src="{% static 'icons/chevron-up.svg' %}"/>
+                                </a>
+                            </div>
+                        </th>
+                        <th scope="col"
+                            class="px-6 py-3">
+                            <div class="flex">
 
-								STOCK
-								<a href="{% url 'ver_productos' %}?filtro=stock">
-									<img class="w-4 h-4 object-contain"
-										alt="..."
-										src="{% static 'icons/chevron-down.svg' %}"/>
-								</a>
-								<a href="{% url 'ver_productos' %}?filtro=-stock">
-									<img class="w-4 h-4 object-contain"
-										alt="..."
-										src="{% static 'icons/chevron-up.svg' %}"/>
-								</a>
-							</div>
-						</th>
-						<th scope="col"
-							class="px-6 py-3">
-							IMAGEN
-						</th>
-						<th scope="col"
-							class="px-6 py-3">
-							ACCION
-						</th>
-					</tr>
-					</thead>
-					<tbody id="productos-list">
-					{% for producto in productos %}
-						{% if producto.id|divisibleby:2 %}
-							<tr class="border-b bg-gray-50">
-								{% else %}
-							<tr class="border-b bg-white">
-						{% endif %}
-					<th scope="row"
-						id="{{ producto.id }}-id"
-						class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">{{ producto.id }}</th>
-					<td class="px-6 py-4"
-						id="{{ producto.id }}-nombre">{{ producto.nombre }}</td>
-					<td class="px-6 py-4"
-						id="{{ producto.id }}-valor">{{ producto.valor }}</td>
-					<td class="px-6 py-4"
-						id="{{ producto.id }}-stock">{{ producto.stock }}</td>
-					<td class="px-6 py-4">
-						<img id="{{ producto.id }}-imagen"
-							{% if producto.imagen.url %}
-								src="{{ producto.imagen.url }}"
-							{% else %}
-								src="{{ producto.imagen }}"
-							{% endif %}
-							class="h-12 w-12 object-contain"
-							alt="..."/>
-					</td>
-					<td class="px-3 py-4">
-						<button type="button"
-							id="{{ producto.id }}-button-editar"
-							class="text-white bg-gradient-to-r from-yellow-300 via-yellow-400 to-yellow-500 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-1.5 text-center">
-							<a href="{% url 'editar_producto' producto.id %}">Editar</a>
-						</button>
-						<form
-							id="form-{{ producto.id }}"
-						>
-							{% csrf_token %}
-							<button
-								type="button"
-								name="delete-button"
-								onclick="tt(this, '{{ producto.id }}')"
-								class="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-1.5 text-center"
-							>
-								Eliminar
-							</button>
-						</form>
+                                STOCK
+                                <a href="{% url 'ver_productos' %}?filtro=stock">
+                                    <img class="w-4 h-4 object-contain"
+                                         alt="..."
+                                         src="{% static 'icons/chevron-down.svg' %}"/>
+                                </a>
+                                <a href="{% url 'ver_productos' %}?filtro=-stock">
+                                    <img class="w-4 h-4 object-contain"
+                                         alt="..."
+                                         src="{% static 'icons/chevron-up.svg' %}"/>
+                                </a>
+                            </div>
+                        </th>
+                        <th scope="col"
+                            class="px-6 py-3">
+                            IMAGEN
+                        </th>
+                        <th scope="col"
+                            class="px-6 py-3">
+                            ACCION
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody id="productos-list">
+                    {% for producto in productos %}
+                        <tr class="border-b bg-white">
+                            <th scope="row"
+                                id="{{ producto.id }}-id"
+                                class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">{{ producto.id }}</th>
+                            <td class="px-6 py-4"
+                                id="{{ producto.id }}-nombre">{{ producto.nombre }}</td>
+                            <td class="px-6 py-4"
+                                id="{{ producto.id }}-valor">{{ producto.valor }}</td>
+                            <td class="px-6 py-4"
+                                id="{{ producto.id }}-stock">{{ producto.stock }}</td>
+                            <td class="px-6 py-4">
+                                <img id="{{ producto.id }}-imagen"
+                                        {% if producto.imagen.url %}
+                                     src="{{ producto.imagen.url }}"
+                                        {% else %}
+                                     src="{{ producto.imagen }}"
+                                        {% endif %}
+                                     class="h-12 w-12 object-contain"
+                                     alt="..."/>
+                            </td>
+                            <td class="px-3 py-4">
+                                <button type="button"
+                                        id="{{ producto.id }}-button-editar"
+                                        class="text-white bg-gradient-to-r from-yellow-300 via-yellow-400 to-yellow-500 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-1.5 text-center">
+                                    <a href="{% url 'editar_producto' producto.id %}">Editar</a>
+                                </button>
+                                <form
+                                        id="form-{{ producto.id }}"
+                                >
+                                    {% csrf_token %}
+                                    <button
+                                            type="button"
+                                            name="delete-button"
+                                            onclick="tt(this, '{{ producto.id }}')"
+                                            class="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-1.5 text-center"
+                                    >
+                                        Eliminar
+                                    </button>
+                                </form>
 
-					</td>
-					</tr>
-					{% endfor %}
-					</tbody>
-				</table>
-			</div>
-		{% else %}
-			<div id="productos-warning"
-				class="hidden">
-				<img
-					class="w-1/4"
-					src="{% static 'imagens/GATOERROR.png' %}"
-					alt="..."/>
-				<p>No hay productos</p>
-			</div>
-		{% endif %}
-	</div>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        {% else %}
+            <div id="productos-warning"
+                 class="hidden">
+                <img
+                        class="w-1/4"
+                        src="{% static 'imagens/GATOERROR.png' %}"
+                        alt="..."/>
+                <p>No hay productos</p>
+            </div>
+        {% endif %}
+    </div>
 {% endblock %}
 {% block js %}
-	<script src="{% static 'src/js/getProductos.js' %}"></script>
+    <script src="{% static 'src/js/getProductos.js' %}"></script>
 {% endblock %}
