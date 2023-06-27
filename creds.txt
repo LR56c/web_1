@@ -1,0 +1,9 @@
+- admin
+    - usuario admin@gmail.com
+    - pass 123
+- vendedor
+    - vendedor@gmail.com
+    - 12345678
+- cliente
+    - usuario@gmail.com
+    - 12345678
